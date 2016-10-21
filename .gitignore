@@ -101,5 +101,4 @@ target
 .project
 .classpath
 WebContent/META-INF/MANIFEST.MF
-work
 gsp-target/
