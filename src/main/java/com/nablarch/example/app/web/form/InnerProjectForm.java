@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.validation.constraints.AssertTrue;
 
 import com.nablarch.example.app.entity.core.validation.validator.DateRangeValidator;
-import nablarch.core.util.StringUtil;
 import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
@@ -124,7 +123,7 @@ public class InnerProjectForm implements Serializable {
      *
      */
     public void setProjectStartDate(String projectStartDate) {
-        this.projectStartDate = StringUtil.isNullOrEmpty(projectStartDate) ? null : projectStartDate.replace("/", "");
+        this.projectStartDate = projectStartDate == null ? null : projectStartDate.replace("/", "");
     }
 
     /**
@@ -134,7 +133,7 @@ public class InnerProjectForm implements Serializable {
      *
      */
     public void setProjectEndDate(String projectEndDate) {
-        this.projectEndDate = StringUtil.isNullOrEmpty(projectEndDate) ? null : projectEndDate.replace("/", "");
+        this.projectEndDate = projectEndDate == null ? null : projectEndDate.replace("/", "");
     }
 
     /**
