@@ -27,7 +27,7 @@ public class SlashNormalizer implements Normalizer {
      * スラッシュを除去した値を返す。
      *
      * @param strings
-     * @return
+     * @return スラッシュを除去した値
      */
     @Override
     public String[] normalize(String[] strings) {
