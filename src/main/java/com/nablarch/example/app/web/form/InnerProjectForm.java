@@ -123,7 +123,7 @@ public class InnerProjectForm implements Serializable {
      *
      */
     public void setProjectStartDate(String projectStartDate) {
-        this.projectStartDate = projectStartDate == null ? null : projectStartDate.replace("/", "");
+        this.projectStartDate = projectStartDate;
     }
 
     /**
@@ -133,7 +133,7 @@ public class InnerProjectForm implements Serializable {
      *
      */
     public void setProjectEndDate(String projectEndDate) {
-        this.projectEndDate = projectEndDate == null ? null : projectEndDate.replace("/", "");
+        this.projectEndDate = projectEndDate;
     }
 
     /**

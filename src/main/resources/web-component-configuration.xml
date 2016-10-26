@@ -91,7 +91,14 @@
 
         <component-ref name="sessionStoreHandler" />
 
-        <component class="nablarch.fw.web.handler.NormalizationHandler" />
+        <component class="nablarch.fw.web.handler.NormalizationHandler">
+          <property name="normalizers">
+            <list>
+              <component class="com.nablarch.example.app.web.handler.SlashNormalizer"/>
+              <component class="nablarch.fw.web.handler.normalizer.TrimNormalizer"/>
+            </list>
+          </property>
+        </component>
 
         <component class="nablarch.fw.web.handler.ForwardingHandler"/>
 
