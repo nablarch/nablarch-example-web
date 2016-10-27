@@ -1,7 +1,6 @@
 package com.nablarch.example.app.web.form;
 
 import com.nablarch.example.app.entity.core.validation.validator.DateRangeValidator;
-import nablarch.core.util.StringUtil;
 import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
@@ -296,7 +295,7 @@ public class ProjectUpdateForm implements Serializable {
      * @param projectStartDate プロジェクト開始日
      */
     public void setProjectStartDate(String projectStartDate) {
-        this.projectStartDate = StringUtil.isNullOrEmpty(projectStartDate) ? null : projectStartDate.replace("/", "");
+        this.projectStartDate = projectStartDate;
     }
 
     /**
@@ -305,7 +304,7 @@ public class ProjectUpdateForm implements Serializable {
      * @param projectEndDate プロジェクト終了日
      */
     public void setProjectEndDate(String projectEndDate) {
-        this.projectEndDate = StringUtil.isNullOrEmpty(projectEndDate) ? null : projectEndDate.replace("/", "");
+        this.projectEndDate = projectEndDate;
     }
 
     /**
@@ -324,7 +323,7 @@ public class ProjectUpdateForm implements Serializable {
      * @param sales 売上高
      */
     public void setSales(String sales) {
-        this.sales = StringUtil.isNullOrEmpty(sales) ? null : sales;
+        this.sales = sales;
     }
 
     /**
@@ -333,7 +332,7 @@ public class ProjectUpdateForm implements Serializable {
      * @param costOfGoodsSold 売上原価
      */
     public void setCostOfGoodsSold(String costOfGoodsSold) {
-        this.costOfGoodsSold = StringUtil.isNullOrEmpty(costOfGoodsSold) ? null : costOfGoodsSold;
+        this.costOfGoodsSold = costOfGoodsSold;
     }
 
     /**
@@ -342,7 +341,7 @@ public class ProjectUpdateForm implements Serializable {
      * @param sga 販管費
      */
     public void setSga(String sga) {
-        this.sga = StringUtil.isNullOrEmpty(sga) ? null : sga;
+        this.sga = sga;
     }
 
     /**
@@ -351,7 +350,7 @@ public class ProjectUpdateForm implements Serializable {
      * @param allocationOfCorpExpenses 本社配賦
      */
     public void setAllocationOfCorpExpenses(String allocationOfCorpExpenses) {
-        this.allocationOfCorpExpenses = StringUtil.isNullOrEmpty(allocationOfCorpExpenses) ? null : allocationOfCorpExpenses;
+        this.allocationOfCorpExpenses = allocationOfCorpExpenses;
     }
 
 
