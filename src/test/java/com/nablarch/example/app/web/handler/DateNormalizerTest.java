@@ -1,4 +1,4 @@
-package com.nablarch.example.app.test;
+package com.nablarch.example.app.web.handler;
 
 import com.nablarch.example.app.web.handler.DateNormalizer;
 import org.junit.Test;
