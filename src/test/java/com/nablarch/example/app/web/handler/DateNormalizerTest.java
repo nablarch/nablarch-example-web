@@ -1,13 +1,10 @@
 package com.nablarch.example.app.web.handler;
 
-import com.nablarch.example.app.web.handler.DateNormalizer;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 /**
  * {@link DateNormalizer}のテストクラス。
