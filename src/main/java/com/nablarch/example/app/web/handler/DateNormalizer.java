@@ -19,7 +19,7 @@ public class DateNormalizer implements Normalizer {
      */
     @Override
     public boolean canNormalize(String key) {
-        return key.toLowerCase().contains("date") ? true : false;
+        return key.toLowerCase().contains("date");
     }
 
     /**

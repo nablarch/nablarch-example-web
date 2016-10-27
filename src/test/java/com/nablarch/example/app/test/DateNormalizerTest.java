@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class DateNormalizerTest {
 
-    private final DateNormalizer normalizer = new DateNormalizer();
+    private final DateNormalizer sut = new DateNormalizer();
 
     /**
      * {@link DateNormalizer#canNormalize(String)}のテスト。
@@ -23,10 +23,9 @@ public class DateNormalizerTest {
      */
     @Test
     public void testCanNormalizeWhenKeyIsNormalizationTarget() {
-
-        assertTrue(normalizer.canNormalize("form.projectStartDate"));
-        assertTrue(normalizer.canNormalize("form.projectEndDate"));
-        assertTrue(normalizer.canNormalize("form.date"));
+        assertThat(sut.canNormalize("form.projectStartDate"), is(true));
+        assertThat(sut.canNormalize("form.projectEndDate"), is(true));
+        assertThat(sut.canNormalize("form.date"), is(true));
     }
 
     /**
@@ -36,7 +35,7 @@ public class DateNormalizerTest {
      */
     @Test
     public void testCanNormalizeWhenKeyIsNotNormalizationTarget() {
-        assertFalse(normalizer.canNormalize("form.sample"));
+        assertThat(sut.canNormalize("form.sample"), is(false));
     }
 
     /**
@@ -46,8 +45,8 @@ public class DateNormalizerTest {
      */
     @Test
     public void testNormalizeWhenValueIsNormalizationTarget() {
-        String[] array = new String[]{"2016/01/01", "2016/02/02"};
-        assertThat(normalizer.normalize(array), arrayContaining("20160101", "20160202"));
+        String[] array = {"2016/01/01", "2016/02/02"};
+        assertThat(sut.normalize(array), arrayContaining("20160101", "20160202"));
     }
 
     /**
@@ -57,8 +56,8 @@ public class DateNormalizerTest {
      */
     @Test
     public void testNormalizeWhenValueIsNotNormalizationTarget() {
-        String[] array = new String[]{"20160101", "20160202"};
-        assertThat(normalizer.normalize(array), arrayContaining("20160101", "20160202"));
+        String[] array = {"20160101", "20160202"};
+        assertThat(sut.normalize(array), arrayContaining("20160101", "20160202"));
     }
 
     /**
@@ -68,8 +67,8 @@ public class DateNormalizerTest {
      */
     @Test
     public void testNormalizeWhenArrayHasNullValue() {
-        String[] array = new String[]{"20160101", null, "2016/03/03"};
-        assertThat(normalizer.normalize(array), arrayContaining("20160101", null, "20160303"));
+        String[] array = {"20160101", null, "2016/03/03"};
+        assertThat(sut.normalize(array), arrayContaining("20160101", null, "20160303"));
     }
 
     /**
@@ -79,7 +78,6 @@ public class DateNormalizerTest {
      */
     @Test
     public void testNormalizeWhenArrayIsEmpty() {
-        String[] array = new String[]{};
-        assertThat(normalizer.normalize(array), emptyArray());
+        assertThat(sut.normalize(new String[0]), emptyArray());
     }
 }
