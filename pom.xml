@@ -411,7 +411,7 @@
               <groupId>com.nablarch.framework</groupId>
               <artifactId>nablarch-testing</artifactId>
               <!-- プラグインに内包するモジュールはバージョン指定必須 -->
-              <version>1.0.6</version>
+              <version>1.0.7</version>
             </plugin>
           </plugins>
         </configuration>
