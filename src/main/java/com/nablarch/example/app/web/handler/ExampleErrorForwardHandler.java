@@ -1,7 +1,9 @@
 package com.nablarch.example.app.web.handler;
 
-import com.nablarch.example.app.web.common.file.TemporaryFileFailedException;
+import javax.persistence.OptimisticLockException;
+
 import nablarch.common.dao.NoDataException;
+import nablarch.common.web.session.SessionKeyNotFoundException;
 import nablarch.core.log.app.FailureLogUtil;
 import nablarch.core.util.annotation.Published;
 import nablarch.fw.ExecutionContext;
@@ -9,8 +11,7 @@ import nablarch.fw.Handler;
 import nablarch.fw.web.HttpErrorResponse;
 import nablarch.fw.web.HttpResponse;
 
-import javax.persistence.OptimisticLockException;
-import java.util.NoSuchElementException;
+import com.nablarch.example.app.web.common.file.TemporaryFileFailedException;
 
 /**
  * 特定の例外が送出された場合に、適切なエラー画面に遷移させるハンドラ。
@@ -31,7 +32,7 @@ public class ExampleErrorForwardHandler implements Handler<Object, Object> {
         try {
             // 後続の業務アクションハンドラが送出した例外をtry-catch文で捕捉する
             return context.handleNext(data);
-        } catch (NoSuchElementException e) {
+        } catch (SessionKeyNotFoundException e) {
             throw new HttpErrorResponse(HttpResponse.Status.BAD_REQUEST.getStatusCode(),
                     "/WEB-INF/view/common/errorPages/doubleSubmissionError.jsp", e);
         } catch (NoDataException e) {
