@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="n" uri="http://tis.co.jp/nablarch" %>
+<%@ page session="false" %>
 
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,7 @@
             <div class="title-nav">
                 <span>ログイン</span>
             </div>
-            <n:form useToken="true" method="POST" >
+            <n:form method="POST" >
                 <div class="message-area margin-top">
                     <n:errors filter="global" cssClass="message-error"/>
                 </div>
