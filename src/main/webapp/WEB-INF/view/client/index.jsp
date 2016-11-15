@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="n" uri="http://tis.co.jp/nablarch" %>
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags/listSearchResult" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
     <head>
