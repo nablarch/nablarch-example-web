@@ -10,7 +10,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
-  <version>5u7</version>
+  <version>5u8</version>
   <packaging>war</packaging>
 
   <properties>
@@ -184,7 +184,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>5u7</version>
+        <version>5u8</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
