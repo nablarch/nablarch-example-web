@@ -206,7 +206,6 @@
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-fw-web</artifactId>
-      <version>1.3.0</version>
     </dependency>
 
     <dependency>
