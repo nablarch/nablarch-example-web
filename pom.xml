@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.nablarch.archetype</groupId>
     <artifactId>nablarch-archetype-parent</artifactId>
-    <version>5u7</version>
+    <version>5u8</version>
   </parent>
 
   <groupId>com.nablarch.example</groupId>
