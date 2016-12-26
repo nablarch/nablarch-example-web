@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.nablarch.framework:nablarch-fw-messaging-http:1.0.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-fw-messaging-http/1.0.1/nablarch-fw-messaging-http-1.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-fw-messaging-http/1.0.1/nablarch-fw-messaging-http-1.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-fw-messaging-http/1.0.1/nablarch-fw-messaging-http-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
