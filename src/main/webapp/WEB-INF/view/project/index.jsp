@@ -13,6 +13,7 @@
         <%-- javascript --%>
         <n:script type="text/javascript" src="/javascripts/lib/jquery-1.11.2.min.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/projectList.js"></n:script>
+        <n:script type="text/javascript" src="/javascripts/clientList.js"></n:script>
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
         <title>プロジェクト検索一覧画面</title>
