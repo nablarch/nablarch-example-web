@@ -33,7 +33,7 @@
   </filter>
   <filter>
     <filter-name>jaxrsEntryPoint</filter-name>
-    <filter-class>com.nablarch.example.app.web.filter.ExampleWebFrontController</filter-class>
+    <filter-class>com.nablarch.example.app.web.filter.RestfulWebFrontController</filter-class>
   </filter>
 
   <filter-mapping>

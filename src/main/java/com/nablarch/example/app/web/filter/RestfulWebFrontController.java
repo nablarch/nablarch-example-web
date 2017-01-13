@@ -9,18 +9,17 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * Exampleアプリケーション用のリクエストコントローラ。
+ * RESTfulアプリケーション用のリクエストコントローラ。
  * <p/>
- * {@link SystemRepository}から取得したRESTFulアプリケーション用の{@link WebFrontController}に
+ * {@link SystemRepository}から取得したRESTfulアプリケーション用の{@link WebFrontController}に
  * リクエスト処理を委譲するリクエストコントローラ。
  *
  * @author Nabu Rakutaro
  */
-public class ExampleWebFrontController implements Filter {
+public class RestfulWebFrontController implements Filter {
 
     /** {@link WebFrontController} */
     private WebFrontController controller;
