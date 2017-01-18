@@ -5,7 +5,6 @@ import com.nablarch.example.app.web.dto.ClientSearchDto;
 import com.nablarch.example.app.web.form.ClientSearchForm;
 import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;
-import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.ee.ValidatorUtil;
 import nablarch.fw.web.HttpRequest;
 
@@ -18,7 +17,6 @@ import java.util.List;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class ClientAction {
 
     /**

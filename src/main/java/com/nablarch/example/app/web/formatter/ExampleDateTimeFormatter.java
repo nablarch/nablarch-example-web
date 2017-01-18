@@ -3,7 +3,6 @@ package com.nablarch.example.app.web.formatter;
 import nablarch.common.web.tag.DateTimeFormatter;
 import nablarch.common.web.tag.ValueFormatter;
 import nablarch.common.web.tag.YYYYMMDDFormatter;
-import nablarch.core.util.annotation.Published;
 
 import javax.servlet.jsp.PageContext;
 import java.util.Date;
@@ -16,7 +15,6 @@ import java.util.Date;
  *
  * @author Nabu Rakutaro
  */
-@Published(tag = "architect")
 public class ExampleDateTimeFormatter implements ValueFormatter {
 
     /**

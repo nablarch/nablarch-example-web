@@ -1,7 +1,5 @@
 package com.nablarch.example.app.web.form;
 
-import nablarch.core.util.annotation.Published;
-
 import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,7 +10,6 @@ import java.util.List;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class ProjectBulkForm implements Serializable {
 
     /** シリアルバージョンUID */

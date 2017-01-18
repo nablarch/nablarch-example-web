@@ -19,7 +19,6 @@ import nablarch.core.message.Message;
 import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
 import nablarch.core.util.DateUtil;
-import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.ee.ValidatorUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
@@ -37,7 +36,6 @@ import com.nablarch.example.app.web.common.authentication.context.LoginUserPrinc
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class ProjectUploadAction {
 
     /**

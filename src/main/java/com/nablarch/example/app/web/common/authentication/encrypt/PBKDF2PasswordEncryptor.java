@@ -9,7 +9,6 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 import nablarch.core.util.Base64Util;
-import nablarch.core.util.annotation.Published;
 
 /**
  * PBKDF2を使用してパスワードの暗号化を行うクラス。
@@ -21,7 +20,6 @@ import nablarch.core.util.annotation.Published;
  * 暗号化後のパスワードは、 {@link #keyLength} に設定された長さ（ビット数）となる。
  * @author Nabu Rakutaro
  */
-@Published(tag = "architect")
 public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
 
     /**

@@ -1,7 +1,6 @@
 package com.nablarch.example.app.web.common.authentication;
 
 import com.nablarch.example.app.web.common.authentication.exception.AuthenticationException;
-import nablarch.core.util.annotation.Published;
 
 /**
  * ユーザの認証を行うインタフェース。
@@ -9,7 +8,6 @@ import nablarch.core.util.annotation.Published;
  * 認証方式毎に本インタフェースの実装クラスを作成する。
  * @author Nabu Rakutaro
  */
-@Published
 public interface PasswordAuthenticator {
 
     /**

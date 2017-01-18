@@ -4,7 +4,6 @@ import com.nablarch.example.app.entity.Industry;
 import com.nablarch.example.app.web.dto.IndustryDto;
 import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;
-import nablarch.core.util.annotation.Published;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class IndustryAction {
 
     /**

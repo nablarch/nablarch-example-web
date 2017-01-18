@@ -1,7 +1,5 @@
 package com.nablarch.example.app.web.dto;
 
-import nablarch.core.util.annotation.Published;
-
 import java.io.Serializable;
 
 /**
@@ -9,7 +7,6 @@ import java.io.Serializable;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class ClientSearchDto implements Serializable {
 
     /** シリアルバージョンUID */

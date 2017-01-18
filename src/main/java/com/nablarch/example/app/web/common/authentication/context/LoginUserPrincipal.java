@@ -1,7 +1,5 @@
 package com.nablarch.example.app.web.common.authentication.context;
 
-import nablarch.core.util.annotation.Published;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,7 +8,6 @@ import java.util.Date;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class LoginUserPrincipal implements Serializable {
 
     /**

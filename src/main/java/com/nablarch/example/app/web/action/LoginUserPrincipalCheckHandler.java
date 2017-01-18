@@ -1,7 +1,6 @@
 package com.nablarch.example.app.web.action;
 
 import nablarch.common.web.session.SessionUtil;
-import nablarch.core.util.annotation.Published;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.Handler;
 import nablarch.fw.web.HttpResponse;
@@ -12,7 +11,6 @@ import nablarch.fw.web.servlet.HttpRequestWrapper;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class LoginUserPrincipalCheckHandler implements Handler<Object, Object> {
 
     /**

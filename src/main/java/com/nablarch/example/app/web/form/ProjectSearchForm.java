@@ -7,7 +7,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import nablarch.core.util.StringUtil;
-import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.ee.Domain;
 
 /**
@@ -15,7 +14,6 @@ import nablarch.core.validation.ee.Domain;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class ProjectSearchForm extends SearchFormBase implements Serializable {
 
     /** シリアルバージョンUID */

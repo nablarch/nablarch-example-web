@@ -6,7 +6,6 @@ import nablarch.common.databind.csv.Csv;
 import nablarch.common.databind.csv.CsvDataBindConfig;
 import nablarch.common.databind.csv.CsvFormat;
 import nablarch.core.util.StringUtil;
-import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
 
@@ -33,7 +32,6 @@ import java.util.regex.Pattern;
 @CsvFormat(charset = "Shift_JIS", fieldSeparator = ',',
         ignoreEmptyLine = true, lineSeparator = "\r\n", quote = '"',
         quoteMode = CsvDataBindConfig.QuoteMode.NORMAL, requiredHeader = true)
-@Published
 public class ProjectUploadDto implements Serializable {
 
     /** シリアルバージョンUID */

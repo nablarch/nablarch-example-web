@@ -1,7 +1,5 @@
 package com.nablarch.example.app.web.common.authentication.exception;
 
-import nablarch.core.util.annotation.Published;
-
 import java.util.Date;
 
 
@@ -11,7 +9,6 @@ import java.util.Date;
  * 対象ユーザのユーザID、パスワード有効期限とチェックに使用した業務日付を保持する。
  * @author Nabu Rakutaro
  */
-@Published
 public class PasswordExpiredException extends AuthenticationException {
 
     /** serialVersionUID. */

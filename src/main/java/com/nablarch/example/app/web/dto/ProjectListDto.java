@@ -1,7 +1,6 @@
 package com.nablarch.example.app.web.dto;
 
 import com.nablarch.example.app.entity.Project;
-import nablarch.core.util.annotation.Published;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.List;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class ProjectListDto implements Serializable {
 
     /** シリアルバージョンUID */

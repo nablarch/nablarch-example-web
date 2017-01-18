@@ -1,6 +1,5 @@
 package com.nablarch.example.app.web.dto;
 
-import nablarch.core.util.annotation.Published;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -10,7 +9,6 @@ import java.sql.Date;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class ProjectSearchDto implements Serializable {
 
     /** シリアルバージョンUID */

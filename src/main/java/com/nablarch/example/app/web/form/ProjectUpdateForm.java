@@ -2,7 +2,6 @@ package com.nablarch.example.app.web.form;
 
 import com.nablarch.example.app.entity.core.validation.validator.DateRangeValidator;
 import nablarch.core.util.StringUtil;
-import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
 
@@ -16,7 +15,6 @@ import java.math.BigDecimal;
  * @author Nabu Rakutaro
  *
  */
-@Published
 public class ProjectUpdateForm implements Serializable {
 
     /** シリアルバージョンUID */
