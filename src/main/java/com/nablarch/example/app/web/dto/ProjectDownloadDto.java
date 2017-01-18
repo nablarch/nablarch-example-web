@@ -3,7 +3,6 @@ package com.nablarch.example.app.web.dto;
 import nablarch.common.databind.csv.Csv;
 import nablarch.common.databind.csv.CsvDataBindConfig;
 import nablarch.common.databind.csv.CsvFormat;
-import nablarch.core.util.annotation.Published;
 
 import java.io.Serializable;
 
@@ -24,7 +23,6 @@ import java.io.Serializable;
 @CsvFormat(charset = "Shift_JIS", fieldSeparator = ',',
         ignoreEmptyLine = true, lineSeparator = "\r\n", quote = '"',
         quoteMode = CsvDataBindConfig.QuoteMode.NORMAL, requiredHeader = true)
-@Published
 public class ProjectDownloadDto implements Serializable {
 
     /** シリアルバージョンUID */

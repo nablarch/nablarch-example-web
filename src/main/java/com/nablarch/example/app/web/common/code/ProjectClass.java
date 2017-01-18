@@ -1,11 +1,8 @@
 package com.nablarch.example.app.web.common.code;
 
-import nablarch.core.util.annotation.Published;
-
 /**
  * プロジェクト規模を定義したEnum。
  */
-@Published
 public enum ProjectClass implements CodeEnum {
     /** SS級 */
     SS("ss", "SS"),

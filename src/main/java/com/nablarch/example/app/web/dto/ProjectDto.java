@@ -4,14 +4,11 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import nablarch.core.util.annotation.Published;
-
 /**
  * プロジェクト情報のDto
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class ProjectDto implements Serializable {
 
     /** シリアルバージョンUID */

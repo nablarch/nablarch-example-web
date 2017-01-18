@@ -123,6 +123,24 @@
     </property>
   </component>
 
+  <component name="jaxrsController"
+             class="nablarch.fw.web.servlet.WebFrontController">
+    <property name="handlerQueue">
+      <list>
+        <component class="nablarch.fw.web.handler.HttpCharacterEncodingHandler"/>
+        <component class="nablarch.fw.handler.GlobalErrorHandler"/>
+        <component class="nablarch.fw.jaxrs.JaxRsResponseHandler">
+          <property name="errorResponseBuilder">
+            <component class="com.nablarch.example.app.web.handler.RestfulErrorResponseBuilder" />
+          </property>
+        </component>
+        <component-ref name="dbConnectionManagementHandler"/>
+        <component-ref name="transactionManagementHandler"/>
+        <component-ref name="jaxrsPackageMapping"/>
+      </list>
+    </property>
+  </component>
+
   <!-- 初期化が必要なコンポーネント -->
   <component name="initializer"
              class="nablarch.core.repository.initialization.BasicApplicationInitializer">
@@ -131,6 +149,7 @@
         <!-- web/session-store.xml:DBストア-->
         <component-ref name="dbStore" />
         <component-ref name="packageMapping" />
+        <component-ref name="jaxrsPackageMapping"/>
       </list>
     </property>
   </component>

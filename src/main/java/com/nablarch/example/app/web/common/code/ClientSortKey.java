@@ -1,11 +1,8 @@
 package com.nablarch.example.app.web.common.code;
 
-import nablarch.core.util.annotation.Published;
-
 /**
  * 顧客を定義したEnum。
  */
-@Published
 public enum ClientSortKey implements CodeEnum {
     /** 顧客ID */
     ID("id", "顧客ＩＤ"),

@@ -10,7 +10,6 @@ import nablarch.common.web.session.SessionUtil;
 import nablarch.common.web.token.OnDoubleSubmission;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.message.ApplicationException;
-import nablarch.core.util.annotation.Published;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
@@ -27,7 +26,6 @@ import com.nablarch.example.app.web.form.ProjectSearchForm;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class ProjectBulkAction {
 
     /**

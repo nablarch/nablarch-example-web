@@ -11,7 +11,6 @@ import nablarch.core.db.statement.SqlPStatement;
 import nablarch.core.db.transaction.SimpleDbTransactionExecutor;
 import nablarch.core.db.transaction.SimpleDbTransactionManager;
 import nablarch.core.util.DateUtil;
-import nablarch.core.util.annotation.Published;
 
 import com.nablarch.example.app.entity.SystemAccount;
 import com.nablarch.example.app.web.common.authentication.encrypt.PasswordEncryptor;
@@ -34,7 +33,6 @@ import com.nablarch.example.app.web.common.authentication.exception.UserIdLocked
  *
  * @author Nabu Rakutaro
  */
-@Published(tag = "architect")
 public class SystemAccountAuthenticator implements PasswordAuthenticator {
 
     /** ユーザIDをロックする認証失敗回数 */

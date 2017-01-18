@@ -5,7 +5,6 @@ import javax.persistence.OptimisticLockException;
 import nablarch.common.dao.NoDataException;
 import nablarch.common.web.session.SessionKeyNotFoundException;
 import nablarch.core.log.app.FailureLogUtil;
-import nablarch.core.util.annotation.Published;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.Handler;
 import nablarch.fw.web.HttpErrorResponse;
@@ -23,7 +22,6 @@ import com.nablarch.example.app.web.common.file.TemporaryFileFailedException;
  * @see <a href="http://qiita.com/kawasima/items/e48180041ace99842779">HTTPステータスコードの使い分け</a>
  * @author Nabu Rakutaro
  */
-@Published(tag = "architect")
 public class ExampleErrorForwardHandler implements Handler<Object, Object> {
 
     @Override

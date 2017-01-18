@@ -3,10 +3,8 @@ package com.nablarch.example.app.web.form;
 import java.io.Serializable;
 
 import nablarch.core.util.StringUtil;
-import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.PropertyName;
 import nablarch.core.validation.ee.Domain;
-import nablarch.core.validation.ee.Required;
 
 /**
  * 顧客検索フォーム。
@@ -14,8 +12,7 @@ import nablarch.core.validation.ee.Required;
  * @author Nabu Rakutaro
  *
  */
-@Published
-public class ClientSearchForm extends SearchFormBase implements Serializable {
+public class ClientSearchForm implements Serializable {
 
     /** シリアルバージョンUID */
     private static final long serialVersionUID = 1L;
@@ -29,20 +26,12 @@ public class ClientSearchForm extends SearchFormBase implements Serializable {
     private String industryCode;
 
     /** 並び順項目 */
-    @Required
     @Domain("clientAlignmentItem")
     private String sortKey;
 
     /** 選択された並び順 */
-    @Required
     @Domain("alignment")
     private String sortDir;
-
-    /**
-     * コンストラクタ
-     */
-    public ClientSearchForm() {
-    }
 
     /**
      * 入力された顧客名値を取得する。

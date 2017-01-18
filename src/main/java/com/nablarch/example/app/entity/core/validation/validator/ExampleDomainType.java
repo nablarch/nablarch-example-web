@@ -1,6 +1,5 @@
 package com.nablarch.example.app.entity.core.validation.validator;
 
-import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.ee.Digits;
 import nablarch.core.validation.ee.Length;
 import nablarch.core.validation.ee.NumberRange;
@@ -18,7 +17,6 @@ import com.nablarch.example.app.web.common.code.SortOrder;
  *
  * @author Nabu Rakutaro
  */
-@Published(tag = "architect")
 public class ExampleDomainType {
 
     /** ID */

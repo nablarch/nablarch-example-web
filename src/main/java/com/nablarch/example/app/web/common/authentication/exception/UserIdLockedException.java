@@ -1,15 +1,12 @@
 package com.nablarch.example.app.web.common.authentication.exception;
 
 
-import nablarch.core.util.annotation.Published;
-
 /**
  * ユーザの認証時にユーザIDがロックされている場合に発生する例外。
  * <p/>
  * 対象ユーザのユーザIDとユーザIDをロックする認証失敗回数を保持する。
  * @author Nabu Rakutaro
  */
-@Published
 public class UserIdLockedException extends AuthenticationException {
 
     /** serialVersionUID. */

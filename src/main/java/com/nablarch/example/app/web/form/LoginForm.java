@@ -2,7 +2,6 @@ package com.nablarch.example.app.web.form;
 
 import java.io.Serializable;
 
-import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.PropertyName;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
@@ -12,7 +11,6 @@ import nablarch.core.validation.ee.Required;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class LoginForm implements Serializable {
 
     /**

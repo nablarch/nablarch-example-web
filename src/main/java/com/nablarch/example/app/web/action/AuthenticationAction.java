@@ -6,7 +6,6 @@ import nablarch.core.beans.BeanUtil;
 import nablarch.core.message.ApplicationException;
 import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
-import nablarch.core.util.annotation.Published;
 import nablarch.core.validation.ee.ValidatorUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
@@ -30,7 +29,6 @@ import com.nablarch.example.app.web.form.LoginForm;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class AuthenticationAction {
 
     /**

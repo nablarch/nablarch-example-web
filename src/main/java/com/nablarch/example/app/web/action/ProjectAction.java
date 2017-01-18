@@ -25,7 +25,6 @@ import nablarch.core.beans.BeanUtil;
 import nablarch.core.message.ApplicationException;
 import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
-import nablarch.core.util.annotation.Published;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
@@ -39,7 +38,6 @@ import java.util.List;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public class ProjectAction {
 
     /**

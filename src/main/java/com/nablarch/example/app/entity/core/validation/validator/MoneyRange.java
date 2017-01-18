@@ -1,7 +1,6 @@
 package com.nablarch.example.app.entity.core.validation.validator;
 
 import nablarch.core.util.StringUtil;
-import nablarch.core.util.annotation.Published;
 
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
@@ -27,7 +26,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = MoneyRange.MoneyRangeValidator.class)
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
-@Published
 public @interface MoneyRange {
 
     /**

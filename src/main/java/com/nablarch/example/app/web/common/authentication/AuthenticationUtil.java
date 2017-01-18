@@ -4,16 +4,13 @@ import com.nablarch.example.app.web.common.authentication.encrypt.PasswordEncryp
 import com.nablarch.example.app.web.common.authentication.exception.AuthenticationFailedException;
 import com.nablarch.example.app.web.common.authentication.exception.PasswordExpiredException;
 import com.nablarch.example.app.web.common.authentication.exception.UserIdLockedException;
-
 import nablarch.core.repository.SystemRepository;
-import nablarch.core.util.annotation.Published;
 
 /**
  * 認証関連の処理のユーティリティクラス。
  *
  * @author Nabu Rakutaro
  */
-@Published
 public final class AuthenticationUtil {
 
     /**

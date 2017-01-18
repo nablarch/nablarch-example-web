@@ -13,7 +13,6 @@ import nablarch.core.util.DateUtil;
 import nablarch.core.util.StringUtil;
 
 import com.nablarch.example.app.entity.core.validation.validator.YYYYMMDD.YYYYMMDDValidator;
-import nablarch.core.util.annotation.Published;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -33,7 +32,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = { YYYYMMDDValidator.class })
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
-@Published(tag = "architect")
 public @interface YYYYMMDD {
 
     /**

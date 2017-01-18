@@ -1,11 +1,8 @@
 package com.nablarch.example.app.web.common.code;
 
-import nablarch.core.util.annotation.Published;
-
 /**
  * プロジェクトのソートキーを定義したEnum。
  */
-@Published
 public enum ProjectSortKey implements CodeEnum {
     /** プロジェクトID */
     ID("id", "プロジェクトＩＤ"),

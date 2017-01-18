@@ -1,8 +1,6 @@
 package com.nablarch.example.app.web.common.authentication.encrypt;
 
 
-import nablarch.core.util.annotation.Published;
-
 /**
  * パスワードの暗号化を行うインタフェース。<br>
  * <br>
@@ -10,7 +8,6 @@ import nablarch.core.util.annotation.Published;
  *
  * @author Nabu Rakutaro
  */
-@Published
 public interface PasswordEncryptor {
 
     /**

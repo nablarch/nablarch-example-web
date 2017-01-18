@@ -1,7 +1,5 @@
 package com.nablarch.example.app.web.dto;
 
-import nablarch.core.util.annotation.Published;
-
 import javax.persistence.Column;
 /**
  * 顧客検索機能のDto。
@@ -9,7 +7,6 @@ import javax.persistence.Column;
  * @author Nabu Rakutaro
  *
  */
-@Published
 public class ClientDto {
 
     /** 顧客ID */
