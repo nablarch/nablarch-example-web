@@ -51,7 +51,7 @@ public class ClientActionTest {
             UniversalDao.insert(industry);
 
             Client client = new Client();
-            client.setClientName("テスト顧客");
+            client.setClientName("テスト顧客" + i);
             client.setIndustryCode("0" + i);
             UniversalDao.insert(client);
         });
@@ -75,7 +75,7 @@ public class ClientActionTest {
         List<ClientDto> result = sut.find(request);
 
         assertThat(result.size(), is(1));
-        assertThat(result.get(0).getClientName(), is("テスト顧客"));
+        assertThat(result.get(0).getClientName(), is("テスト顧客1"));
         assertThat(result.get(0).getIndustryCode(), is("01"));
         assertThat(result.get(0).getIndustryName(), is("name1"));
     }
