@@ -20,6 +20,9 @@ import java.util.stream.Collectors;
  */
 public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
 
+    /** オブジェクトマッパー */
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
     /**
      * エラーレスポンスを生成する。
      * <p/>
@@ -50,7 +53,7 @@ public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
                     .collect(Collectors.toList());
 
             try {
-                response.write(new ObjectMapper().writeValueAsString(errorMessages));
+                response.write(objectMapper.writeValueAsString(errorMessages));
             } catch (JsonProcessingException e) {
                 return new HttpResponse(500);
             }
