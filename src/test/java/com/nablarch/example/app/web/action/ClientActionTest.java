@@ -19,8 +19,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.startsWith;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -74,10 +76,18 @@ public class ClientActionTest {
         request.setParamMap(paramMap);
         List<ClientDto> result = sut.find(request);
 
-        assertThat(result.size(), is(1));
-        assertThat(result.get(0).getClientName(), is("テスト顧客1"));
-        assertThat(result.get(0).getIndustryCode(), is("01"));
-        assertThat(result.get(0).getIndustryName(), is("name1"));
+        assertThat(result, hasSize(1));
+
+        ClientDto expected = new ClientDto();
+        expected.setClientName("テスト顧客1");
+        expected.setIndustryCode("01");
+        expected.setIndustryName("name1");
+
+        assertThat(result, hasSize(1));
+        assertThat(result, hasItem(allOf(
+                hasProperty("clientName", is("テスト顧客1")),
+                hasProperty("industryCode", is("01")),
+                hasProperty("industryName", is("name1")))));
     }
 
     /**

@@ -5,9 +5,6 @@ import com.nablarch.example.app.entity.Industry;
 import com.nablarch.example.app.entity.Project;
 import com.nablarch.example.app.web.dto.IndustryDto;
 import nablarch.common.dao.UniversalDao;
-import nablarch.core.repository.SystemRepository;
-import nablarch.core.repository.di.DiContainer;
-import nablarch.core.repository.di.config.xml.XmlComponentDefinitionLoader;
 import nablarch.test.core.db.DbAccessTestSupport;
 import org.junit.After;
 import org.junit.Before;
@@ -17,7 +14,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * {@link IndustryAction}のテストクラス
@@ -54,13 +52,17 @@ public class IndustryActionTest {
     public void find() throws Exception {
         List<IndustryDto> result = sut.find();
 
-        assertThat(result.size(), is(3));
-        assertThat(result.get(0).getIndustryCode(), is("00"));
-        assertThat(result.get(0).getIndustryName(), is("name0"));
-        assertThat(result.get(1).getIndustryCode(), is("01"));
-        assertThat(result.get(1).getIndustryName(), is("name1"));
-        assertThat(result.get(2).getIndustryCode(), is("02"));
-        assertThat(result.get(2).getIndustryName(), is("name2"));
+        assertThat(result, hasSize(3));
+        assertThat(result, contains(
+                allOf(
+                        hasProperty("industryCode", is("00")),
+                        hasProperty("industryName", is("name0"))),
+                allOf(
+                        hasProperty("industryCode", is("01")),
+                        hasProperty("industryName", is("name1"))),
+                allOf(
+                        hasProperty("industryCode", is("02")),
+                        hasProperty("industryName", is("name2")))));
     }
 
 }
