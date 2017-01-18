@@ -128,7 +128,11 @@
     <property name="handlerQueue">
       <list>
         <component class="nablarch.fw.handler.GlobalErrorHandler"/>
-        <component class="nablarch.fw.jaxrs.JaxRsResponseHandler" />
+        <component class="nablarch.fw.jaxrs.JaxRsResponseHandler">
+          <property name="errorResponseBuilder">
+            <component class="com.nablarch.example.app.web.handler.RestfulErrorResponseBuilder" />
+          </property>
+        </component>
         <component-ref name="dbConnectionManagementHandler"/>
         <component-ref name="transactionManagementHandler"/>
         <component-ref name="jaxrsPackageMapping"/>
