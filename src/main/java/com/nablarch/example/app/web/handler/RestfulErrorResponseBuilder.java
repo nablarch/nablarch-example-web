@@ -10,8 +10,8 @@ import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * RESTful API用のエラーレスポンス生成クラス。
@@ -40,15 +40,14 @@ public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
         if (throwable instanceof ApplicationException) {
             final HttpResponse response = new HttpResponse(400);
             response.setContentType(MediaType.APPLICATION_JSON);
-            final List<ErrorMessage> errorMessages = new ArrayList<>();
-            ((ApplicationException) throwable).getMessages().forEach(message -> {
-                final ErrorMessage errorMessage = new ErrorMessage();
-                    if (message instanceof ValidationResultMessage) {
-                        errorMessage.setPropertyName(((ValidationResultMessage) message).getPropertyName());
-                    }
-                    errorMessage.setMessage(message.formatMessage());
-                    errorMessages.add(errorMessage);
-            });
+            final List<ErrorMessage> errorMessages = ((ApplicationException) throwable).getMessages()
+                    .stream()
+                    .map(message ->
+                        message instanceof ValidationResultMessage
+                                ? new ErrorMessage(message.formatMessage(), ((ValidationResultMessage) message).getPropertyName())
+                                : new ErrorMessage(message.formatMessage())
+                    )
+                    .collect(Collectors.toList());
 
             try {
                 response.write(new ObjectMapper().writeValueAsString(errorMessages));
@@ -66,11 +65,31 @@ public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
      */
     private static class ErrorMessage {
 
+        /**
+         * エラーメッセージを保持するインスタンスを生成する。
+         *
+         * @param message エラーメッセージ
+         */
+        ErrorMessage(final String message) {
+            this(message, null);
+        }
+
+        /**
+         * エラーメッセージとプロパティ名を保持するインスタンスを生成する。
+         *
+         * @param message エラーメッセージ
+         * @param propertyName プロパティ名
+         */
+        ErrorMessage(final String message, final String propertyName) {
+            this.message = message;
+            this.propertyName = propertyName;
+        }
+
         /** プロパティ名 */
-        private String propertyName;
+        private final String propertyName;
 
         /** エラーメッセージ */
-        private String message;
+        private final String message;
 
         /**
          * プロパティ名を取得する。
@@ -82,30 +101,12 @@ public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
         }
 
         /**
-         * プロパティ名を設定する。
-         *
-         * @param propertyName プロパティ名
-         */
-        public void setPropertyName(String propertyName) {
-            this.propertyName = propertyName;
-        }
-
-        /**
          * エラーメッセージを取得する。
          *
          * @return エラーメッセージ
          */
         public String getMessage() {
             return message;
-        }
-
-        /**
-         * エラーメッセージを設定する。
-         *
-         * @param message エラーメッセージ
-         */
-        public void setMessage(String message) {
-            this.message = message;
         }
     }
 }
