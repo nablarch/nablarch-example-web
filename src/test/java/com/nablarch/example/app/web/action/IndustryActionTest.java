@@ -3,6 +3,7 @@ package com.nablarch.example.app.web.action;
 import com.nablarch.example.app.entity.Client;
 import com.nablarch.example.app.entity.Industry;
 import com.nablarch.example.app.entity.Project;
+import com.nablarch.example.app.web.dto.IndustryDto;
 import nablarch.common.dao.UniversalDao;
 import nablarch.core.repository.SystemRepository;
 import nablarch.core.repository.di.DiContainer;
@@ -51,7 +52,7 @@ public class IndustryActionTest {
 
     @Test
     public void find() throws Exception {
-        List<Industry> result = sut.find();
+        List<IndustryDto> result = sut.find();
 
         assertThat(result.size(), is(3));
         assertThat(result.get(0).getIndustryCode(), is("00"));
