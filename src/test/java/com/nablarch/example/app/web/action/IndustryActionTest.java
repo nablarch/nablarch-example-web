@@ -52,7 +52,6 @@ public class IndustryActionTest {
     public void find() throws Exception {
         List<IndustryDto> result = sut.find();
 
-        assertThat(result, hasSize(3));
         assertThat(result, contains(
                 allOf(
                         hasProperty("industryCode", is("00")),

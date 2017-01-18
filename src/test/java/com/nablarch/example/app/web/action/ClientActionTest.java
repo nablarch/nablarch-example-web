@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.Matchers.*;
@@ -76,8 +75,7 @@ public class ClientActionTest {
         request.setParamMap(paramMap);
         List<ClientDto> result = sut.find(request);
 
-        assertThat(result, hasSize(1));
-        assertThat(result, hasItem(allOf(
+        assertThat(result, contains(allOf(
                 hasProperty("clientName", is("テスト顧客1")),
                 hasProperty("industryCode", is("01")),
                 hasProperty("industryName", is("name1")))));
