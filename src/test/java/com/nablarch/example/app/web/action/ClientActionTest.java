@@ -77,13 +77,6 @@ public class ClientActionTest {
         List<ClientDto> result = sut.find(request);
 
         assertThat(result, hasSize(1));
-
-        ClientDto expected = new ClientDto();
-        expected.setClientName("テスト顧客1");
-        expected.setIndustryCode("01");
-        expected.setIndustryName("name1");
-
-        assertThat(result, hasSize(1));
         assertThat(result, hasItem(allOf(
                 hasProperty("clientName", is("テスト顧客1")),
                 hasProperty("industryCode", is("01")),
