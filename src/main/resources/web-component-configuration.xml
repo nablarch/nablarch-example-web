@@ -127,6 +127,7 @@
              class="nablarch.fw.web.servlet.WebFrontController">
     <property name="handlerQueue">
       <list>
+        <component class="nablarch.fw.web.handler.HttpCharacterEncodingHandler"/>
         <component class="nablarch.fw.handler.GlobalErrorHandler"/>
         <component class="nablarch.fw.jaxrs.JaxRsResponseHandler">
           <property name="errorResponseBuilder">
