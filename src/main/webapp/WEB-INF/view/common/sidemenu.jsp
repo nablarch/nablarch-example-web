@@ -75,16 +75,15 @@
                         </ul>
                         <fieldset>
                             <div class="whiteripple">
-                                <div class="form-group">
-                                    <label for="clientName" class="control-label">顧客名</label>
-                                    <n:text id="clientId" name="searchForm.clientId" size="15" maxlength="10" readonly="true" style="width:100px;" cssClass="form-control" placeholder="顧客ID"/>
-                                    <n:text id="clientName" name="searchForm.clientName" size="15" maxlength="64" readonly="true" style="width:100px;" cssClass="form-control" placeholder="顧客名"/>
-                                    <div style="float:right;">
-                                        <n:a href="/action/client/index" id="client_pop">
-                                            <button type="button" class="btn btn-fab btn-fab-mini">
-                                                <i class="material-icons">search</i>
-                                            </button>
-                                        </n:a>
+                                <div class="form-group label-static">
+                                    <div class="form-group ">
+                                      <label for="client-name" class="control-label">顧客名</label>
+                                      <n:text id="client-id" name="searchForm.clientId" readonly="true" cssClass="form-control" placeholder="顧客ID"/>
+                                      <n:text id="client-name" name="searchForm.clientName" readonly="true" cssClass="form-control" placeholder="顧客名"/>
+                                    </div>
+                                    <div class="btn-group-sm pull-right">
+                                      <a href="javascript:void(0)" data-toggle="modal" data-target="#client-search-dialog"  class="btn btn-default btn-fab"><i class="material-icons">search</i></a>
+                                      <a href="javascript:void(0)" class="btn btn-default btn-fab" id="client-remove"><i class="material-icons">remove</i></a>
                                     </div>
                                 </div>
                             </div>
@@ -106,4 +105,8 @@
             </li>
         </ul>
     </div>
+  
+
+  <%-- 顧客検索 --%>
+  <n:include path="/WEB-INF/view/client/index.jsp" />
 </nav>

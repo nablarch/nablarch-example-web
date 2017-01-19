@@ -1,4 +1,7 @@
 $(function() {
+  var $clientId = $('#client-id');
+  var $clientName = $('#client-name');
+  
   $("#topUpdateButton").click(function() {
     $("#bottomUpdateButton").click();
   });
@@ -19,15 +22,12 @@ $(function() {
     $("#bottomSubmitButton").click();
   });
 
-  $("#client_pop").click(function() {
-      window.open(this.href,"clientSearch","width=700,height=500,resizable=yes,scrollbars=yes");
-      return false;
-  });
-
   $(".datepicker").datepicker();
+
+
+  $('#client-remove').click(function () {
+    $clientId.val('');
+    $clientName.val('');
+  })
 });
 
-function setClientParam(clientId, clientName) {
-  $("[name='form.clientId']").val(clientId);
-  $("[name='form.clientName']").val(clientName);
-}

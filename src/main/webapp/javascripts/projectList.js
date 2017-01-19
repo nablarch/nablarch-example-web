@@ -39,3 +39,12 @@ $(function() {
       $(this).parents('form').submit();
   });
 });
+
+$(function () {
+  var $clientId = $('#client-id');
+  var $clientName = $('#client-name');
+  $('#client-remove').click(function () {
+    $clientId.val('');
+    $clientName.val('');
+  })
+});
