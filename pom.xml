@@ -38,9 +38,6 @@
     <!-- maven-gsp-dba-pluginでEntityクラスを生成するパッケージ名。 -->
     <dba.entity.rootPackage>com.nablarch.example.app</dba.entity.rootPackage>
     <dba.entity.entityPackage>entity</dba.entity.entityPackage>
-
-    <!-- toolsディレクトリの配置場所 -->
-    <nablarch.tools.dir>${project.basedir}/tools</nablarch.tools.dir>
   </properties>
 
   <!--
@@ -315,13 +312,6 @@
     </dependency>
 
     <dependency>
-      <groupId>com.google.code.findbugs</groupId>
-      <artifactId>findbugs</artifactId>
-      <version>3.0.1</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
@@ -407,49 +397,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-      </plugin>
-      <!-- ant経由で各種ツールを起動する。実行対象のツールは、
-           Findbugs、使用許可API一覧作成ツールである -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-      </plugin>
-      <!-- Check Style実行 -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.17</version>
-        <configuration>
-          <excludes>
-            **/com/nablarch/example/app/entity/*.java
-          </excludes>
-        </configuration>
-      </plugin>
-      <!-- findBugs -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>findbugs</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <xmlOutput>true</xmlOutput>
-          <excludeFilterFile>${findbugs.config.filter.production}</excludeFilterFile>
-          <jvmArgs>-Dnablarch-findbugs-config=${findbugs.config.published.production}</jvmArgs>
-          <plugins>
-            <plugin>
-              <groupId>com.nablarch.framework</groupId>
-              <artifactId>nablarch-testing</artifactId>
-              <!-- プラグインに内包するモジュールはバージョン指定必須 -->
-              <version>1.0.7</version>
-            </plugin>
-          </plugins>
-        </configuration>
       </plugin>
       <!-- カバレッジ取得 -->
       <plugin>
