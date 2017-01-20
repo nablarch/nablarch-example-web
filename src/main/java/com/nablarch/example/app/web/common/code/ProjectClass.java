@@ -2,6 +2,8 @@ package com.nablarch.example.app.web.common.code;
 
 /**
  * プロジェクト規模を定義したEnum。
+ * 
+ * @author Nabu Rakutaro
  */
 public enum ProjectClass implements CodeEnum {
     /** SS級 */
@@ -18,9 +20,9 @@ public enum ProjectClass implements CodeEnum {
     D("d", "D");
 
     /** プロジェクト規模のラベル */
-    private String label;
+    private final String label;
     /** プロジェクト規模のコード */
-    private String code;
+    private final String code;
 
     /**
      * コンストラクタ。

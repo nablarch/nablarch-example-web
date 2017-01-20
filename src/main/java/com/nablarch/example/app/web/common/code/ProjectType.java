@@ -2,6 +2,8 @@ package com.nablarch.example.app.web.common.code;
 
 /**
  * プロジェクト種別を定義したEnum。
+ * 
+ * @author Nabu Rakutaro
  */
 public enum ProjectType implements CodeEnum {
     /** 新規開発PJ */
@@ -10,9 +12,9 @@ public enum ProjectType implements CodeEnum {
     MAINTENANCE("maintenance", "保守PJ");
 
     /** プロジェクト種別のラベル */
-    private String label;
+    private final String label;
     /** プロジェクト種別のコード */
-    private String code;
+    private final String code;
 
     /**
      * コンストラクタ。

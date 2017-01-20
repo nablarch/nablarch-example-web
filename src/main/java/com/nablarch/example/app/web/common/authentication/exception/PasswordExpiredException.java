@@ -15,13 +15,13 @@ public class PasswordExpiredException extends AuthenticationException {
     private static final long serialVersionUID = 1L;
 
     /** ユーザID */
-    private String userId;
+    private final String userId;
 
     /** パスワード有効期限 */
-    private Date passwordExpirationDate;
+    private final Date passwordExpirationDate;
 
     /** 業務日付 */
-    private Date businessDate;
+    private final Date businessDate;
 
     /**
      * コンストラクタ。

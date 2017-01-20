@@ -2,6 +2,8 @@ package com.nablarch.example.app.web.common.code;
 
 /**
  * 並び順を定義したEnum。
+ * 
+ * @author Nabu Rakutaro
  */
 public enum SortOrder implements CodeEnum {
     /** 昇順 */
@@ -10,9 +12,9 @@ public enum SortOrder implements CodeEnum {
     DESC("desc", "降順");
 
     /** 並び順のラベル */
-    private String label;
+    private final String label;
     /** 並び順のコード */
-    private String code;
+    private final String code;
 
     /**
      * コンストラクタ。

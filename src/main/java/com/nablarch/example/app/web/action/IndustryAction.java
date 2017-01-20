@@ -1,14 +1,16 @@
 package com.nablarch.example.app.web.action;
 
-import com.nablarch.example.app.entity.Industry;
-import com.nablarch.example.app.web.dto.IndustryDto;
-import nablarch.common.dao.UniversalDao;
-import nablarch.core.beans.BeanUtil;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import nablarch.common.dao.UniversalDao;
+import nablarch.core.beans.BeanUtil;
+
+import com.nablarch.example.app.entity.Industry;
+import com.nablarch.example.app.web.dto.IndustryDto;
 
 /**
  * 業種検索API

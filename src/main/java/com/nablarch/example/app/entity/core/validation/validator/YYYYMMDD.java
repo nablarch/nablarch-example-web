@@ -29,7 +29,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @author Nabu Rakutaro
  */
 @Documented
-@Constraint(validatedBy = { YYYYMMDDValidator.class })
+@Constraint(validatedBy = YYYYMMDDValidator.class)
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 public @interface YYYYMMDD {
@@ -59,10 +59,11 @@ public @interface YYYYMMDD {
     String allowFormat() default "yyyyMMdd";
 
     /** 複数指定用のアノテーション */
+    @SuppressWarnings("PublicInnerClass")
     @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
     @Retention(RUNTIME)
     @Documented
-    public @interface List {
+    @interface List {
 
         /**
          * YYYYMMDDの配列を取得する。
@@ -74,6 +75,7 @@ public @interface YYYYMMDD {
     /**
      * 検証処理が実装された内部クラス。
      */
+    @SuppressWarnings("PublicInnerClass")
     class YYYYMMDDValidator implements ConstraintValidator<YYYYMMDD, String> {
 
         /** 許容するフォーマット */
@@ -85,7 +87,7 @@ public @interface YYYYMMDD {
          */
         @Override
         public void initialize(YYYYMMDD constraintAnnotation) {
-            this.allowFormat = constraintAnnotation.allowFormat();
+            allowFormat = constraintAnnotation.allowFormat();
         }
 
         /**
@@ -101,7 +103,7 @@ public @interface YYYYMMDD {
             }
             try {
                 return DateUtil.getParsedDate(value, allowFormat) != null;
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException ignored) {
                 return false;
             }
         }

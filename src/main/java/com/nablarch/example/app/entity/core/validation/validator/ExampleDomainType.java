@@ -17,6 +17,7 @@ import com.nablarch.example.app.web.common.code.SortOrder;
  *
  * @author Nabu Rakutaro
  */
+@SuppressWarnings("all")
 public class ExampleDomainType {
 
     /** ID */
@@ -25,7 +26,7 @@ public class ExampleDomainType {
 
     /** ログインID */
     @Length(max = 20)
-    @SystemChar(charsetDef = "半角数字", allowLineSeparator = false)
+    @SystemChar(charsetDef = "半角数字")
     private String loginId;
 
     /** パスワード */
@@ -33,17 +34,17 @@ public class ExampleDomainType {
 
     /** 顧客名 */
     @Length(max = 64, message = "{domainType.clientName.message}")
-    @SystemChar(charsetDef = "全角文字", allowLineSeparator = false, message = "{domainType.clientName.message}")
+    @SystemChar(charsetDef = "全角文字", message = "{domainType.clientName.message}")
     private String clientName;
 
     /** 顧客の業種を表すコード */
     @Length(min = 2, max = 2, message = "{domainType.industryCode.message}")
-    @SystemChar(charsetDef = "半角数字", allowLineSeparator = false, message = "{domainType.industryCode.message}")
+    @SystemChar(charsetDef = "半角数字", message = "{domainType.industryCode.message}")
     private String industryCode;
 
     /** プロジェクト名 */
     @Length(max = 64, message = "{domainType.projectName.message}")
-    @SystemChar(charsetDef = "全角文字", allowLineSeparator = false, message = "{domainType.projectName.message}")
+    @SystemChar(charsetDef = "全角文字", message = "{domainType.projectName.message}")
     private String projectName;
 
     /** 新規開発PJ、または保守PJを表すコード値 */
@@ -55,7 +56,7 @@ public class ExampleDomainType {
     private String projectClass;
 
     /** 日付 */
-    @YYYYMMDD(allowFormat = "yyyyMMdd")
+    @YYYYMMDD()
     private String date;
 
     /** プロジェクトの一覧画面において、並び順の基準にする項目を表すコード値 */
@@ -72,7 +73,7 @@ public class ExampleDomainType {
 
     /** ユーザ氏名（漢字） */
     @Length(max = 64, message = "{domainType.userName.message}")
-    @SystemChar(charsetDef = "全角文字", allowLineSeparator = false, message = "{domainType.userName.message}")
+    @SystemChar(charsetDef = "全角文字", message = "{domainType.userName.message}")
     private String userName;
 
     /** 備考 */

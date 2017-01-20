@@ -12,7 +12,7 @@ public class AuthenticationFailedException extends AuthenticationException {
     private static final long serialVersionUID = 1L;
 
     /** ユーザID */
-    private String userId;
+    private final String userId;
 
     /**
      * コンストラクタ。

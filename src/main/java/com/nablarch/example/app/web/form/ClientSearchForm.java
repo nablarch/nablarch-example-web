@@ -1,6 +1,7 @@
 package com.nablarch.example.app.web.form;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import nablarch.core.util.StringUtil;
 import nablarch.core.validation.PropertyName;
@@ -10,7 +11,6 @@ import nablarch.core.validation.ee.Domain;
  * 顧客検索フォーム。
  *
  * @author Nabu Rakutaro
- *
  */
 public class ClientSearchForm implements Serializable {
 
@@ -118,8 +118,8 @@ public class ClientSearchForm implements Serializable {
     public String getSortId() {
         String sortId = "clientIdAsc";
         if (StringUtil.hasValue(sortKey) && StringUtil.hasValue(sortDir)) {
-            String sortKeyName = sortKey.equals("name") ? "clientName" : "clientId";
-            String sortDirName = sortDir.equals("desc") ? "Desc" : "Asc";
+            String sortKeyName = Objects.equals(sortKey, "name") ? "clientName" : "clientId";
+            String sortDirName = Objects.equals(sortDir, "desc") ? "Desc" : "Asc";
             sortId = sortKeyName + sortDirName;
         }
         return sortId;

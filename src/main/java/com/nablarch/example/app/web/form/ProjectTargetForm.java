@@ -20,19 +20,12 @@ public class ProjectTargetForm implements Serializable {
     private String projectId;
 
     /**
-     * コンストラクタ
-     *
-     */
-    public ProjectTargetForm() {
-    }
-
-    /**
      * プロジェクトIDを取得する。
      *
      * @return プロジェクトID
      */
     public String getProjectId() {
-        return this.projectId;
+        return projectId;
     }
 
     /**

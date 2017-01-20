@@ -8,7 +8,7 @@ import nablarch.core.log.app.FailureLogUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.Handler;
 import nablarch.fw.web.HttpErrorResponse;
-import nablarch.fw.web.HttpResponse;
+import nablarch.fw.web.HttpResponse.Status;
 
 import com.nablarch.example.app.web.common.file.TemporaryFileFailedException;
 
@@ -31,17 +31,17 @@ public class ExampleErrorForwardHandler implements Handler<Object, Object> {
             // 後続の業務アクションハンドラが送出した例外をtry-catch文で捕捉する
             return context.handleNext(data);
         } catch (SessionKeyNotFoundException e) {
-            throw new HttpErrorResponse(HttpResponse.Status.BAD_REQUEST.getStatusCode(),
+            throw new HttpErrorResponse(Status.BAD_REQUEST.getStatusCode(),
                     "/WEB-INF/view/common/errorPages/doubleSubmissionError.jsp", e);
         } catch (NoDataException e) {
-            throw new HttpErrorResponse(HttpResponse.Status.NOT_FOUND.getStatusCode(),
+            throw new HttpErrorResponse(Status.NOT_FOUND.getStatusCode(),
                     "/WEB-INF/view/common/errorPages/pageNotFoundError.jsp", e);
         } catch (OptimisticLockException e) {
-            throw new HttpErrorResponse(HttpResponse.Status.BAD_REQUEST.getStatusCode(),
+            throw new HttpErrorResponse(Status.BAD_REQUEST.getStatusCode(),
                     "/WEB-INF/view/common/errorPages/optimisticLockError.jsp", e);
         } catch (TemporaryFileFailedException e) {
-            FailureLogUtil.logFatal(e, context.getDataProcessedWhenThrown(e), null);
-            throw new HttpErrorResponse(HttpResponse.Status.INTERNAL_SERVER_ERROR.getStatusCode(), e);
+            FailureLogUtil.logFatal(e, data, null);
+            throw new HttpErrorResponse(Status.INTERNAL_SERVER_ERROR.getStatusCode(), e);
         }
     }
 }

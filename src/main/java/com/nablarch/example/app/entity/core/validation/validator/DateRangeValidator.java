@@ -32,11 +32,11 @@ public class DateRangeValidator {
      * @return 開始日 <= 終了日 なら true
      */
     public boolean isValid() {
-        if (!isValidDate(start) || !isValidDate(end)) {
-            // 日付以外はバリデーション対象外
-            return true;
+        if (isValidDate(start) && isValidDate(end)) {
+            return DateUtil.getDate(start).compareTo(DateUtil.getDate(end)) <= 0;
         }
-        return DateUtil.getDate(start).compareTo(DateUtil.getDate(end)) <= 0;
+        // 日付以外はバリデーション対象外
+        return true;
     }
 
     /**

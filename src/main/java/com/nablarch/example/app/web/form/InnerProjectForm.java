@@ -66,7 +66,7 @@ public class InnerProjectForm implements Serializable {
      * @return プロジェクト名
      */
     public String getProjectName() {
-        return this.projectName;
+        return projectName;
     }
 
     /**
@@ -75,7 +75,7 @@ public class InnerProjectForm implements Serializable {
      * @return プロジェクト種別
      */
     public String getProjectType() {
-        return this.projectType;
+        return projectType;
     }
 
     /**
@@ -84,7 +84,7 @@ public class InnerProjectForm implements Serializable {
      * @return プロジェクト開始日文字列
      */
     public String getProjectStartDate() {
-        return this.projectStartDate;
+        return projectStartDate;
     }
 
     /**
@@ -93,7 +93,7 @@ public class InnerProjectForm implements Serializable {
      * @return プロジェクト終了日文字列
      */
     public String getProjectEndDate() {
-        return this.projectEndDate;
+        return projectEndDate;
     }
 
     /**
@@ -121,6 +121,7 @@ public class InnerProjectForm implements Serializable {
      * @param projectStartDate 設定するプロジェクト開始日文字列
      *
      */
+    @SuppressWarnings("DynamicRegexReplaceableByCompiledPattern")
     public void setProjectStartDate(String projectStartDate) {
         this.projectStartDate = StringUtil.isNullOrEmpty(projectStartDate) ? null : projectStartDate.replace("/", "");
     }
@@ -131,6 +132,7 @@ public class InnerProjectForm implements Serializable {
      * @param projectEndDate 設定するプロジェクト終了日文字列
      *
      */
+    @SuppressWarnings("DynamicRegexReplaceableByCompiledPattern")
     public void setProjectEndDate(String projectEndDate) {
         this.projectEndDate = StringUtil.isNullOrEmpty(projectEndDate) ? null : projectEndDate.replace("/", "");
     }

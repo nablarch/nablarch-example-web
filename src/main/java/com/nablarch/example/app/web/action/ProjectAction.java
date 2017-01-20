@@ -12,6 +12,7 @@ import com.nablarch.example.app.web.form.ProjectForm;
 import com.nablarch.example.app.web.form.ProjectSearchForm;
 import com.nablarch.example.app.web.form.ProjectTargetForm;
 import com.nablarch.example.app.web.form.ProjectUpdateForm;
+
 import nablarch.common.dao.DeferredEntityList;
 import nablarch.common.dao.UniversalDao;
 import nablarch.common.databind.ObjectMapper;
@@ -67,10 +68,12 @@ public class ProjectAction {
 
         ProjectForm form = context.getRequestScopedVar("form");
         if (form.hasClientId()) {
-            if (!UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID", new Object[]{Integer.parseInt(form.getClientId())})) {
+            if (!UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID",
+                    new Object[] {Integer.parseInt(form.getClientId())})) {
                 //補足：数値に対する自動フォーマット(自動的にカンマ編集される)を避けるため、Integerを明示的に文字列に変換している。
                 throw new ApplicationException(
-                        MessageUtil.createMessage(MessageLevel.ERROR, "errors.nothing.client", Client.class.getSimpleName(),
+                        MessageUtil.createMessage(MessageLevel.ERROR, "errors.nothing.client",
+                                Client.class.getSimpleName(),
                                 form.getClientId()));
             }
         }
@@ -183,11 +186,11 @@ public class ProjectAction {
      * 実行コンテキスト及びセッションから、ログインユーザの情報を取得して検索条件に追加する。
      *
      * @param searchCondition 検索条件
-     * @param context         実行コンテキスト
+     * @param context 実行コンテキスト
      * @return プロジェクトのリスト
      */
     private List<Project> searchProject(ProjectSearchDto searchCondition,
-                                        ExecutionContext context) {
+            ExecutionContext context) {
 
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
         searchCondition.setUserId(userContext.getUserId());
@@ -217,13 +220,12 @@ public class ProjectAction {
         final Path path = TempFileUtil.createTempFile();
         try (DeferredEntityList<ProjectDownloadDto> searchList = (DeferredEntityList<ProjectDownloadDto>) UniversalDao
                 .defer()
-                .findAllBySqlFile(ProjectDownloadDto.class, "SEARCH_PROJECT", searchCondition)) {
+                .findAllBySqlFile(ProjectDownloadDto.class, "SEARCH_PROJECT", searchCondition);
+             ObjectMapper<ProjectDownloadDto> mapper = ObjectMapperFactory.create(ProjectDownloadDto.class,
+                     TempFileUtil.newOutputStream(path))) {
 
-            try (ObjectMapper<ProjectDownloadDto> mapper =
-                         ObjectMapperFactory.create(ProjectDownloadDto.class, TempFileUtil.newOutputStream(path))) {
-                for (ProjectDownloadDto dto : searchList) {
-                    mapper.write(dto);
-                }
+            for (ProjectDownloadDto dto : searchList) {
+                mapper.write(dto);
             }
         }
 
@@ -248,7 +250,7 @@ public class ProjectAction {
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
 
         ProjectDto dto = UniversalDao.findBySqlFile(ProjectDto.class, "FIND_BY_PROJECT",
-                new Object[]{targetForm.getProjectId(), userContext.getUserId()});
+                new Object[] {targetForm.getProjectId(), userContext.getUserId()});
 
         // 出力情報をリクエストスコープにセット
         context.setRequestScopedVar("form", dto);
@@ -273,7 +275,7 @@ public class ProjectAction {
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
 
         ProjectDto dto = UniversalDao.findBySqlFile(ProjectDto.class, "FIND_BY_PROJECT",
-                new Object[]{targetForm.getProjectId(), userContext.getUserId()});
+                new Object[] {targetForm.getProjectId(), userContext.getUserId()});
 
         // 出力情報をリクエストスコープにセット
         context.setRequestScopedVar("form", dto);
@@ -296,7 +298,8 @@ public class ProjectAction {
         ProjectUpdateForm form = context.getRequestScopedVar("form");
 
         if (form.hasClientId()) {
-            if (!UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID", new Object[]{Integer.parseInt(form.getClientId())})) {
+            if (!UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID",
+                    new Object[] {Integer.parseInt(form.getClientId())})) {
                 //補足：数値に対する自動フォーマット(自動的にカンマ編集される)を避けるため、Integerを明示的に文字列に変換している。
                 throw new ApplicationException(
                         MessageUtil.createMessage(MessageLevel.ERROR,

@@ -1,15 +1,5 @@
 package com.nablarch.example.app.entity.core.validation.validator;
 
-import nablarch.core.util.StringUtil;
-
-import javax.validation.Constraint;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.Payload;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
 import static java.lang.annotation.ElementType.FIELD;
@@ -17,13 +7,26 @@ import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import javax.validation.Constraint;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+import javax.validation.Payload;
+
+import nablarch.core.util.StringUtil;
+
+import com.nablarch.example.app.entity.core.validation.validator.MoneyRange.MoneyRangeValidator;
+
 /**
  * 金額範囲のバリデーションを行うクラス。
  *
  * @author Nabu Rakutaro
  */
 @Documented
-@Constraint(validatedBy = MoneyRange.MoneyRangeValidator.class)
+@Constraint(validatedBy = MoneyRangeValidator.class)
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 public @interface MoneyRange {
@@ -66,6 +69,7 @@ public @interface MoneyRange {
     /**
      * 指定された整数の範囲の金額であることを検証するバリデータ。
      */
+    @SuppressWarnings("PublicInnerClass")
     class MoneyRangeValidator implements ConstraintValidator<MoneyRange, String> {
 
         /**
@@ -85,8 +89,8 @@ public @interface MoneyRange {
          */
         @Override
         public void initialize(MoneyRange constraintAnnotation) {
-            this.max = constraintAnnotation.max();
-            this.min = constraintAnnotation.min();
+            max = constraintAnnotation.max();
+            min = constraintAnnotation.min();
         }
 
         /**
@@ -105,7 +109,7 @@ public @interface MoneyRange {
             long number;
             try {
                 number = Long.valueOf(value);
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException ignored) {
                 return false;
             }
 

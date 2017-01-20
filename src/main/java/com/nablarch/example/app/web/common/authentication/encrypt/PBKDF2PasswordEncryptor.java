@@ -18,6 +18,7 @@ import nablarch.core.util.Base64Util;
  * <p/>
  * {@link #iterationCount} に指定された回数のストレッチングを行って暗号化し、
  * 暗号化後のパスワードは、 {@link #keyLength} に設定された長さ（ビット数）となる。
+ *
  * @author Nabu Rakutaro
  */
 public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
@@ -49,22 +50,19 @@ public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
     private String fixedSalt;
 
     /**
-     * スレッドセーフな {@link javax.crypto.SecretKeyFactory} 。
+     * スレッドセーフな {@link SecretKeyFactory} 。
      * <p/>
-     * シングルトンインスタンスとして使用される想定のため、 {@link javax.crypto.SecretKeyFactory} はスレッドローカルとする。
+     * シングルトンインスタンスとして使用される想定のため、 {@link SecretKeyFactory} はスレッドローカルとする。
      */
-    private static final ThreadLocal<SecretKeyFactory> FACTORY = new ThreadLocal<SecretKeyFactory>() {
-        @Override
-        protected SecretKeyFactory initialValue() {
-            try {
-                return SecretKeyFactory.getInstance(CRYPT_ALGORITHM);
-            } catch (NoSuchAlgorithmException e) {
-                // Oracle JRE など、PBKDF2WithHmacSha1が提供されているJREを利用する場合には、アルゴリズムが存在するため、この例外は発生し得ない。
-                throw new RuntimeException("Initialization Failed. Can't get instance of SecretKeyFactory. "
-                        + "Algorithm name is '" + CRYPT_ALGORITHM + "'.", e);
-            }
+    private static final ThreadLocal<SecretKeyFactory> FACTORY = ThreadLocal.withInitial(() -> {
+        try {
+            return SecretKeyFactory.getInstance(CRYPT_ALGORITHM);
+        } catch (NoSuchAlgorithmException e) {
+            // Oracle JRE など、PBKDF2WithHmacSha1が提供されているJREを利用する場合には、アルゴリズムが存在するため、この例外は発生し得ない。
+            throw new IllegalStateException("Initialization Failed. Can't get instance of SecretKeyFactory. "
+                    + "Algorithm name is '" + CRYPT_ALGORITHM + "'.", e);
         }
-    };
+    });
 
     /**
      * PBKDF2で、パスワードを暗号化し、Base64エンコードを行って返却する。
@@ -76,13 +74,12 @@ public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
      * @param password 暗号化前のパスワード
      * @return 暗号化後のパスワードに対して、Base64エンコードを行った文字列
      * @throws IllegalStateException {@link #fixedSalt} が設定されていない場合
-     * @see nablarch.core.util.Base64Util#encode(byte[])
+     * @see Base64Util#encode(byte[])
      */
     @Override
-    public String encrypt(String saltSeed, String password) throws IllegalStateException {
-        if (saltSeed == null || password == null) {
-            throw new IllegalArgumentException("saltSeed and password must not be null.");
-        }
+    public String encrypt(String saltSeed, String password) {
+        verifyParameter(saltSeed, password);
+
         if (saltSeed.isEmpty() || password.isEmpty()) {
             return "";
         }
@@ -91,13 +88,29 @@ public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
         byte[] encryptPassword;
         try {
             do {
-                encryptPassword = FACTORY.get().generateSecret(spec).getEncoded();
+                encryptPassword = FACTORY.get()
+                                         .generateSecret(spec)
+                                         .getEncoded();
             } while (!isSuccessEncryption(encryptPassword));
         } catch (InvalidKeySpecException e) {
             // パスワードが空の場合に発生するが、事前にチェックしているためこの例外は発生しない。
-            throw new RuntimeException(e);
+            throw new IllegalStateException(e);
         }
         return Base64Util.encode(encryptPassword);
+    }
+
+    /**
+     * 暗号化に必要な情報が正しいか検証する。
+     * <p>
+     * 正しくない場合は、{@link IllegalArgumentException}を送出する。
+     *
+     * @param saltSeed パスワードの暗号化に使用するソルトを生成するために使用する文字列
+     * @param password 暗号化前のパスワード
+     */
+    private void verifyParameter(String saltSeed, String password) {
+        if (saltSeed == null || password == null) {
+            throw new IllegalArgumentException("saltSeed and password must not be null.");
+        }
     }
 
     /**
@@ -108,7 +121,7 @@ public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
      * @param bytes 暗号化されたパスワード
      * @return 暗号化に成功していれば{@code true}
      */
-    private boolean isSuccessEncryption(byte[] bytes) {
+    private static boolean isSuccessEncryption(byte[] bytes) {
         for (byte b : bytes) {
             if (b != 0) {
                 return true;

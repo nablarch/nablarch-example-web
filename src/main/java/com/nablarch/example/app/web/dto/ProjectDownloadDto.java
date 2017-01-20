@@ -1,10 +1,11 @@
 package com.nablarch.example.app.web.dto;
 
-import nablarch.common.databind.csv.Csv;
-import nablarch.common.databind.csv.CsvDataBindConfig;
-import nablarch.common.databind.csv.CsvFormat;
-
 import java.io.Serializable;
+
+import nablarch.common.databind.csv.Csv;
+import nablarch.common.databind.csv.Csv.CsvType;
+import nablarch.common.databind.csv.CsvDataBindConfig.QuoteMode;
+import nablarch.common.databind.csv.CsvFormat;
 
 /**
  * プロジェクト情報をCSV形式でダウンロード時に一行分のデータをバインドするBeanクラス。
@@ -19,10 +20,10 @@ import java.io.Serializable;
                 "projectManager", "projectLeader", "clientId",
                 "clientName", "projectStartDate", "projectEndDate",
                 "note", "sales", "costOfGoodsSold", "sga", "allocationOfCorpExpenses" },
-        type = Csv.CsvType.CUSTOM)
+        type = CsvType.CUSTOM)
 @CsvFormat(charset = "Shift_JIS", fieldSeparator = ',',
         ignoreEmptyLine = true, lineSeparator = "\r\n", quote = '"',
-        quoteMode = CsvDataBindConfig.QuoteMode.NORMAL, requiredHeader = true)
+        quoteMode = QuoteMode.NORMAL, requiredHeader = true)
 public class ProjectDownloadDto implements Serializable {
 
     /** シリアルバージョンUID */

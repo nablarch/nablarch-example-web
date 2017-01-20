@@ -13,10 +13,10 @@ public class UserIdLockedException extends AuthenticationException {
     private static final long serialVersionUID = 1L;
 
     /** ユーザID */
-    private String userId;
+    private final String userId;
 
     /** ユーザIDをロックする認証失敗回数 */
-    private int failedCountToLock;
+    private final int failedCountToLock;
 
     /**
      * コンストラクタ。

@@ -5,6 +5,7 @@ import nablarch.common.web.tag.ValueFormatter;
 import nablarch.common.web.tag.YYYYMMDDFormatter;
 
 import javax.servlet.jsp.PageContext;
+
 import java.util.Date;
 
 /**
@@ -18,19 +19,37 @@ import java.util.Date;
 public class ExampleDateTimeFormatter implements ValueFormatter {
 
     /**
-     * @{link Date}オブジェクトを日付文字列に変換するフォーマッター
+     * {@link Date}オブジェクトを日付文字列に変換するフォーマッター
      */
-    private DateTimeFormatter dateTimeFormatter = new DateTimeFormatter();
+    private ValueFormatter dateTimeFormatter;
 
     /**
      * 文字列を日付文字列に変換するフォーマッター
      */
-    private YYYYMMDDFormatter yyyymmddFormatter = new YYYYMMDDFormatter();
+    private ValueFormatter yyyymmddFormatter;
 
     @Override
     public String format(PageContext pageContext, String name, Object value, String pattern) {
         return value instanceof Date
                 ? dateTimeFormatter.format(pageContext, name, value, pattern)
                 : yyyymmddFormatter.format(pageContext, name, value, pattern);
+    }
+
+    /**
+     * {@link Date}をフォーマットする{@link ValueFormatter}を設定する。
+     *
+     * @param dateTimeFormatter フォーマッター
+     */
+    public void setDateTimeFormatter(final ValueFormatter dateTimeFormatter) {
+        this.dateTimeFormatter = dateTimeFormatter;
+    }
+
+    /**
+     * 文字列形式の日付をフォーマとする{@link ValueFormatter}を設定する。
+     *
+     * @param yyyymmddFormatter フォーマッター
+     */
+    public void setYyyymmddFormatter(final ValueFormatter yyyymmddFormatter) {
+        this.yyyymmddFormatter = yyyymmddFormatter;
     }
 }

@@ -9,6 +9,7 @@ import nablarch.core.validation.ee.Required;
  *
  * @author Nabu Rakutaro
  */
+@SuppressWarnings("SameParameterValue")
 public abstract class SearchFormBase {
 
     /** ページ番号 */
@@ -22,7 +23,7 @@ public abstract class SearchFormBase {
      * @return ページ番号
      */
     public String getPageNumber() {
-        return this.pageNumber;
+        return pageNumber;
     }
 
     /**

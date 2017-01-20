@@ -1,8 +1,12 @@
 package com.nablarch.example.app.web.action;
 
+import java.util.List;
+import java.util.Objects;
+
 import com.nablarch.example.app.web.common.code.ProjectSortKey;
 import com.nablarch.example.app.web.dto.ProjectListDto;
 import com.nablarch.example.app.web.form.ProjectBulkForm;
+
 import nablarch.common.dao.EntityList;
 import nablarch.common.dao.UniversalDao;
 import nablarch.common.web.interceptor.InjectForm;
@@ -65,7 +69,7 @@ public class ProjectBulkAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
-    @InjectForm(form = ProjectSearchForm.class, prefix = "searchForm",  name = "searchForm")
+    @InjectForm(form = ProjectSearchForm.class, prefix = "searchForm", name = "searchForm")
     @OnError(type = ApplicationException.class, path = "forward://initialize")
     public HttpResponse list(HttpRequest request, ExecutionContext context) {
 
@@ -119,15 +123,14 @@ public class ProjectBulkAction {
         ProjectListDto dto = SessionUtil.get(context, "projectListDto");
 
         // 更新内容をセッションに上書き
-        for (Project project : dto.getProjectList()) {
-            for (InnerProjectForm innerForm : form.getProjectList()) {
-                if (innerForm.getProjectId().equals(project.getProjectId().toString())) {
-                    BeanUtil.copy(innerForm, project);
-                    break;
-                }
-            }
-        }
-
+        final List<InnerProjectForm> innerForms = form.getProjectList();
+        dto.getProjectList()
+           .forEach(project -> innerForms.stream()
+                                         .filter(innerForm ->
+                                                 Objects.equals(innerForm.getProjectId(), project.getProjectId()
+                                                                                                 .toString()))
+                                         .findFirst()
+                                         .ifPresent(innerForm -> BeanUtil.copy(innerForm, project)));
         return new HttpResponse("/WEB-INF/view/projectBulk/confirmOfUpdate.jsp");
     }
 
@@ -157,7 +160,8 @@ public class ProjectBulkAction {
     public HttpResponse update(HttpRequest request, ExecutionContext context) {
 
         ProjectListDto projectListDto = SessionUtil.get(context, "projectListDto");
-        projectListDto.getProjectList().forEach(UniversalDao::update);
+        projectListDto.getProjectList()
+                      .forEach(UniversalDao::update);
 
         return new HttpResponse("redirect://completeOfUpdate");
     }
@@ -181,6 +185,7 @@ public class ProjectBulkAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
+    @SuppressWarnings("UnusedReturnValue")
     public HttpResponse initialize(HttpRequest request, ExecutionContext context) {
         SessionUtil.delete(context, "projectSearchDto");
         SessionUtil.delete(context, "projectListDto");

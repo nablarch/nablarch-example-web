@@ -1,6 +1,5 @@
 package com.nablarch.example.app.web.dto;
 
-import javax.persistence.Column;
 /**
  * 顧客検索機能のDto。
  *
@@ -75,7 +74,6 @@ public class ClientDto {
      *
      * @return 業種名
      */
-    @Column(name = "INDUSTRY_NAME", length = 50, nullable = true, unique = false)
     public String getIndustryName() {
         return industryName;
     }

@@ -7,6 +7,9 @@ package com.nablarch.example.app.web.common.file;
  */
 public class TemporaryFileFailedException extends RuntimeException {
 
+    /** シリアルバージョンUID */
+    private static final long serialVersionUID = 1L;
+
     /**
      * コンストラクタ。
      *

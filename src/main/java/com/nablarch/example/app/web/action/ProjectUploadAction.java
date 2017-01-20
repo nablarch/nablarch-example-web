@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.nablarch.example.app.web.dto.ProjectUploadDto;
 import nablarch.common.dao.UniversalDao;
 import nablarch.common.databind.InvalidDataFormatException;
 import nablarch.common.databind.ObjectMapper;
@@ -30,6 +29,7 @@ import nablarch.fw.web.upload.util.UploadHelper;
 import com.nablarch.example.app.entity.Client;
 import com.nablarch.example.app.entity.Project;
 import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
+import com.nablarch.example.app.web.dto.ProjectUploadDto;
 
 /**
  * プロジェクトファイルアップロード一括登録機能。
@@ -56,6 +56,7 @@ public class ProjectUploadAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
+    @SuppressWarnings("OverlyLongMethod")
     @OnDoubleSubmission
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/projectUpload/create.jsp")
     public HttpResponse upload(HttpRequest request, ExecutionContext context) {
@@ -76,7 +77,7 @@ public class ProjectUploadAction {
         // ファイルの内容をBeanにバインドしてバリデーションする
         try (final ObjectMapper<ProjectUploadDto> mapper
                      = ObjectMapperFactory.create(ProjectUploadDto.class, partInfo.getInputStream())) {
-            ProjectUploadDto projectUploadDto = null;
+            ProjectUploadDto projectUploadDto;
 
             while ((projectUploadDto = mapper.read()) != null) {
 
@@ -100,15 +101,23 @@ public class ProjectUploadAction {
         insertProjects(projects);
 
         // 完了メッセージの追加
-        WebUtil.notifyMessages(context, MessageUtil.createMessage(MessageLevel.INFO,
-                "success.upload.project", projects.size()));
+        WebUtil.notifyMessages(context, MessageUtil.createMessage(MessageLevel.INFO, "success.upload.project", projects.size()));
 
         // ファイルの保存
+        saveFile(partInfo);
+
+        return new HttpResponse("/WEB-INF/view/projectUpload/create.jsp");
+    }
+
+    /**
+     * ファイルを保存する。
+     *
+     * @param partInfo アップロードファイルの情報
+     */
+    private void saveFile(final PartInfo partInfo) {
         String fileName = generateUniqueFileName(partInfo.getFileName());
         UploadHelper helper = new UploadHelper(partInfo);
         helper.moveFileTo("uploadFiles", fileName);
-
-        return new HttpResponse("/WEB-INF/view/projectUpload/create.jsp");
     }
 
     /**
@@ -126,10 +135,10 @@ public class ProjectUploadAction {
             ValidatorUtil.validate(projectUploadDto);
         } catch (ApplicationException e) {
             messages.addAll(e.getMessages()
-                    .stream()
-                    .map(message -> MessageUtil.createMessage(MessageLevel.ERROR,
-                            "errors.upload.validate", projectUploadDto.getLineNumber(), message))
-                    .collect(Collectors.toList()));
+                             .stream()
+                             .map(message -> MessageUtil.createMessage(MessageLevel.ERROR,
+                                     "errors.upload.validate", projectUploadDto.getLineNumber(), message))
+                             .collect(Collectors.toList()));
         }
 
         // 顧客存在チェック
@@ -153,14 +162,15 @@ public class ProjectUploadAction {
             // 顧客IDが正しくない場合はチェックしない。
             return true;
         }
-        return UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID", new Object[]{Integer.valueOf(projectUploadDto.getClientId())});
+        return UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID",
+                new Object[] {Integer.valueOf(projectUploadDto.getClientId())});
     }
 
     /**
      * ファイルを解析して得たプロジェクト情報とユーザIDを元に、プロジェクトエンティティを作成する。
      *
      * @param projectUploadDto ファイルを解析して得たプロジェクト情報
-     * @param userId           登録者ID
+     * @param userId 登録者ID
      * @return 作成したプロジェクトエンティティ
      */
     private Project createProject(ProjectUploadDto projectUploadDto, Integer userId) {
@@ -210,10 +220,10 @@ public class ProjectUploadAction {
             fileNameWithoutExtension = fileName;
         } else {
             fileNameWithoutExtension = fileName.substring(0, lastDotPos);
-            fileExtension = "." + fileName.substring(lastDotPos + 1, fileName.length());
+            fileExtension = '.' + fileName.substring(lastDotPos + 1, fileName.length());
         }
 
         String date = DateUtil.formatDate(SystemTimeUtil.getDate(), "yyMMddHHmmss");
-        return fileNameWithoutExtension + "_" + date + fileExtension;
+        return fileNameWithoutExtension + '_' + date + fileExtension;
     }
 }

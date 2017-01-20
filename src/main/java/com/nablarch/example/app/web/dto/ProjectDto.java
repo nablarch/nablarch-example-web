@@ -2,7 +2,10 @@ package com.nablarch.example.app.web.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * プロジェクト情報のDto
@@ -342,7 +345,7 @@ public class ProjectDto implements Serializable {
      * @return trueの場合は、顧客IDを保持している。
      */
     public boolean hasClientId() {
-        return this.clientId != null;
+        return clientId != null;
     }
 
     /**
@@ -352,11 +355,10 @@ public class ProjectDto implements Serializable {
      * @return 売上総利益
      */
     public Long getGrossProfit() {
-        if (sales == null || costOfGoodsSold == null) {
+        if (hasNullValue(sales, costOfGoodsSold)) {
             return null;
         }
-        Long result = Long.valueOf(sales) - Long.valueOf(costOfGoodsSold);
-        return result;
+        return Long.valueOf(sales) - Long.valueOf(costOfGoodsSold);
     }
 
     /**
@@ -366,11 +368,10 @@ public class ProjectDto implements Serializable {
      * @return 配賦前利益
      */
     public Long getProfitBeforeAllocation() {
-        if (sales == null || costOfGoodsSold == null || sga == null) {
+        if (hasNullValue(sales, costOfGoodsSold, sga)) {
             return null;
         }
-        Long result = Long.valueOf(sales) - Long.valueOf(costOfGoodsSold) - Long.valueOf(sga);
-        return result;
+        return Long.valueOf(sales) - Long.valueOf(costOfGoodsSold) - Long.valueOf(sga);
     }
 
     /**
@@ -385,9 +386,9 @@ public class ProjectDto implements Serializable {
         }
         BigDecimal result = new BigDecimal(getProfitBeforeAllocation());
         try {
-            result = result.divide(new BigDecimal(sales), 3, BigDecimal.ROUND_DOWN);
-        } catch (ArithmeticException e) {
-            return BigDecimal.ZERO.setScale(3);
+            result = result.divide(new BigDecimal(sales), 3, RoundingMode.DOWN);
+        } catch (ArithmeticException ignored) {
+            return BigDecimal.ZERO.setScale(3, RoundingMode.DOWN);
         }
         return result;
     }
@@ -399,12 +400,11 @@ public class ProjectDto implements Serializable {
      * @return 営業利益
      */
     public Long getOperatingProfit() {
-        if (sales == null || costOfGoodsSold == null || sga == null || allocationOfCorpExpenses == null) {
+        if (hasNullValue(sales, costOfGoodsSold, sga, allocationOfCorpExpenses)) {
             return null;
         }
-        Long result = Long.valueOf(sales) - Long.valueOf(costOfGoodsSold)
+        return Long.valueOf(sales) - Long.valueOf(costOfGoodsSold)
                 - Long.valueOf(sga) - Long.valueOf(allocationOfCorpExpenses);
-        return result;
     }
 
     /**
@@ -419,11 +419,20 @@ public class ProjectDto implements Serializable {
         }
         BigDecimal result = new BigDecimal(getOperatingProfit());
         try {
-            result = result.divide(new BigDecimal(sales), 3, BigDecimal.ROUND_DOWN);
-        } catch (ArithmeticException e) {
-            return BigDecimal.ZERO.setScale(3);
+            result = result.divide(new BigDecimal(sales), 3, RoundingMode.DOWN);
+        } catch (ArithmeticException ignored) {
+            return BigDecimal.ZERO.setScale(3, RoundingMode.DOWN);
         }
         return result;
     }
 
+    /**
+     * 与えられた値にnullのものが1つでもある場合はtrue
+     * @param values 値
+     * @return nullのものが1つでもある場合はtrue
+     */
+    private static boolean hasNullValue(Integer... values) {
+        return Arrays.stream(values)
+              .anyMatch(Objects::isNull);
+    }
 }
