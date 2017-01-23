@@ -70,7 +70,27 @@ public class ProjectUploadAction {
 
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
 
-        // バリデーション実行
+        List<Project> projects = readFileAndValidate(partInfo, userContext);
+
+        // DBへ一括登録する
+        insertProjects(projects);
+
+        // 完了メッセージの追加
+        WebUtil.notifyMessages(context, MessageUtil.createMessage(MessageLevel.INFO, "success.upload.project", projects.size()));
+
+        // ファイルの保存
+        saveFile(partInfo);
+
+        return new HttpResponse("/WEB-INF/view/projectUpload/create.jsp");
+    }
+
+    /**
+     * アップロードファイルの読み込みとバリデーションを行う。
+     * @param partInfo アップロードファイルの情報
+     * @param userContext ユーザ情報
+     * @return 読み込んだファイルの内容
+     */
+    private List<Project> readFileAndValidate(final PartInfo partInfo, final LoginUserPrincipal userContext) {
         List<Message> messages = new ArrayList<>();
         List<Project> projects = new ArrayList<>();
 
@@ -96,17 +116,7 @@ public class ProjectUploadAction {
         if (!messages.isEmpty()) {
             throw new ApplicationException(messages);
         }
-
-        // DBへ一括登録する
-        insertProjects(projects);
-
-        // 完了メッセージの追加
-        WebUtil.notifyMessages(context, MessageUtil.createMessage(MessageLevel.INFO, "success.upload.project", projects.size()));
-
-        // ファイルの保存
-        saveFile(partInfo);
-
-        return new HttpResponse("/WEB-INF/view/projectUpload/create.jsp");
+        return projects;
     }
 
     /**
