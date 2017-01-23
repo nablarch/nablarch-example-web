@@ -1,14 +1,22 @@
 <component name="ProjectDictionaryState">
   <dictionary name="example">
     <words>
+      <w>batchlet</w>
+      <w>chome</w>
+      <w>convertor</w>
       <w>encryptor</w>
       <w>hmac</w>
       <w>hmmss</w>
       <w>jaxrs</w>
+      <w>kana</w>
       <w>kanji</w>
+      <w>koaza</w>
+      <w>mishori</w>
       <w>nablarch</w>
       <w>pbkdf</w>
+      <w>yyyy</w>
       <w>yyyymmdd</w>
+      <w>zipcode</w>
     </words>
   </dictionary>
 </component>
