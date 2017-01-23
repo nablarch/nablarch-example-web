@@ -230,9 +230,8 @@ public class ProjectUploadDto implements Serializable {
      * プロジェクト開始日を設定する。
      * @param projectStartDate プロジェクト開始日
      */
-    @SuppressWarnings("DynamicRegexReplaceableByCompiledPattern")
     public void setProjectStartDate(String projectStartDate) {
-        this.projectStartDate = projectStartDate.replace("/", "");
+        this.projectStartDate = projectStartDate;
     }
 
     /**
@@ -247,9 +246,8 @@ public class ProjectUploadDto implements Serializable {
      * プロジェクト終了日を設定する。
      * @param projectEndDate プロジェクト終了日
      */
-    @SuppressWarnings("DynamicRegexReplaceableByCompiledPattern")
     public void setProjectEndDate(String projectEndDate) {
-        this.projectEndDate = projectEndDate.replace("/", "");
+        this.projectEndDate = projectEndDate;
     }
 
     /**

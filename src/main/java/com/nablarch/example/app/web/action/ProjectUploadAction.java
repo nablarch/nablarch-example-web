@@ -56,7 +56,6 @@ public class ProjectUploadAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
-    @SuppressWarnings("OverlyLongMethod")
     @OnDoubleSubmission
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/projectUpload/create.jsp")
     public HttpResponse upload(HttpRequest request, ExecutionContext context) {

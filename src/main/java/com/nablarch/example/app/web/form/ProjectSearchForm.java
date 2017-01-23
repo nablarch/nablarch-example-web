@@ -325,7 +325,6 @@ public class ProjectSearchForm extends SearchFormBase implements Serializable {
      *
      * @author Nabu Rakutaro
      */
-    @SuppressWarnings("unused")
     private static class ProjectClass implements Serializable {
 
         /** シリアルバージョンUID */

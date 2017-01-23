@@ -9,7 +9,6 @@ import nablarch.core.validation.ee.Required;
  *
  * @author Nabu Rakutaro
  */
-@SuppressWarnings("SameParameterValue")
 public abstract class SearchFormBase {
 
     /** ページ番号 */

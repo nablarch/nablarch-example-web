@@ -41,7 +41,8 @@ public class ProjectBulkAction {
      */
     public HttpResponse index(HttpRequest request, ExecutionContext context) {
 
-        initialize(request, context);
+        SessionUtil.delete(context, "projectSearchDto");
+        SessionUtil.delete(context, "projectListDto");
 
         // 初期表示時の検索条件を設定
         ProjectSearchForm searchForm = new ProjectSearchForm();
@@ -174,7 +175,8 @@ public class ProjectBulkAction {
      * @return HTTPレスポンス
      */
     public HttpResponse completeOfUpdate(HttpRequest request, ExecutionContext context) {
-        initialize(request, context);
+        SessionUtil.delete(context, "projectSearchDto");
+        SessionUtil.delete(context, "projectListDto");
         return new HttpResponse("/WEB-INF/view/projectBulk/completeOfUpdate.jsp");
     }
 
@@ -185,7 +187,6 @@ public class ProjectBulkAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
-    @SuppressWarnings("UnusedReturnValue")
     public HttpResponse initialize(HttpRequest request, ExecutionContext context) {
         SessionUtil.delete(context, "projectSearchDto");
         SessionUtil.delete(context, "projectListDto");

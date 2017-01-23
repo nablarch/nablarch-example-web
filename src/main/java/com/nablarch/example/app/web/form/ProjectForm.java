@@ -289,9 +289,8 @@ public class ProjectForm implements Serializable {
      *
      * @param projectStartDate プロジェクト開始日
      */
-    @SuppressWarnings("DynamicRegexReplaceableByCompiledPattern")
     public void setProjectStartDate(String projectStartDate) {
-        this.projectStartDate = StringUtil.isNullOrEmpty(projectStartDate) ? null : projectStartDate.replace("/", "");
+        this.projectStartDate = projectStartDate;
     }
 
     /**
@@ -299,9 +298,8 @@ public class ProjectForm implements Serializable {
      *
      * @param projectEndDate プロジェクト終了日
      */
-    @SuppressWarnings("DynamicRegexReplaceableByCompiledPattern")
     public void setProjectEndDate(String projectEndDate) {
-        this.projectEndDate = StringUtil.isNullOrEmpty(projectEndDate) ? null : projectEndDate.replace("/", "");
+        this.projectEndDate = projectEndDate;
     }
 
 

@@ -45,7 +45,6 @@ public class AuthenticationUtilTest {
      */
     private static void setupAuthenticationComponents(final PasswordAuthenticator authenticator, final PasswordEncryptor encryptor) {
         SystemRepository.load(new ObjectLoader() {
-            @SuppressWarnings("serial")
             @Override
             public Map<String, Object> load() {
                 return new HashMap<String, Object>() {

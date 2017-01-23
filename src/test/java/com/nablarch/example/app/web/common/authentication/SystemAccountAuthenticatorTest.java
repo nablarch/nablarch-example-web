@@ -531,7 +531,6 @@ public class SystemAccountAuthenticatorTest {
         systemTimeProvider.setFixedDate(businessDate + "001122");
         SystemRepository.load(new ObjectLoader() {
 
-            @SuppressWarnings("serial")
             @Override
             public Map<String, Object> load() {
                 return new HashMap<String, Object>() {
