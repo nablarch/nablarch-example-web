@@ -1,18 +1,14 @@
 package com.nablarch.example.app.web.form;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Arrays;
-import java.util.Objects;
 
 import javax.validation.constraints.AssertTrue;
-
-import com.nablarch.example.app.entity.core.validation.validator.DateRangeValidator;
 
 import nablarch.core.util.StringUtil;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
+
+import com.nablarch.example.app.entity.core.validation.validator.DateRangeValidator;
 
 /**
  * プロジェクト登録フォーム。
@@ -362,107 +358,5 @@ public class ProjectForm implements Serializable {
         return new DateRangeValidator(projectStartDate, projectEndDate).isValid();
     }
 
-    /**
-     * 売上総利益を取得する。<br />
-     * 売上総利益が算出できない場合はnullを返却する。
-     *
-     * @return 売上総利益
-     */
-    public Long getGrossProfit() {
-        if (hasNullValue(sales, costOfGoodsSold)) {
-            return null;
-        }
-        return Integer.valueOf(sales)
-                      .longValue()
-                - Integer.valueOf(costOfGoodsSold)
-                         .longValue();
-    }
-
-    /**
-     * 配賦前利益を取得する。<br />
-     * 配賦前利益が算出できない場合はnullを返却する。
-     *
-     * @return 配賦前利益
-     */
-    public Long getProfitBeforeAllocation() {
-        if (hasNullValue(sales, costOfGoodsSold, sga)) {
-            return null;
-        }
-        return Integer.valueOf(sales)
-                      .longValue()
-                - Integer.valueOf(costOfGoodsSold)
-                         .longValue()
-                - Integer.valueOf(sga)
-                         .longValue();
-    }
-
-    /**
-     * 配賦前利益率を取得する。<br />
-     * 配賦前利益率が算出できない場合はnullを返却する。
-     *
-     * @return 配賦前利益率
-     */
-    public BigDecimal getProfitRateBeforeAllocation() {
-        if (getProfitBeforeAllocation() == null) {
-            return null;
-        }
-        BigDecimal result = new BigDecimal(getProfitBeforeAllocation());
-        try {
-            result = result.divide(new BigDecimal(sales), 3, RoundingMode.DOWN);
-        } catch (ArithmeticException ignored) {
-            return BigDecimal.ZERO.setScale(3, RoundingMode.DOWN);
-        }
-        return result;
-    }
-
-    /**
-     * 営業利益を取得する。<br />
-     * 営業利益が算出できない場合はnullを返却する。
-     *
-     * @return 営業利益
-     */
-    public Long getOperatingProfit() {
-        if (hasNullValue(sales, costOfGoodsSold, sga, allocationOfCorpExpenses)) {
-            return null;
-        }
-        return Integer.valueOf(sales)
-                      .longValue()
-                - Integer.valueOf(costOfGoodsSold)
-                         .longValue()
-                - Integer.valueOf(sga)
-                         .longValue()
-                - Integer.valueOf(allocationOfCorpExpenses)
-                         .longValue();
-    }
-
-    /**
-     * 営業利益率を取得する。<br />
-     * 営業利益率が算出できない場合はnullを返却する。
-     *
-     * @return 営業利益率
-     */
-    public BigDecimal getOperatingProfitRate() {
-        if (getOperatingProfit() == null) {
-            return null;
-        }
-        BigDecimal result = new BigDecimal(getOperatingProfit());
-        try {
-            result = result.divide(new BigDecimal(sales), 3, RoundingMode.DOWN);
-        } catch (ArithmeticException ignored) {
-            return BigDecimal.ZERO.setScale(3, RoundingMode.DOWN);
-        }
-        return result;
-    }
-
-    /**
-     * 与えられた値にnullのものが1つでもある場合はtrue
-     *
-     * @param values 値
-     * @return nullのものが1つでもある場合はtrue
-     */
-    private static boolean hasNullValue(String... values) {
-        return Arrays.stream(values)
-                     .anyMatch(Objects::isNull);
-    }
 
 }

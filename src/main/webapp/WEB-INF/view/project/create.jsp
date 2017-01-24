@@ -242,8 +242,7 @@
                                     売上総利益
                                 </td>
                                 <td>
-                                    <n:write name="form.grossProfit" valueFormat="decimal{###,###,### 千円}" />
-                                    <n:error errorCss="message-error" name="form.grossProfit" />
+                                    <n:write name="profit.grossProfit" valueFormat="decimal{###,###,### 千円}" />
                                 </td>
                             </tr>
                             <tr>
@@ -251,8 +250,7 @@
                                     配賦前利益
                                 </td>
                                 <td>
-                                    <n:write name="form.profitBeforeAllocation" valueFormat="decimal{###,###,### 千円}" />
-                                    <n:error errorCss="message-error" name="form.profitBeforeAllocation" />
+                                    <n:write name="profit.profitBeforeAllocation" valueFormat="decimal{###,###,### 千円}" />
                                 </td>
                             </tr>
                             <tr>
@@ -260,8 +258,7 @@
                                     配賦前利益率
                                 </td>
                                 <td>
-                                    <n:write name="form.profitRateBeforeAllocation" valueFormat="decimal{##0.0 %}" />
-                                    <n:error errorCss="message-error" name="form.profitRateBeforeAllocation" />
+                                    <n:write name="profit.profitRateBeforeAllocation" valueFormat="decimal{##0.0 %}" />
                                 </td>
                             </tr>
                             <tr>
@@ -269,8 +266,7 @@
                                     営業利益
                                 </td>
                                 <td>
-                                    <n:write name="form.operatingProfit" valueFormat="decimal{###,###,### 千円}" />
-                                    <n:error errorCss="message-error" name="form.operatingProfit" />
+                                    <n:write name="profit.operatingProfit" valueFormat="decimal{###,###,### 千円}" />
                                 </td>
                             </tr>
                             <tr>
@@ -278,8 +274,7 @@
                                     営業利益率
                                 </td>
                                 <td>
-                                    <n:write name="form.operatingProfitRate" valueFormat="decimal{##0.0 %}" />
-                                     <n:error errorCss="message-error" name="form.operatingProfitRate" />
+                                    <n:write name="profit.operatingProfitRate" valueFormat="decimal{##0.0 %}" />
                                 </td>
                             </tr>
                         </n:forConfirmationPage>

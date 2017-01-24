@@ -158,7 +158,7 @@
                             売上総利益
                         </td>
                         <td>
-                            <n:write name="form.grossProfit" valueFormat="decimal{###,###,### 千円}" />
+                            <n:write name="profit.grossProfit" valueFormat="decimal{###,###,### 千円}" />
                         </td>
                     </tr>
                     <tr>
@@ -166,7 +166,7 @@
                             配賦前利益
                         </td>
                         <td>
-                            <n:write name="form.profitBeforeAllocation" valueFormat="decimal{###,###,### 千円}" />
+                            <n:write name="profit.profitBeforeAllocation" valueFormat="decimal{###,###,### 千円}" />
                         </td>
                     </tr>
                     <tr>
@@ -174,7 +174,7 @@
                             配賦前利益率
                         </td>
                         <td>
-                            <n:write name="form.profitRateBeforeAllocation" valueFormat="decimal{##0.0 %}" />
+                            <n:write name="profit.profitRateBeforeAllocation" valueFormat="decimal{##0.0 %}" />
                         </td>
                     </tr>
                     <tr>
@@ -182,7 +182,7 @@
                             営業利益
                         </td>
                         <td>
-                            <n:write name="form.operatingProfit" valueFormat="decimal{###,###,### 千円}" />
+                            <n:write name="profit.operatingProfit" valueFormat="decimal{###,###,### 千円}" />
                         </td>
                     </tr>
                     <tr>
@@ -190,7 +190,7 @@
                             営業利益率
                         </td>
                         <td>
-                            <n:write name="form.operatingProfitRate" valueFormat="decimal{##0.0 %}" />
+                            <n:write name="profit.operatingProfitRate" valueFormat="decimal{##0.0 %}" />
                         </td>
                     </tr>
                 </tbody>

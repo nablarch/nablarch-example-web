@@ -82,6 +82,13 @@ public class ProjectAction {
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
         project.setUserId(userContext.getUserId());
         SessionUtil.put(context, "project", project);
+        final ProjectProfit projectProfit = new ProjectProfit(
+                project.getSales(),
+                project.getCostOfGoodsSold(),
+                project.getSga(),
+                project.getAllocationOfCorpExpenses()
+        );
+        context.setRequestScopedVar("profit", projectProfit);
         return new HttpResponse("/WEB-INF/view/project/confirmOfCreate.jsp");
     }
 
@@ -254,6 +261,12 @@ public class ProjectAction {
 
         // 出力情報をリクエストスコープにセット
         context.setRequestScopedVar("form", dto);
+        context.setRequestScopedVar("profit", new ProjectProfit(
+                dto.getSales(),
+                dto.getCostOfGoodsSold(),
+                dto.getSga(),
+                dto.getAllocationOfCorpExpenses()
+        ));
 
         return new HttpResponse("/WEB-INF/view/project/detail.jsp");
     }
@@ -312,6 +325,12 @@ public class ProjectAction {
 
         // 出力情報をリクエストスコープにセット
         context.setRequestScopedVar("form", BeanUtil.createAndCopy(ProjectDto.class, form));
+        context.setRequestScopedVar("profit", new ProjectProfit(
+                project.getSales(),
+                project.getCostOfGoodsSold(),
+                project.getSga(),
+                project.getAllocationOfCorpExpenses()
+        ));
 
         return new HttpResponse("/WEB-INF/view/project/confirmOfUpdate.jsp");
     }
