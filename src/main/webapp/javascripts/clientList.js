@@ -28,9 +28,28 @@ $(function () {
   }
 
   /**
-   * 顧客の検索処理
+   * ダイアログ表示時のイベント
    */
-  $clientSearchButton.click(function () {
+  $modal.on('shown.bs.modal', function () {
+    $searchClientName.val('');
+    $searchIndustryCode.val('');
+    searchClientList();
+  });
+
+  /**
+   * ダイアログを閉じるときのイベント
+   */
+  $modal.on('hidden.bs.modal', function () {
+    $('div.alert-area').remove();
+    $searchClientName.val('');
+    $searchIndustryCode.val('');
+    $searchResult.empty();
+  });
+  
+  /**
+   * 顧客検索を行う。
+   */
+  function searchClientList() {
     $('div.alert-area').remove();
     $searchResult.empty();
     $.ajax({
@@ -75,8 +94,13 @@ $(function () {
       }
       $messageArea.show();
     });
-  });
+  }
 
+  /**
+   * 顧客の検索処理
+   */
+  $clientSearchButton.click(searchClientList);
+  
   /**
    * 業種を取得する
    */
