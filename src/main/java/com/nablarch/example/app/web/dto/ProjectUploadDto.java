@@ -34,7 +34,7 @@ import com.nablarch.example.app.entity.core.validation.validator.DateRangeValida
         type = CsvType.CUSTOM)
 @CsvFormat(charset = "Shift_JIS", fieldSeparator = ',',
         ignoreEmptyLine = true, lineSeparator = "\r\n", quote = '"',
-        quoteMode = QuoteMode.NORMAL, requiredHeader = true)
+        quoteMode = QuoteMode.NORMAL, requiredHeader = true, nullToEmpty = true)
 public class ProjectUploadDto implements Serializable {
 
     /** シリアルバージョンUID */
