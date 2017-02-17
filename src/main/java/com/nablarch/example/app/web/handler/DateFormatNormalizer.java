@@ -36,7 +36,7 @@ public class DateFormatNormalizer implements Normalizer {
     public String[] normalize(String[] value) {
         return Arrays
                 .stream(value)
-                .map(s -> PATTERN.matcher(s).replaceAll(""))
+                .map(s -> s == null ? null : PATTERN.matcher(s).replaceAll(""))
                 .toArray(String[]::new);
     }
 }
