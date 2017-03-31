@@ -31,7 +31,7 @@
   <import file="nablarch/webui/db-for-webui.xml"/>
 
   <!-- Interceptorの実行順定義 -->
-  <import file="nablarch/webui/interceptors.xml" />
+  <import file="com/nablarch/example/app/core/interceptors.xml" />
 
   <!-- エラーページ設定 -->
   <import file="nablarch/webui/error-page-for-webui.xml" />
@@ -72,7 +72,9 @@
 
   <!-- ダイアレクト設定 -->
   <!-- 使用するDBに合わせてダイアレクトを設定すること -->
-  <component name="dialect" class="nablarch.core.db.dialect.H2Dialect" />
+  <component class="nablarch.core.db.dialect.H2Dialect" name="dialect"/>
+  <!-- doma dialect -->
+  <component class="org.seasar.doma.jdbc.dialect.H2Dialect" name="domaDialect" />
 
   <!-- ハンドラキュー構成 -->
   <component name="webFrontController"
@@ -116,10 +118,6 @@
         </component>
 
         <component-ref name="nablarchTagHandler"/>
-
-        <component-ref name="dbConnectionManagementHandler"/>
-
-        <component-ref name="transactionManagementHandler"/>
 
         <component class="com.nablarch.example.app.web.action.LoginUserPrincipalCheckHandler"/>
 

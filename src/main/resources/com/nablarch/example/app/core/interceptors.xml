@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component-configuration
+    xmlns="http://tis.co.jp/nablarch/component-configuration"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration component-configuration.xsd">
+
+  <!-- インターセプタの実行順定義 -->
+  <list name="interceptorsOrder">
+    <value>nablarch.common.web.token.OnDoubleSubmission</value>
+    <value>nablarch.fw.web.interceptor.OnErrors</value>
+    <value>nablarch.fw.web.interceptor.OnError</value>
+    <value>nablarch.common.web.interceptor.InjectForm</value>
+    <value>nablarch.integration.doma.Transactional</value>
+  </list>
+</component-configuration>

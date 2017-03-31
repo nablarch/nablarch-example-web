@@ -1,8 +1,8 @@
 package com.nablarch.example.app.web.handler;
 
-import javax.persistence.OptimisticLockException;
+import org.seasar.doma.jdbc.NoResultException;
+import org.seasar.doma.jdbc.OptimisticLockException;
 
-import nablarch.common.dao.NoDataException;
 import nablarch.common.web.session.SessionKeyNotFoundException;
 import nablarch.core.log.app.FailureLogUtil;
 import nablarch.fw.ExecutionContext;
@@ -33,7 +33,7 @@ public class ExampleErrorForwardHandler implements Handler<Object, Object> {
         } catch (SessionKeyNotFoundException e) {
             throw new HttpErrorResponse(Status.BAD_REQUEST.getStatusCode(),
                     "/WEB-INF/view/common/errorPages/doubleSubmissionError.jsp", e);
-        } catch (NoDataException e) {
+        } catch (NoResultException e) {
             throw new HttpErrorResponse(Status.NOT_FOUND.getStatusCode(),
                     "/WEB-INF/view/common/errorPages/pageNotFoundError.jsp", e);
         } catch (OptimisticLockException e) {

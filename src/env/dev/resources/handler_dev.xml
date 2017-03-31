@@ -37,6 +37,7 @@
             <list>
               <value>com.nablarch.example.app.web.action</value>
               <value>com.nablarch.example.app.web.dto</value>
+              <value>com.nablarch.example.app.web.dao</value>
               <value>com.nablarch.example.app.web.form</value>
             </list>
           </property>
@@ -58,10 +59,6 @@
         </component>
 
         <component-ref name="nablarchTagHandler"/>
-
-        <component-ref name="dbConnectionManagementHandler"/>
-
-        <component-ref name="transactionManagementHandler"/>
 
         <component class="com.nablarch.example.app.web.action.LoginUserPrincipalCheckHandler"/>
         
