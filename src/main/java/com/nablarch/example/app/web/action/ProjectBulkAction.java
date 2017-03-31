@@ -3,12 +3,7 @@ package com.nablarch.example.app.web.action;
 import java.util.List;
 import java.util.Objects;
 
-import com.nablarch.example.app.web.common.code.ProjectSortKey;
-import com.nablarch.example.app.web.dto.ProjectListDto;
-import com.nablarch.example.app.web.form.ProjectBulkForm;
-
 import nablarch.common.dao.EntityList;
-import nablarch.common.dao.UniversalDao;
 import nablarch.common.web.interceptor.InjectForm;
 import nablarch.common.web.session.SessionUtil;
 import nablarch.common.web.token.OnDoubleSubmission;
@@ -18,11 +13,18 @@ import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
+import nablarch.integration.doma.DomaDaoRepository;
+import nablarch.integration.doma.Transactional;
 
 import com.nablarch.example.app.entity.Project;
 import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
+import com.nablarch.example.app.web.common.code.ProjectSortKey;
+import com.nablarch.example.app.web.common.code.SortOrder;
+import com.nablarch.example.app.web.dao.ProjectDao;
+import com.nablarch.example.app.web.dto.ProjectListDto;
 import com.nablarch.example.app.web.dto.ProjectSearchDto;
 import com.nablarch.example.app.web.form.InnerProjectForm;
+import com.nablarch.example.app.web.form.ProjectBulkForm;
 import com.nablarch.example.app.web.form.ProjectSearchForm;
 
 /**
@@ -39,6 +41,7 @@ public class ProjectBulkAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
+    @Transactional
     public HttpResponse index(HttpRequest request, ExecutionContext context) {
 
         SessionUtil.delete(context, "projectSearchDto");
@@ -47,6 +50,7 @@ public class ProjectBulkAction {
         // 初期表示時の検索条件を設定
         ProjectSearchForm searchForm = new ProjectSearchForm();
         searchForm.setSortKey(ProjectSortKey.NAME.getCode());
+        searchForm.setSortDir(SortOrder.ASC.getCode());
         searchForm.setPageNumber("1");
         context.setRequestScopedVar("searchForm", searchForm);
 
@@ -72,6 +76,7 @@ public class ProjectBulkAction {
      */
     @InjectForm(form = ProjectSearchForm.class, prefix = "searchForm", name = "searchForm")
     @OnError(type = ApplicationException.class, path = "forward://initialize")
+    @Transactional
     public HttpResponse list(HttpRequest request, ExecutionContext context) {
 
         ProjectSearchForm searchForm = context.getRequestScopedVar("searchForm");
@@ -102,11 +107,8 @@ public class ProjectBulkAction {
     private EntityList<Project> searchProject(ProjectSearchDto searchCondition, ExecutionContext context) {
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
         searchCondition.setUserId(userContext.getUserId());
-
-        return UniversalDao
-                .page(searchCondition.getPageNumber())
-                .per(20L)
-                .findAllBySqlFile(Project.class, "SEARCH_PROJECT_FOR_BULK_UPDATE", searchCondition);
+        return DomaDaoRepository.get(ProjectDao.class)
+                                .searchProject(searchCondition, searchCondition.getPageNumber(), 20);
     }
 
     /**
@@ -158,12 +160,13 @@ public class ProjectBulkAction {
      * @return HTTPレスポンス
      */
     @OnDoubleSubmission
+    @Transactional
     public HttpResponse update(HttpRequest request, ExecutionContext context) {
 
         ProjectListDto projectListDto = SessionUtil.get(context, "projectListDto");
-        projectListDto.getProjectList()
-                      .forEach(UniversalDao::update);
 
+        DomaDaoRepository.get(ProjectDao.class)
+                         .bulkUpdate(projectListDto.getProjectList());
         return new HttpResponse("redirect://completeOfUpdate");
     }
 

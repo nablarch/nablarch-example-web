@@ -2,6 +2,8 @@ package com.nablarch.example.app.web.dto;
 
 import java.io.Serializable;
 
+import org.seasar.doma.Entity;
+
 import nablarch.common.databind.csv.Csv;
 import nablarch.common.databind.csv.Csv.CsvType;
 import nablarch.common.databind.csv.CsvDataBindConfig.QuoteMode;
@@ -24,6 +26,7 @@ import nablarch.common.databind.csv.CsvFormat;
 @CsvFormat(charset = "Shift_JIS", fieldSeparator = ',',
         ignoreEmptyLine = true, lineSeparator = "\r\n", quote = '"',
         quoteMode = QuoteMode.NORMAL, requiredHeader = true, emptyToNull = true)
+@Entity
 public class ProjectDownloadDto implements Serializable {
 
     /** シリアルバージョンUID */
