@@ -3,11 +3,14 @@ package com.nablarch.example.app.web.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.seasar.doma.Entity;
+
 /**
  * プロジェクト情報のDto
  *
  * @author Nabu Rakutaro
  */
+@Entity
 public class ProjectDto implements Serializable {
 
     /** シリアルバージョンUID */

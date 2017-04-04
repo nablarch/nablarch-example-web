@@ -3,20 +3,20 @@ package com.nablarch.example.app.web.common.authentication;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import nablarch.common.dao.NoDataException;
-import nablarch.common.dao.UniversalDao;
+import org.seasar.doma.jdbc.NoResultException;
+
 import nablarch.core.date.SystemTimeUtil;
-import nablarch.core.db.connection.AppDbConnection;
-import nablarch.core.db.statement.SqlPStatement;
-import nablarch.core.db.transaction.SimpleDbTransactionExecutor;
 import nablarch.core.db.transaction.SimpleDbTransactionManager;
 import nablarch.core.util.DateUtil;
+import nablarch.integration.doma.DomaConfig;
+import nablarch.integration.doma.DomaDaoRepository;
 
 import com.nablarch.example.app.entity.SystemAccount;
 import com.nablarch.example.app.web.common.authentication.encrypt.PasswordEncryptor;
 import com.nablarch.example.app.web.common.authentication.exception.AuthenticationFailedException;
 import com.nablarch.example.app.web.common.authentication.exception.PasswordExpiredException;
 import com.nablarch.example.app.web.common.authentication.exception.UserIdLockedException;
+import com.nablarch.example.app.web.dao.SystemAccountDao;
 
 /**
  * データベースに保存されたアカウント情報に対してパスワード認証を行うクラス。<br>
@@ -40,12 +40,6 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
 
     /** パスワードの暗号化に使用する{@link PasswordEncryptor} */
     private PasswordEncryptor passwordEncryptor;
-
-    /** データベースへのトランザクション制御を行う{@link SimpleDbTransactionManager} */
-    private SimpleDbTransactionManager dbManager;
-
-    /** SQL_IDのプレフィックス */
-    private static final String SQL_ID_PREFIX = SystemAccountAuthenticator.class.getName() + '#';
 
     /** デフォルトコンストラクタ。 */
     public SystemAccountAuthenticator() {
@@ -71,40 +65,30 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
     }
 
     /**
-     * データベースへのトランザクション制御を行う{@link SimpleDbTransactionManager}を設定する。
-     *
-     * @param dbManager データベースへのトランザクション制御を行う{@link SimpleDbTransactionManager}
-     */
-    public void setDbManager(SimpleDbTransactionManager dbManager) {
-        this.dbManager = dbManager;
-    }
-
-    /**
      * アカウント情報を使用してユーザを認証する。
      *
      * @param userId ユーザID
      * @param password パスワード
-     *
      * @throws AuthenticationFailedException ユーザIDまたはパスワードに一致するユーザが見つからない場合
      * @throws UserIdLockedException ユーザIDがロックされている場合。この例外がスローされる場合は、まだ認証を実施していない。
      * @throws PasswordExpiredException パスワードが有効期限切れの場合。この例外がスローされる場合は、古いパスワードによる認証に成功している。
      */
     @Override
     public void authenticate(final String userId, final String password)
-        throws AuthenticationFailedException, UserIdLockedException, PasswordExpiredException {
+            throws AuthenticationFailedException, UserIdLockedException, PasswordExpiredException {
 
         if (userId == null || password == null) {
             throw new AuthenticationFailedException(userId);
         }
 
         // 有効期限は日付単位で管理しているので、現在日時から時間を切り捨てた日付を使用する。
-        Date sysDate = new Timestamp(DateUtil.getDate(SystemTimeUtil.getDateString()).getTime());
+        Date sysDate = new Timestamp(DateUtil.getDate(SystemTimeUtil.getDateString())
+                                             .getTime());
         final SystemAccount account;
         try {
-            account = UniversalDao.findBySqlFile(
-                    SystemAccount.class,
-                    "FIND_SYSTEM_ACCOUNT", new Object[]{userId, sysDate});
-        } catch (NoDataException ignored) {
+            account = DomaDaoRepository.get(SystemAccountDao.class)
+                                       .findByLoginIdAndEffectiveDate(userId, sysDate);
+        } catch (NoResultException ignored) {
             // ユーザIDに一致するユーザーが見つからない場合
             throw new AuthenticationFailedException(userId);
         }
@@ -118,13 +102,12 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
      * @param account システムアカウント
      * @param password パスワード
      * @param businessDate 業務日付
-     *
      * @throws AuthenticationFailedException ユーザIDまたはパスワードに一致するユーザが見つからない場合
      * @throws UserIdLockedException ユーザIDがロックされている場合。この例外がスローされる場合は、まだ認証を実施していない。
      * @throws PasswordExpiredException パスワードが有効期限切れの場合。この例外がスローされる場合は、古いパスワードによる認証に成功している。
      */
     private void authenticate(SystemAccount account, String password, Date businessDate)
-        throws AuthenticationFailedException, UserIdLockedException, PasswordExpiredException {
+            throws AuthenticationFailedException, UserIdLockedException, PasswordExpiredException {
 
         if (account.isUserIdLocked()) {
             throw new UserIdLockedException(String.valueOf(account.getUserId()), failedCountToLock);
@@ -135,7 +118,8 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
 
         // アカウントの認証を行う。
         // 本サンプルでは、暗号化後パスワードが一致するか否かのみで認証の判定を行う。
-        if (!account.getUserPassword().equals(encryptedPassword)) {
+        if (!account.getUserPassword()
+                    .equals(encryptedPassword)) {
 
             // ログインの連続失敗回数を記録する場合、
             // 現在の失敗回数に 1 を加算する。
@@ -188,20 +172,12 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
      * @param id 更新対象のシステムアカウントを特定するID
      */
     private void updateAuthenticationSucceed(final Integer id) {
-        // システムアカウントの更新処理はログインの成否に関わらず実行するため、
-        // 業務のトランザクションとは別に実行する必要がある。
-        new SimpleDbTransactionExecutor<Void>(dbManager) {
-            @Override
-            public Void execute(final AppDbConnection connection) {
-                final SqlPStatement statement = connection.prepareStatementBySqlId(
-                        SQL_ID_PREFIX + "RESET_FAILED_COUNT");
-                statement.setInt(1, failedCountToLock);
-                statement.setTimestamp(2, SystemTimeUtil.getTimestamp());
-                statement.setLong(3, id);
-                statement.executeUpdate();
-                return null;
-            }
-        } .doTransaction();
+
+        DomaConfig.singleton()
+                  .getTransactionManager()
+                  .requiresNew(() ->
+                          DomaDaoRepository.get(SystemAccountDao.class)
+                                           .resetFailedCount(id, failedCountToLock, SystemTimeUtil.getTimestamp()));
     }
 
     /**
@@ -210,6 +186,7 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
      * 本サンプルでは、認証失敗回数の更新と失敗回数がロック回数に達した場合のロックのみ行う。
      * 認証失敗時のロックを実施しない場合はこのメソッド内では何も行わない。
      * </pre>
+     *
      * @param id 更新対象のシステムアカウントを特定するID
      * @param failedCount 失敗回数
      */
@@ -220,18 +197,12 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
             return;
         }
 
-        new SimpleDbTransactionExecutor<Void>(dbManager) {
-            @Override
-            public Void execute(final AppDbConnection connection) {
-                final SqlPStatement statement = connection.prepareStatementBySqlId(
-                        SQL_ID_PREFIX + "UPDATE_FAILED_COUNT");
-                statement.setShort(1, failedCount);
-                statement.setBoolean(2, failedCountToLock <= failedCount);
-                statement.setLong(3, id);
-                statement.executeUpdate();
-                return null;
-            }
-        } .doTransaction();
+        DomaConfig.singleton()
+                  .getTransactionManager()
+                  .requiresNew(() ->
+                          DomaDaoRepository.get(SystemAccountDao.class)
+                                           .updateFailedCountAndLocked(id, failedCount,
+                                                   failedCountToLock <= failedCount));
     }
 }
 

@@ -1,6 +1,5 @@
 package com.nablarch.example.app.web.action;
 
-import nablarch.common.dao.UniversalDao;
 import nablarch.common.web.session.SessionUtil;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.message.ApplicationException;
@@ -12,12 +11,16 @@ import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
 import nablarch.fw.web.interceptor.OnErrors;
+import nablarch.integration.doma.DomaDaoRepository;
+import nablarch.integration.doma.Transactional;
 
 import com.nablarch.example.app.entity.SystemAccount;
 import com.nablarch.example.app.entity.Users;
 import com.nablarch.example.app.web.common.authentication.AuthenticationUtil;
 import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
 import com.nablarch.example.app.web.common.authentication.exception.AuthenticationException;
+import com.nablarch.example.app.web.dao.SystemAccountDao;
+import com.nablarch.example.app.web.dao.UsersDao;
 import com.nablarch.example.app.web.form.LoginForm;
 
 /**
@@ -53,10 +56,11 @@ public class AuthenticationAction {
             @OnError(type = ApplicationException.class, path = "/WEB-INF/view/login/index.jsp"),
             @OnError(type = AuthenticationException.class, path = "/WEB-INF/view/login/index.jsp")
     })
+    @Transactional
     public HttpResponse login(HttpRequest request, ExecutionContext context) {
 
         final LoginForm form = BeanUtil.createAndCopy(LoginForm.class, request.getParamMap());
-
+        
         try {
             ValidatorUtil.validate(form);
         } catch (ApplicationException ignore) {
@@ -87,10 +91,12 @@ public class AuthenticationAction {
      * @return 認証情報
      */
     private LoginUserPrincipal createLoginUserContext(String loginId) {
-        SystemAccount account = UniversalDao
-                .findBySqlFile(SystemAccount.class,
-                        "FIND_SYSTEM_ACCOUNT_BY_AK", new Object[]{loginId});
-        Users users = UniversalDao.findById(Users.class, account.getUserId());
+        
+        final SystemAccount account = DomaDaoRepository.get(SystemAccountDao.class)
+                                                  .findByLoginId(loginId);
+
+        final Users users = DomaDaoRepository.get(UsersDao.class)
+                                          .findById(account.getUserId());
 
         LoginUserPrincipal userContext = new LoginUserPrincipal();
         userContext.setUserId(account.getUserId());

@@ -1,7 +1,8 @@
 package com.nablarch.example.app.web.common.authentication;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,29 +14,26 @@ import java.sql.Types;
 import java.util.HashMap;
 import java.util.Map;
 
-import nablarch.core.db.connection.ConnectionFactory;
-import nablarch.core.db.connection.DbConnectionContext;
-import nablarch.core.db.transaction.SimpleDbTransactionManager;
+import org.h2.jdbcx.JdbcDataSource;
+import please.change.me.util.FixedSystemTimeProvider;
+
 import nablarch.core.repository.ObjectLoader;
 import nablarch.core.repository.SystemRepository;
 import nablarch.core.repository.di.DiContainer;
 import nablarch.core.repository.di.config.xml.XmlComponentDefinitionLoader;
 import nablarch.core.util.DateUtil;
-
-import org.h2.jdbcx.JdbcDataSource;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import please.change.me.util.FixedSystemTimeProvider;
+import nablarch.integration.doma.DomaConfig;
 
 import com.nablarch.example.app.web.common.authentication.encrypt.PBKDF2PasswordEncryptor;
 import com.nablarch.example.app.web.common.authentication.encrypt.PasswordEncryptor;
 import com.nablarch.example.app.web.common.authentication.exception.AuthenticationFailedException;
 import com.nablarch.example.app.web.common.authentication.exception.PasswordExpiredException;
 import com.nablarch.example.app.web.common.authentication.exception.UserIdLockedException;
+
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * {@link SystemAccountAuthenticator}のテストクラス。
@@ -68,7 +66,7 @@ public class SystemAccountAuthenticatorTest {
 
     /**
      * セットアップ。
-     *
+     * <p>
      * テスト時に使用するデータベース接続の生成及びテスト用のテーブルのセットアップを行う。
      *
      * @throws java.sql.SQLException 例外
@@ -77,7 +75,7 @@ public class SystemAccountAuthenticatorTest {
     public static void classSetup() throws SQLException {
 
         JdbcDataSource ds = new JdbcDataSource();
-        ds.setURL("jdbc:h2:~/nablarch_test");
+        ds.setURL("jdbc:h2:mem:nablarch_test;DB_CLOSE_DELAY=-1");
         ds.setUser("sa");
         ds.setPassword("");
         con = ds.getConnection();
@@ -85,45 +83,50 @@ public class SystemAccountAuthenticatorTest {
         // setup test table
         Statement statement = con.createStatement();
         try {
-            statement.execute("DROP TABLE SYSTEM_ACCOUNT CASCADE CONSTRAINTS");
+            statement.execute("drop table system_account cascade CONSTRAINTS");
         } catch (Exception e) {
             // nop
         }
 
-        statement.execute("CREATE TABLE SYSTEM_ACCOUNT("
-                + " USER_ID SERIAL NOT NULL,"
-                + " LOGIN_ID VARCHAR(20) NOT NULL,"
-                + " USER_PASSWORD VARCHAR(44) NOT NULL,"
-                + " USER_ID_LOCKED BOOL NOT NULL,"
-                + " PASSWORD_EXPIRATION_DATE DATE NOT NULL,"
-                + " FAILED_COUNT SMALLINT NOT NULL,"
-                + " EFFECTIVE_DATE_FROM DATE,"
-                + " EFFECTIVE_DATE_TO DATE,"
-                + " LAST_LOGIN_DATE_TIME TIMESTAMP(6),"
-                + " VERSION BIGINT NOT NULL DEFAULT 1,"
-                + " PRIMARY KEY (USER_ID))"
-                );
-        statement.execute("ALTER TABLE SYSTEM_ACCOUNT ADD CONSTRAINT UQ_SYSTEM_ACCOUNT_LOGIN_ID UNIQUE (LOGIN_ID)");
+        statement.execute("create table system_account("
+                + " user_id serial not null,"
+                + " login_id varchar(20) not null,"
+                + " user_password varchar(44) not null,"
+                + " user_id_locked bool not null,"
+                + " password_expiration_date date not null,"
+                + " failed_count smallint not null,"
+                + " effective_date_from date,"
+                + " effective_date_to date,"
+                + " last_login_date_time timestamp(6),"
+                + " version bigint not null default 1,"
+                + " primary key (user_id))"
+        );
+        statement.execute("alter table system_account add constraint uq_system_account_login_id unique (login_id)");
 
         statement.close();
 
         XmlComponentDefinitionLoader loader = new XmlComponentDefinitionLoader(
                 COMPONENT_BASE_PATH + "authentication-db.xml");
         SystemRepository.load(new DiContainer(loader));
-
+        SystemRepository.load(new ObjectLoader() {
+            @Override
+            public Map<String, Object> load() {
+                final Map<String, Object> result = new HashMap<>();
+                result.put("dataSource", ds);
+                return result;
+            }
+        });
     }
 
     @Before
     public void setUp() throws Exception {
-        DbConnectionContext.removeConnection();
-
         PreparedStatement truncate = con.prepareStatement("truncate table system_account");
         truncate.execute();
         truncate.close();
 
         // テストデータのセットアップ
         PreparedStatement insert = con.prepareStatement(
-                "insert into SYSTEM_ACCOUNT values (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
+                "insert into system_account values (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
         // active user
         insert.setString(1, "1");
         insert.setString(2, "active user");
@@ -172,17 +175,8 @@ public class SystemAccountAuthenticatorTest {
 
         insert.close();
         con.commit();
-
-        ConnectionFactory factory = SystemRepository.get("connectionFactory");
-        DbConnectionContext.setConnection("transaction", factory.getConnection("transaction"));
-
     }
 
-    @After
-    public void tearDown() throws Exception {
-        DbConnectionContext.getTransactionManagerConnection("transaction").commit();
-        DbConnectionContext.removeConnection();
-    }
 
     /**
      * クラス終了時の処理。
@@ -194,6 +188,7 @@ public class SystemAccountAuthenticatorTest {
         if (con != null) {
             con.close();
         }
+        SystemRepository.clear();
     }
 
     /**
@@ -219,7 +214,7 @@ public class SystemAccountAuthenticatorTest {
         SystemAccountAuthenticator authenticator = createPasswordAuthenticator("20130802");
 
         try {
-            authenticator.authenticate("", "password");
+            executeTest(() -> authenticator.authenticate("", "password"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (AuthenticationFailedException e) {
             assertThat(e.getUserId(), is(""));
@@ -235,7 +230,7 @@ public class SystemAccountAuthenticatorTest {
         SystemAccountAuthenticator authenticator = createPasswordAuthenticator("20130802");
 
         try {
-            authenticator.authenticate("no exists", "password");
+            executeTest(() -> authenticator.authenticate("no exists", "password"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (AuthenticationFailedException e) {
             assertThat(e.getUserId(), is("no exists"));
@@ -251,7 +246,7 @@ public class SystemAccountAuthenticatorTest {
         SystemAccountAuthenticator authenticator = createPasswordAuthenticator("20130801");
 
         try {
-            authenticator.authenticate("active user", "password");
+            executeTest(() -> authenticator.authenticate("active user", "password"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (AuthenticationFailedException e) {
             assertThat(e.getUserId(), is("active user"));
@@ -266,7 +261,7 @@ public class SystemAccountAuthenticatorTest {
         SystemAccountAuthenticator authenticator = createPasswordAuthenticator("20130806");
 
         try {
-            authenticator.authenticate("active user", "password");
+            executeTest(() -> authenticator.authenticate("active user", "password"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (AuthenticationFailedException e) {
             assertThat(e.getUserId(), is("active user"));
@@ -296,7 +291,7 @@ public class SystemAccountAuthenticatorTest {
         SystemAccountAuthenticator authenticator = createPasswordAuthenticator("20130802");
 
         try {
-            authenticator.authenticate("active user", "");
+            executeTest(() -> authenticator.authenticate("active user", ""));
             fail("エラーが発生するので、ここは通過しない");
         } catch (AuthenticationFailedException e) {
             assertThat(e.getUserId(), is("1"));
@@ -311,7 +306,7 @@ public class SystemAccountAuthenticatorTest {
         SystemAccountAuthenticator authenticator = createPasswordAuthenticator("20130802");
 
         try {
-            authenticator.authenticate("active user", "password1");
+            executeTest(() -> authenticator.authenticate("active user", "password1"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (AuthenticationFailedException e) {
             assertThat(e.getUserId(), is("1"));
@@ -327,12 +322,13 @@ public class SystemAccountAuthenticatorTest {
         authenticator.setFailedCountToLock(0);
 
         try {
-            authenticator.authenticate("active user", "password");
+            executeTest(() -> authenticator.authenticate("active user", "password"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (PasswordExpiredException e) {
             assertThat(e.getUserId(), is("1"));
             assertThat(e.getPasswordExpirationDate(), is(DateUtil.getDate("20130804")));
-            assertThat(DateUtil.getParsedDate(e.getBusinessDate().toString(), "yyyy-MM-dd HH:mm:ss.S"), is(DateUtil.getDate("20130805")));
+            assertThat(DateUtil.getParsedDate(e.getBusinessDate()
+                                               .toString(), "yyyy-MM-dd HH:mm:ss.S"), is(DateUtil.getDate("20130805")));
         }
     }
 
@@ -345,7 +341,7 @@ public class SystemAccountAuthenticatorTest {
         authenticator.setFailedCountToLock(5);
 
         try {
-            authenticator.authenticate("locked user", "password");
+            executeTest(() -> authenticator.authenticate("locked user", "password"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (UserIdLockedException e) {
             assertThat(e.getUserId(), is("3"));
@@ -362,7 +358,7 @@ public class SystemAccountAuthenticatorTest {
         //**********************************************************************
         // 業務日付がユーザの有効期限（開始日）と同日
         //**********************************************************************
-        createPasswordAuthenticator("20130802").authenticate("active user2", "pass!!!");
+        executeTest(() -> createPasswordAuthenticator("20130802").authenticate("active user2", "pass!!!"));
 
         PreparedStatement statement = con.prepareStatement("select * from system_account where user_id = ?");
         statement.setString(1, "5");
@@ -376,18 +372,18 @@ public class SystemAccountAuthenticatorTest {
         //**********************************************************************
         // 業務日付がユーザの有効期限（終了日）と同日
         //**********************************************************************
-        createPasswordAuthenticator("20130805").authenticate("active user2", "pass!!!");
+        executeTest(() -> createPasswordAuthenticator("20130805").authenticate("active user2", "pass!!!"));
     }
 
     /**
      * 対象のユーザが未ロックだが、認証失敗しロックされた場合{@link UserIdLockedException}が送出されること。
      * また、対象のユーザのロック状態が未ロックからロックに変更されること。
-     *
+     * <p>
      * 以下の順でテストを実施する。
      * <ol>
-     *     <li>認証が成功することを確認</li>
-     *     <li>認証失敗でアカウントがロックされ、認証失敗回数がインクリメントされる。</li>
-     *     <li>認証成功するがアカウントがロックされているので、ロック中例外</li>
+     * <li>認証が成功することを確認</li>
+     * <li>認証失敗でアカウントがロックされ、認証失敗回数がインクリメントされる。</li>
+     * <li>認証成功するがアカウントがロックされているので、ロック中例外</li>
      * </ol>
      */
     @Test
@@ -398,7 +394,7 @@ public class SystemAccountAuthenticatorTest {
         //**********************************************************************
         // 認証が成功する(認証回数リセット)
         //**********************************************************************
-        authenticator.authenticate("active user 2 failed", "password");
+        executeTest(() -> authenticator.authenticate("active user 2 failed", "password"));
 
         // assertion
         PreparedStatement statement1 = con.prepareStatement("select * from system_account where user_id = ?");
@@ -415,21 +411,21 @@ public class SystemAccountAuthenticatorTest {
         //**********************************************************************
         try {
             // 1回目
-            authenticator.authenticate("active user 2 failed", "password un match");
+            executeTest(() -> authenticator.authenticate("active user 2 failed", "password un match"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (AuthenticationFailedException e) {
             assertThat(e.getUserId(), is("4"));
         }
         try {
             // 2回目
-            authenticator.authenticate("active user 2 failed", "password un match");
+            executeTest(() -> authenticator.authenticate("active user 2 failed", "password un match"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (AuthenticationFailedException e) {
             assertThat(e.getUserId(), is("4"));
         }
         try {
             // 3回目
-            authenticator.authenticate("active user 2 failed", "password un match");
+            executeTest(() -> authenticator.authenticate("active user 2 failed", "password un match"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (AuthenticationFailedException e) {
             assertThat(e.getUserId(), is("4"));
@@ -450,7 +446,7 @@ public class SystemAccountAuthenticatorTest {
         // 認証成功するがユーザロック中
         //**********************************************************************
         try {
-            authenticator.authenticate("active user 2 failed", "password");
+            executeTest(() -> authenticator.authenticate("active user 2 failed", "password"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (UserIdLockedException e) {
             assertThat(e.getUserId(), is("4"));
@@ -480,7 +476,7 @@ public class SystemAccountAuthenticatorTest {
         //*********************************************************************
         // 認証成功
         //*********************************************************************
-        authenticator.authenticate("active user 2 failed", "password");
+        executeTest(() -> authenticator.authenticate("active user 2 failed", "password"));
 
         PreparedStatement statement1 = con.prepareStatement("select * from system_account where user_id = ?");
         statement1.setString(1, "4");
@@ -495,7 +491,7 @@ public class SystemAccountAuthenticatorTest {
         // 認証失敗
         //*********************************************************************
         try {
-            authenticator.authenticate("active user 2 failed", "wrong-password");
+            executeTest(() -> authenticator.authenticate("active user 2 failed", "wrong-password"));
             fail("エラーが発生するので、ここは通過しない");
         } catch (AuthenticationFailedException e) {
             assertThat(e.getUserId(), is("4"));
@@ -515,15 +511,12 @@ public class SystemAccountAuthenticatorTest {
      * テスト対象の{@link SystemAccountAuthenticator}を生成する。
      *
      * @param businessDate 業務日付
-     *
      * @return 生成した {@link SystemAccountAuthenticator}
      */
     private SystemAccountAuthenticator createPasswordAuthenticator(final String businessDate) {
         SystemAccountAuthenticator authenticator = new SystemAccountAuthenticator();
 
         authenticator.setFailedCountToLock(1);
-
-        authenticator.setDbManager(SystemRepository.<SimpleDbTransactionManager>get("dbManager"));
         authenticator.setPasswordEncryptor(encryptor);
 
         // テストのために固定日付で動作させる。
@@ -542,6 +535,12 @@ public class SystemAccountAuthenticatorTest {
         });
 
         return authenticator;
+    }
+
+    private void executeTest(Runnable runnable) {
+        DomaConfig.singleton()
+                  .getTransactionManager()
+                  .requiresNew(runnable);
     }
 }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -94,12 +95,23 @@
           <plugin>
             <groupId>jp.co.tis.gsp</groupId>
             <artifactId>gsp-dba-maven-plugin</artifactId>
+            <version>4.1.2-SNAPSHOT</version>
+            <configuration>
+              <entityTemplate>java/gsp_doma_entity.ftl</entityTemplate>
+              <entityType>doma</entityType>
+            </configuration>
             <dependencies>
               <!-- プロジェクトで使用するDB製品にあわせたJDBCドライバに上書きする -->
               <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>1.4.192</version>
+                <scope>runtime</scope>
+              </dependency>
+              <dependency>
+                <groupId>org.seasar.doma</groupId>
+                <artifactId>doma</artifactId>
+                <version>2.16.0</version>
                 <scope>runtime</scope>
               </dependency>
             </dependencies>
@@ -199,7 +211,7 @@
       <groupId>com.nablarch.profile</groupId>
       <artifactId>nablarch-web</artifactId>
     </dependency>
-    
+
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-fw-web</artifactId>
@@ -418,7 +430,7 @@
           Jenkinsとの連携にはJaCoCoプラグインの1系を使用する(2系はJaCoCo0.7.4以降が必須) -->
         <configuration>
           <excludes>
-          <exclude>**/com/nablarch/example/app/entity/*</exclude>
+            <exclude>**/com/nablarch/example/app/entity/*</exclude>
           </excludes>
         </configuration>
       </plugin>

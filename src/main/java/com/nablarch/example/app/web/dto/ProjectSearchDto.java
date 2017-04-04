@@ -3,6 +3,8 @@ package com.nablarch.example.app.web.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * プロジェクト検索のDto
@@ -67,6 +69,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectNameを設定する。
+     *
      * @param projectName プロジェクト名
      */
     public void setProjectName(String projectName) {
@@ -75,6 +78,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectTypeを返却する。
+     *
      * @return projectType
      */
     public String getProjectType() {
@@ -83,6 +87,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectTypeを設定する。
+     *
      * @param projectType プロジェクト種別
      */
     public void setProjectType(String projectType) {
@@ -91,6 +96,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectClassを返却する。
+     *
      * @return projectClass
      */
     public String[] getProjectClass() {
@@ -98,7 +104,22 @@ public class ProjectSearchDto implements Serializable {
     }
 
     /**
+     * projectClassのListを返す。
+     *
+     * @return projectClassのList
+     */
+    public List<String> getProjectClassList() {
+        if (projectClass == null || projectClass.length == 0) {
+            return null;
+        } else {
+            return Arrays.asList(getProjectClass());
+        }
+    }
+
+
+    /**
      * projectClassを設定する。
+     *
      * @param projectClass プロジェクト分類
      */
     public void setProjectClass(String[] projectClass) {
@@ -107,6 +128,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectStartDateBeginを返却する。
+     *
      * @return projectStartDateBegin
      */
     public Date getProjectStartDateBegin() {
@@ -115,6 +137,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectStartDateBeginを設定する。
+     *
      * @param projectStartDateBegin プロジェクト開始日（From）
      */
     public void setProjectStartDateBegin(Date projectStartDateBegin) {
@@ -123,6 +146,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectStartDateEndを返却する。
+     *
      * @return projectStartDateEnd
      */
     public Date getProjectStartDateEnd() {
@@ -131,6 +155,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectStartDateEndを設定する。
+     *
      * @param projectStartDateEnd プロジェクト開始日（To）
      */
     public void setProjectStartDateEnd(Date projectStartDateEnd) {
@@ -139,6 +164,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectEndDateBeginを返却する。
+     *
      * @return projectEndDateBegin
      */
     public Date getProjectEndDateBegin() {
@@ -147,6 +173,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectEndDateBeginを設定する。
+     *
      * @param projectEndDateBegin プロジェクト終了日（From)
      */
     public void setProjectEndDateBegin(Date projectEndDateBegin) {
@@ -155,6 +182,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectEndDateEndを返却する。
+     *
      * @return projectEndDateEnd
      */
     public Date getProjectEndDateEnd() {
@@ -163,6 +191,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * projectEndDateEndを設定する。
+     *
      * @param projectEndDateEnd プロジェクト終了日（To）
      */
     public void setProjectEndDateEnd(Date projectEndDateEnd) {
@@ -171,6 +200,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * clientIdを返却する。
+     *
      * @return clientId
      */
     public Integer getClientId() {
@@ -179,6 +209,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * clientIdを設定する。
+     *
      * @param clientId 顧客ID
      */
     public void setClientId(Integer clientId) {
@@ -187,6 +218,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * 顧客名を取得する。
+     *
      * @return 顧客名
      */
     public String getClientName() {
@@ -195,6 +227,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * 顧客名を設定する。
+     *
      * @param clientName 顧客名
      */
     public void setClientName(String clientName) {
@@ -203,6 +236,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * ユーザIDを返却する。
+     *
      * @return ユーザID
      */
     public Integer getUserId() {
@@ -211,6 +245,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * ユーザIDを設定する。
+     *
      * @param userId ユーザID
      */
     public void setUserId(Integer userId) {
@@ -219,6 +254,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * sortIdを返却する。
+     *
      * @return sortId
      */
     public String getSortId() {
@@ -227,6 +263,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * sortIdを設定する。
+     *
      * @param sortId ソートID
      */
     public void setSortId(String sortId) {
@@ -235,6 +272,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * 並び順項目を取得する。
+     *
      * @return 並び順項目
      */
     public String getSortKey() {
@@ -243,6 +281,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * 並び順項目を設定する。
+     *
      * @param sortKey 並び順項目
      */
     public void setSortKey(String sortKey) {
@@ -251,6 +290,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * 並び順を取得する。
+     *
      * @return 並び順
      */
     public String getSortDir() {
@@ -259,6 +299,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * 並び順を設定する。
+     *
      * @param sortDir 並び順
      */
     public void setSortDir(String sortDir) {
@@ -267,6 +308,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * pageNumberを返却する。
+     *
      * @return ページ番号
      */
     public Integer getPageNumber() {
@@ -275,6 +317,7 @@ public class ProjectSearchDto implements Serializable {
 
     /**
      * pageNumber設定する。
+     *
      * @param pageNumber ページ番号
      */
     public void setPageNumber(Integer pageNumber) {

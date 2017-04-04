@@ -1,20 +1,8 @@
 package com.nablarch.example.app.web.action;
 
-import com.nablarch.example.app.entity.Client;
-import com.nablarch.example.app.entity.Project;
-import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
-import com.nablarch.example.app.web.common.code.ProjectSortKey;
-import com.nablarch.example.app.web.common.file.TempFileUtil;
-import com.nablarch.example.app.web.dto.ProjectDownloadDto;
-import com.nablarch.example.app.web.dto.ProjectDto;
-import com.nablarch.example.app.web.dto.ProjectSearchDto;
-import com.nablarch.example.app.web.form.ProjectForm;
-import com.nablarch.example.app.web.form.ProjectSearchForm;
-import com.nablarch.example.app.web.form.ProjectTargetForm;
-import com.nablarch.example.app.web.form.ProjectUpdateForm;
+import java.nio.file.Path;
+import java.util.List;
 
-import nablarch.common.dao.DeferredEntityList;
-import nablarch.common.dao.UniversalDao;
 import nablarch.common.databind.ObjectMapper;
 import nablarch.common.databind.ObjectMapperFactory;
 import nablarch.common.web.WebUtil;
@@ -30,9 +18,23 @@ import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
+import nablarch.integration.doma.DomaDaoRepository;
+import nablarch.integration.doma.Transactional;
 
-import java.nio.file.Path;
-import java.util.List;
+import com.nablarch.example.app.entity.Client;
+import com.nablarch.example.app.entity.Project;
+import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
+import com.nablarch.example.app.web.common.code.ProjectSortKey;
+import com.nablarch.example.app.web.common.file.TempFileUtil;
+import com.nablarch.example.app.web.dao.ClientDao;
+import com.nablarch.example.app.web.dao.ProjectDao;
+import com.nablarch.example.app.web.dto.ProjectDownloadDto;
+import com.nablarch.example.app.web.dto.ProjectDto;
+import com.nablarch.example.app.web.dto.ProjectSearchDto;
+import com.nablarch.example.app.web.form.ProjectForm;
+import com.nablarch.example.app.web.form.ProjectSearchForm;
+import com.nablarch.example.app.web.form.ProjectTargetForm;
+import com.nablarch.example.app.web.form.ProjectUpdateForm;
 
 /**
  * プロジェクト検索、登録、更新、削除機能 。
@@ -64,13 +66,13 @@ public class ProjectAction {
      */
     @InjectForm(form = ProjectForm.class, prefix = "form")
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/project/create.jsp")
+    @Transactional
     public HttpResponse confirmOfCreate(HttpRequest request, ExecutionContext context) {
 
         ProjectForm form = context.getRequestScopedVar("form");
         if (form.hasClientId()) {
-            if (!UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID",
-                    new Object[] {Integer.parseInt(form.getClientId())})) {
-                //補足：数値に対する自動フォーマット(自動的にカンマ編集される)を避けるため、Integerを明示的に文字列に変換している。
+            if (!DomaDaoRepository.get(ClientDao.class)
+                                  .exists(Integer.parseInt(form.getClientId()))) {
                 throw new ApplicationException(
                         MessageUtil.createMessage(MessageLevel.ERROR, "errors.nothing.client",
                                 Client.class.getSimpleName(),
@@ -100,11 +102,12 @@ public class ProjectAction {
      * @return HTTPレスポンス
      */
     @OnDoubleSubmission
+    @Transactional
     public HttpResponse create(HttpRequest request, ExecutionContext context) {
         final Project project = SessionUtil.delete(context, "project");
 
-        UniversalDao.insert(project);
-
+        DomaDaoRepository.get(ProjectDao.class)
+                         .insert(project);
         return new HttpResponse("redirect://completeOfCreate");
     }
 
@@ -126,17 +129,20 @@ public class ProjectAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
+    @Transactional
     public HttpResponse backToNew(HttpRequest request, ExecutionContext context) {
         Project project = SessionUtil.get(context, "project");
         ProjectDto dto = BeanUtil.createAndCopy(ProjectDto.class, project);
 
         if (dto.hasClientId()) {
             // 入力画面に戻る際に顧客データが見つからない場合はデータ不整合なので、
-            // NoDataException を発生させてシステムエラーとする。
+            // org.seasar.doma.jdbc.NoResultException を発生させてシステムエラーとする。
             // ※ example アプリは顧客データのメンテナンス機能がないのでこの対応とするが、
             //   通常業務で削除されることが想定される場合はシステムエラーとはせずにユーザーへの通知が必要。
-            Client client = UniversalDao.findById(Client.class, dto.getClientId());
-            dto.setClientName(client.getClientName());
+
+            final String clientName = DomaDaoRepository.get(ClientDao.class)
+                                                       .getName(dto.getClientId());
+            dto.setClientName(clientName);
         }
 
         context.setRequestScopedVar("form", dto);
@@ -151,6 +157,7 @@ public class ProjectAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
+    @Transactional
     public HttpResponse index(HttpRequest request, ExecutionContext context) {
 
         // 初期表示時点でのページ番号とソートキーを設定する
@@ -176,6 +183,7 @@ public class ProjectAction {
      */
     @InjectForm(form = ProjectSearchForm.class, prefix = "searchForm", name = "searchForm")
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/project/index.jsp")
+    @Transactional
     public HttpResponse list(HttpRequest request, ExecutionContext context) {
 
         ProjectSearchForm searchForm = context.getRequestScopedVar("searchForm");
@@ -202,10 +210,8 @@ public class ProjectAction {
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
         searchCondition.setUserId(userContext.getUserId());
 
-        return UniversalDao
-                .page(searchCondition.getPageNumber())
-                .per(20L)
-                .findAllBySqlFile(Project.class, "SEARCH_PROJECT", searchCondition);
+        return DomaDaoRepository.get(ProjectDao.class)
+                                .searchProject(searchCondition, searchCondition.getPageNumber(), 20);
     }
 
     /**
@@ -217,6 +223,7 @@ public class ProjectAction {
      */
     @InjectForm(form = ProjectSearchForm.class, prefix = "searchForm", name = "searchForm")
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/project/index.jsp")
+    @Transactional
     public HttpResponse download(HttpRequest request, ExecutionContext context) {
 
         ProjectSearchForm searchForm = context.getRequestScopedVar("searchForm");
@@ -225,17 +232,16 @@ public class ProjectAction {
         searchCondition.setUserId(userContext.getUserId());
 
         final Path path = TempFileUtil.createTempFile();
-        try (DeferredEntityList<ProjectDownloadDto> searchList = (DeferredEntityList<ProjectDownloadDto>) UniversalDao
-                .defer()
-                .findAllBySqlFile(ProjectDownloadDto.class, "SEARCH_PROJECT", searchCondition);
-             ObjectMapper<ProjectDownloadDto> mapper = ObjectMapperFactory.create(ProjectDownloadDto.class,
-                     TempFileUtil.newOutputStream(path))) {
 
-            for (ProjectDownloadDto dto : searchList) {
-                mapper.write(dto);
-            }
+        try (ObjectMapper<ProjectDownloadDto> mapper = ObjectMapperFactory.create(ProjectDownloadDto.class,
+                TempFileUtil.newOutputStream(path))) {
+
+            DomaDaoRepository.get(ProjectDao.class)
+                             .searchProjectToDownload(searchCondition, results -> {
+                                 results.forEach(mapper::write);
+                                 return null;
+                             });
         }
-
         FileResponse response = new FileResponse(path.toFile(), true);
         response.setContentType("text/csv; charset=Shift_JIS");
         response.setContentDisposition("プロジェクト一覧.csv");
@@ -251,13 +257,15 @@ public class ProjectAction {
      * @return HTTPレスポンス
      */
     @InjectForm(form = ProjectTargetForm.class)
+    @Transactional
     public HttpResponse show(HttpRequest request, ExecutionContext context) {
         ProjectTargetForm targetForm = context.getRequestScopedVar("form");
         context.setRequestScopedVar("projectId", targetForm.getProjectId());
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
 
-        ProjectDto dto = UniversalDao.findBySqlFile(ProjectDto.class, "FIND_BY_PROJECT",
-                new Object[] {targetForm.getProjectId(), userContext.getUserId()});
+        final ProjectDto dto = DomaDaoRepository.get(ProjectDao.class)
+                                                .findByIdAndUserId(Integer.valueOf(targetForm.getProjectId()),
+                                                        userContext.getUserId());
 
         // 出力情報をリクエストスコープにセット
         context.setRequestScopedVar("form", dto);
@@ -279,6 +287,7 @@ public class ProjectAction {
      * @return HTTPレスポンス
      */
     @InjectForm(form = ProjectTargetForm.class)
+    @Transactional
     public HttpResponse edit(HttpRequest request, ExecutionContext context) {
 
         // 更新処理で使用するセッション情報を削除しておく。
@@ -287,8 +296,10 @@ public class ProjectAction {
         ProjectTargetForm targetForm = context.getRequestScopedVar("form");
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
 
-        ProjectDto dto = UniversalDao.findBySqlFile(ProjectDto.class, "FIND_BY_PROJECT",
-                new Object[] {targetForm.getProjectId(), userContext.getUserId()});
+        final ProjectDto dto = DomaDaoRepository.get(ProjectDao.class)
+                                                .findByIdAndUserId(
+                                                        Integer.valueOf(targetForm.getProjectId()),
+                                                        userContext.getUserId());
 
         // 出力情報をリクエストスコープにセット
         context.setRequestScopedVar("form", dto);
@@ -307,13 +318,13 @@ public class ProjectAction {
      */
     @InjectForm(form = ProjectUpdateForm.class, prefix = "form")
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/project/update.jsp")
+    @Transactional
     public HttpResponse confirmOfUpdate(HttpRequest request, ExecutionContext context) {
         ProjectUpdateForm form = context.getRequestScopedVar("form");
 
         if (form.hasClientId()) {
-            if (!UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID",
-                    new Object[] {Integer.parseInt(form.getClientId())})) {
-                //補足：数値に対する自動フォーマット(自動的にカンマ編集される)を避けるため、Integerを明示的に文字列に変換している。
+            if (!DomaDaoRepository.get(ClientDao.class)
+                                  .exists(Integer.parseInt(form.getClientId()))) {
                 throw new ApplicationException(
                         MessageUtil.createMessage(MessageLevel.ERROR,
                                 "errors.nothing.client", form.getClientId()));
@@ -342,6 +353,7 @@ public class ProjectAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
+    @Transactional
     public HttpResponse backToEdit(HttpRequest request, ExecutionContext context) {
 
         Project project = SessionUtil.get(context, "project");
@@ -350,11 +362,12 @@ public class ProjectAction {
 
         if (dto.hasClientId()) {
             // 入力画面に戻る際に顧客データが見つからない場合はデータ不整合なので、
-            // NoDataException を発生させてシステムエラーとする。
+            // org.seasar.doma.jdbc.NoResultException を発生させてシステムエラーとする。
             // ※ example アプリは顧客データのメンテナンス機能がないのでこの対応とするが、
             //   通常業務で削除されることが想定される場合はシステムエラーとはせずにユーザーへの通知が必要。
-            Client client = UniversalDao.findById(Client.class, dto.getClientId());
-            dto.setClientName(client.getClientName());
+            final String clientName = DomaDaoRepository.get(ClientDao.class)
+                                                       .getName(dto.getClientId());
+            dto.setClientName(clientName);
         }
         context.setRequestScopedVar("form", dto);
 
@@ -369,9 +382,12 @@ public class ProjectAction {
      * @return HTTPレスポンス
      */
     @OnDoubleSubmission
+    @Transactional
     public HttpResponse update(HttpRequest request, ExecutionContext context) {
         final Project targetProject = SessionUtil.delete(context, "project");
-        UniversalDao.update(targetProject);
+
+        DomaDaoRepository.get(ProjectDao.class)
+                         .update(targetProject);
 
         return new HttpResponse("redirect://completeOfUpdate");
     }
@@ -396,9 +412,11 @@ public class ProjectAction {
      * @return HTTPレスポンス
      */
     @OnDoubleSubmission
+    @Transactional
     public HttpResponse delete(HttpRequest request, ExecutionContext context) {
         final Project project = SessionUtil.delete(context, "project");
-        UniversalDao.delete(project);
+        DomaDaoRepository.get(ProjectDao.class)
+                         .delete(project);
 
         return new HttpResponse("redirect://completeOfDelete");
     }
@@ -414,4 +432,5 @@ public class ProjectAction {
         WebUtil.notifyMessages(context, MessageUtil.createMessage(MessageLevel.INFO, "success.delete.project"));
         return new HttpResponse("/WEB-INF/view/project/completeOfChange.jsp");
     }
+
 }
