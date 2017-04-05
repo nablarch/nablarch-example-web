@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import nablarch.common.dao.UniversalDao;
+import com.nablarch.example.app.entity.Project;
+import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
+import com.nablarch.example.app.web.dao.ClientDao;
+import com.nablarch.example.app.web.dao.ProjectDao;
+import com.nablarch.example.app.web.dto.ProjectUploadDto;
 import nablarch.common.databind.InvalidDataFormatException;
 import nablarch.common.databind.ObjectMapper;
 import nablarch.common.databind.ObjectMapperFactory;
@@ -25,11 +29,8 @@ import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
 import nablarch.fw.web.upload.PartInfo;
 import nablarch.fw.web.upload.util.UploadHelper;
-
-import com.nablarch.example.app.entity.Client;
-import com.nablarch.example.app.entity.Project;
-import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
-import com.nablarch.example.app.web.dto.ProjectUploadDto;
+import nablarch.integration.doma.DomaDaoRepository;
+import nablarch.integration.doma.Transactional;
 
 /**
  * プロジェクトファイルアップロード一括登録機能。
@@ -58,6 +59,7 @@ public class ProjectUploadAction {
      */
     @OnDoubleSubmission
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/projectUpload/create.jsp")
+    @Transactional
     public HttpResponse upload(HttpRequest request, ExecutionContext context) {
 
         // アップロードファイルの取得
@@ -72,7 +74,7 @@ public class ProjectUploadAction {
         List<Project> projects = readFileAndValidate(partInfo, userContext);
 
         // DBへ一括登録する
-        insertProjects(projects);
+        DomaDaoRepository.get(ProjectDao.class).bulkInsert(projects);
 
         // 完了メッセージの追加
         WebUtil.notifyMessages(context, MessageUtil.createMessage(MessageLevel.INFO, "success.upload.project", projects.size()));
@@ -171,8 +173,8 @@ public class ProjectUploadAction {
             // 顧客IDが正しくない場合はチェックしない。
             return true;
         }
-        return UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID",
-                new Object[] {Integer.valueOf(projectUploadDto.getClientId())});
+        return DomaDaoRepository.get(ClientDao.class)
+                .exists(Integer.valueOf(projectUploadDto.getClientId()));
     }
 
     /**
@@ -187,29 +189,6 @@ public class ProjectUploadAction {
         Project project = BeanUtil.createAndCopy(Project.class, projectUploadDto);
         project.setUserId(userId);
         return project;
-    }
-
-    /**
-     * 複数のプロジェクトエンティティを一括でデータベースに登録する。
-     *
-     * @param projects 検証済みのプロジェクトリスト
-     */
-    private void insertProjects(List<Project> projects) {
-
-        List<Project> insertProjects = new ArrayList<>();
-
-        for (Project project : projects) {
-            insertProjects.add(project);
-            // 100件ごとにbutchInsertする
-            if (insertProjects.size() >= 100) {
-                UniversalDao.batchInsert(insertProjects);
-                insertProjects.clear();
-            }
-        }
-
-        if (!insertProjects.isEmpty()) {
-            UniversalDao.batchInsert(insertProjects);
-        }
     }
 
     /**

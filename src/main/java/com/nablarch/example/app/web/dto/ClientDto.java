@@ -1,11 +1,14 @@
 package com.nablarch.example.app.web.dto;
 
+import org.seasar.doma.Entity;
+
 /**
  * 顧客検索機能のDto。
  *
  * @author Nabu Rakutaro
  *
  */
+@Entity
 public class ClientDto {
 
     /** 顧客ID */

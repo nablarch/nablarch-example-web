@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+import org.seasar.doma.BatchInsert;
 import org.seasar.doma.BatchUpdate;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Delete;
@@ -122,6 +123,14 @@ public interface ProjectDao {
      */
     @Insert
     int insert(Project project);
+
+    /**
+     * プロジェクトを一括登録する。
+     * @param projects 登録対象のプロジェクトリスト
+     * @return 登録件数
+     */
+    @BatchInsert(batchSize = 100)
+    int[] bulkInsert(List<Project> projects);
 
     /**
      * プロジェクト検索結果を保持するクラス。

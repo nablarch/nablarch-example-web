@@ -1,19 +1,22 @@
 package com.nablarch.example.app.web.action;
 
+import com.nablarch.example.app.web.dao.ClientDao;
 import com.nablarch.example.app.web.dto.ClientDto;
 import com.nablarch.example.app.web.dto.ClientSearchDto;
 import com.nablarch.example.app.web.form.ClientSearchForm;
-import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.validation.ee.ValidatorUtil;
 import nablarch.fw.web.HttpRequest;
+import nablarch.integration.doma.DomaConfig;
+import nablarch.integration.doma.DomaDaoRepository;
+import org.seasar.doma.jdbc.tx.TransactionIsolationLevel;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
- * 顧客検索API
+ * 顧客検索API。
  *
  * @author Nabu Rakutaro
  */
@@ -33,6 +36,9 @@ public class ClientAction {
         ValidatorUtil.validate(form);
 
         final ClientSearchDto condition = BeanUtil.createAndCopy(ClientSearchDto.class, form);
-        return UniversalDao.findAllBySqlFile(ClientDto.class, "SEARCH_CLIENT", condition);
+
+        return DomaConfig.singleton().getTransactionManager().requiresNew(TransactionIsolationLevel.READ_COMMITTED, () ->
+            DomaDaoRepository.get(ClientDao.class).searchClient(condition)
+        );
     }
 }

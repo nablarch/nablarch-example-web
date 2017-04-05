@@ -1,12 +1,14 @@
 package com.nablarch.example.app.web.dao;
 
+import com.nablarch.example.app.entity.Client;
+import com.nablarch.example.app.web.dto.ClientDto;
+import com.nablarch.example.app.web.dto.ClientSearchDto;
+import nablarch.integration.doma.DomaConfig;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Select;
 import org.seasar.doma.jdbc.NoResultException;
 
-import nablarch.integration.doma.DomaConfig;
-
-import com.nablarch.example.app.entity.Client;
+import java.util.List;
 
 /**
  * 顧客Dao。
@@ -24,6 +26,15 @@ public interface ClientDao {
      */
     @Select(ensureResult = true)
     Client findById(Integer id);
+
+    /**
+     * 検索条件を元に顧客情報を検索する。
+     *
+     * @param dto 検索条件
+     * @return 検索結果のリスト
+     */
+    @Select
+    List<ClientDto> searchClient(ClientSearchDto dto);
 
     /**
      * 顧客が存在しているかどうか。

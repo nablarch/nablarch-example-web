@@ -2,15 +2,14 @@ package com.nablarch.example.app.web.action;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import nablarch.common.dao.UniversalDao;
-import nablarch.core.beans.BeanUtil;
-
-import com.nablarch.example.app.entity.Industry;
+import com.nablarch.example.app.web.dao.IndustryDao;
 import com.nablarch.example.app.web.dto.IndustryDto;
+import nablarch.core.beans.BeanUtil;
+import nablarch.integration.doma.DomaConfig;
+import nablarch.integration.doma.DomaDaoRepository;
 
 /**
  * 業種検索API
@@ -26,11 +25,12 @@ public class IndustryAction {
      */
     @Produces(MediaType.APPLICATION_JSON)
     public List<IndustryDto> find() {
-        List<Industry> industries = UniversalDao.findAll(Industry.class);
+        return DomaConfig.singleton().getTransactionManager().requiresNew(() ->
+            DomaDaoRepository.get(IndustryDao.class).findAll()
+                    .stream()
+                    .map(industry -> BeanUtil.createAndCopy(IndustryDto.class, industry))
+                    .collect(Collectors.toList())
+        );
 
-        return industries
-                .stream()
-                .map(industry -> BeanUtil.createAndCopy(IndustryDto.class, industry))
-                .collect(Collectors.toList());
     }
 }
