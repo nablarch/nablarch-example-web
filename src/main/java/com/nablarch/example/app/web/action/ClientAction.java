@@ -7,9 +7,8 @@ import com.nablarch.example.app.web.form.ClientSearchForm;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.validation.ee.ValidatorUtil;
 import nablarch.fw.web.HttpRequest;
-import nablarch.integration.doma.DomaConfig;
 import nablarch.integration.doma.DomaDaoRepository;
-import org.seasar.doma.jdbc.tx.TransactionIsolationLevel;
+import nablarch.integration.doma.Transactional;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -29,6 +28,7 @@ public class ClientAction {
      * @return 顧客情報リスト
      */
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public List<ClientDto> find(HttpRequest req) {
         final ClientSearchForm form = BeanUtil.createAndCopy(ClientSearchForm.class, req.getParamMap());
 
@@ -37,8 +37,6 @@ public class ClientAction {
 
         final ClientSearchDto condition = BeanUtil.createAndCopy(ClientSearchDto.class, form);
 
-        return DomaConfig.singleton().getTransactionManager().requiresNew(TransactionIsolationLevel.READ_COMMITTED, () ->
-            DomaDaoRepository.get(ClientDao.class).searchClient(condition)
-        );
+        return DomaDaoRepository.get(ClientDao.class).searchClient(condition);
     }
 }

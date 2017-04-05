@@ -8,8 +8,8 @@ import javax.ws.rs.core.MediaType;
 import com.nablarch.example.app.web.dao.IndustryDao;
 import com.nablarch.example.app.web.dto.IndustryDto;
 import nablarch.core.beans.BeanUtil;
-import nablarch.integration.doma.DomaConfig;
 import nablarch.integration.doma.DomaDaoRepository;
+import nablarch.integration.doma.Transactional;
 
 /**
  * 業種検索API
@@ -24,13 +24,11 @@ public class IndustryAction {
      * @return 業種一覧
      */
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public List<IndustryDto> find() {
-        return DomaConfig.singleton().getTransactionManager().requiresNew(() ->
-            DomaDaoRepository.get(IndustryDao.class).findAll()
-                    .stream()
-                    .map(industry -> BeanUtil.createAndCopy(IndustryDto.class, industry))
-                    .collect(Collectors.toList())
-        );
-
+        return DomaDaoRepository.get(IndustryDao.class).findAll()
+                .stream()
+                .map(industry -> BeanUtil.createAndCopy(IndustryDto.class, industry))
+                .collect(Collectors.toList());
     }
 }
