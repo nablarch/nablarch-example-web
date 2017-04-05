@@ -9,10 +9,10 @@ INNER JOIN
     industry ON client.industry_code = industry.industry_code
 WHERE
     /*%if @isNotEmpty(dto.clientName) */
-    client_name LIKE /* @infix(dto.clientName) */''
+    client_name LIKE /* @infix(dto.clientName) */'%株式会社%'
     /*%end*/
     /*%if @isNotEmpty(dto.industryCode) */
-    AND client.industry_code = /* dto.industryCode */''
+    AND client.industry_code = /* dto.industryCode */'01'
     /*%end*/
 ORDER BY
     /*%if dto.sortId == "clientIdAsc" */
