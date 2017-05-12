@@ -20,6 +20,9 @@
                     </div>
                 </div>
                 <div class="message-area margin-top">
+                    <c:if test="${not empty uploadProjectSize}">
+                        <n:message messageId="success.upload.project" option0="${uploadProjectSize}"  />
+                    </c:if>
                     <n:errors errorCss="message-error"/>
                 </div>
                 <div class="floatClear"></div>
