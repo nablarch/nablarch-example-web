@@ -23,7 +23,7 @@
                         <n:a href="/action/project" cssClass="btn btn-raised btn-success">次へ</n:a>
                     </div>
                 </div>
-                <div class="message-area">
+                <div class="message-area message-info">
                      登録が完了しました。
                 </div>
                 <div class="title-nav">

@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="message-area">
+                <div class="message-area message-info">
                     プロジェクトの削除が完了しました。
                 </div>
                 <div class="title-nav">

@@ -21,7 +21,7 @@
                 </div>
                 <div class="message-area margin-top">
                     <c:if test="${not empty uploadProjectSize}">
-                        <n:message messageId="success.upload.project" option0="${uploadProjectSize}"  />
+                        <ul><li class="message-info"><n:message messageId="success.upload.project" option0="${uploadProjectSize}" /></li><ul>
                     </c:if>
                     <n:errors errorCss="message-error"/>
                 </div>
