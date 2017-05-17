@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>プロジェクト登録完了画面</title>
+        <title>プロジェクト変更完了画面</title>
     </head>
 
     <body>
@@ -18,22 +18,32 @@
 
             <n:form>
                 <div class="title-nav">
-                    <h1 class="page-title">プロジェクト登録完了画面</h1>
+                    <h1 class="page-title">プロジェクト変更完了画面</h1>
                     <div class="button-nav">
-                        <n:a href="/action/project" cssClass="btn btn-raised btn-success">次へ</n:a>
+                        <div class="button-block link-button-block">
+                            <n:a id="topReturnList" href="#" cssClass="btn btn-raised btn-success">次へ</n:a>
+                        </div>
                     </div>
                 </div>
                 <div class="message-area message-info">
-                     登録が完了しました。
+                    プロジェクトの更新が完了しました。
                 </div>
                 <div class="title-nav">
                     <div class="button-nav">
-                        <n:a href="/action/project" cssClass="btn btn-raised btn-success">次へ</n:a>
+                        <div class="button-block link-button-block">
+                            <n:a id="bottomReturnList" href="#" cssClass="btn btn-raised btn-success">次へ</n:a>
+                        </div>
                     </div>
                 </div>
             </n:form>
 
             <n:include path="/WEB-INF/view/common/footer.jsp" />
         </div>
+        <n:script type="text/javascript">
+            $(function(){
+                setListUrlTo("topReturnList");
+                setListUrlTo("bottomReturnList");
+            });
+        </n:script>
     </body>
 </html>

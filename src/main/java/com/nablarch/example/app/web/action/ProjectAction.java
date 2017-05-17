@@ -17,7 +17,6 @@ import nablarch.common.dao.DeferredEntityList;
 import nablarch.common.dao.UniversalDao;
 import nablarch.common.databind.ObjectMapper;
 import nablarch.common.databind.ObjectMapperFactory;
-import nablarch.common.web.WebUtil;
 import nablarch.common.web.download.FileResponse;
 import nablarch.common.web.interceptor.InjectForm;
 import nablarch.common.web.session.SessionUtil;
@@ -384,8 +383,7 @@ public class ProjectAction {
      * @return HTTPレスポンス
      */
     public HttpResponse completeOfUpdate(HttpRequest request, ExecutionContext context) {
-        WebUtil.notifyMessages(context, MessageUtil.createMessage(MessageLevel.INFO, "success.update.project"));
-        return new HttpResponse("/WEB-INF/view/project/completeOfChange.jsp");
+        return new HttpResponse("/WEB-INF/view/project/completeOfUpdate.jsp");
     }
 
     /**
@@ -411,7 +409,6 @@ public class ProjectAction {
      * @return HTTPレスポンス
      */
     public HttpResponse completeOfDelete(HttpRequest request, ExecutionContext context) {
-        WebUtil.notifyMessages(context, MessageUtil.createMessage(MessageLevel.INFO, "success.delete.project"));
-        return new HttpResponse("/WEB-INF/view/project/completeOfChange.jsp");
+        return new HttpResponse("/WEB-INF/view/project/completeOfDelete.jsp");
     }
 }

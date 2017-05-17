@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>プロジェクト変更完了画面</title>
+        <title>プロジェクト削除完了画面</title>
     </head>
 
     <body>
@@ -18,15 +18,15 @@
 
             <n:form>
                 <div class="title-nav">
-                    <h1 class="page-title">プロジェクト変更完了画面</h1>
+                    <h1 class="page-title">プロジェクト削除完了画面</h1>
                     <div class="button-nav">
                         <div class="button-block link-button-block">
                             <n:a id="topReturnList" href="#" cssClass="btn btn-raised btn-success">次へ</n:a>
                         </div>
                     </div>
                 </div>
-                <div class="message-area">
-                    <n:errors errorCss="message-error" infoCss="message-info"/>
+                <div class="message-area message-info">
+                    プロジェクトの削除が完了しました。
                 </div>
                 <div class="title-nav">
                     <div class="button-nav">
