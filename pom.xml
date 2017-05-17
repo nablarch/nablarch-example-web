@@ -226,16 +226,15 @@
     </dependency>
 
     <dependency>
-      <groupId>javax.ws.rs</groupId>
-      <artifactId>javax.ws.rs-api</artifactId>
-      <version>2.0</version>
+      <groupId>com.nablarch.integration</groupId>
+      <artifactId>nablarch-jackson-adaptor</artifactId>
+      <version>1.0.3</version>
     </dependency>
 
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>2.7.2</version>
-      <scope>compile</scope>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>javax.ws.rs-api</artifactId>
+      <version>2.0</version>
     </dependency>
 
     <dependency>
