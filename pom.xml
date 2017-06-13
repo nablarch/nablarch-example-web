@@ -5,12 +5,12 @@
   <parent>
     <groupId>com.nablarch.archetype</groupId>
     <artifactId>nablarch-archetype-parent</artifactId>
-    <version>5u9</version>
+    <version>5u10</version>
   </parent>
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
-  <version>5u9</version>
+  <version>5u10</version>
   <packaging>war</packaging>
 
   <properties>
@@ -181,7 +181,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>5u9</version>
+        <version>5u10</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -228,7 +228,6 @@
     <dependency>
       <groupId>com.nablarch.integration</groupId>
       <artifactId>nablarch-jackson-adaptor</artifactId>
-      <version>1.0.3</version>
     </dependency>
 
     <dependency>
