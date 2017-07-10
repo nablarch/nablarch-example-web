@@ -104,7 +104,7 @@ public class ProjectAction {
 
         UniversalDao.insert(project);
 
-        return new HttpResponse("redirect://completeOfCreate");
+        return new HttpResponse(303, "redirect://completeOfCreate");
     }
 
     /**
@@ -372,7 +372,7 @@ public class ProjectAction {
         final Project targetProject = SessionUtil.delete(context, "project");
         UniversalDao.update(targetProject);
 
-        return new HttpResponse("redirect://completeOfUpdate");
+        return new HttpResponse(303, "redirect://completeOfUpdate");
     }
 
     /**
@@ -398,7 +398,7 @@ public class ProjectAction {
         final Project project = SessionUtil.delete(context, "project");
         UniversalDao.delete(project);
 
-        return new HttpResponse("redirect://completeOfDelete");
+        return new HttpResponse(303, "redirect://completeOfDelete");
     }
 
     /**

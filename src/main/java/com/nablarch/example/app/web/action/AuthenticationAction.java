@@ -77,7 +77,7 @@ public class AuthenticationAction {
         SessionUtil.invalidate(context);
         LoginUserPrincipal userContext = createLoginUserContext(form.getLoginId());
         SessionUtil.put(context, "userContext", userContext, "httpSession");
-        return new HttpResponse("redirect:///action/project/index");
+        return new HttpResponse(303, "redirect:///action/project/index");
     }
 
     /**
@@ -111,7 +111,7 @@ public class AuthenticationAction {
     public HttpResponse logout(HttpRequest request, ExecutionContext context) {
         SessionUtil.invalidate(context);
 
-        return new HttpResponse("redirect:///action/login");
+        return new HttpResponse(303, "redirect:///action/login");
     }
 
 }
