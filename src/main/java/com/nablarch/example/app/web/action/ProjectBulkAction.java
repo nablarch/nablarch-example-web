@@ -164,7 +164,7 @@ public class ProjectBulkAction {
         projectListDto.getProjectList()
                       .forEach(UniversalDao::update);
 
-        return new HttpResponse("redirect://completeOfUpdate");
+        return new HttpResponse(303, "redirect://completeOfUpdate");
     }
 
     /**

@@ -10,7 +10,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
-  <version>5u10</version>
+  <version>5u11</version>
   <packaging>war</packaging>
 
   <properties>
@@ -203,6 +203,7 @@
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-fw-web</artifactId>
+      <version>1.4.2</version>
     </dependency>
 
     <dependency>
