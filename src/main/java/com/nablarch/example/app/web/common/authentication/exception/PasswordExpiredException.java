@@ -1,6 +1,6 @@
 package com.nablarch.example.app.web.common.authentication.exception;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 
 /**
@@ -18,10 +18,10 @@ public class PasswordExpiredException extends AuthenticationException {
     private final String userId;
 
     /** パスワード有効期限 */
-    private final Date passwordExpirationDate;
+    private final LocalDate passwordExpirationDate;
 
     /** 業務日付 */
-    private final Date businessDate;
+    private final LocalDate businessDate;
 
     /**
      * コンストラクタ。
@@ -29,7 +29,7 @@ public class PasswordExpiredException extends AuthenticationException {
      * @param passwordExpirationDate パスワードの有効期限
      * @param businessDate 業務日付
      */
-    public PasswordExpiredException(String userId, Date passwordExpirationDate, Date businessDate) {
+    public PasswordExpiredException(String userId, LocalDate passwordExpirationDate, LocalDate businessDate) {
         this.userId = userId;
         this.businessDate = businessDate;
         this.passwordExpirationDate = passwordExpirationDate;
@@ -47,7 +47,7 @@ public class PasswordExpiredException extends AuthenticationException {
      * パスワード有効期限を取得する。
      * @return パスワード有効期限
      */
-    public Date getPasswordExpirationDate() {
+    public LocalDate getPasswordExpirationDate() {
         return passwordExpirationDate;
     }
 
@@ -55,7 +55,7 @@ public class PasswordExpiredException extends AuthenticationException {
      * 業務日付を取得する。
      * @return 業務日付
      */
-    public Date getBusinessDate() {
+    public LocalDate getBusinessDate() {
         return businessDate;
     }
 }

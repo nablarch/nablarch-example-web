@@ -6,6 +6,10 @@ import nablarch.common.web.tag.YYYYMMDDFormatter;
 
 import javax.servlet.jsp.PageContext;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
+import java.time.temporal.Temporal;
 import java.util.Date;
 
 /**
@@ -30,9 +34,13 @@ public class ExampleDateTimeFormatter implements ValueFormatter {
 
     @Override
     public String format(PageContext pageContext, String name, Object value, String pattern) {
-        return value instanceof Date
-                ? dateTimeFormatter.format(pageContext, name, value, pattern)
-                : yyyymmddFormatter.format(pageContext, name, value, pattern);
+        if (value instanceof Date) {
+            return dateTimeFormatter.format(pageContext, name, value, pattern);
+        } else if (value instanceof ChronoLocalDate) {
+            return ((ChronoLocalDate) value).format(java.time.format.DateTimeFormatter.ofPattern(pattern));
+        } else {
+            return yyyymmddFormatter.format(pageContext, name, value, pattern);
+        }
     }
 
     /**

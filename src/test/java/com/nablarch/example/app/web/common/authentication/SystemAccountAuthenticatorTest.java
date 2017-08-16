@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import nablarch.core.repository.SystemRepository;
 import nablarch.core.repository.di.DiContainer;
 import nablarch.core.repository.di.config.xml.XmlComponentDefinitionLoader;
 import nablarch.core.util.DateUtil;
+import nablarch.integration.jsr310.util.DateTimeUtil;
 
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.After;
@@ -331,8 +333,8 @@ public class SystemAccountAuthenticatorTest {
             fail("エラーが発生するので、ここは通過しない");
         } catch (PasswordExpiredException e) {
             assertThat(e.getUserId(), is("1"));
-            assertThat(e.getPasswordExpirationDate(), is(DateUtil.getDate("20130804")));
-            assertThat(DateUtil.getParsedDate(e.getBusinessDate().toString(), "yyyy-MM-dd HH:mm:ss.S"), is(DateUtil.getDate("20130805")));
+            assertThat(e.getPasswordExpirationDate(), is(DateTimeUtil.getLocalDate("20130804")));
+            assertThat(e.getBusinessDate(), is(LocalDate.of(2013, 8, 5)));
         }
     }
 
