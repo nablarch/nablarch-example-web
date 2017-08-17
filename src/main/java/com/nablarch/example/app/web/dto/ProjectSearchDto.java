@@ -2,7 +2,7 @@ package com.nablarch.example.app.web.dto;
 
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * プロジェクト検索のDto
@@ -24,16 +24,16 @@ public class ProjectSearchDto implements Serializable {
     private String[] projectClass;
 
     /** プロジェクト開始日付(FROM） */
-    private Date projectStartDateBegin;
+    private LocalDate projectStartDateBegin;
 
     /** プロジェクト開始日付(TO） */
-    private Date projectStartDateEnd;
+    private LocalDate projectStartDateEnd;
 
     /** プロジェクト終了日付（FROM) */
-    private Date projectEndDateBegin;
+    private LocalDate projectEndDateBegin;
 
     /** プロジェクト終了日付（TO) */
-    private Date projectEndDateEnd;
+    private LocalDate projectEndDateEnd;
 
     /** 顧客ID */
     private Integer clientId;
@@ -109,7 +109,7 @@ public class ProjectSearchDto implements Serializable {
      * projectStartDateBeginを返却する。
      * @return projectStartDateBegin
      */
-    public Date getProjectStartDateBegin() {
+    public LocalDate getProjectStartDateBegin() {
         return projectStartDateBegin;
     }
 
@@ -117,7 +117,7 @@ public class ProjectSearchDto implements Serializable {
      * projectStartDateBeginを設定する。
      * @param projectStartDateBegin プロジェクト開始日（From）
      */
-    public void setProjectStartDateBegin(Date projectStartDateBegin) {
+    public void setProjectStartDateBegin(LocalDate projectStartDateBegin) {
         this.projectStartDateBegin = projectStartDateBegin;
     }
 
@@ -125,7 +125,7 @@ public class ProjectSearchDto implements Serializable {
      * projectStartDateEndを返却する。
      * @return projectStartDateEnd
      */
-    public Date getProjectStartDateEnd() {
+    public LocalDate getProjectStartDateEnd() {
         return projectStartDateEnd;
     }
 
@@ -133,7 +133,7 @@ public class ProjectSearchDto implements Serializable {
      * projectStartDateEndを設定する。
      * @param projectStartDateEnd プロジェクト開始日（To）
      */
-    public void setProjectStartDateEnd(Date projectStartDateEnd) {
+    public void setProjectStartDateEnd(LocalDate projectStartDateEnd) {
         this.projectStartDateEnd = projectStartDateEnd;
     }
 
@@ -141,7 +141,7 @@ public class ProjectSearchDto implements Serializable {
      * projectEndDateBeginを返却する。
      * @return projectEndDateBegin
      */
-    public Date getProjectEndDateBegin() {
+    public LocalDate getProjectEndDateBegin() {
         return projectEndDateBegin;
     }
 
@@ -149,7 +149,7 @@ public class ProjectSearchDto implements Serializable {
      * projectEndDateBeginを設定する。
      * @param projectEndDateBegin プロジェクト終了日（From)
      */
-    public void setProjectEndDateBegin(Date projectEndDateBegin) {
+    public void setProjectEndDateBegin(LocalDate projectEndDateBegin) {
         this.projectEndDateBegin = projectEndDateBegin;
     }
 
@@ -157,7 +157,7 @@ public class ProjectSearchDto implements Serializable {
      * projectEndDateEndを返却する。
      * @return projectEndDateEnd
      */
-    public Date getProjectEndDateEnd() {
+    public LocalDate getProjectEndDateEnd() {
         return projectEndDateEnd;
     }
 
@@ -165,7 +165,7 @@ public class ProjectSearchDto implements Serializable {
      * projectEndDateEndを設定する。
      * @param projectEndDateEnd プロジェクト終了日（To）
      */
-    public void setProjectEndDateEnd(Date projectEndDateEnd) {
+    public void setProjectEndDateEnd(LocalDate projectEndDateEnd) {
         this.projectEndDateEnd = projectEndDateEnd;
     }
 

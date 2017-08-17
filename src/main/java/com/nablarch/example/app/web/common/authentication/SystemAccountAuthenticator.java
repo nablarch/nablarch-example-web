@@ -1,7 +1,6 @@
 package com.nablarch.example.app.web.common.authentication;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.time.LocalDate;
 
 import nablarch.common.dao.NoDataException;
 import nablarch.common.dao.UniversalDao;
@@ -11,6 +10,7 @@ import nablarch.core.db.statement.SqlPStatement;
 import nablarch.core.db.transaction.SimpleDbTransactionExecutor;
 import nablarch.core.db.transaction.SimpleDbTransactionManager;
 import nablarch.core.util.DateUtil;
+import nablarch.integration.jsr310.util.DateTimeUtil;
 
 import com.nablarch.example.app.entity.SystemAccount;
 import com.nablarch.example.app.web.common.authentication.encrypt.PasswordEncryptor;
@@ -98,7 +98,7 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
         }
 
         // 有効期限は日付単位で管理しているので、現在日時から時間を切り捨てた日付を使用する。
-        Date sysDate = new Timestamp(DateUtil.getDate(SystemTimeUtil.getDateString()).getTime());
+        LocalDate sysDate = DateTimeUtil.getLocalDate(DateUtil.getDate(SystemTimeUtil.getDateString()));
         final SystemAccount account;
         try {
             account = UniversalDao.findBySqlFile(
@@ -123,7 +123,7 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
      * @throws UserIdLockedException ユーザIDがロックされている場合。この例外がスローされる場合は、まだ認証を実施していない。
      * @throws PasswordExpiredException パスワードが有効期限切れの場合。この例外がスローされる場合は、古いパスワードによる認証に成功している。
      */
-    private void authenticate(SystemAccount account, String password, Date businessDate)
+    private void authenticate(SystemAccount account, String password, LocalDate businessDate)
         throws AuthenticationFailedException, UserIdLockedException, PasswordExpiredException {
 
         if (account.isUserIdLocked()) {
@@ -169,7 +169,7 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
      * @param businessDate 判定基準日（yyyyMMdd）
      * @return パスワードが有効期限切れの場合　true
      */
-    private boolean isExpiredPassword(SystemAccount account, Date businessDate) {
+    private boolean isExpiredPassword(SystemAccount account, LocalDate businessDate) {
         return businessDate.compareTo(account.getPasswordExpirationDate()) > 0;
     }
 
