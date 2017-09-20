@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.nablarch.archetype</groupId>
     <artifactId>nablarch-archetype-parent</artifactId>
-    <version>5u10</version>
+    <version>5u11</version>
   </parent>
 
   <groupId>com.nablarch.example</groupId>
@@ -196,7 +196,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>5u10</version>
+        <version>5u11</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -218,7 +218,6 @@
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-fw-web</artifactId>
-      <version>1.4.2</version>
     </dependency>
 
     <dependency>
@@ -244,13 +243,11 @@
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-core-jdbc</artifactId>
-      <version>1.3.0</version>
     </dependency>
     
     <dependency>
       <groupId>com.nablarch.integration</groupId>
       <artifactId>nablarch-jsr310-adaptor</artifactId>
-      <version>0.0.1</version>
     </dependency>
 
     <dependency>
