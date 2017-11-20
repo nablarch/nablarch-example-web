@@ -180,10 +180,10 @@
     </profile>
 
     <profile>
-      <id>travis</id>
+      <id>dev-deploy</id>
       <distributionManagement>
         <site>
-          <id>travis</id>
+          <id>dev-deploy</id>
           <url>${develop_test_report_url}</url>
         </site>
       </distributionManagement>
