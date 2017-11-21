@@ -10,10 +10,10 @@ $(function () {
   
   var contextPath = (function () {
     var path = $('#context-path').val();
-    if (path === '') {
-      return ''
+    if (path) {
+      return path;
     } else {
-      return '/' + path;
+      return '';
     }
   })();
 
