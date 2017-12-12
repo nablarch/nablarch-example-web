@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.nablarch.profile:nablarch-web:5u13">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/profile/nablarch-web/5u13/nablarch-web-5u13.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/profile/nablarch-web/5u13/nablarch-web-5u13-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/profile/nablarch-web/5u13/nablarch-web-5u13-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
