@@ -49,9 +49,7 @@ public class AuthenticationAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
-    @OnErrors({
-            @OnError(type = ApplicationException.class, path = "/WEB-INF/view/login/index.jsp"),
-    })
+    @OnError(type = ApplicationException.class, path = "/WEB-INF/view/login/index.jsp")
     public HttpResponse login(HttpRequest request, ExecutionContext context) {
 
         final LoginForm form = BeanUtil.createAndCopy(LoginForm.class, request.getParamMap());
