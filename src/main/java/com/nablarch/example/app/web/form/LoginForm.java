@@ -2,7 +2,6 @@ package com.nablarch.example.app.web.form;
 
 import java.io.Serializable;
 
-import nablarch.core.validation.PropertyName;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
 
@@ -40,7 +39,6 @@ public class LoginForm implements Serializable {
      * ログインIDを設定する。
      * @param loginId ログインID
      */
-    @PropertyName("ログインID")
     public void setLoginId(String loginId) {
         this.loginId = loginId;
     }
@@ -57,7 +55,6 @@ public class LoginForm implements Serializable {
      * パスワードを設定する。
      * @param userPassword パスワード
      */
-    @PropertyName("パスワード")
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
