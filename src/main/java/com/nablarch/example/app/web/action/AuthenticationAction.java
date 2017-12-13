@@ -51,7 +51,6 @@ public class AuthenticationAction {
      */
     @OnErrors({
             @OnError(type = ApplicationException.class, path = "/WEB-INF/view/login/index.jsp"),
-            @OnError(type = AuthenticationException.class, path = "/WEB-INF/view/login/index.jsp")
     })
     public HttpResponse login(HttpRequest request, ExecutionContext context) {
 
