@@ -53,7 +53,7 @@ public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
      * バリデーションエラーのメッセージをボディ部に持つレスポンスを生成する。
      *
      * @param ae バリデーションエラーの例外
-     * @return 構築舌レスポンス
+     * @return 構築したレスポンス
      */
     private HttpResponse createResponseBody(final ApplicationException ae) {
         final HttpResponse response = new HttpResponse(400);
@@ -112,7 +112,7 @@ public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
          *
          * @return プロパティ名
          */
-        private String getPropertyName() {
+        public String getPropertyName() {
             return propertyName;
         }
 
@@ -121,7 +121,7 @@ public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
          *
          * @return エラーメッセージ
          */
-        private String getMessage() {
+        public String getMessage() {
             return message;
         }
     }
