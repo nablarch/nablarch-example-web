@@ -112,7 +112,7 @@ public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
          *
          * @return プロパティ名
          */
-        private String getPropertyName() {
+        public String getPropertyName() {
             return propertyName;
         }
 
@@ -121,7 +121,7 @@ public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
          *
          * @return エラーメッセージ
          */
-        private String getMessage() {
+        public String getMessage() {
             return message;
         }
     }
