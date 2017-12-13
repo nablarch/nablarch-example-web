@@ -53,7 +53,7 @@ public class RestfulErrorResponseBuilder extends ErrorResponseBuilder {
      * バリデーションエラーのメッセージをボディ部に持つレスポンスを生成する。
      *
      * @param ae バリデーションエラーの例外
-     * @return 構築舌レスポンス
+     * @return 構築したレスポンス
      */
     private HttpResponse createResponseBody(final ApplicationException ae) {
         final HttpResponse response = new HttpResponse(400);
