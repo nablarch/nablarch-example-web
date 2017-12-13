@@ -2,7 +2,6 @@ package com.nablarch.example.app.web.form;
 
 import java.io.Serializable;
 
-import nablarch.core.validation.PropertyName;
 import nablarch.core.validation.ee.Required;
 
 /**
@@ -34,7 +33,6 @@ public class ProjectTargetForm implements Serializable {
      * @param projectId 設定するプロジェクトID
      *
      */
-    @PropertyName("プロジェクトID")
     public void setProjectId(String projectId) {
         this.projectId = projectId;
     }

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import nablarch.core.util.StringUtil;
-import nablarch.core.validation.PropertyName;
 import nablarch.core.validation.ee.Domain;
 
 /**
@@ -47,7 +46,6 @@ public class ClientSearchForm implements Serializable {
      *
      * @param clientName 設定したい顧客名。
      */
-    @PropertyName("顧客名 ")
     public void setClientName(String clientName) {
         this.clientName = clientName;
     }
@@ -66,7 +64,6 @@ public class ClientSearchForm implements Serializable {
      *
      * @param industryCode 設定したい業種。
      */
-    @PropertyName("業種")
     public void setIndustryCode(String industryCode) {
         this.industryCode = industryCode;
     }
@@ -85,7 +82,6 @@ public class ClientSearchForm implements Serializable {
      *
      * @param sortKey 設定したい 並び順項目。
      */
-    @PropertyName("並び順項目")
     public void setSortKey(String sortKey) {
         this.sortKey = sortKey;
     }
@@ -104,7 +100,6 @@ public class ClientSearchForm implements Serializable {
      *
      * @param sortDir 設定したい並び順。
      */
-    @PropertyName("並び順")
     public void setSortDir(String sortDir) {
         this.sortDir = sortDir;
     }
