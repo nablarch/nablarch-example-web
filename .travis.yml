@@ -14,7 +14,7 @@ script:
   && chmod +x $HOME/build-script/travis-ci/*.sh
 - $HOME/build-script/travis-ci/prepare_travis_settings.sh
 - $HOME/build-script/travis-ci/gsp-gen.sh -p gsp
-- $HOME/build-script/travis-ci/build-nablarch.sh -m nodeploy -p development
+- $HOME/build-script/travis-ci/build-nablarch.sh -p development
 - travis_wait 30 $HOME/build-script/travis-ci/upload-test-report.sh -p dev-deploy
 notifications:
   slack:
