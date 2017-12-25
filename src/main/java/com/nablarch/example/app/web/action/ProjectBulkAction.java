@@ -3,7 +3,6 @@ package com.nablarch.example.app.web.action;
 import java.util.List;
 import java.util.Objects;
 
-import com.nablarch.example.app.web.common.code.ProjectSortKey;
 import com.nablarch.example.app.web.dto.ProjectListDto;
 import com.nablarch.example.app.web.form.ProjectBulkForm;
 
@@ -46,7 +45,6 @@ public class ProjectBulkAction {
 
         // 初期表示時の検索条件を設定
         ProjectSearchForm searchForm = new ProjectSearchForm();
-        searchForm.setSortKey(ProjectSortKey.NAME.getCode());
         searchForm.setPageNumber("1");
         context.setRequestScopedVar("searchForm", searchForm);
 

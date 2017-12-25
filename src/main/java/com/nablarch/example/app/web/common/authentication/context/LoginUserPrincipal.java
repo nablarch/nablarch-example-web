@@ -1,7 +1,7 @@
 package com.nablarch.example.app.web.common.authentication.context;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * ログインユーザー情報
@@ -22,7 +22,7 @@ public class LoginUserPrincipal implements Serializable {
     private String kanjiName;
 
     /** 最終ログイン日時 */
-    private LocalDateTime lastLoginDateTime;
+    private Date lastLoginDateTime;
 
     /**
      * ユーザIDを取得する。
@@ -65,7 +65,7 @@ public class LoginUserPrincipal implements Serializable {
      *
      * @return 最終ログイン日時
      */
-    public LocalDateTime getLastLoginDateTime() {
+    public Date getLastLoginDateTime() {
         return lastLoginDateTime;
     }
 
@@ -74,7 +74,7 @@ public class LoginUserPrincipal implements Serializable {
      *
      * @param lastLoginDateTime 最終ログイン日時
      */
-    public void setLastLoginDateTime(LocalDateTime lastLoginDateTime) {
+    public void setLastLoginDateTime(Date lastLoginDateTime) {
         this.lastLoginDateTime = lastLoginDateTime;
     }
 

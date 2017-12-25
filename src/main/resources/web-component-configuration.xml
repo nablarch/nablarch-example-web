@@ -10,10 +10,7 @@
   <!-- jsr310 -->
   <import file="JSR310.xml" />
   
-  <component name="dialect" class="nablarch.core.db.dialect.H2Dialect">
-    <property name="attributeConverterFactory" ref="attributeConverter" />
-  </component>
-  
+  <component name="dialect" class="nablarch.core.db.dialect.H2Dialect" />
 
   <!-- 環境設定ファイル -->
   <config-file file="env.config" />

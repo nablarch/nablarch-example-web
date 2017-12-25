@@ -115,9 +115,6 @@
                   <goal>load-data</goal>
                   <goal>export-schema</goal>
                 </goals>
-                <configuration>
-                  <useJSR310>true</useJSR310>
-                </configuration>
               </execution>
             </executions>
           </plugin>
