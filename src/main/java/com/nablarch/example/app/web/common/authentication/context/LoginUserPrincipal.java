@@ -1,7 +1,6 @@
 package com.nablarch.example.app.web.common.authentication.context;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**

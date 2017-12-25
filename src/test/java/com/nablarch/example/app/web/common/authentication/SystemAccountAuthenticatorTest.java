@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +21,6 @@ import nablarch.core.repository.SystemRepository;
 import nablarch.core.repository.di.DiContainer;
 import nablarch.core.repository.di.config.xml.XmlComponentDefinitionLoader;
 import nablarch.core.util.DateUtil;
-import nablarch.integration.jsr310.util.DateTimeUtil;
 
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.After;

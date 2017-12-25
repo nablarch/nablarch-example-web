@@ -1,6 +1,5 @@
 package com.nablarch.example.app.web.common.authentication;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import nablarch.common.dao.NoDataException;
@@ -11,7 +10,6 @@ import nablarch.core.db.statement.SqlPStatement;
 import nablarch.core.db.transaction.SimpleDbTransactionExecutor;
 import nablarch.core.db.transaction.SimpleDbTransactionManager;
 import nablarch.core.util.DateUtil;
-import nablarch.integration.jsr310.util.DateTimeUtil;
 
 import com.nablarch.example.app.entity.SystemAccount;
 import com.nablarch.example.app.web.common.authentication.encrypt.PasswordEncryptor;
