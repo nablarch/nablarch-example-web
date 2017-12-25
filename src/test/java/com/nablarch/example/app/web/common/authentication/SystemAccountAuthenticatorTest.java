@@ -333,8 +333,8 @@ public class SystemAccountAuthenticatorTest {
             fail("エラーが発生するので、ここは通過しない");
         } catch (PasswordExpiredException e) {
             assertThat(e.getUserId(), is("1"));
-            assertThat(e.getPasswordExpirationDate(), is(DateTimeUtil.getLocalDate("20130804")));
-            assertThat(e.getBusinessDate(), is(LocalDate.of(2013, 8, 5)));
+            assertThat(e.getPasswordExpirationDate(), is(DateUtil.getDate("20130804")));
+            assertThat(e.getBusinessDate(), is(DateUtil.getDate("20130805")));
         }
     }
 

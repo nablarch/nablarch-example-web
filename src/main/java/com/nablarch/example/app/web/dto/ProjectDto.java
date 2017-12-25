@@ -1,7 +1,7 @@
 package com.nablarch.example.app.web.dto;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * プロジェクト情報のDto
@@ -26,10 +26,10 @@ public class ProjectDto implements Serializable {
     private String projectClass;
 
     /** プロジェクト開始日付 */
-    private LocalDate projectStartDate;
+    private Date projectStartDate;
 
     /** プロジェクト終了日付 */
-    private LocalDate projectEndDate;
+    private Date projectEndDate;
 
     /** 顧客ID */
     private Integer clientId;
@@ -132,7 +132,7 @@ public class ProjectDto implements Serializable {
      * プロジェクト開始日付を取得する。
      * @return プロジェクト開始日付
      */
-    public LocalDate getProjectStartDate() {
+    public Date getProjectStartDate() {
         return projectStartDate;
     }
 
@@ -140,7 +140,7 @@ public class ProjectDto implements Serializable {
      * プロジェクト開始日付を設定する。
      * @param projectStartDate プロジェクト開始日付
      */
-    public void setProjectStartDate(LocalDate projectStartDate) {
+    public void setProjectStartDate(Date projectStartDate) {
         this.projectStartDate = projectStartDate;
     }
 
@@ -148,7 +148,7 @@ public class ProjectDto implements Serializable {
      * プロジェクト終了日付を取得する。
      * @return プロジェクト終了日付
      */
-    public LocalDate getProjectEndDate() {
+    public Date getProjectEndDate() {
         return projectEndDate;
     }
 
@@ -156,7 +156,7 @@ public class ProjectDto implements Serializable {
      * プロジェクト終了日付を設定する。
      * @param projectEndDate プロジェクト終了日付
      */
-    public void setProjectEndDate(LocalDate projectEndDate) {
+    public void setProjectEndDate(Date projectEndDate) {
         this.projectEndDate = projectEndDate;
     }
 

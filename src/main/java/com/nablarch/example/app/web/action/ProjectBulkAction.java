@@ -46,7 +46,6 @@ public class ProjectBulkAction {
 
         // 初期表示時の検索条件を設定
         ProjectSearchForm searchForm = new ProjectSearchForm();
-        searchForm.setSortKey(ProjectSortKey.NAME.getCode());
         searchForm.setPageNumber("1");
         context.setRequestScopedVar("searchForm", searchForm);
 
