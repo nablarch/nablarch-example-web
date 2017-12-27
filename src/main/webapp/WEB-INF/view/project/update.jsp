@@ -25,7 +25,7 @@
                     <span class="page-title">プロジェクト変更画面</span>
                     <div class="button-nav">
                         <n:forInputPage>
-                            <n:a href="/action/project/show/${form.projectId}" cssClass="btn btn-raised btn-default">戻る</n:a>
+                            <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-raised btn-default">戻る</n:a>
                             <n:submit value="削除" uri="#" id="topDeleteButton" cssClass="btn btn-raised btn-danger" allowDoubleSubmission="false" type="button" />
                             <n:submit value="更新" uri="#" id="topUpdateButton" cssClass="btn btn-raised btn-success" type="button" />
                         </n:forInputPage>
