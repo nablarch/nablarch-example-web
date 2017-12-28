@@ -280,7 +280,7 @@
                 <div class="title-nav page-footer">
                     <div class="button-nav">
                         <n:forInputPage>
-                            <n:a href="/action/project/show/${form.projectId}" cssClass="btn btn-raised btn-default">戻る</n:a>
+                            <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-raised btn-default">戻る</n:a>
                             <n:submit value="削除" uri="/action/project/delete" id="bottomDeleteButton" cssClass="btn btn-raised btn-danger" allowDoubleSubmission="false" type="button" />
                             <n:submit value="更新" uri="/action/project/confirmOfUpdate" id="bottomUpdateButton" cssClass="btn btn-raised btn-success" type="button" />
                         </n:forInputPage>
