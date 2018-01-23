@@ -25,8 +25,6 @@ import nablarch.core.beans.BeanUtil;
 import nablarch.core.message.ApplicationException;
 import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
-import nablarch.core.repository.di.DiContainer;
-import nablarch.core.repository.di.config.xml.XmlComponentDefinitionLoader;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
@@ -239,10 +237,7 @@ public class ProjectAction {
 
         FileResponse response = new FileResponse(path.toFile(), true);
         response.setContentType("text/csv; charset=Shift_JIS");
-
-        XmlComponentDefinitionLoader loader = new XmlComponentDefinitionLoader( "web-boot.xml");
-        DiContainer container = new DiContainer(loader);
-        response.setContentDisposition(container.getComponentByName("nablarch.download.filename"));
+        response.setContentDisposition("プロジェクト一覧.csv");
 
         return response;
     }
