@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="web" name="Web">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/env/dev/webapp/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/gsp-target/generated-sources/entity" />
+          <root url="file://$MODULE_DIR$/src/env/dev/resources" />
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/target/generated-sources/entity" />
+        </sourceRoots>
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -10,6 +29,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/entity" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -25,10 +45,10 @@
     <orderEntry type="library" name="Maven: com.nablarch.framework:nablarch-fw-web-extension:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.nablarch.framework:nablarch-core-dataformat:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: com.nablarch.framework:nablarch-fw-web-tag:1.0.7" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: taglibs:standard:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.nablarch.framework:nablarch-common-code:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: com.nablarch.framework:nablarch-common-exclusivecontrol:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.nablarch.framework:nablarch-common-auth:1.1.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: taglibs:standard:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.nablarch.framework:nablarch-common-jdbc:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.nablarch.framework:nablarch-common-dao:1.4.1" level="project" />
     <orderEntry type="library" name="Maven: com.nablarch.framework:nablarch-common-databind:1.2.0" level="project" />
