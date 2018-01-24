@@ -13,9 +13,9 @@
   <component name="dialect" class="nablarch.core.db.dialect.H2Dialect" />
 
   <!-- 環境設定ファイル -->
-  <config-file file="env.config" />
-  <config-file file="common.config" />
-  <config-file file="RegistrationPdfFile.config" />
+  <config-file file="env.properties" />
+  <config-file file="common.properties" />
+  <config-file file="RegistrationPdfFile.properties" />
 
   <!-- バリデーション -->
   <import file="com/nablarch/example/app/core/validation.xml" />
