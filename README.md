@@ -36,7 +36,7 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 まず、データベースのセットアップ及びエンティティクラスの作成を行います。以下のコマンドを実行してください。
 
     $cd nablarch-example-web
-    $mvn -P gsp generate-resources
+    $mvn generate-resources
   
 実行に成功すると、以下のようなログがコンソールに出力され、nablarch-example-webディレクトリの下にgsp-targetディレクトリが作成されます。
 
@@ -54,7 +54,7 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 
 次に、アプリケーションをビルドします。以下のコマンドを実行してください。
 
-    $mvn clean compile
+    $mvn compile
     
 実行に成功すると、以下のようなログがコンソールに出力されます。
 
