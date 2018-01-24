@@ -92,20 +92,4 @@
     <error-code>503</error-code>
     <location>/WEB-INF/view/common/errorPages/serviceUnavailableError.jsp</location>
   </error-page>
-
-  <!-- tldを指定する場合はコメントアウト
-  <jsp-config>
-      <taglib>
-          <taglib-uri>http://tis.co.jp/nablarch</taglib-uri>
-          <taglib-location>/WEB-INF/tld/nablarch.tld</taglib-location>
-      </taglib>
-  </jsp-config>
-  -->
-  <!-- ローカル環境ではdatasourceは使用しない -->
-  <!-- <resource-ref>
-    <description>Oracle Datasource</description>
-    <res-ref-name>jdbc/oracle</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref> -->
 </web-app>

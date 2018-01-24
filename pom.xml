@@ -20,7 +20,8 @@
     <!-- gsp-dba-maven-pluginが使用するデータベース設定 -->
     <db.adminUser>SAMPLE</db.adminUser>
     <db.user>NABLARCH_EXAMPLE</db.user>
-    
+
+    <webxml.path>src/main/webapp/WEB-INF/web.xml</webxml.path>
   </properties>
   
   <!--
@@ -28,54 +29,6 @@
     複数のプロファイルを同時に指定してはならない。
   -->
   <profiles>
-
-    <!-- 開発環境 -->
-    <profile>
-      <id>development</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <!-- 環境設定ファイル自動生成ツールで指定している環境名 -->
-        <env.name>開発環境</env.name>
-        <!-- Mavenの環境別リソースのディレクトリ名 -->
-        <env.dir>dev</env.dir>
-        <env.classifier>dev</env.classifier>
-        <finalName>${project.artifactId}-${project.version}</finalName>
-        <!-- 使用するweb.xmlのパス -->
-        <webxml.path>src/env/dev/webapp/WEB-INF/web.xml</webxml.path>
-      </properties>
-      <dependencies>
-        <dependency>
-          <groupId>com.nablarch.framework</groupId>
-          <artifactId>nablarch-fw-web-hotdeploy</artifactId>
-        </dependency>
-        <dependency>
-          <groupId>com.h2database</groupId>
-          <artifactId>h2</artifactId>
-          <version>1.4.192</version>
-          <scope>runtime</scope>
-        </dependency>
-        <dependency>
-          <groupId>commons-dbcp</groupId>
-          <artifactId>commons-dbcp</artifactId>
-          <version>1.4</version>
-          <scope>runtime</scope>
-        </dependency>
-      </dependencies>
-    </profile>
-
-    <!-- 本番環境 -->
-    <profile>
-      <id>production</id>
-      <properties>
-        <envName>本番環境</envName>
-        <envDir>production</envDir>
-        <env.classifier>production</env.classifier>
-        <webxml.path>src/main/webapp/WEB-INF/web.xml</webxml.path>
-      </properties>
-    </profile>
-
     <profile>
       <id>dev-deploy</id>
       <distributionManagement>
@@ -85,7 +38,6 @@
         </site>
       </distributionManagement>
     </profile>
-
   </profiles>
 
   <dependencyManagement>
@@ -188,11 +140,19 @@
       <groupId>org.apache.geronimo.specs</groupId>
       <artifactId>geronimo-jpa_2.0_spec</artifactId>
     </dependency>
-
-    <!-- ホットデプロイ用 -->
+    
     <dependency>
-      <groupId>com.nablarch.framework</groupId>
-      <artifactId>nablarch-fw-web-hotdeploy</artifactId>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.4.196</version>
+      <scope>runtime</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+      <version>1.4</version>
+      <scope>runtime</scope>
     </dependency>
 
     <!-- TEST -->
@@ -248,22 +208,11 @@
   </dependencies>
 
   <build>
-    <finalName>${finalName}</finalName>
     <resources>
-      <resource>
-        <directory>${env.resources}</directory>
-      </resource>
       <resource>
         <directory>src/main/resources</directory>
       </resource>
-      <resource>
-        <directory>src/main/java</directory>
-        <includes>
-          <include>**/*.sql</include>
-        </includes>
-      </resource>
     </resources>
-
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -331,12 +280,6 @@
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <webXml>${webxml.path}</webXml>
-          <classifier>${env.classifier}</classifier>
-          <archive>
-            <manifestEntries>
-              <Target-Environment>${env.name}</Target-Environment>
-            </manifestEntries>
-          </archive>
         </configuration>
       </plugin>
       <plugin>
@@ -373,16 +316,14 @@
           </servers>
         </configuration>
       </plugin>
-      <!-- ================ここから任意で使用するツールの設定================ -->
       <!-- カバレッジ取得 -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <!-- 0.7.3以降のJaCoCoではリクエスト単体テストのカバレッジを計測できない。
-          Jenkinsとの連携にはJaCoCoプラグインの1系を使用する(2系はJaCoCo0.7.4以降が必須) -->
+        <version>0.8.0</version>
         <configuration>
           <excludes>
-          <exclude>**/com/nablarch/example/app/entity/*</exclude>
+            <exclude>**/com/nablarch/example/app/entity/*</exclude>
           </excludes>
         </configuration>
       </plugin>
@@ -411,6 +352,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.0</version>
       </plugin>
     </plugins>
   </reporting>
