@@ -14,7 +14,6 @@
   <import file="nablarch/test/http-request-test.xml"/>
 
   <!-- メインを上書きする設定-->
-  <import file="override_dev.xml"/>
   <import file="override_test.xml"/>
 
   <!-- HTML5の仕様で記述しているため既存のHTMLチェッカを外す -->

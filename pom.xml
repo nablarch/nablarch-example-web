@@ -2,12 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.nablarch.archetype</groupId>
-    <artifactId>nablarch-archetype-parent</artifactId>
-    <version>5u13</version>
-  </parent>
-
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
   <version>5u13</version>
@@ -15,167 +9,22 @@
 
   <properties>
     <scheme>画面オンライン</scheme>
-    <!-- 環境ごとのリソースディレクトリ(プロファイルにより切り替わる) -->
-    <env.resources>${project.basedir}/src/env/${env.dir}/resources</env.resources>
 
     <!-- 利用するJavaのバージョン -->
-    <java.version>1.8</java.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- gsp-dba-maven-pluginが使用するデータベース設定 -->
-    <nablarch.db.jdbcDriver>org.h2.Driver</nablarch.db.jdbcDriver>
-    <nablarch.db.url>jdbc:h2:./h2/db/nablarch_example</nablarch.db.url>
-    <nablarch.db.adminUser>SAMPLE</nablarch.db.adminUser>
-    <nablarch.db.adminPassword>SAMPLE</nablarch.db.adminPassword>
-    <nablarch.db.user>NABLARCH_EXAMPLE</nablarch.db.user>
-    <nablarch.db.password>NABLARCH_EXAMPLE</nablarch.db.password>
-    <nablarch.db.schema>PUBLIC</nablarch.db.schema>
-    <!-- gsp-dba-maven-pluginが読み込むファイルのパス -->
-    <dba.erdFile>src/main/resources/entity/h2.edm</dba.erdFile>
-    <dba.dataDirectory>src/test/resources/data/h2</dba.dataDirectory>
-    <!-- maven-gsp-dba-pluginでEntityクラスを生成するパッケージ名。 -->
-    <dba.entity.rootPackage>com.nablarch.example.app</dba.entity.rootPackage>
-    <dba.entity.entityPackage>entity</dba.entity.entityPackage>
+    <db.adminUser>SAMPLE</db.adminUser>
+    <db.user>NABLARCH_EXAMPLE</db.user>
+
+    <webxml.path>src/main/webapp/WEB-INF/web.xml</webxml.path>
   </properties>
-
-  <!--
-    このプロファイルは環境を指定するものであり、相互に排他的である。
-    複数のプロファイルを同時に指定してはならない。
-  -->
+  
   <profiles>
-
-    <!-- 開発環境 -->
-    <profile>
-      <id>development</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <!-- 環境設定ファイル自動生成ツールで指定している環境名 -->
-        <env.name>開発環境</env.name>
-        <!-- Mavenの環境別リソースのディレクトリ名 -->
-        <env.dir>dev</env.dir>
-        <env.classifier>dev</env.classifier>
-        <finalName>${project.artifactId}-${project.version}</finalName>
-        <!-- 使用するweb.xmlのパス -->
-        <webxml.path>src/env/dev/webapp/WEB-INF/web.xml</webxml.path>
-      </properties>
-      <dependencies>
-        <dependency>
-          <groupId>com.nablarch.framework</groupId>
-          <artifactId>nablarch-fw-web-hotdeploy</artifactId>
-        </dependency>
-        <dependency>
-          <groupId>com.h2database</groupId>
-          <artifactId>h2</artifactId>
-          <version>1.4.192</version>
-          <scope>runtime</scope>
-        </dependency>
-        <dependency>
-          <groupId>commons-dbcp</groupId>
-          <artifactId>commons-dbcp</artifactId>
-          <version>1.4</version>
-          <scope>runtime</scope>
-        </dependency>
-      </dependencies>
-    </profile>
-
-    <!-- gsp-dba-plugin -->
-    <profile>
-      <id>gsp</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <build>
-        <directory>${dba.gsp-target-dir}</directory>
-        <plugins>
-          <plugin>
-            <groupId>jp.co.tis.gsp</groupId>
-            <artifactId>gsp-dba-maven-plugin</artifactId>
-            <version>4.3.0</version>
-            <dependencies>
-              <!-- プロジェクトで使用するDB製品にあわせたJDBCドライバに上書きする -->
-              <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>1.4.192</version>
-                <scope>runtime</scope>
-              </dependency>
-            </dependencies>
-            <executions>
-              <execution>
-                <id>default-cli</id>
-                <phase>generate-resources</phase>
-                <goals>
-                  <goal>generate-ddl</goal>
-                  <goal>execute-ddl</goal>
-                  <goal>generate-entity</goal>
-                  <goal>load-data</goal>
-                  <goal>export-schema</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-install-plugin</artifactId>
-            <version>${version.plugins.install}</version>
-            <executions>
-              <!-- gsp-dba-maven-pluginで生成したdumpファイルをinstallするための設定 -->
-              <execution>
-                <id>default-cli</id>
-                <goals>
-                  <goal>install-file</goal>
-                </goals>
-                <configuration>
-                  <file>${dba.gsp-target-dir}/output/${dba.testDataArtifactId}-${dba.dump.version}.jar</file>
-                  <groupId>${project.groupId}</groupId>
-                  <version>${dba.dump.version}</version>
-                  <artifactId>${dba.testDataArtifactId}</artifactId>
-                  <packaging>jar</packaging>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-deploy-plugin</artifactId>
-            <version>${version.plugins.deploy}</version>
-            <executions>
-              <!-- gsp-dba-maven-pluginで生成したdumpファイルをdeployするための設定 -->
-              <execution>
-                <id>default-cli</id>
-                <goals>
-                  <goal>deploy-file</goal>
-                </goals>
-                <configuration>
-                  <file>${dba.gsp-target-dir}/output/${dba.testDataArtifactId}-${dba.dump.version}.jar</file>
-                  <groupId>${project.groupId}</groupId>
-                  <version>${dba.dump.version}</version>
-                  <artifactId>${dba.testDataArtifactId}</artifactId>
-                  <repositoryId>${project.distributionManagement.repository.id}</repositoryId>
-                  <url>${project.distributionManagement.repository.url}</url>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <!-- 本番環境 -->
-    <profile>
-      <id>production</id>
-      <properties>
-        <envName>本番環境</envName>
-        <envDir>production</envDir>
-        <env.classifier>production</env.classifier>
-        <webxml.path>src/main/webapp/WEB-INF/web.xml</webxml.path>
-      </properties>
-    </profile>
-
     <profile>
       <id>dev-deploy</id>
       <distributionManagement>
@@ -185,7 +34,6 @@
         </site>
       </distributionManagement>
     </profile>
-
   </profiles>
 
   <dependencyManagement>
@@ -288,11 +136,19 @@
       <groupId>org.apache.geronimo.specs</groupId>
       <artifactId>geronimo-jpa_2.0_spec</artifactId>
     </dependency>
-
-    <!-- ホットデプロイ用 -->
+    
     <dependency>
-      <groupId>com.nablarch.framework</groupId>
-      <artifactId>nablarch-fw-web-hotdeploy</artifactId>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.4.196</version>
+      <scope>runtime</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+      <version>1.4</version>
+      <scope>runtime</scope>
     </dependency>
 
     <!-- TEST -->
@@ -348,34 +204,78 @@
   </dependencies>
 
   <build>
-    <finalName>${finalName}</finalName>
     <resources>
-      <resource>
-        <directory>${env.resources}</directory>
-      </resource>
       <resource>
         <directory>src/main/resources</directory>
       </resource>
-      <resource>
-        <directory>src/main/java</directory>
-        <includes>
-          <include>**/*.sql</include>
-        </includes>
-      </resource>
     </resources>
-
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.6.2</version>
+      </plugin>
+      <plugin>
+        <groupId>jp.co.tis.gsp</groupId>
+        <artifactId>gsp-dba-maven-plugin</artifactId>
+        <version>4.3.0</version>
+        <configuration>
+          <driver>org.h2.Driver</driver>
+          <url>jdbc:h2:./h2/db/nablarch_example</url>
+          <adminUser>${db.adminUser}</adminUser>
+          <adminPassword>${db.adminUser}</adminPassword>
+          <user>${db.user}</user>
+          <password>${db.user}</password>
+          <schema>PUBLIC</schema>
+          <useAccessor>true</useAccessor>
+          <rootPackage>com.nablarch.example.app</rootPackage>
+          <entityPackageName>entity</entityPackageName>
+          <dataDirectory>src/test/resources/data/h2</dataDirectory>
+          <erdFile>src/main/resources/entity/h2.edm</erdFile>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.192</version>
+            <scope>runtime</scope>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>default-cli</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>generate-ddl</goal>
+              <goal>execute-ddl</goal>
+              <goal>generate-entity</goal>
+              <goal>load-data</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- gsp-dba-maven-pluginで自動生成したソースをビルド時に使用するための設定 -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals><goal>add-source</goal></goals>
+            <configuration>
+              <sources>
+                <source>${project.build.directory}/generated-sources/entity</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <webXml>${webxml.path}</webXml>
-          <classifier>${env.classifier}</classifier>
-          <archive>
-            <manifestEntries>
-              <Target-Environment>${env.name}</Target-Environment>
-            </manifestEntries>
-          </archive>
         </configuration>
       </plugin>
       <plugin>
@@ -412,21 +312,14 @@
           </servers>
         </configuration>
       </plugin>
-      <!-- ================ここから任意で使用するツールの設定================ -->
-      <!-- 自動生成されたEntityをビルド対象に組み込む -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-      </plugin>
       <!-- カバレッジ取得 -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <!-- 0.7.3以降のJaCoCoではリクエスト単体テストのカバレッジを計測できない。
-          Jenkinsとの連携にはJaCoCoプラグインの1系を使用する(2系はJaCoCo0.7.4以降が必須) -->
+        <version>0.8.0</version>
         <configuration>
           <excludes>
-          <exclude>**/com/nablarch/example/app/entity/*</exclude>
+            <exclude>**/com/nablarch/example/app/entity/*</exclude>
           </excludes>
         </configuration>
       </plugin>
@@ -455,6 +348,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.0</version>
       </plugin>
     </plugins>
   </reporting>
