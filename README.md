@@ -38,13 +38,9 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
     $cd nablarch-example-web
     $mvn generate-resources
   
-実行に成功すると、以下のようなログがコンソールに出力され、nablarch-example-webディレクトリの下にgsp-targetディレクトリが作成されます。
+実行に成功すると、以下のようなログがコンソールに出力され、nablarch-example-webディレクトリの下にtargetディレクトリが作成されます。
 
     (中略)
-    [INFO] --- gsp-dba-maven-plugin:3.2.0:export-schema (default-cli) @ nablarch-example-app-web ---
-    [INFO] PUBLICスキーマのExportを開始します。:c:\example\nablarch-example-web\gsp-target\output\PUBLIC.dmp
-    [INFO] Building jar: c:\example\nablarch-example-web\gsp-target\output\nablarch-example-app-web-testdata-1.0.1.jar
-    [INFO] PUBLICスキーマのExport完了
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
     [INFO] ------------------------------------------------------------------------
@@ -59,9 +55,6 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 実行に成功すると、以下のようなログがコンソールに出力されます。
 
     (中略)
-    [INFO] --- maven-compiler-plugin:3.2:compile (default-compile) @ nablarch-example-app-web ---
-    [INFO] Changes detected - recompiling the module!
-    [INFO] Compiling 56 source files to c:\example\nablarch-example-web\target\classes
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
     [INFO] ------------------------------------------------------------------------
