@@ -24,10 +24,6 @@
     <webxml.path>src/main/webapp/WEB-INF/web.xml</webxml.path>
   </properties>
   
-  <!--
-    このプロファイルは環境を指定するものであり、相互に排他的である。
-    複数のプロファイルを同時に指定してはならない。
-  -->
   <profiles>
     <profile>
       <id>dev-deploy</id>
