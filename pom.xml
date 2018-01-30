@@ -4,7 +4,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
-  <version>5u13</version>
+  <version>5u13-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <properties>
