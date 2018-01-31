@@ -9,6 +9,7 @@ import com.nablarch.example.app.web.dto.ProjectListDto;
 import com.nablarch.example.app.web.dto.ProjectSearchDto;
 import nablarch.common.web.session.SessionUtil;
 import nablarch.core.beans.BeanUtil;
+import nablarch.core.util.DateUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.test.Assertion;
 import org.junit.Test;
@@ -217,6 +218,16 @@ public class ProjectBulkActionRequestTest extends ExampleHttpRequestTestTemplate
                 p1.setProjectClass("s");
                 p1.setClientId(1);
                 p1.setVersion(0L);
+                p1.setProjectStartDate(DateUtil.getDate("20180101"));
+                p1.setProjectEndDate(DateUtil.getDate("20180102"));
+                p1.setProjectManager("まねーじゃ１");
+                p1.setProjectLeader("りーだー１");
+                p1.setNote("あ");
+                p1.setUserId(105);
+                p1.setSales(1);
+                p1.setCostOfGoodsSold(2);
+                p1.setSga(3);
+                p1.setAllocationOfCorpExpenses(4);
                 projectListDto.getProjectList().add(p1);
 
                 Project p2 = new Project();
@@ -226,6 +237,16 @@ public class ProjectBulkActionRequestTest extends ExampleHttpRequestTestTemplate
                 p2.setProjectClass("s");
                 p2.setClientId(1);
                 p2.setVersion(0L);
+                p2.setProjectStartDate(DateUtil.getDate("20180201"));
+                p2.setProjectEndDate(DateUtil.getDate("20180228"));
+                p2.setProjectManager("まねーじゃ２");
+                p2.setProjectLeader("りーだー２");
+                p2.setNote("い");
+                p2.setUserId(105);
+                p2.setSales(10);
+                p2.setCostOfGoodsSold(20);
+                p2.setSga(30);
+                p2.setAllocationOfCorpExpenses(40);
                 projectListDto.getProjectList().add(p2);
                 SessionUtil.put(context, "projectListDto", projectListDto);
             }
