@@ -108,6 +108,11 @@ public class ProjectBulkActionRequestTest extends ExampleHttpRequestTestTemplate
                 p1.setProjectClass("s");
                 p1.setClientId(1);
                 p1.setVersion(0L);
+                p1.setSales(1);
+                p1.setCostOfGoodsSold(2);
+                p1.setSga(3);
+                p1.setAllocationOfCorpExpenses(4);
+                
                 projectListDto.getProjectList().add(p1);
 
                 Project p2 = new Project();
@@ -117,6 +122,10 @@ public class ProjectBulkActionRequestTest extends ExampleHttpRequestTestTemplate
                 p2.setProjectClass("s");
                 p2.setClientId(1);
                 p2.setVersion(0L);
+                p2.setSales(10);
+                p2.setCostOfGoodsSold(20);
+                p2.setSga(30);
+                p2.setAllocationOfCorpExpenses(40);
                 projectListDto.getProjectList().add(p2);
                 SessionUtil.put(context, "projectListDto", projectListDto);
             }
