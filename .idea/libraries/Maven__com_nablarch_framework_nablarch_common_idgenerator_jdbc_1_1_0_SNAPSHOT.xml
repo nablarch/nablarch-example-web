@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.nablarch.framework:nablarch-common-idgenerator-jdbc:1.1.0-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-idgenerator-jdbc/1.1.0-SNAPSHOT/nablarch-common-idgenerator-jdbc-1.1.0-20180131.044919-3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-idgenerator-jdbc/1.1.0-SNAPSHOT/nablarch-common-idgenerator-jdbc-1.1.0-20180202.001339-5.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-idgenerator-jdbc/1.1.0-SNAPSHOT/nablarch-common-idgenerator-jdbc-1.1.0-20180131.044919-3-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-idgenerator-jdbc/1.1.0-SNAPSHOT/nablarch-common-idgenerator-jdbc-1.1.0-20180202.001339-5-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-idgenerator-jdbc/1.1.0-SNAPSHOT/nablarch-common-idgenerator-jdbc-1.1.0-20180131.044919-3-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-idgenerator-jdbc/1.1.0-SNAPSHOT/nablarch-common-idgenerator-jdbc-1.1.0-20180202.001339-5-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
