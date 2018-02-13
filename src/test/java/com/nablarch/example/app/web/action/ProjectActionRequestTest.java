@@ -5,6 +5,7 @@ import com.nablarch.example.app.test.ExampleTestCaseInfo;
 import com.nablarch.example.app.test.advice.SignedInAdvice;
 import com.nablarch.example.app.test.ExampleHttpRequestTestTemplate;
 import nablarch.common.web.session.SessionUtil;
+import nablarch.core.util.DateUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.test.Assertion;
 import nablarch.test.core.file.FileSupport;
@@ -95,7 +96,9 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
-                SessionUtil.put(context, "project", createMinimalProject());
+                Project project = createMinimalProject();
+                project.setProjectStartDate(DateUtil.getDate("20180101"));
+                SessionUtil.put(context, "project", project);
             }
 
             @Override
@@ -270,7 +273,9 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
-                SessionUtil.put(context, "project", createMinimalProject());
+                Project project = createMinimalProject();
+                project.setProjectStartDate(DateUtil.getDate("20180101"));
+                SessionUtil.put(context, "project", project);
             }
 
             @Override

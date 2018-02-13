@@ -108,6 +108,8 @@ public class ProjectBulkActionRequestTest extends ExampleHttpRequestTestTemplate
                 p1.setProjectType("development");
                 p1.setProjectClass("s");
                 p1.setClientId(1);
+                p1.setProjectStartDate(DateUtil.getDate("20180101"));
+                p1.setProjectEndDate(DateUtil.getDate("20180102"));
                 p1.setVersion(0L);
                 p1.setSales(1);
                 p1.setCostOfGoodsSold(2);
@@ -122,6 +124,8 @@ public class ProjectBulkActionRequestTest extends ExampleHttpRequestTestTemplate
                 p2.setProjectType("development");
                 p2.setProjectClass("s");
                 p2.setClientId(1);
+                p1.setProjectStartDate(DateUtil.getDate("20180102"));
+                p1.setProjectEndDate(DateUtil.getDate("20180103"));
                 p2.setVersion(0L);
                 p2.setSales(10);
                 p2.setCostOfGoodsSold(20);
@@ -171,6 +175,8 @@ public class ProjectBulkActionRequestTest extends ExampleHttpRequestTestTemplate
                 p1.setProjectType("development");
                 p1.setProjectClass("s");
                 p1.setClientId(1);
+                p1.setProjectStartDate(DateUtil.getDate("20180101"));
+                p1.setProjectEndDate(DateUtil.getDate("20180102"));
                 p1.setVersion(0L);
                 projectListDto.getProjectList().add(p1);
                 SessionUtil.put(context, "projectListDto", projectListDto);
