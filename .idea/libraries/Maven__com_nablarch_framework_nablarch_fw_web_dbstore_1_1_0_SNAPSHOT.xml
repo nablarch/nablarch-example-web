@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.nablarch.framework:nablarch-fw-web-dbstore:1.1.0-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-fw-web-dbstore/1.1.0-SNAPSHOT/nablarch-fw-web-dbstore-1.1.0-20180131.001100-2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-fw-web-dbstore/1.1.0-SNAPSHOT/nablarch-fw-web-dbstore-1.1.0-20180202.002728-5.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-fw-web-dbstore/1.1.0-SNAPSHOT/nablarch-fw-web-dbstore-1.1.0-20180131.001100-2-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-fw-web-dbstore/1.1.0-SNAPSHOT/nablarch-fw-web-dbstore-1.1.0-20180202.002728-5-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-fw-web-dbstore/1.1.0-SNAPSHOT/nablarch-fw-web-dbstore-1.1.0-20180131.001100-2-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-fw-web-dbstore/1.1.0-SNAPSHOT/nablarch-fw-web-dbstore-1.1.0-20180202.002728-5-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

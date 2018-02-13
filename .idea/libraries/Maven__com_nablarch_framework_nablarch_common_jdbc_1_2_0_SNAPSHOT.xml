@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.nablarch.framework:nablarch-common-jdbc:1.2.0-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-jdbc/1.2.0-SNAPSHOT/nablarch-common-jdbc-1.2.0-20180131.044657-3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-jdbc/1.2.0-SNAPSHOT/nablarch-common-jdbc-1.2.0-20180202.001126-5.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-jdbc/1.2.0-SNAPSHOT/nablarch-common-jdbc-1.2.0-20180131.044657-3-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-jdbc/1.2.0-SNAPSHOT/nablarch-common-jdbc-1.2.0-20180202.001126-5-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-jdbc/1.2.0-SNAPSHOT/nablarch-common-jdbc-1.2.0-20180131.044657-3-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-jdbc/1.2.0-SNAPSHOT/nablarch-common-jdbc-1.2.0-20180202.001126-5-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
