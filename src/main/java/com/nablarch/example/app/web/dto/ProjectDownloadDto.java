@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * プロジェクト情報をCSV形式でダウンロード時にDBからデータを取得する際に使用するDTO
+ * プロジェクト情報をCSV形式でダウンロード時にDBからデータを取得する際に使用するBeanクラス。
  *
  * @author Nabu Rakutaro
  */
