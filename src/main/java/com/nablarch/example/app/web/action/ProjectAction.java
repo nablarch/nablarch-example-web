@@ -6,7 +6,6 @@ import com.nablarch.example.app.web.common.authentication.context.LoginUserPrinc
 import com.nablarch.example.app.web.common.code.ProjectSortKey;
 import com.nablarch.example.app.web.common.file.TempFileUtil;
 import com.nablarch.example.app.web.dto.ProjectDownloadDto;
-import com.nablarch.example.app.web.dto.ProjectDownloadFileDto;
 import com.nablarch.example.app.web.dto.ProjectDto;
 import com.nablarch.example.app.web.dto.ProjectSearchDto;
 import com.nablarch.example.app.web.form.ProjectForm;
@@ -229,18 +228,11 @@ public class ProjectAction {
         try (DeferredEntityList<ProjectDownloadDto> searchList = (DeferredEntityList<ProjectDownloadDto>) UniversalDao
                 .defer()
                 .findAllBySqlFile(ProjectDownloadDto.class, "SEARCH_PROJECT", searchCondition);
-             ObjectMapper<ProjectDownloadFileDto> mapper = ObjectMapperFactory.create(ProjectDownloadFileDto.class,
+             ObjectMapper<ProjectDownloadDto> mapper = ObjectMapperFactory.create(ProjectDownloadDto.class,
                      TempFileUtil.newOutputStream(path))) {
 
-            for (ProjectDownloadDto projectDownloadDto : searchList) {
-                ProjectDownloadFileDto projectDownloadFileDto = BeanUtil.createAndCopy(ProjectDownloadFileDto.class, projectDownloadDto);
-                if(projectDownloadDto.getProjectStartDate() != null){
-                    projectDownloadFileDto.setProjectStartDate(FormatterUtil.format("dateTime", projectDownloadDto.getProjectStartDate()));
-                }
-                if(projectDownloadDto.getProjectEndDate() != null){
-                    projectDownloadFileDto.setProjectEndDate(FormatterUtil.format("dateTime", projectDownloadDto.getProjectEndDate()));
-                }
-                mapper.write(projectDownloadFileDto);
+            for (ProjectDownloadDto dto : searchList) {
+                mapper.write(dto);
             }
         }
 

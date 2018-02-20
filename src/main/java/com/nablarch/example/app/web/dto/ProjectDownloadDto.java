@@ -3,11 +3,29 @@ package com.nablarch.example.app.web.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import nablarch.common.databind.csv.Csv;
+import nablarch.common.databind.csv.Csv.CsvType;
+import nablarch.common.databind.csv.CsvDataBindConfig.QuoteMode;
+import nablarch.common.databind.csv.CsvFormat;
+import nablarch.core.text.FormatterUtil;
+
 /**
- * プロジェクト情報をCSV形式でダウンロード時にDBからデータを取得する際に使用するBeanクラス。
+ * プロジェクト情報をCSV形式でダウンロード時に一行分のデータをバインドするBeanクラス。
  *
  * @author Nabu Rakutaro
  */
+@Csv(headers = { "プロジェクト名", "プロジェクト種別", "プロジェクト分類",
+        "プロジェクトマネージャー", "プロジェクトリーダー", "顧客ID", "顧客名",
+        "プロジェクト開始日", "プロジェクト終了日", "備考", "売上高",
+        "売上原価", "販管費", "本社配賦" },
+        properties = { "projectName", "projectType", "projectClass",
+                "projectManager", "projectLeader", "clientId",
+                "clientName", "projectStartDateString", "projectEndDateString",
+                "note", "sales", "costOfGoodsSold", "sga", "allocationOfCorpExpenses" },
+        type = CsvType.CUSTOM)
+@CsvFormat(charset = "Shift_JIS", fieldSeparator = ',',
+        ignoreEmptyLine = true, lineSeparator = "\r\n", quote = '"',
+        quoteMode = QuoteMode.NORMAL, requiredHeader = true, emptyToNull = true)
 public class ProjectDownloadDto implements Serializable {
 
     /** シリアルバージョンUID */
@@ -169,7 +187,6 @@ public class ProjectDownloadDto implements Serializable {
 
     /**
      * プロジェクト開始日を取得する。
-     *
      * @return プロジェクト開始日
      */
     public Date getProjectStartDate() {
@@ -177,8 +194,19 @@ public class ProjectDownloadDto implements Serializable {
     }
 
     /**
+     * プロジェクト開始日を文字列で取得する。
+     * @return プロジェクト開始日（文字列）
+     */
+    public String getProjectStartDateString() {
+        String ret = null;
+        if (projectStartDate != null){
+            ret = FormatterUtil.format("dateTime", projectStartDate);
+        }
+        return ret;
+    }
+
+    /**
      * プロジェクト開始日を設定する。
-     *
      * @param projectStartDate プロジェクト開始日
      */
     public void setProjectStartDate(Date projectStartDate) {
@@ -187,7 +215,6 @@ public class ProjectDownloadDto implements Serializable {
 
     /**
      * プロジェクト終了日を取得する。
-     *
      * @return プロジェクト終了日
      */
     public Date getProjectEndDate() {
@@ -195,8 +222,19 @@ public class ProjectDownloadDto implements Serializable {
     }
 
     /**
+     * プロジェクト終了日を文字列で取得する。
+     * @return プロジェクト終了日（文字列）
+     */
+    public String getProjectEndDateString() {
+        String ret = null;
+        if (projectStartDate != null){
+            ret = FormatterUtil.format("dateTime", projectEndDate);
+        }
+        return ret;
+    }
+
+    /**
      * プロジェクト終了日を設定する。
-     *
      * @param projectEndDate プロジェクト終了日
      */
     public void setProjectEndDate(Date projectEndDate) {
