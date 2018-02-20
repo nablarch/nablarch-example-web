@@ -6,6 +6,7 @@ import com.nablarch.example.app.web.common.authentication.context.LoginUserPrinc
 import com.nablarch.example.app.web.common.code.ProjectSortKey;
 import com.nablarch.example.app.web.common.file.TempFileUtil;
 import com.nablarch.example.app.web.dto.ProjectDownloadDto;
+import com.nablarch.example.app.web.dto.ProjectDownloadFileDto;
 import com.nablarch.example.app.web.dto.ProjectDto;
 import com.nablarch.example.app.web.dto.ProjectSearchDto;
 import com.nablarch.example.app.web.form.ProjectForm;
@@ -25,6 +26,7 @@ import nablarch.core.beans.BeanUtil;
 import nablarch.core.message.ApplicationException;
 import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
+import nablarch.core.text.FormatterUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
@@ -227,11 +229,18 @@ public class ProjectAction {
         try (DeferredEntityList<ProjectDownloadDto> searchList = (DeferredEntityList<ProjectDownloadDto>) UniversalDao
                 .defer()
                 .findAllBySqlFile(ProjectDownloadDto.class, "SEARCH_PROJECT", searchCondition);
-             ObjectMapper<ProjectDownloadDto> mapper = ObjectMapperFactory.create(ProjectDownloadDto.class,
+             ObjectMapper<ProjectDownloadFileDto> mapper = ObjectMapperFactory.create(ProjectDownloadFileDto.class,
                      TempFileUtil.newOutputStream(path))) {
 
-            for (ProjectDownloadDto dto : searchList) {
-                mapper.write(dto);
+            for (ProjectDownloadDto projectDownloadDto : searchList) {
+                ProjectDownloadFileDto projectDownloadFileDto = BeanUtil.createAndCopy(ProjectDownloadFileDto.class, projectDownloadDto);
+                if(projectDownloadDto.getProjectStartDate() != null){
+                    projectDownloadFileDto.setProjectStartDate(FormatterUtil.format("dateTime", projectDownloadDto.getProjectStartDate()));
+                }
+                if(projectDownloadDto.getProjectEndDate() != null){
+                    projectDownloadFileDto.setProjectEndDate(FormatterUtil.format("dateTime", projectDownloadDto.getProjectEndDate()));
+                }
+                mapper.write(projectDownloadFileDto);
             }
         }
 

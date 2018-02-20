@@ -1,14 +1,32 @@
 package com.nablarch.example.app.web.dto;
 
+import nablarch.common.databind.csv.Csv;
+import nablarch.common.databind.csv.Csv.CsvType;
+import nablarch.common.databind.csv.CsvDataBindConfig.QuoteMode;
+import nablarch.common.databind.csv.CsvFormat;
+import nablarch.core.text.FormatterUtil;
+
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * プロジェクト情報をCSV形式でダウンロード時にDBからデータを取得する際に使用するDTO
+ * プロジェクト情報をCSV形式でダウンロード時に一行分のデータをバインドするBeanクラス。
  *
  * @author Nabu Rakutaro
  */
-public class ProjectDownloadDto implements Serializable {
+@Csv(headers = { "プロジェクト名", "プロジェクト種別", "プロジェクト分類",
+        "プロジェクトマネージャー", "プロジェクトリーダー", "顧客ID", "顧客名",
+        "プロジェクト開始日", "プロジェクト終了日", "備考", "売上高",
+        "売上原価", "販管費", "本社配賦" },
+        properties = { "projectName", "projectType", "projectClass",
+                "projectManager", "projectLeader", "clientId",
+                "clientName", "projectStartDate", "projectEndDate",
+                "note", "sales", "costOfGoodsSold", "sga", "allocationOfCorpExpenses" },
+        type = CsvType.CUSTOM)
+@CsvFormat(charset = "Shift_JIS", fieldSeparator = ',',
+        ignoreEmptyLine = true, lineSeparator = "\r\n", quote = '"',
+        quoteMode = QuoteMode.NORMAL, requiredHeader = true, emptyToNull = true)
+public class ProjectDownloadFileDto implements Serializable {
 
     /** シリアルバージョンUID */
     private static final long serialVersionUID = 1L;
@@ -35,10 +53,10 @@ public class ProjectDownloadDto implements Serializable {
     private String clientName;
 
     /** プロジェクト開始日文字列 */
-    private Date projectStartDate;
+    private String projectStartDate;
 
     /** プロジェクト終了日文字列 */
-    private Date projectEndDate;
+    private String projectEndDate;
 
     /** 備考 */
     private String note;
@@ -172,7 +190,7 @@ public class ProjectDownloadDto implements Serializable {
      *
      * @return プロジェクト開始日
      */
-    public Date getProjectStartDate() {
+    public String getProjectStartDate() {
         return projectStartDate;
     }
 
@@ -181,7 +199,7 @@ public class ProjectDownloadDto implements Serializable {
      *
      * @param projectStartDate プロジェクト開始日
      */
-    public void setProjectStartDate(Date projectStartDate) {
+    public void setProjectStartDate(String projectStartDate) {
         this.projectStartDate = projectStartDate;
     }
 
@@ -190,7 +208,7 @@ public class ProjectDownloadDto implements Serializable {
      *
      * @return プロジェクト終了日
      */
-    public Date getProjectEndDate() {
+    public String getProjectEndDate() {
         return projectEndDate;
     }
 
@@ -199,7 +217,7 @@ public class ProjectDownloadDto implements Serializable {
      *
      * @param projectEndDate プロジェクト終了日
      */
-    public void setProjectEndDate(Date projectEndDate) {
+    public void setProjectEndDate(String  projectEndDate) {
         this.projectEndDate = projectEndDate;
     }
 

@@ -8,6 +8,8 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/nablarch/framework/nablarch-common-dao/1.5.0-SNAPSHOT/nablarch-common-dao-1.5.0-20180207.012856-7-sources.jar!/" />
+      <root url="file://$PROJECT_DIR$/../nablarch-core-beans/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../nablarch-common-dao/src/main/java" />
     </SOURCES>
   </library>
 </component>
