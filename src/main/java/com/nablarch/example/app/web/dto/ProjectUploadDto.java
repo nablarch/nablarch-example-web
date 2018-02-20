@@ -76,11 +76,11 @@ public class ProjectUploadDto implements Serializable {
     private String clientName;
 
     /** プロジェクト開始日文字列 */
-    @Domain("date")
+    @Domain("dateWithSlash")
     private String projectStartDate;
 
     /** プロジェクト終了日文字列 */
-    @Domain("date")
+    @Domain("dateWithSlash")
     private String projectEndDate;
 
     /** 備考 */

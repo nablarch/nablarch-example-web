@@ -59,6 +59,10 @@ public class ExampleDomainType {
     @YYYYMMDD()
     private String date;
 
+    /** 日付(slashあり) */
+    @YYYYMMDD(allowFormat = "yyyy/MM/dd")
+    private String dateWithSlash;
+
     /** プロジェクトの一覧画面において、並び順の基準にする項目を表すコード値 */
     @CodeValue(enumClass = ProjectSortKey.class)
     private String projectAlignmentItem;
