@@ -169,10 +169,10 @@
                                                         </c:forEach>
                                                     </td>
                                                     <td>
-                                                        <n:write name="row.projectStartDate" valueFormat="exampleDateTime{yyyy/MM/dd}"/>
+                                                        <n:write value="${n:formatByDefault('dateTime', row.projectStartDate)}" />
                                                     </td>
                                                     <td>
-                                                        <n:write name="row.projectEndDate" valueFormat="exampleDateTime{yyyy/MM/dd}"/>
+                                                        <n:write value="${n:formatByDefault('dateTime', row.projectEndDate)}" />
                                                     </td>
                                                 </tr>
                                             </jsp:attribute>

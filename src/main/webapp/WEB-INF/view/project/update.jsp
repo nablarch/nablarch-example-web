@@ -137,7 +137,10 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.projectStartDate" nameAlias="form.date" valueFormat="exampleDateTime{yyyy/MM/dd}" cssClass="form-control datepicker" errorCss="input-error"/>
+                                  <n:set var="projectStartDate" name="form.projectStartDate" scope="page" />
+                                  <n:text name="form.projectStartDate" nameAlias="form.date"
+                                          value="${n:formatByDefault('dateTime', projectStartDate)}"
+                                          cssClass="form-control datepicker" errorCss="input-error" />
                                     <n:error errorCss="message-error" name="form.projectStartDate" />
                                 </div>
                             </td>
@@ -148,7 +151,10 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.projectEndDate" nameAlias="form.date" valueFormat="exampleDateTime{yyyy/MM/dd}" cssClass="form-control datepicker" errorCss="input-error" />
+                                  <n:set var="projectEndDate" name="form.projectEndDate" scope="page" />
+                                  <n:text name="form.projectEndDate" nameAlias="form.date"
+                                          value="${n:formatByDefault('dateTime', projectEndDate)}"
+                                          cssClass="form-control datepicker" errorCss="input-error" />
                                     <n:error errorCss="message-error" name="form.projectEndDate" />
                                     <n:error errorCss="message-error" name="form.validProjectPeriod" />
                                 </div>
@@ -178,7 +184,7 @@
                                 </div>
                                 </n:forInputPage>
                                 <n:forConfirmationPage>
-                                    <n:write name="form.sales" valueFormat="decimal{###,###,### 千円}" />
+                                  <n:write value="${n:format('number', form.sales, '###,###,### 千円')}" />
                                 </n:forConfirmationPage>
                             </td>
                         </tr>
@@ -195,7 +201,7 @@
                                 </div>
                                 </n:forInputPage>
                                 <n:forConfirmationPage>
-                                    <n:write name="form.costOfGoodsSold" valueFormat="decimal{###,###,### 千円}" />
+                                  <n:write value="${n:format('number', form.costOfGoodsSold, '###,###,### 千円')}" />
                                 </n:forConfirmationPage>
                             </td>
                         </tr>
@@ -212,7 +218,7 @@
                                 </div>
                                 </n:forInputPage>
                                 <n:forConfirmationPage>
-                                    <n:write name="form.sga" valueFormat="decimal{###,###,### 千円}" />
+                                  <n:write value="${n:format('number', form.sga, '###,###,### 千円')}" />
                                 </n:forConfirmationPage>
                             </td>
                         </tr>
@@ -229,7 +235,8 @@
                                 </div>
                                 </n:forInputPage>
                                 <n:forConfirmationPage>
-                                    <n:write name="form.allocationOfCorpExpenses" valueFormat="decimal{###,###,### 千円}" />
+                                  <n:write
+                                      value="${n:format('number', form.allocationOfCorpExpenses, '###,###,### 千円')}" />
                                 </n:forConfirmationPage>
                             </td>
                         </tr>
@@ -239,7 +246,7 @@
                                     売上総利益
                                 </td>
                                 <td>
-                                    <n:write name="profit.grossProfit" valueFormat="decimal{###,###,### 千円}" />
+                                  <n:write value="${n:format('number', profit.grossProfit, '###,###,### 千円')}" />
                                 </td>
                             </tr>
                             <tr>
@@ -247,7 +254,8 @@
                                     配賦前利益
                                 </td>
                                 <td>
-                                    <n:write name="profit.profitBeforeAllocation" valueFormat="decimal{###,###,### 千円}" />
+                                  <n:write
+                                      value="${n:format('number', profit.profitBeforeAllocation, '###,###,### 千円')}" />
                                 </td>
                             </tr>
                             <tr>
@@ -255,7 +263,8 @@
                                     配賦前利益率
                                 </td>
                                 <td>
-                                    <n:write name="profit.profitRateBeforeAllocation" valueFormat="decimal{##0.0 %}" />
+                                  <n:write
+                                      value="${n:format('number', profit.profitRateBeforeAllocation, '##0.0 %')}" />
                                 </td>
                             </tr>
                             <tr>
@@ -263,7 +272,7 @@
                                     営業利益
                                 </td>
                                 <td>
-                                    <n:write name="profit.operatingProfit" valueFormat="decimal{###,###,### 千円}" />
+                                  <n:write value="${n:format('number', profit.operatingProfit, '###,###,### 千円')}" />
                                 </td>
                             </tr>
                             <tr>
@@ -271,7 +280,7 @@
                                     営業利益率
                                 </td>
                                 <td>
-                                    <n:write name="profit.operatingProfitRate" valueFormat="decimal{##0.0 %}" />
+                                  <n:write value="${n:format('number', profit.operatingProfitRate, '##0.0 %')}" />
                                 </td>
                             </tr>
                         </n:forConfirmationPage>
