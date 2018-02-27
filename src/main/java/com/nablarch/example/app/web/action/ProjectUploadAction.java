@@ -183,12 +183,6 @@ public class ProjectUploadAction {
      */
     private Project createProject(ProjectUploadDto projectUploadDto, Integer userId) {
         Project project = BeanUtil.createAndCopy(Project.class, projectUploadDto);
-        if (projectUploadDto.getProjectStartDate() != null) {
-            project.setProjectStartDate(DateUtil.getParsedDate(projectUploadDto.getProjectStartDate(), "yyyy/MM/dd"));
-        }
-        if (projectUploadDto.getProjectEndDate() != null) {
-            project.setProjectEndDate(DateUtil.getParsedDate(projectUploadDto.getProjectEndDate(), "yyyy/MM/dd"));
-        }
         project.setUserId(userId);
         return project;
     }
