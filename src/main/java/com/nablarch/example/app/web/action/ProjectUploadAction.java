@@ -182,7 +182,6 @@ public class ProjectUploadAction {
      * @return 作成したプロジェクトエンティティ
      */
     private Project createProject(ProjectUploadDto projectUploadDto, Integer userId) {
-
         Project project = BeanUtil.createAndCopy(Project.class, projectUploadDto);
         project.setUserId(userId);
         return project;

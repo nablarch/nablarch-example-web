@@ -168,13 +168,25 @@
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <n:text name="bulkForm.projectList[${status.index}].projectStartDate" nameAlias="bulkForm.projectList[${status.index}].date" valueFormat="exampleDateTime{yyyy/MM/dd}" maxlength="10" cssClass="form-control datepicker" errorCss="input-error input-text"/>
+                                                            <n:set var="projectStartDate" name="bulkForm.projectList[${status.index}].projectStartDate" scope="page" />
+                                                            <n:text name="bulkForm.projectList[${status.index}].projectStartDate" 
+                                                                    nameAlias="bulkForm.projectList[${status.index}].date"
+                                                                    value="${n:formatByDefault('dateTime', projectStartDate)}"
+                                                                    maxlength="10"
+                                                                    cssClass="form-control datepicker"
+                                                                    errorCss="input-error input-text"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectStartDate" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <n:text name="bulkForm.projectList[${status.index}].projectEndDate" nameAlias="bulkForm.projectList[${status.index}].date" valueFormat="exampleDateTime{yyyy/MM/dd}" maxlength="10" cssClass="form-control datepicker" errorCss="input-error input-text"/>
+                                                            <n:set var="projectEndDate" name="bulkForm.projectList[${status.index}].projectEndDate" scope="page" />
+                                                            <n:text name="bulkForm.projectList[${status.index}].projectEndDate"
+                                                                    nameAlias="bulkForm.projectList[${status.index}].date"
+                                                                    value="${n:formatByDefault('dateTime', projectEndDate)}"
+                                                                    maxlength="10"
+                                                                    cssClass="form-control datepicker"
+                                                                    errorCss="input-error input-text"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectEndDate" />
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].validProjectPeriod" />
                                                         </div>

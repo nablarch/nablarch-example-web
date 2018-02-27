@@ -11,6 +11,7 @@ import nablarch.common.databind.csv.Csv;
 import nablarch.common.databind.csv.Csv.CsvType;
 import nablarch.common.databind.csv.CsvDataBindConfig.QuoteMode;
 import nablarch.common.databind.csv.CsvFormat;
+import nablarch.core.beans.CopyOption;
 import nablarch.core.util.StringUtil;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
@@ -76,11 +77,13 @@ public class ProjectUploadDto implements Serializable {
     private String clientName;
 
     /** プロジェクト開始日文字列 */
-    @Domain("date")
+    @Domain("dateWithSlash")
+    @CopyOption(datePattern = "yyyy/MM/dd")
     private String projectStartDate;
 
     /** プロジェクト終了日文字列 */
-    @Domain("date")
+    @Domain("dateWithSlash")
+    @CopyOption(datePattern = "yyyy/MM/dd")
     private String projectEndDate;
 
     /** 備考 */
