@@ -33,7 +33,7 @@ public class SignedInAdvice extends ExampleAdvice {
      * @param userId ユーザID
      */
     public void setUserId(Integer userId) {
-        userId = userId;
+        this.userId = userId;
     }
 
     /**
