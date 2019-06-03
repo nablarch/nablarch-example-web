@@ -11,6 +11,7 @@ import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
+import nablarch.fw.web.interceptor.OnErrors;
 
 import com.nablarch.example.app.entity.SystemAccount;
 import com.nablarch.example.app.entity.Users;
@@ -18,8 +19,6 @@ import com.nablarch.example.app.web.common.authentication.AuthenticationUtil;
 import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
 import com.nablarch.example.app.web.common.authentication.exception.AuthenticationException;
 import com.nablarch.example.app.web.form.LoginForm;
-import nablarch.fw.web.servlet.NablarchHttpServletRequestWrapper;
-import nablarch.fw.web.servlet.ServletExecutionContext;
 
 /**
  * 認証アクション。
@@ -70,15 +69,9 @@ public class AuthenticationAction {
                     MessageLevel.ERROR, "errors.login"));
         }
 
-        // 認証OKの場合、ログイン前のセッションIDを変更して、
-        // トップ画面にリダイレクトする。
-        NablarchHttpServletRequestWrapper nablarchHttpServletRequestWrapper = ((ServletExecutionContext) context).getServletRequest();
-        // リクエストされたセッションIDはまだ有効ならない場合、新しいセッションIDを作成
-        if (!nablarchHttpServletRequestWrapper.isRequestedSessionIdValid()) {
-            nablarchHttpServletRequestWrapper.getSession(true);
-        }
-        // セッションIDを変更する
-        nablarchHttpServletRequestWrapper.changeSessionId();
+        // 認証OKの場合、ログイン前のセッションを破棄後、
+        // 認証情報をセッション（新規）に格納後、トップ画面にリダイレクトする。
+        SessionUtil.invalidate(context);
         LoginUserPrincipal userContext = createLoginUserContext(form.getLoginId());
         SessionUtil.put(context, "userContext", userContext, "httpSession");
         return new HttpResponse(303, "redirect:///action/project/index");
