@@ -12,12 +12,12 @@
   <!-- データソース設定 -->
   <component name="dataSource"
              class="com.zaxxer.hikari.HikariDataSource" autowireType="None">
-    <property name="driverClassName" value="${nablarch.db.jdbcDriver}"/> 
-    <property name="jdbcUrl" value="${nablarch.db.url}"/> 
-    <property name="username" value="${nablarch.db.user}"/> 
-    <property name="password" value="${nablarch.db.password}"/> 
-    <property name="maximumPoolSize" value="${nablarch.db.maxPoolSize}"/> 
-    <property name="minimumIdle" value="${nablarch.db.initialPoolSize}"/> 
+    <property name="driverClassName" value="${nablarch.db.jdbcDriver}"/>
+    <property name="jdbcUrl"         value="${nablarch.db.url}"/>
+    <property name="username"        value="${nablarch.db.user}"/>
+    <property name="password"        value="${nablarch.db.password}"/>
+    <property name="maximumPoolSize" value="${nablarch.db.maxPoolSize}"/>
+    <property name="minimumIdle"     value="${nablarch.db.initialPoolSize}"/>
   </component>
 
 </component-configuration>
