@@ -17,7 +17,6 @@
     <property name="username"        value="${nablarch.db.user}"/>
     <property name="password"        value="${nablarch.db.password}"/>
     <property name="maximumPoolSize" value="${nablarch.db.maxPoolSize}"/>
-    <property name="minimumIdle"     value="${nablarch.db.initialPoolSize}"/>
   </component>
 
 </component-configuration>
