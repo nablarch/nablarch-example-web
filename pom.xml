@@ -4,7 +4,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
-  <version>5u14</version>
+  <version>5u15</version>
   <packaging>war</packaging>
 
   <properties>
@@ -41,7 +41,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>5u14</version>
+        <version>5u15</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -145,9 +145,9 @@
     </dependency>
     
     <dependency>
-      <groupId>commons-dbcp</groupId>
-      <artifactId>commons-dbcp</artifactId>
-      <version>1.4</version>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>3.3.1</version>
       <scope>runtime</scope>
     </dependency>
 
@@ -172,6 +172,11 @@
           <artifactId>junit</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.nablarch.framework</groupId>
+      <artifactId>nablarch-testing-jetty6</artifactId>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -218,7 +223,7 @@
       <plugin>
         <groupId>jp.co.tis.gsp</groupId>
         <artifactId>gsp-dba-maven-plugin</artifactId>
-        <version>4.3.0</version>
+        <version>4.4.0</version>
         <configuration>
           <driver>org.h2.Driver</driver>
           <url>jdbc:h2:./h2/db/nablarch_example</url>
@@ -293,6 +298,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
         <configuration>
           <!-- MANIFEST.MFでClass-Pathを指定すると、依存jar内で定義されているtaglibのuriを正しく解決してくれない。 -->
           <useManifestOnlyJar>false</useManifestOnlyJar>
@@ -316,7 +322,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.0</version>
+        <version>0.8.3</version>
         <configuration>
           <excludes>
             <exclude>**/com/nablarch/example/app/entity/*</exclude>
