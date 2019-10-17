@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.validation.constraints.AssertTrue;
 
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
 import nablarch.fw.dicontainer.web.RequestScoped;
@@ -17,6 +19,13 @@ import com.nablarch.example.app.entity.core.validation.validator.DateRangeValida
  */
 @RequestScoped
 public class ProjectForm implements Serializable {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(ProjectForm.class);
+
+    public ProjectForm() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     /** シリアルバージョンUID */
     private static final long serialVersionUID = 1L;

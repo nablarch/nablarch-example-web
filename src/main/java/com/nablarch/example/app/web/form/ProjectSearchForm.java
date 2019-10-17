@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.nablarch.example.app.web.action.ProjectAction;
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.core.util.StringUtil;
 import nablarch.core.validation.ee.Domain;
 import nablarch.fw.dicontainer.web.RequestScoped;
@@ -19,6 +22,13 @@ import nablarch.fw.dicontainer.web.RequestScoped;
  */
 @RequestScoped
 public class ProjectSearchForm extends SearchFormBase implements Serializable {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(ProjectAction.class);
+
+    public ProjectSearchForm() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     /** シリアルバージョンUID */
     private static final long serialVersionUID = 1L;
