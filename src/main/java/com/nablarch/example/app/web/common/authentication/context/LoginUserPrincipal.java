@@ -3,11 +3,14 @@ package com.nablarch.example.app.web.common.authentication.context;
 import java.io.Serializable;
 import java.util.Date;
 
+import nablarch.fw.dicontainer.web.SessionScoped;
+
 /**
  * ログインユーザー情報
  *
  * @author Nabu Rakutaro
  */
+@SessionScoped
 public class LoginUserPrincipal implements Serializable {
 
     /**

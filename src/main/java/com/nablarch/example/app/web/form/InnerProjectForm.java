@@ -7,12 +7,14 @@ import javax.validation.constraints.AssertTrue;
 import com.nablarch.example.app.entity.core.validation.validator.DateRangeValidator;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
+import nablarch.fw.dicontainer.web.RequestScoped;
 
 /**
  * プロジェクト一覧検索更新フォームの一行分のフォーム。
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class InnerProjectForm implements Serializable {
 
     /** シリアルバージョンUID */

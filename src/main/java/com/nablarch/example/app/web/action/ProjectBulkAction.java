@@ -3,6 +3,8 @@ package com.nablarch.example.app.web.action;
 import java.util.List;
 import java.util.Objects;
 
+import javax.inject.Inject;
+
 import com.nablarch.example.app.web.dto.ProjectListDto;
 import com.nablarch.example.app.web.form.ProjectBulkForm;
 
@@ -14,6 +16,7 @@ import nablarch.common.web.token.OnDoubleSubmission;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.message.ApplicationException;
 import nablarch.fw.ExecutionContext;
+import nablarch.fw.dicontainer.web.RequestScoped;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
@@ -29,7 +32,11 @@ import com.nablarch.example.app.web.form.ProjectSearchForm;
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class ProjectBulkAction {
+
+    @Inject
+    private LoginUserPrincipal userContext;
 
     /**
      * 一括更新更新初期画面を表示。
@@ -98,7 +105,6 @@ public class ProjectBulkAction {
      * @return プロジェクトのリスト
      */
     private EntityList<Project> searchProject(ProjectSearchDto searchCondition, ExecutionContext context) {
-        LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
         searchCondition.setUserId(userContext.getUserId());
 
         return UniversalDao

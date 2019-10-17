@@ -6,6 +6,7 @@ import javax.validation.constraints.AssertTrue;
 
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
+import nablarch.fw.dicontainer.web.RequestScoped;
 
 import com.nablarch.example.app.entity.core.validation.validator.DateRangeValidator;
 
@@ -14,6 +15,7 @@ import com.nablarch.example.app.entity.core.validation.validator.DateRangeValida
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class ProjectUpdateForm implements Serializable {
 
     /** シリアルバージョンUID */

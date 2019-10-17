@@ -6,6 +6,7 @@ import com.nablarch.example.app.web.form.ClientSearchForm;
 import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.validation.ee.ValidatorUtil;
+import nablarch.fw.dicontainer.web.RequestScoped;
 import nablarch.fw.web.HttpRequest;
 
 import javax.ws.rs.Produces;
@@ -17,6 +18,7 @@ import java.util.List;
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class ClientAction {
 
     /**

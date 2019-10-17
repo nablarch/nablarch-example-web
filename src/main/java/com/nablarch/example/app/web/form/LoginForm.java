@@ -4,12 +4,14 @@ import java.io.Serializable;
 
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
+import nablarch.fw.dicontainer.web.RequestScoped;
 
 /**
  * ログイン入力フォーム。
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class LoginForm implements Serializable {
 
     /**

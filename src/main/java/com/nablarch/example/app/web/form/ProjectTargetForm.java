@@ -3,12 +3,14 @@ package com.nablarch.example.app.web.form;
 import java.io.Serializable;
 
 import nablarch.core.validation.ee.Required;
+import nablarch.fw.dicontainer.web.RequestScoped;
 
 /**
  * 処理対象パラメータ。
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class ProjectTargetForm implements Serializable {
 
     /** シリアルバージョンUID */

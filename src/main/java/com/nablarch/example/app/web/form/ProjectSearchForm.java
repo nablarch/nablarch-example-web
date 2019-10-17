@@ -10,12 +10,14 @@ import javax.validation.Valid;
 
 import nablarch.core.util.StringUtil;
 import nablarch.core.validation.ee.Domain;
+import nablarch.fw.dicontainer.web.RequestScoped;
 
 /**
  * プロジェクト検索一覧フォーム
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class ProjectSearchForm extends SearchFormBase implements Serializable {
 
     /** シリアルバージョンUID */

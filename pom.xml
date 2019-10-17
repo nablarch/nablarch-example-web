@@ -30,6 +30,7 @@
       <distributionManagement>
         <site>
           <id>dev-deploy</id>
+          <!--suppress UnresolvedMavenProperty -->
           <url>${develop_test_report_url}</url>
         </site>
       </distributionManagement>
@@ -49,6 +50,23 @@
   </dependencyManagement>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.el</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.nablarch.framework</groupId>
+      <artifactId>nablarch-scoped-dicontainer</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
 
     <dependency>
       <groupId>com.nablarch.configuration</groupId>
@@ -329,6 +347,21 @@
           </excludes>
         </configuration>
       </plugin>
+      <!-- waitt pluginでエラー発生するための暫定回避策 -->
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.4.18.v20190429</version>
+        <configuration>
+          <webAppConfig>
+            <contextPath>/</contextPath>
+          </webAppConfig>
+          <httpConnector>
+            <port>9088</port>
+          </httpConnector>
+        </configuration>
+      </plugin>
+
     </plugins>
     <extensions>
       <extension>
@@ -348,7 +381,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
-          <additionalparam>-Xdoclint:none</additionalparam>
+          <additionalJOption>-Xdoclint:none</additionalJOption>
         </configuration>
       </plugin>
       <plugin>

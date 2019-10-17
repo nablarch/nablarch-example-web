@@ -1,6 +1,9 @@
 package com.nablarch.example.app.web.form;
 
 import javax.validation.Valid;
+
+import nablarch.fw.dicontainer.web.RequestScoped;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -9,6 +12,7 @@ import java.util.ArrayList;
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class ProjectBulkForm implements Serializable {
 
     /** シリアルバージョンUID */

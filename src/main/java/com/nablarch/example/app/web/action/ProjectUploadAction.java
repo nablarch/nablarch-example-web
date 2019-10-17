@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.inject.Inject;
+
 import nablarch.common.dao.UniversalDao;
 import nablarch.common.databind.InvalidDataFormatException;
 import nablarch.common.databind.ObjectMapper;
@@ -19,6 +21,7 @@ import nablarch.core.message.MessageUtil;
 import nablarch.core.util.DateUtil;
 import nablarch.core.validation.ee.ValidatorUtil;
 import nablarch.fw.ExecutionContext;
+import nablarch.fw.dicontainer.web.RequestScoped;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
@@ -35,7 +38,11 @@ import com.nablarch.example.app.web.dto.ProjectUploadDto;
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class ProjectUploadAction {
+
+    @Inject
+    private LoginUserPrincipal userContext;
 
     /**
      * 一括登録初期画面の表示。
@@ -66,9 +73,7 @@ public class ProjectUploadAction {
         }
         PartInfo partInfo = partInfoList.get(0);
 
-        LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
-
-        List<Project> projects = readFileAndValidate(partInfo, userContext);
+        List<Project> projects = readFileAndValidate(partInfo);
 
         // DBへ一括登録する
         insertProjects(projects);
@@ -85,10 +90,9 @@ public class ProjectUploadAction {
     /**
      * アップロードファイルの読み込みとバリデーションを行う。
      * @param partInfo アップロードファイルの情報
-     * @param userContext ユーザ情報
      * @return 読み込んだファイルの内容
      */
-    private List<Project> readFileAndValidate(final PartInfo partInfo, final LoginUserPrincipal userContext) {
+    private List<Project> readFileAndValidate(final PartInfo partInfo) {
         List<Message> messages = new ArrayList<>();
         List<Project> projects = new ArrayList<>();
 

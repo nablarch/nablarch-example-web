@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 
 import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;
+import nablarch.fw.dicontainer.web.RequestScoped;
 
 import com.nablarch.example.app.entity.Industry;
 import com.nablarch.example.app.web.dto.IndustryDto;
@@ -17,6 +18,7 @@ import com.nablarch.example.app.web.dto.IndustryDto;
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class IndustryAction {
 
     /**

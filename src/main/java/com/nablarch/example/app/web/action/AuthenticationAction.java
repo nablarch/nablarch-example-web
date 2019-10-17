@@ -1,5 +1,14 @@
 package com.nablarch.example.app.web.action;
 
+import javax.inject.Inject;
+
+import com.nablarch.example.app.entity.SystemAccount;
+import com.nablarch.example.app.entity.Users;
+import com.nablarch.example.app.web.common.authentication.AuthenticationUtil;
+import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
+import com.nablarch.example.app.web.common.authentication.exception.AuthenticationException;
+import com.nablarch.example.app.web.form.LoginForm;
+
 import nablarch.common.dao.UniversalDao;
 import nablarch.common.web.session.SessionUtil;
 import nablarch.core.beans.BeanUtil;
@@ -8,17 +17,11 @@ import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
 import nablarch.core.validation.ee.ValidatorUtil;
 import nablarch.fw.ExecutionContext;
+import nablarch.fw.dicontainer.web.RequestScoped;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
-import nablarch.fw.web.interceptor.OnErrors;
-
-import com.nablarch.example.app.entity.SystemAccount;
-import com.nablarch.example.app.entity.Users;
-import com.nablarch.example.app.web.common.authentication.AuthenticationUtil;
-import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
-import com.nablarch.example.app.web.common.authentication.exception.AuthenticationException;
-import com.nablarch.example.app.web.form.LoginForm;
+import nablarch.fw.web.servlet.ServletExecutionContext;
 
 /**
  * 認証アクション。
@@ -29,7 +32,11 @@ import com.nablarch.example.app.web.form.LoginForm;
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class AuthenticationAction {
+
+    @Inject
+    private LoginUserPrincipal userContext;
 
     /**
      * ログイン画面を表示。
@@ -71,9 +78,8 @@ public class AuthenticationAction {
 
         // 認証OKの場合、ログイン前のセッションを破棄後、
         // 認証情報をセッション（新規）に格納後、トップ画面にリダイレクトする。
-        SessionUtil.invalidate(context);
-        LoginUserPrincipal userContext = createLoginUserContext(form.getLoginId());
-        SessionUtil.put(context, "userContext", userContext, "httpSession");
+        ((ServletExecutionContext) context).getServletRequest().changeSessionId();
+        createLoginUserContext(form.getLoginId());
         return new HttpResponse(303, "redirect:///action/project/index");
     }
 
@@ -88,8 +94,7 @@ public class AuthenticationAction {
                 .findBySqlFile(SystemAccount.class,
                         "FIND_SYSTEM_ACCOUNT_BY_AK", new Object[]{loginId});
         Users users = UniversalDao.findById(Users.class, account.getUserId());
-
-        LoginUserPrincipal userContext = new LoginUserPrincipal();
+        
         userContext.setUserId(account.getUserId());
         userContext.setKanjiName(users.getKanjiName());
         userContext.setLastLoginDateTime(account.getLastLoginDateTime());

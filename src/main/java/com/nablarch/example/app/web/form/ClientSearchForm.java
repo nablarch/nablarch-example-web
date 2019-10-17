@@ -5,12 +5,14 @@ import java.util.Objects;
 
 import nablarch.core.util.StringUtil;
 import nablarch.core.validation.ee.Domain;
+import nablarch.fw.dicontainer.web.RequestScoped;
 
 /**
  * 顧客検索フォーム。
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class ClientSearchForm implements Serializable {
 
     /** シリアルバージョンUID */

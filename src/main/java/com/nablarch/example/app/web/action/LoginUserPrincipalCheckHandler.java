@@ -2,9 +2,12 @@ package com.nablarch.example.app.web.action;
 
 import java.util.Objects;
 
-import nablarch.common.web.session.SessionUtil;
+import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
+
+import nablarch.core.repository.SystemRepository;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.Handler;
+import nablarch.fw.dicontainer.Container;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 
@@ -24,7 +27,9 @@ public class LoginUserPrincipalCheckHandler implements Handler<HttpRequest, Obje
      */
     @Override
     public Object handle(HttpRequest request, ExecutionContext context) {
-        if (SessionUtil.orNull(context, "userContext") == null
+        Container container = SystemRepository.get(Container.class.getName());
+        LoginUserPrincipal userContext = container.getComponent(LoginUserPrincipal.class);
+        if (userContext.getUserId() == null
                 && !Objects.equals(request.getRequestPath(), "/action/login")) {
             return new HttpResponse("/WEB-INF/view/login/index.jsp");
         }

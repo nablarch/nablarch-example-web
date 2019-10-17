@@ -80,6 +80,12 @@
   <!-- 使用するDBに合わせてダイアレクトを設定すること -->
   <component name="dialect" class="nablarch.core.db.dialect.H2Dialect" />
 
+  <component name="nablarchWebContextHandler" class="nablarch.fw.dicontainer.nablarch.NablarchWebContextHandler"/>
+  <component name="annotationAutoContainerProvider" class="nablarch.fw.dicontainer.nablarch.AnnotationAutoContainerProvider">
+    <property name="requestContextSupplier" ref="nablarchWebContextHandler"/>
+    <property name="sessionContextSupplier" ref="nablarchWebContextHandler"/>
+  </component>
+  
   <!-- ハンドラキュー構成 -->
   <component name="webFrontController"
              class="nablarch.fw.web.servlet.WebFrontController">
@@ -127,6 +133,8 @@
 
         <component-ref name="transactionManagementHandler"/>
 
+        <component-ref name="nablarchWebContextHandler"/>
+
         <component class="com.nablarch.example.app.web.action.LoginUserPrincipalCheckHandler"/>
 
         <component class="com.nablarch.example.app.web.handler.ExampleErrorForwardHandler"/>
@@ -149,6 +157,7 @@
         </component>
         <component-ref name="dbConnectionManagementHandler"/>
         <component-ref name="transactionManagementHandler"/>
+        <component-ref name="nablarchWebContextHandler"/>
         <component-ref name="jaxrsPackageMapping"/>
       </list>
     </property>
@@ -163,6 +172,7 @@
         <component-ref name="dbStore" />
         <component-ref name="packageMapping" />
         <component-ref name="jaxrsPackageMapping"/>
+        <component-ref name="annotationAutoContainerProvider"/>
       </list>
     </property>
   </component>

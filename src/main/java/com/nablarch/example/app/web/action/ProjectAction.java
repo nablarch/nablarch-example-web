@@ -1,5 +1,10 @@
 package com.nablarch.example.app.web.action;
 
+import java.nio.file.Path;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import com.nablarch.example.app.entity.Client;
 import com.nablarch.example.app.entity.Project;
 import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
@@ -26,19 +31,30 @@ import nablarch.core.message.ApplicationException;
 import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
 import nablarch.fw.ExecutionContext;
+import nablarch.fw.dicontainer.web.RequestScoped;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
-
-import java.nio.file.Path;
-import java.util.List;
 
 /**
  * プロジェクト検索、登録、更新、削除機能 。
  *
  * @author Nabu Rakutaro
  */
+@RequestScoped
 public class ProjectAction {
+
+    @Inject
+    private LoginUserPrincipal userContext;
+    
+    @Inject
+    private ProjectForm form;
+    @Inject
+    private ProjectSearchForm searchForm;
+    @Inject
+    private ProjectTargetForm targetForm;
+    @Inject
+    private ProjectUpdateForm updateForm;
 
     /**
      * プロジェクト登録初期画面を表示。
@@ -65,7 +81,6 @@ public class ProjectAction {
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/project/create.jsp")
     public HttpResponse confirmOfCreate(HttpRequest request, ExecutionContext context) {
 
-        ProjectForm form = context.getRequestScopedVar("form");
         if (form.hasClientId()) {
             if (!UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID",
                     new Object[] {Integer.parseInt(form.getClientId())})) {
@@ -78,7 +93,6 @@ public class ProjectAction {
         }
 
         Project project = BeanUtil.createAndCopy(Project.class, form);
-        LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
         project.setUserId(userContext.getUserId());
         SessionUtil.put(context, "project", project);
         final ProjectProfit projectProfit = new ProjectProfit(
@@ -177,7 +191,6 @@ public class ProjectAction {
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/project/index.jsp")
     public HttpResponse list(HttpRequest request, ExecutionContext context) {
 
-        ProjectSearchForm searchForm = context.getRequestScopedVar("searchForm");
         ProjectSearchDto searchCondition = BeanUtil.createAndCopy(ProjectSearchDto.class, searchForm);
 
         List<Project> searchList = searchProject(searchCondition, context);
@@ -198,7 +211,6 @@ public class ProjectAction {
     private List<Project> searchProject(ProjectSearchDto searchCondition,
             ExecutionContext context) {
 
-        LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
         searchCondition.setUserId(userContext.getUserId());
 
         return UniversalDao
@@ -218,9 +230,7 @@ public class ProjectAction {
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/project/index.jsp")
     public HttpResponse download(HttpRequest request, ExecutionContext context) {
 
-        ProjectSearchForm searchForm = context.getRequestScopedVar("searchForm");
         ProjectSearchDto searchCondition = BeanUtil.createAndCopy(ProjectSearchDto.class, searchForm);
-        LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
         searchCondition.setUserId(userContext.getUserId());
 
         final Path path = TempFileUtil.createTempFile();
@@ -251,9 +261,7 @@ public class ProjectAction {
      */
     @InjectForm(form = ProjectTargetForm.class)
     public HttpResponse show(HttpRequest request, ExecutionContext context) {
-        ProjectTargetForm targetForm = context.getRequestScopedVar("form");
         context.setRequestScopedVar("projectId", targetForm.getProjectId());
-        LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
 
         ProjectDto dto = UniversalDao.findBySqlFile(ProjectDto.class, "FIND_BY_PROJECT",
                 new Object[] {targetForm.getProjectId(), userContext.getUserId()});
@@ -283,9 +291,6 @@ public class ProjectAction {
         // 更新処理で使用するセッション情報を削除しておく。
         SessionUtil.delete(context, "project");
 
-        ProjectTargetForm targetForm = context.getRequestScopedVar("form");
-        LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
-
         ProjectDto dto = UniversalDao.findBySqlFile(ProjectDto.class, "FIND_BY_PROJECT",
                 new Object[] {targetForm.getProjectId(), userContext.getUserId()});
 
@@ -307,23 +312,22 @@ public class ProjectAction {
     @InjectForm(form = ProjectUpdateForm.class, prefix = "form")
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/project/update.jsp")
     public HttpResponse confirmOfUpdate(HttpRequest request, ExecutionContext context) {
-        ProjectUpdateForm form = context.getRequestScopedVar("form");
 
-        if (form.hasClientId()) {
+        if (updateForm.hasClientId()) {
             if (!UniversalDao.exists(Client.class, "FIND_BY_CLIENT_ID",
-                    new Object[] {Integer.parseInt(form.getClientId())})) {
+                    new Object[] {Integer.parseInt(updateForm.getClientId())})) {
                 //補足：数値に対する自動フォーマット(自動的にカンマ編集される)を避けるため、Integerを明示的に文字列に変換している。
                 throw new ApplicationException(
                         MessageUtil.createMessage(MessageLevel.ERROR,
-                                "errors.nothing.client", form.getClientId()));
+                                "errors.nothing.client", updateForm.getClientId()));
             }
         }
 
         Project project = SessionUtil.get(context, "project");
-        BeanUtil.copy(form, project);
+        BeanUtil.copy(updateForm, project);
 
         // 出力情報をリクエストスコープにセット
-        context.setRequestScopedVar("form", BeanUtil.createAndCopy(ProjectDto.class, form));
+        context.setRequestScopedVar("form", BeanUtil.createAndCopy(ProjectDto.class, updateForm));
         context.setRequestScopedVar("profit", new ProjectProfit(
                 project.getSales(),
                 project.getCostOfGoodsSold(),

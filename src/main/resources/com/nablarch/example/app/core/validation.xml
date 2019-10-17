@@ -9,7 +9,11 @@
 
   <component name="domainManager" class="com.nablarch.example.app.entity.core.validation.validator.ExampleDomainManager"/>
 
-  <component name="validationStrategy" class="nablarch.common.web.validator.BeanValidationStrategy" />
+  <component name="validationStrategy" class="nablarch.common.web.validator.BeanValidationStrategy">
+    <property name="formFactory">
+      <component class="nablarch.fw.dicontainer.nablarch.ContainerLookupBeanValidationFormFactory" />
+    </property>
+  </component>
 
   <component name="constraintViolationConverterFactory" class="nablarch.core.validation.ee.ItemNamedConstraintViolationConverterFactory" />
 
