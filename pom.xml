@@ -59,7 +59,7 @@
 
     <dependency>
       <groupId>com.nablarch.framework</groupId>
-      <artifactId>nablarch-scoped-dicontainer</artifactId>
+      <artifactId>nablarch-fw-scoped-dicontainer</artifactId>
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
     <dependency>
