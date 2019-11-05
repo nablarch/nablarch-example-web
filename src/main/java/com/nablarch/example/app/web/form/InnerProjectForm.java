@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.validation.constraints.AssertTrue;
 
 import com.nablarch.example.app.entity.core.validation.validator.DateRangeValidator;
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
 import nablarch.fw.dicontainer.web.RequestScoped;
@@ -16,6 +18,14 @@ import nablarch.fw.dicontainer.web.RequestScoped;
  */
 @RequestScoped
 public class InnerProjectForm implements Serializable {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(InnerProjectForm.class);
+
+    /** コンストラクタ。 */
+    public InnerProjectForm() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     /** シリアルバージョンUID */
     private static final long serialVersionUID = 1L;

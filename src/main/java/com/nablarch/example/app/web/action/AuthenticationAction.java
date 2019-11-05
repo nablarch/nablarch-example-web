@@ -12,6 +12,8 @@ import com.nablarch.example.app.web.form.LoginForm;
 import nablarch.common.dao.UniversalDao;
 import nablarch.common.web.session.SessionUtil;
 import nablarch.core.beans.BeanUtil;
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.core.message.ApplicationException;
 import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
@@ -34,6 +36,13 @@ import nablarch.fw.web.servlet.ServletExecutionContext;
  */
 @RequestScoped
 public class AuthenticationAction {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(AuthenticationAction.class);
+
+    public AuthenticationAction() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     @Inject
     private LoginUserPrincipal userContext;

@@ -5,6 +5,8 @@ import com.nablarch.example.app.web.dto.IndustryDto;
 import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.beans.CopyOptions;
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.fw.dicontainer.web.RequestScoped;
 
 import javax.ws.rs.Produces;
@@ -19,6 +21,13 @@ import java.util.stream.Collectors;
  */
 @RequestScoped
 public class IndustryAction {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(IndustryAction.class);
+
+    public IndustryAction() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     /**
      * 業種一覧を取得する。

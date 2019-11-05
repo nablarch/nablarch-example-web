@@ -1,5 +1,8 @@
 package com.nablarch.example.app.web.action;
 
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;

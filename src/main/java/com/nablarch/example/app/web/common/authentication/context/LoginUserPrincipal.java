@@ -3,6 +3,8 @@ package com.nablarch.example.app.web.common.authentication.context;
 import java.io.Serializable;
 import java.util.Date;
 
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.fw.dicontainer.web.SessionScoped;
 
 /**
@@ -12,6 +14,13 @@ import nablarch.fw.dicontainer.web.SessionScoped;
  */
 @SessionScoped
 public class LoginUserPrincipal implements Serializable {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(LoginUserPrincipal.class);
+
+    public LoginUserPrincipal() {
+        LOGGER.logDebug("CREATED");
+    }
 
     /**
      * serialVersionUID.

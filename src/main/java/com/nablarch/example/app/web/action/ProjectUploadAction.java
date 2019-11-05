@@ -14,6 +14,8 @@ import nablarch.common.web.session.SessionUtil;
 import nablarch.common.web.token.OnDoubleSubmission;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.date.SystemTimeUtil;
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.core.message.ApplicationException;
 import nablarch.core.message.Message;
 import nablarch.core.message.MessageLevel;
@@ -40,6 +42,13 @@ import com.nablarch.example.app.web.dto.ProjectUploadDto;
  */
 @RequestScoped
 public class ProjectUploadAction {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(ProjectUploadAction.class);
+
+    public ProjectUploadAction() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     @Inject
     private LoginUserPrincipal userContext;

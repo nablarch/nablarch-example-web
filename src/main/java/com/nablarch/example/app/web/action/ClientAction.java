@@ -5,6 +5,8 @@ import com.nablarch.example.app.web.dto.ClientSearchDto;
 import com.nablarch.example.app.web.form.ClientSearchForm;
 import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.core.validation.ee.ValidatorUtil;
 import nablarch.fw.dicontainer.web.RequestScoped;
 import nablarch.fw.web.HttpRequest;
@@ -20,6 +22,13 @@ import java.util.List;
  */
 @RequestScoped
 public class ClientAction {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(ClientAction.class);
+
+    public ClientAction() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     /**
      * 指定された条件に合致する顧客を検索する。

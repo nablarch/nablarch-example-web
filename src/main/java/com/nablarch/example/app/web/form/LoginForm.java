@@ -2,6 +2,8 @@ package com.nablarch.example.app.web.form;
 
 import java.io.Serializable;
 
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.core.validation.ee.Domain;
 import nablarch.core.validation.ee.Required;
 import nablarch.fw.dicontainer.web.RequestScoped;
@@ -13,6 +15,13 @@ import nablarch.fw.dicontainer.web.RequestScoped;
  */
 @RequestScoped
 public class LoginForm implements Serializable {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(LoginForm.class);
+
+    public LoginForm() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     /**
      * serialVersionUID

@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
 
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.core.repository.SystemRepository;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.Handler;
@@ -17,6 +19,13 @@ import nablarch.fw.web.HttpResponse;
  * @author Nabu Rakutaro
  */
 public class LoginUserPrincipalCheckHandler implements Handler<HttpRequest, Object> {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(LoginUserPrincipalCheckHandler.class);
+
+    public LoginUserPrincipalCheckHandler() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     /**
      * セッションからユーザ情報を取得できなかった場合は、ログイン画面を表示。

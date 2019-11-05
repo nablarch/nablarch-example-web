@@ -3,6 +3,8 @@ package com.nablarch.example.app.web.form;
 import java.io.Serializable;
 import java.util.Objects;
 
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.core.util.StringUtil;
 import nablarch.core.validation.ee.Domain;
 import nablarch.fw.dicontainer.web.RequestScoped;
@@ -14,6 +16,13 @@ import nablarch.fw.dicontainer.web.RequestScoped;
  */
 @RequestScoped
 public class ClientSearchForm implements Serializable {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(ClientSearchForm.class);
+
+    public ClientSearchForm() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     /** シリアルバージョンUID */
     private static final long serialVersionUID = 1L;

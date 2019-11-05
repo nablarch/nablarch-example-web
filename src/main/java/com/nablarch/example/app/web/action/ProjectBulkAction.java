@@ -14,6 +14,8 @@ import nablarch.common.web.interceptor.InjectForm;
 import nablarch.common.web.session.SessionUtil;
 import nablarch.common.web.token.OnDoubleSubmission;
 import nablarch.core.beans.BeanUtil;
+import nablarch.core.log.Logger;
+import nablarch.core.log.LoggerManager;
 import nablarch.core.message.ApplicationException;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.dicontainer.web.RequestScoped;
@@ -34,6 +36,13 @@ import com.nablarch.example.app.web.form.ProjectSearchForm;
  */
 @RequestScoped
 public class ProjectBulkAction {
+
+    /** ロガー **/
+    private static final Logger LOGGER = LoggerManager.get(ProjectBulkAction.class);
+
+    public ProjectBulkAction() {
+        LOGGER.logDebug(getClass().getName() + " created.");
+    }
 
     @Inject
     private LoginUserPrincipal userContext;
