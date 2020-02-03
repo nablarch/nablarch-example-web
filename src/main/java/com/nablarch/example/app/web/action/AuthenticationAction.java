@@ -49,7 +49,7 @@ public class AuthenticationAction {
      * @param context 実行コンテキスト
      * @return HTTPレスポンス
      */
-    @OnError(type = ApplicationException.class, path = "/WEB-INF/view/login/index.jsp")
+    @OnError(type = ApplicationException.class, path = "/WEB-INF/view/login/index.jsp",statusCode = 403)
     public HttpResponse login(HttpRequest request, ExecutionContext context) {
 
         final LoginForm form = BeanUtil.createAndCopy(LoginForm.class, request.getParamMap());
@@ -73,7 +73,7 @@ public class AuthenticationAction {
         // 認証情報をセッション（新規）に格納後、トップ画面にリダイレクトする。
         SessionUtil.invalidate(context);
         LoginUserPrincipal userContext = createLoginUserContext(form.getLoginId());
-        SessionUtil.put(context, "userContext", userContext, "httpSession");
+        SessionUtil.put(context, "userContext", userContext);
         return new HttpResponse(303, "redirect:///action/project/index");
     }
 

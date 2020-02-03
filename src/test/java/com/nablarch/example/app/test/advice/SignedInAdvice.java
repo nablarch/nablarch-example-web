@@ -66,6 +66,6 @@ public class SignedInAdvice extends ExampleAdvice {
     private void setLoginUser(ExecutionContext context) {
         LoginUserPrincipal userContext = new LoginUserPrincipal();
         userContext.setUserId(userId);
-        SessionUtil.put(context, "userContext", userContext, "httpSession");
+        SessionUtil.put(context, "userContext", userContext);
     }
 }
