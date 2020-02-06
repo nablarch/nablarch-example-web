@@ -5,5 +5,6 @@
         xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
 
   <import file="nablarch/core/date_test.xml"/>
+  <import file="com/nablarch/example/app/web/webui/double-submission.xml"/>
 
 </component-configuration>
