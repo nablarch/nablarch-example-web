@@ -5,5 +5,7 @@
         xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
 
   <import file="nablarch/core/date_test.xml"/>
+  <!-- トークンをHTTPセッションに保存する -->
+  <component name="tokenManager" class="nablarch.common.web.token.HttpSessionTokenManager"/>
 
 </component-configuration>

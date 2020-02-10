@@ -95,6 +95,8 @@
             </list>
           </property>
         </component>
+        
+        <component class="nablarch.common.web.handler.HttpAccessLogHandler" />
 
         <component class="nablarch.fw.web.handler.ForwardingHandler"/>
 
