@@ -312,13 +312,13 @@
       <plugin>
         <groupId>net.unit8.waitt</groupId>
         <artifactId>waitt-maven-plugin</artifactId>
-        <version>1.2.1</version>
+        <version>1.2.3</version>
         <configuration>
           <servers>
             <server>
               <groupId>net.unit8.waitt.server</groupId>
               <artifactId>waitt-tomcat8</artifactId>
-              <version>1.2.1</version>
+              <version>1.2.3</version>
             </server>
           </servers>
         </configuration>
