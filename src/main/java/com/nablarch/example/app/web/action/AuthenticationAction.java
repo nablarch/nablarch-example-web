@@ -74,6 +74,7 @@ public class AuthenticationAction {
         SessionUtil.invalidate(context);
         LoginUserPrincipal userContext = createLoginUserContext(form.getLoginId());
         SessionUtil.put(context, "userContext", userContext);
+        SessionUtil.put(context,"user.id",String.valueOf(userContext.getUserId()));
         return new HttpResponse(303, "redirect:///action/project/index");
     }
 
