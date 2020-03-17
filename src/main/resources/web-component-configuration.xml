@@ -70,6 +70,9 @@
   <!-- 使用するDBに合わせてダイアレクトを設定すること -->
   <component name="dialect" class="nablarch.core.db.dialect.H2Dialect" />
 
+  <!-- スレッドコンテキストハンドラ -->
+  <import file="nablarch/webui/threadcontext-for-webui-in-sessionstore.xml"/>
+
   <!-- ハンドラキュー構成 -->
   <component name="webFrontController"
              class="nablarch.fw.web.servlet.WebFrontController">
@@ -79,6 +82,8 @@
 
         <component class="nablarch.fw.handler.GlobalErrorHandler"/>
 
+        <component class="nablarch.common.handler.threadcontext.ThreadContextClearHandler"/>
+
         <component class="nablarch.fw.web.handler.HttpResponseHandler"/>
 
         <component class="nablarch.fw.web.handler.SecureHandler" />
@@ -86,6 +91,10 @@
         <component-ref name="multipartHandler"/>
 
         <component-ref name="sessionStoreHandler" />
+
+        <component-ref name="threadContextHandler"/>
+
+        <component class="nablarch.common.web.handler.HttpAccessLogHandler"/>
 
         <component class="nablarch.fw.web.handler.NormalizationHandler">
           <property name="normalizers">
@@ -95,8 +104,6 @@
             </list>
           </property>
         </component>
-        
-        <component class="nablarch.common.web.handler.HttpAccessLogHandler" />
 
         <component class="nablarch.fw.web.handler.ForwardingHandler"/>
 
