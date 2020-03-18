@@ -95,6 +95,9 @@
 
         <component class="nablarch.fw.handler.GlobalErrorHandler"/>
 
+        <!-- JSPフォワード時にDIコンテナを参照する場合は、HttpResponseHandlerより上に配置する -->
+        <component-ref name="nablarchWebContextHandler"/>
+
         <component class="nablarch.fw.web.handler.HttpResponseHandler"/>
 
         <component class="nablarch.fw.web.handler.SecureHandler" />
@@ -133,7 +136,7 @@
 
         <component-ref name="transactionManagementHandler"/>
 
-        <component-ref name="nablarchWebContextHandler"/>
+
 
         <component class="com.nablarch.example.app.web.action.LoginUserPrincipalCheckHandler"/>
 
