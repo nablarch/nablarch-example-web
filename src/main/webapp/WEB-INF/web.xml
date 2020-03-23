@@ -66,6 +66,7 @@
       <http-only>true</http-only>
       <max-age>-1</max-age>
     </cookie-config>
+    <tracking-mode>COOKIE</tracking-mode>
   </session-config>
 
   <error-page>

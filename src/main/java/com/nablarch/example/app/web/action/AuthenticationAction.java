@@ -12,6 +12,13 @@ import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
 import nablarch.fw.web.interceptor.OnErrors;
+import nablarch.fw.web.servlet.NablarchHttpServletRequestWrapper;
+import nablarch.fw.web.servlet.NablarchHttpServletRequestWrapper.HttpSessionWrapper;
+import nablarch.fw.web.servlet.ServletExecutionContext;
+
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.nablarch.example.app.entity.SystemAccount;
 import com.nablarch.example.app.entity.Users;
@@ -69,9 +76,22 @@ public class AuthenticationAction {
                     MessageLevel.ERROR, "errors.login"));
         }
 
-        // 認証OKの場合、ログイン前のセッションを破棄後、
+        // 認証OKの場合、セッションIDしか変わらない、
         // 認証情報をセッション（新規）に格納後、トップ画面にリダイレクトする。
-        SessionUtil.invalidate(context);
+        NablarchHttpServletRequestWrapper nablarchHttpServletRequestWrapper = ((ServletExecutionContext) context).getServletRequest();
+
+        if (nablarchHttpServletRequestWrapper.isRequestedSessionIdValid()) {
+            Map<String,Object> tempMap = context.getSessionStoreMap();
+              
+            // ログイン前のセッションを破棄 する
+            nablarchHttpServletRequestWrapper.getSession(false).invalidate();
+              
+            // 新しいセッションを作成する 
+            nablarchHttpServletRequestWrapper.getSession(true);  
+            context.setSessionStoreMap(tempMap);
+            
+        }
+        
         LoginUserPrincipal userContext = createLoginUserContext(form.getLoginId());
         SessionUtil.put(context, "userContext", userContext);
         SessionUtil.put(context,"user.id",String.valueOf(userContext.getUserId()));
