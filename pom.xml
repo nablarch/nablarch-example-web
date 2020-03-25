@@ -4,7 +4,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
-  <version>5u15</version>
+  <version>5u16</version>
   <packaging>war</packaging>
 
   <properties>
@@ -41,7 +41,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>5u15</version>
+        <version>5u16</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -75,6 +75,11 @@
       <artifactId>nablarch-fw-web-dbstore</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>com.nablarch.framework</groupId>
+      <artifactId>nablarch-fw-web-doublesubmit-jdbc</artifactId>
+    </dependency>
+    
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-common-idgenerator-jdbc</artifactId>
@@ -307,13 +312,13 @@
       <plugin>
         <groupId>net.unit8.waitt</groupId>
         <artifactId>waitt-maven-plugin</artifactId>
-        <version>1.2.1</version>
+        <version>1.2.3</version>
         <configuration>
           <servers>
             <server>
               <groupId>net.unit8.waitt.server</groupId>
               <artifactId>waitt-tomcat8</artifactId>
-              <version>1.2.1</version>
+              <version>1.2.3</version>
             </server>
           </servers>
         </configuration>

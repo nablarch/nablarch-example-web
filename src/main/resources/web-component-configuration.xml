@@ -52,20 +52,9 @@
   <!-- カスタムタグ設定 -->
   <import file="com/nablarch/example/app/web/webui/nablarch-tag.xml" />
 
-  <!--
-    二重サブミット防止機能
-    二重サブミットが発生した際のデフォルトの遷移先パスを指定する
-  -->
-  <component name="doubleSubmissionHandler"
-             class="nablarch.common.web.token.BasicDoubleSubmissionHandler">
-    <!-- 二重サブミットと判定した場合の遷移先のリソースパス -->
-    <property name="path" value="/WEB-INF/view/common/errorPages/doubleSubmissionError.jsp" />
-    <!-- 二重サブミットと判定した場合の遷移先で表示するエラーメッセージのメッセージID -->
-    <property name="messageId" value="${nablarch.doubleSubmissionHandler.messageId}" />
-    <!-- 二重サブミットと判定した場合のレスポンスステータス。デフォルトは400 -->
-    <property name="statusCode" value="400" />
-  </component>
-
+  <!-- 二重サブミット防止機能 -->
+  <import file="com/nablarch/example/app/web/webui/double-submission.xml" />
+  
   <!-- hidden暗号化機能を使用しないリクエストID -->
   <list name="noHiddenEncryptionRequestIds">
   </list>
@@ -75,10 +64,14 @@
 
   <!-- セッションストア機能 -->
   <import file="nablarch/webui/session-store.xml" />
+  <import file="com/nablarch/example/app/web/webui/session-store.xml" />
 
   <!-- ダイアレクト設定 -->
   <!-- 使用するDBに合わせてダイアレクトを設定すること -->
   <component name="dialect" class="nablarch.core.db.dialect.H2Dialect" />
+
+  <!-- スレッドコンテキストハンドラ -->
+  <import file="nablarch/webui/threadcontext-for-webui-in-sessionstore.xml"/>
 
   <!-- ハンドラキュー構成 -->
   <component name="webFrontController"
@@ -89,6 +82,8 @@
 
         <component class="nablarch.fw.handler.GlobalErrorHandler"/>
 
+        <component class="nablarch.common.handler.threadcontext.ThreadContextClearHandler"/>
+
         <component class="nablarch.fw.web.handler.HttpResponseHandler"/>
 
         <component class="nablarch.fw.web.handler.SecureHandler" />
@@ -96,6 +91,10 @@
         <component-ref name="multipartHandler"/>
 
         <component-ref name="sessionStoreHandler" />
+
+        <component-ref name="threadContextHandler"/>
+
+        <component class="nablarch.common.web.handler.HttpAccessLogHandler"/>
 
         <component class="nablarch.fw.web.handler.NormalizationHandler">
           <property name="normalizers">
@@ -161,6 +160,8 @@
       <list>
         <!-- web/session-store.xml:DBストア-->
         <component-ref name="dbStore" />
+        <component-ref name="expiration" />
+        <component-ref name="tokenManager"/>
         <component-ref name="packageMapping" />
         <component-ref name="jaxrsPackageMapping"/>
       </list>
