@@ -10,8 +10,6 @@
   <!-- jsr310 -->
   <import file="JSR310.xml" />
   
-  <component name="dialect" class="nablarch.core.db.dialect.H2Dialect" />
-
   <!-- 環境設定ファイル -->
   <config-file file="env.properties" />
   <config-file file="common.properties" />
@@ -73,6 +71,10 @@
   <!-- スレッドコンテキストハンドラ -->
   <import file="nablarch/webui/threadcontext-for-webui-in-sessionstore.xml"/>
 
+  <!-- CSRF対策 -->
+  <component name="csrfTokenVerificationHandler"
+             class="nablarch.fw.web.handler.CsrfTokenVerificationHandler" />
+
   <!-- ハンドラキュー構成 -->
   <component name="webFrontController"
              class="nablarch.fw.web.servlet.WebFrontController">
@@ -121,6 +123,8 @@
         </component>
 
         <component-ref name="nablarchTagHandler"/>
+
+        <component-ref name="csrfTokenVerificationHandler" />
 
         <component-ref name="dbConnectionManagementHandler"/>
 
