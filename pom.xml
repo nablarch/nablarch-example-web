@@ -163,6 +163,10 @@
       <scope>test</scope>
     </dependency>
 
+    <!--
+      テストではnablarch-testingのクラスも使用しているが、nablarch-testing-restを追加することで
+      推移的にnablarch-testingも追加されるため、pom.xmlにnablarch-testingを明示的に記載はしていない。
+    -->
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-testing-rest</artifactId>
