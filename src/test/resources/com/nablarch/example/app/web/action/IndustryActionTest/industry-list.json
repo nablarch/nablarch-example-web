@@ -1,0 +1,374 @@
+[
+  {
+    "industryCode": "01",
+    "industryName": "農業"
+  },
+  {
+    "industryCode": "02",
+    "industryName": "林業"
+  },
+  {
+    "industryCode": "03",
+    "industryName": "漁業"
+  },
+  {
+    "industryCode": "04",
+    "industryName": "水産養殖業"
+  },
+  {
+    "industryCode": "05",
+    "industryName": "鉱業"
+  },
+  {
+    "industryCode": "06",
+    "industryName": "総合工事業"
+  },
+  {
+    "industryCode": "07",
+    "industryName": "職別工事業(設備工事業を除く)"
+  },
+  {
+    "industryCode": "08",
+    "industryName": "設備工事業"
+  },
+  {
+    "industryCode": "09",
+    "industryName": "食料品製造業"
+  },
+  {
+    "industryCode": "10",
+    "industryName": "飲料・たばこ・飼料製造業"
+  },
+  {
+    "industryCode": "11",
+    "industryName": "繊維工業 (衣服,その他の繊維製品を除く)"
+  },
+  {
+    "industryCode": "12",
+    "industryName": "衣服・その他の繊維製品製造業"
+  },
+  {
+    "industryCode": "13",
+    "industryName": "木材・木製品製造業 (家具を除く)"
+  },
+  {
+    "industryCode": "14",
+    "industryName": "家具・装備品製造業"
+  },
+  {
+    "industryCode": "15",
+    "industryName": "パルプ・紙・ 紙加工品製造業"
+  },
+  {
+    "industryCode": "16",
+    "industryName": "印刷・同関連業"
+  },
+  {
+    "industryCode": "17",
+    "industryName": "化学工業"
+  },
+  {
+    "industryCode": "18",
+    "industryName": "石油製品・石炭製品製造業"
+  },
+  {
+    "industryCode": "19",
+    "industryName": "プラスチック製品製造業 (別掲を除く)"
+  },
+  {
+    "industryCode": "20",
+    "industryName": "ゴム製品製造業"
+  },
+  {
+    "industryCode": "21",
+    "industryName": "なめし革・同製品・毛皮製造業"
+  },
+  {
+    "industryCode": "22",
+    "industryName": "窯業・土石製品製造業"
+  },
+  {
+    "industryCode": "23",
+    "industryName": "鉄鋼業"
+  },
+  {
+    "industryCode": "24",
+    "industryName": "非鉄金属製造業"
+  },
+  {
+    "industryCode": "25",
+    "industryName": "金属製品製造業"
+  },
+  {
+    "industryCode": "26",
+    "industryName": "一般機械器具製造業"
+  },
+  {
+    "industryCode": "27",
+    "industryName": "電気機械器具製造業"
+  },
+  {
+    "industryCode": "28",
+    "industryName": "情報通信機械器具製造業"
+  },
+  {
+    "industryCode": "29",
+    "industryName": "電子部品・デバイス製造業"
+  },
+  {
+    "industryCode": "30",
+    "industryName": "輸送用機械器具製造業"
+  },
+  {
+    "industryCode": "31",
+    "industryName": "精密機械器具製造業"
+  },
+  {
+    "industryCode": "32",
+    "industryName": "その他の製造業"
+  },
+  {
+    "industryCode": "33",
+    "industryName": "電気業"
+  },
+  {
+    "industryCode": "34",
+    "industryName": "ガス業"
+  },
+  {
+    "industryCode": "35",
+    "industryName": "熱供給業"
+  },
+  {
+    "industryCode": "36",
+    "industryName": "水道業"
+  },
+  {
+    "industryCode": "37",
+    "industryName": "通信業"
+  },
+  {
+    "industryCode": "38",
+    "industryName": "放送業"
+  },
+  {
+    "industryCode": "39",
+    "industryName": "情報サービス業"
+  },
+  {
+    "industryCode": "40",
+    "industryName": "インターネット附随サービス業"
+  },
+  {
+    "industryCode": "41",
+    "industryName": "映像・音声・文字情報制作業"
+  },
+  {
+    "industryCode": "42",
+    "industryName": "鉄道業"
+  },
+  {
+    "industryCode": "43",
+    "industryName": "道路旅客運送業"
+  },
+  {
+    "industryCode": "44",
+    "industryName": "道路貨物運送業"
+  },
+  {
+    "industryCode": "45",
+    "industryName": "水運業"
+  },
+  {
+    "industryCode": "46",
+    "industryName": "航空運輸業"
+  },
+  {
+    "industryCode": "47",
+    "industryName": "倉庫業"
+  },
+  {
+    "industryCode": "48",
+    "industryName": "運輸に附帯するサービス業"
+  },
+  {
+    "industryCode": "49",
+    "industryName": "各種商品卸売業 "
+  },
+  {
+    "industryCode": "50",
+    "industryName": "繊維・衣服等卸売業"
+  },
+  {
+    "industryCode": "51",
+    "industryName": "飲食料品卸売業 "
+  },
+  {
+    "industryCode": "52",
+    "industryName": "建築材料, 鉱物・金属材料等卸売業"
+  },
+  {
+    "industryCode": "53",
+    "industryName": "機械器具卸売業 "
+  },
+  {
+    "industryCode": "54",
+    "industryName": "その他の卸売業 "
+  },
+  {
+    "industryCode": "55",
+    "industryName": "各種商品小売業 "
+  },
+  {
+    "industryCode": "56",
+    "industryName": "織物・衣服・身の回り品小売業"
+  },
+  {
+    "industryCode": "57",
+    "industryName": "飲食料品小売業 "
+  },
+  {
+    "industryCode": "58",
+    "industryName": "自動車・自転車小売業 "
+  },
+  {
+    "industryCode": "59",
+    "industryName": "家具・じゅう器・機械器具小売業"
+  },
+  {
+    "industryCode": "60",
+    "industryName": "その他の小売業"
+  },
+  {
+    "industryCode": "61",
+    "industryName": "銀行業 "
+  },
+  {
+    "industryCode": "62",
+    "industryName": "協同組織金融業"
+  },
+  {
+    "industryCode": "63",
+    "industryName": "郵便貯金取扱機関, 政府関係金融機関"
+  },
+  {
+    "industryCode": "64",
+    "industryName": "貸金業,投資業等非預金信用機関"
+  },
+  {
+    "industryCode": "65",
+    "industryName": "証券業, 商品先物取引業"
+  },
+  {
+    "industryCode": "66",
+    "industryName": "補助的金融業, 金融附帯業"
+  },
+  {
+    "industryCode": "67",
+    "industryName": "保険業（保険媒介代理業，保険サービス業を含む）"
+  },
+  {
+    "industryCode": "68",
+    "industryName": "不動産取引業 "
+  },
+  {
+    "industryCode": "69",
+    "industryName": "不動産賃貸業・管理業"
+  },
+  {
+    "industryCode": "70",
+    "industryName": "一般飲食店 "
+  },
+  {
+    "industryCode": "71",
+    "industryName": "遊興飲食店"
+  },
+  {
+    "industryCode": "72",
+    "industryName": "宿泊業"
+  },
+  {
+    "industryCode": "73",
+    "industryName": "医療業 "
+  },
+  {
+    "industryCode": "74",
+    "industryName": "保健衛生"
+  },
+  {
+    "industryCode": "75",
+    "industryName": "社会保険・社会福祉・介護事業"
+  },
+  {
+    "industryCode": "76",
+    "industryName": "学校教育"
+  },
+  {
+    "industryCode": "77",
+    "industryName": "その他の教育，学習支援業"
+  },
+  {
+    "industryCode": "78",
+    "industryName": "郵便局(別掲を除く）"
+  },
+  {
+    "industryCode": "79",
+    "industryName": "協同組合（他に分類されないもの）"
+  },
+  {
+    "industryCode": "80",
+    "industryName": "専門サービス業（他に分類されないもの）"
+  },
+  {
+    "industryCode": "81",
+    "industryName": "学術・開発研究機関"
+  },
+  {
+    "industryCode": "82",
+    "industryName": "洗濯・理容・美容・浴場業"
+  },
+  {
+    "industryCode": "83",
+    "industryName": "その他の生活関連サービス業"
+  },
+  {
+    "industryCode": "84",
+    "industryName": "娯楽業"
+  },
+  {
+    "industryCode": "85",
+    "industryName": "廃棄物処理業"
+  },
+  {
+    "industryCode": "86",
+    "industryName": "自動車整備業 "
+  },
+  {
+    "industryCode": "87",
+    "industryName": "機械等修理業（別掲を除く）"
+  },
+  {
+    "industryCode": "88",
+    "industryName": "物品賃貸業"
+  },
+  {
+    "industryCode": "89",
+    "industryName": "広告業 "
+  },
+  {
+    "industryCode": "90",
+    "industryName": "その他の事業サービス業"
+  },
+  {
+    "industryCode": "91",
+    "industryName": "政治・経済・文化団体"
+  },
+  {
+    "industryCode": "92",
+    "industryName": "宗教"
+  },
+  {
+    "industryCode": "93",
+    "industryName": "その他のサービス業"
+  }
+]

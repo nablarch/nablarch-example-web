@@ -11,6 +11,7 @@
   <import file="nablarch/test/master-data-restorer.xml"/>
   <import file="nablarch/test/test-data.xml"/>
   <import file="nablarch/test/test-transaction.xml"/>
+  <import file="nablarch/test/rest-request-test.xml"/>
   <import file="nablarch/test/http-request-test.xml"/>
 
   <!-- メインを上書きする設定-->
@@ -19,6 +20,9 @@
   <!-- HTML5の仕様で記述しているため既存のHTMLチェッカを外す -->
   <component name="httpTestConfiguration" class="nablarch.test.core.http.HttpTestConfiguration">
     <property name="checkHtml" value="false" />
+  </component>
+  <component name="restTestConfiguration" class="nablarch.test.core.http.RestTestConfiguration">
+    <property name="webFrontControllerKey" value="jaxrsController"/>
   </component>
 
   <!-- DBの接続設定を定義する -->
