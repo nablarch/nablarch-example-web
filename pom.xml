@@ -108,6 +108,7 @@
     <dependency>
       <groupId>com.nablarch.integration</groupId>
       <artifactId>slf4j-nablarch-adaptor</artifactId>
+      <scope>runtime</scope>
     </dependency>
 
     <dependency>
