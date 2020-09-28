@@ -4,7 +4,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
-  <version>5u17</version>
+  <version>5u18</version>
   <packaging>war</packaging>
 
   <properties>
@@ -41,7 +41,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>5u17</version>
+        <version>5u18</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -106,6 +106,12 @@
     </dependency>
 
     <dependency>
+      <groupId>com.nablarch.integration</groupId>
+      <artifactId>slf4j-nablarch-adaptor</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
       <groupId>javax.ws.rs</groupId>
       <artifactId>javax.ws.rs-api</artifactId>
       <version>2.0</version>
@@ -134,7 +140,7 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>5.1.3.Final</version>
+      <version>5.3.6.Final</version>
     </dependency>
 
     <dependency>
@@ -156,6 +162,12 @@
       <scope>runtime</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.nablarch.integration</groupId>
+      <artifactId>slf4j-nablarch-adaptor</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
     <!-- TEST -->
     <dependency>
       <groupId>com.nablarch.configuration</groupId>
@@ -163,18 +175,18 @@
       <scope>test</scope>
     </dependency>
 
+    <!--
+      テストではnablarch-testingのクラスも使用しているが、nablarch-testing-restを追加することで
+      推移的にnablarch-testingも追加されるため、pom.xmlにnablarch-testingを明示的に記載はしていない。
+    -->
     <dependency>
       <groupId>com.nablarch.framework</groupId>
-      <artifactId>nablarch-testing</artifactId>
+      <artifactId>nablarch-testing-rest</artifactId>
       <scope>test</scope>
       <exclusions>
         <exclusion>
           <groupId>org.eclipse.jdt.core.compiler</groupId>
           <artifactId>ecj</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -198,16 +210,22 @@
     </dependency>
 
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-all</artifactId>
+      <version>1.3</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest-all</artifactId>
-      <version>1.3</version>
+      <groupId>com.jayway.jsonpath</groupId>
+      <artifactId>json-path-assert</artifactId>
+      <version>2.4.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.skyscreamer</groupId>
+      <artifactId>jsonassert</artifactId>
+      <version>1.5.0</version>
       <scope>test</scope>
     </dependency>
 
@@ -228,7 +246,7 @@
       <plugin>
         <groupId>jp.co.tis.gsp</groupId>
         <artifactId>gsp-dba-maven-plugin</artifactId>
-        <version>4.4.0</version>
+        <version>4.4.1</version>
         <configuration>
           <driver>org.h2.Driver</driver>
           <url>jdbc:h2:./h2/db/nablarch_example</url>
