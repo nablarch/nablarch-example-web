@@ -1,10 +1,6 @@
 nablarch-example-web
 ===========================
 
-| master | develop |
-|:-----------|:------------|
-|[![Build Status](https://travis-ci.org/nablarch/nablarch-example-web.svg?branch=master)](https://travis-ci.org/nablarch/nablarch-example-web)|[![Build Status](https://travis-ci.org/nablarch/nablarch-example-web.svg?branch=develop)](https://travis-ci.org/nablarch/nablarch-example-web)|
-
 Nablarchアプリケーションフレームワークを利用して作成したウェブExampleアプリケーションです。
 
 ## 実行手順
