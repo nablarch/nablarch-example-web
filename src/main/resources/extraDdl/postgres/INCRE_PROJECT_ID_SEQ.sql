@@ -1,0 +1,1 @@
+select setval(pg_catalog.pg_get_serial_sequence('public.project', 'project_id'), 1000);
