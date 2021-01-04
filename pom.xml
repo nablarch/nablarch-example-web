@@ -18,8 +18,9 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- gsp-dba-maven-pluginが使用するデータベース設定 -->
-    <db.adminUser>SAMPLE</db.adminUser>
-    <db.user>NABLARCH_EXAMPLE</db.user>
+    <db.adminUser>postgres</db.adminUser>
+    <db.user>postgres</db.user>
+    <db.host>localhost</db.host>
 
     <webxml.path>src/main/webapp/WEB-INF/web.xml</webxml.path>
   </properties>
@@ -149,9 +150,9 @@
     </dependency>
     
     <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.196</version>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.12</version>
       <scope>runtime</scope>
     </dependency>
     
@@ -248,8 +249,8 @@
         <artifactId>gsp-dba-maven-plugin</artifactId>
         <version>4.4.1</version>
         <configuration>
-          <driver>org.h2.Driver</driver>
-          <url>jdbc:h2:./h2/db/nablarch_example</url>
+          <driver>org.postgresql.Driver</driver>
+          <url>jdbc:postgresql://${db.host}:5432/performance</url>
           <adminUser>${db.adminUser}</adminUser>
           <adminPassword>${db.adminUser}</adminPassword>
           <user>${db.user}</user>
@@ -258,14 +259,15 @@
           <useAccessor>true</useAccessor>
           <rootPackage>com.nablarch.example.app</rootPackage>
           <entityPackageName>entity</entityPackageName>
-          <dataDirectory>src/test/resources/data/h2</dataDirectory>
-          <erdFile>src/main/resources/entity/h2.edm</erdFile>
+          <dataDirectory>src/test/resources/data/postgres</dataDirectory>
+          <erdFile>src/main/resources/entity/postgres.edm</erdFile>
+          <extraDdlDirectory>src/main/resources/extraDdl/postgres</extraDdlDirectory>
         </configuration>
         <dependencies>
           <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.192</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.12</version>
             <scope>runtime</scope>
           </dependency>
         </dependencies>

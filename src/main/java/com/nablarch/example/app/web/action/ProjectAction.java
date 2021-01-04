@@ -256,7 +256,7 @@ public class ProjectAction {
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
 
         ProjectDto dto = UniversalDao.findBySqlFile(ProjectDto.class, "FIND_BY_PROJECT",
-                new Object[] {targetForm.getProjectId(), userContext.getUserId()});
+                new Object[] {Integer.parseInt(targetForm.getProjectId()), userContext.getUserId()});
 
         // 出力情報をリクエストスコープにセット
         context.setRequestScopedVar("form", dto);
@@ -287,7 +287,7 @@ public class ProjectAction {
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
 
         ProjectDto dto = UniversalDao.findBySqlFile(ProjectDto.class, "FIND_BY_PROJECT",
-                new Object[] {targetForm.getProjectId(), userContext.getUserId()});
+                new Object[] {Integer.parseInt(targetForm.getProjectId()), userContext.getUserId()});
 
         // 出力情報をリクエストスコープにセット
         context.setRequestScopedVar("form", dto);

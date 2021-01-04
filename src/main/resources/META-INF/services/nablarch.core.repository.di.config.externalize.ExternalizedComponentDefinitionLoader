@@ -1,0 +1,2 @@
+nablarch.core.repository.di.config.externalize.OsEnvironmentVariableExternalizedLoader
+nablarch.core.repository.di.config.externalize.SystemPropertyExternalizedLoader

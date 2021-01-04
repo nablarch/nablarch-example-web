@@ -90,14 +90,14 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
      */
     @Override
     public void authenticate(final String userId, final String password)
-        throws AuthenticationFailedException, UserIdLockedException, PasswordExpiredException {
+            throws AuthenticationFailedException, UserIdLockedException, PasswordExpiredException {
 
         if (userId == null || password == null) {
             throw new AuthenticationFailedException(userId);
         }
 
         // 有効期限は日付単位で管理しているので、現在日時から時間を切り捨てた日付を使用する。
-        final Date sysDate = DateUtil.getDate(SystemTimeUtil.getDateString());
+        final Date sysDate = SystemTimeUtil.getTimestamp();
         final SystemAccount account;
         try {
             account = UniversalDao.findBySqlFile(
