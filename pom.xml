@@ -52,6 +52,12 @@
 
   <dependencies>
 
+    <!-- Micrometerアダプタ -->
+    <dependency>
+      <groupId>com.nablarch.integration</groupId>
+      <artifactId>nablarch-micrometer-adaptor</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>com.nablarch.configuration</groupId>
       <artifactId>nablarch-main-default-configuration</artifactId>
@@ -234,7 +240,7 @@
   </dependencies>
 
   <build>
-    <finalName>example-web-old</finalName>
+    <finalName>example-web-new</finalName>
     <resources>
       <resource>
         <directory>src/main/resources</directory>

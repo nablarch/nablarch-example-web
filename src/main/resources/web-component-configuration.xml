@@ -75,11 +75,23 @@
   <component name="csrfTokenVerificationHandler"
              class="nablarch.fw.web.handler.CsrfTokenVerificationHandler" />
 
+  <!-- 処理時間を計測するハンドラ -->
+  <component name="timerMetricsHandler"
+             class="nablarch.integration.micrometer.instrument.handler.TimerMetricsHandler">
+    <property name="meterRegistry" ref="meterRegistry" />
+
+    <property name="handlerMetricsMetaDataBuilder">
+      <component class="nablarch.integration.micrometer.instrument.http.HttpRequestTimeMetricsMetaDataBuilder" />
+    </property>
+  </component>
+
   <!-- ハンドラキュー構成 -->
   <component name="webFrontController"
              class="nablarch.fw.web.servlet.WebFrontController">
     <property name="handlerQueue">
       <list>
+        <component-ref name="timerMetricsHandler" />
+
         <component class="nablarch.fw.web.handler.HttpCharacterEncodingHandler"/>
 
         <component class="nablarch.fw.handler.GlobalErrorHandler"/>
@@ -143,6 +155,7 @@
              class="nablarch.fw.web.servlet.WebFrontController">
     <property name="handlerQueue">
       <list>
+        <component-ref name="timerMetricsHandler" />
         <component class="nablarch.fw.web.handler.HttpCharacterEncodingHandler"/>
         <component class="nablarch.fw.handler.GlobalErrorHandler"/>
         <component class="nablarch.fw.jaxrs.JaxRsResponseHandler">
@@ -170,6 +183,27 @@
         <component-ref name="jaxrsPackageMapping"/>
       </list>
     </property>
+  </component>
+
+  <!-- Micrometer -->
+  <component name="meterBinderListProvider"
+             class="nablarch.integration.micrometer.DefaultMeterBinderListProvider" />
+
+  <component name="meterRegistry"
+             class="nablarch.integration.micrometer.GlobalMeterRegistryFactory">
+    <property name="meterBinderListProvider" ref="meterBinderListProvider" />
+    <property name="applicationDisposer" ref="disposer" />
+  </component>
+
+  <component name="disposer"
+             class="nablarch.core.repository.disposal.BasicApplicationDisposer">
+
+    <property name="disposableList">
+      <list>
+        <component-ref name="meterBinderListProvider"/>
+      </list>
+    </property>
+
   </component>
 
 </component-configuration>
