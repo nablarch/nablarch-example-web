@@ -75,11 +75,29 @@
   <component name="csrfTokenVerificationHandler"
              class="nablarch.fw.web.handler.CsrfTokenVerificationHandler" />
 
+  <!-- 処理時間を計測するハンドラ -->
+  <component name="timerMetricsHandler"
+             class="nablarch.integration.micrometer.instrument.handler.TimerMetricsHandler">
+    <property name="meterRegistry" ref="meterRegistry" />
+
+    <property name="handlerMetricsMetaDataBuilder">
+      <component class="nablarch.integration.micrometer.instrument.http.HttpRequestTimeMetricsMetaDataBuilder" />
+    </property>
+
+    <property name="percentiles">
+      <list>
+        <value>0.95</value>
+      </list>
+    </property>
+  </component>
+
   <!-- ハンドラキュー構成 -->
   <component name="webFrontController"
              class="nablarch.fw.web.servlet.WebFrontController">
     <property name="handlerQueue">
       <list>
+        <component-ref name="timerMetricsHandler" />
+
         <component class="nablarch.fw.web.handler.HttpCharacterEncodingHandler"/>
 
         <component class="nablarch.fw.handler.GlobalErrorHandler"/>
@@ -143,6 +161,7 @@
              class="nablarch.fw.web.servlet.WebFrontController">
     <property name="handlerQueue">
       <list>
+        <component-ref name="timerMetricsHandler" />
         <component class="nablarch.fw.web.handler.HttpCharacterEncodingHandler"/>
         <component class="nablarch.fw.handler.GlobalErrorHandler"/>
         <component class="nablarch.fw.jaxrs.JaxRsResponseHandler">
@@ -168,8 +187,49 @@
         <component-ref name="tokenManager"/>
         <component-ref name="packageMapping" />
         <component-ref name="jaxrsPackageMapping"/>
+        <component-ref name="meterBinderListProvider"/>
       </list>
     </property>
   </component>
 
+  <!-- Micrometer -->
+  <component name="meterBinderListProvider"
+             class="com.nablarch.example.app.web.metrics.CustomMeterBinderListProvider">
+    <property name="dataSource" ref="dataSource" />
+  </component>
+
+  <component name="disposer"
+             class="nablarch.core.repository.disposal.BasicApplicationDisposer">
+
+    <property name="disposableList">
+      <list>
+        <component-ref name="meterBinderListProvider"/>
+      </list>
+    </property>
+
+  </component>
+
+<!--  <component name="meterRegistry" class="nablarch.integration.micrometer.logging.LoggingMeterRegistryFactory">-->
+<!--    <property name="meterBinderListProvider" ref="meterBinderListProvider" />-->
+<!--    <property name="applicationDisposer" ref="disposer" />-->
+<!--  </component>-->
+
+  <!-- CloudWatch を使う場合はコメントイン -->
+  <component name="meterRegistry" class="nablarch.integration.micrometer.cloudwatch.CloudWatchMeterRegistryFactory">
+    <property name="meterBinderListProvider" ref="meterBinderListProvider" />
+    <property name="applicationDisposer" ref="disposer" />
+  </component>
+
+  <component name="daoContextFactory"
+             class="nablarch.integration.micrometer.instrument.dao.SqlTimeMetricsDaoContextFactory">
+    <property name="delegate">
+      <component class="nablarch.common.dao.BasicDaoContextFactory">
+        <property name="sequenceIdGenerator">
+          <component class="nablarch.common.idgenerator.SequenceIdGenerator" />
+        </property>
+      </component>
+    </property>
+
+    <property name="meterRegistry" ref="meterRegistry" />
+  </component>
 </component-configuration>
