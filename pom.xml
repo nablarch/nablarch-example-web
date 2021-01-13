@@ -234,6 +234,7 @@
   </dependencies>
 
   <build>
+    <finalName>example-web-old</finalName>
     <resources>
       <resource>
         <directory>src/main/resources</directory>
