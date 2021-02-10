@@ -3,7 +3,11 @@ package com.nablarch.example.app.test.advice;
 import com.nablarch.example.app.test.ExampleTestCaseInfo;
 import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
 import nablarch.common.web.session.SessionUtil;
+import nablarch.core.repository.SystemRepository;
 import nablarch.fw.ExecutionContext;
+import nablarch.fw.dicontainer.Container;
+
+import java.util.function.Supplier;
 
 
 /**
@@ -64,8 +68,10 @@ public class SignedInAdvice extends ExampleAdvice {
      * @param context 実行コンテキスト
      */
     private void setLoginUser(ExecutionContext context) {
-        LoginUserPrincipal userContext = new LoginUserPrincipal();
-        userContext.setUserId(userId);
-        SessionUtil.put(context, "userContext", userContext, "httpSession");
+        context.setRequestScopedVar("test.callback", (Runnable) () -> {
+            Container container = SystemRepository.get(Container.class.getName());
+            LoginUserPrincipal userContext = container.getComponent(LoginUserPrincipal.class);
+            userContext.setUserId(userId);
+        });
     }
 }
