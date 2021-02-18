@@ -20,6 +20,7 @@
     <!-- gsp-dba-maven-pluginが使用するデータベース設定 -->
     <db.adminUser>postgres</db.adminUser>
     <db.user>postgres</db.user>
+    <db.password>Password123</db.password>
     <db.host>localhost</db.host>
 
     <webxml.path>src/main/webapp/WEB-INF/web.xml</webxml.path>
@@ -251,10 +252,11 @@
         <configuration>
           <driver>org.postgresql.Driver</driver>
           <url>jdbc:postgresql://${db.host}:5432/performance</url>
-          <adminUser>${db.adminUser}</adminUser>
-          <adminPassword>${db.adminUser}</adminPassword>
+          <adminUser>${db.adminUser}@${db.host}</adminUser>
+          <adminPassword>${db.password}</adminPassword>
           <user>${db.user}</user>
-          <password>${db.user}</password>
+          <userForConnection>${db.user}@${db.host}</userForConnection>
+          <password>${db.password}</password>
           <schema>PUBLIC</schema>
           <useAccessor>true</useAccessor>
           <rootPackage>com.nablarch.example.app</rootPackage>

@@ -8,11 +8,11 @@ ENV_FILE=$THIS_DIR/env.sh
 
 if [ ! -e $ENV_FILE ]; then
     cat << EOS > $ENV_FILE
-# アプリを動かしているEC2のホスト情報
-export EC2_HOST=changeme
+# アプリを動かしているホスト情報
+export AP_HOST=changeme
 
 # RDSのエンドポイント
-export RDS_ENDPOINT=changeme
+export DB_ENDPOINT=changeme
 
 # 実行するスレッド数のパターン
 export THREAD_PATTERN="1 5 10 50 100"
@@ -40,7 +40,7 @@ fi
 # 関数定義
 function initializeDatabase() {
     cd $PROJECT_DIR
-    mvn generate-resources -Ddb.host=$RDS_ENDPOINT
+    mvn generate-resources -Ddb.host=$DB_ENDPOINT
 }
 
 function deployWar() {
@@ -50,32 +50,32 @@ function deployWar() {
         local WAR_FILE=example-web-new.war
     fi
 
-    ssh ec2-user@$EC2_HOST \
+    ssh azureuser@$AP_HOST \
         "source ~/.bash_profile; rm -rf \$TOMCAT_HOME/webapps/ROOT; unzip \$HOME/$WAR_FILE -d \$TOMCAT_HOME/webapps/ROOT"
 }
 
 function startTomcat() {
-    ssh ec2-user@$EC2_HOST \
+    ssh azureuser@$AP_HOST \
         'source ~/.bash_profile; $TOMCAT_HOME/bin/startup.sh'
 }
 
 function stopTomcat() {
-    ssh ec2-user@$EC2_HOST \
+    ssh azureuser@$AP_HOST \
         'source ~/.bash_profile; $TOMCAT_HOME/bin/shutdown.sh'
 }
 
 function startJstat() {
-    ssh ec2-user@$EC2_HOST \
+    ssh azureuser@$AP_HOST \
         "source ~/.bash_profile; jcmd | sed -n -r 's/([0-9]+) org.apache.catalina.startup.Bootstrap start/\1/p' | xargs -I {} jstat -gc {} 1s > ~/logs/jstat.log &"
 }
 
 function stopJstatAndCollectLog() {
     # jstat コマンドのプロセスを kill
-    ssh ec2-user@$EC2_HOST \
+    ssh azureuser@$AP_HOST \
         "source ~/.bash_profile; jcmd | sed -n -r 's/([0-9]+) sun.tools.jstat.Jstat.+/\1/p' | xargs kill"
 
     # jstat.log をローカルにダウンロード
-    scp ec2-user@$EC2_HOST:/home/ec2-user/logs/jstat.log $WORK_DIR
+    scp azureuser@$AP_HOST:/home/azureuser/logs/jstat.log $WORK_DIR
 
     # 必要な項目だけを抽出して、タブ区切りにして別ファイルに出力
     awk 'BEGIN { OFS = "\t" } { print $6,$8,$13,$14,$15,$16,$17}' $WORK_DIR/jstat.log > jstat_filtered.log
@@ -93,7 +93,7 @@ function runJMeterForWarmUp() {
         -e -l $JMETER_REPORT_DIR/test.jtl \
         -o $JMETER_REPORT_DIR \
         -Jthread.number=1 \
-        -Jserver.host=$EC2_HOST \
+        -Jserver.host=$AP_HOST \
         -Jtest.duration=60
 }
 
@@ -109,7 +109,7 @@ function runJMeter() {
         -e -l $JMETER_REPORT_DIR/test.jtl \
         -o $JMETER_REPORT_DIR \
         -Jthread.number=$THREAD_NUMBER \
-        -Jserver.host=$EC2_HOST \
+        -Jserver.host=$AP_HOST \
         -Jtest.duration=$TEST_DURATION
 }
 
@@ -117,18 +117,18 @@ function collectLogs() {
     local LOG_ZIP_FILE_NAME=logs_`date "+%Y%m%d_%H%M%S"`.zip
 
     # Tomcat とアプリのログを zip 圧縮
-    ssh ec2-user@$EC2_HOST \
+    ssh azureuser@$AP_HOST \
         "source ~/.bash_profile; zip -j ~/$LOG_ZIP_FILE_NAME ~/logs/* \$TOMCAT_HOME/logs/*"
     
     # zip をローカルにダウンロード
-    scp ec2-user@$EC2_HOST:/home/ec2-user/$LOG_ZIP_FILE_NAME $WORK_DIR
+    scp azureuser@$AP_HOST:/home/azureuser/$LOG_ZIP_FILE_NAME $WORK_DIR
 
     # 圧縮前のログを削除
-    ssh ec2-user@$EC2_HOST \
+    ssh azureuser@$AP_HOST \
         'source ~/.bash_profile; rm ~/logs/* $TOMCAT_HOME/logs/*'
 
     # リモートの zip を削除
-    ssh ec2-user@$EC2_HOST \
+    ssh azureuser@$AP_HOST \
         "source ~/.bash_profile; rm ~/$LOG_ZIP_FILE_NAME"
 }
 
@@ -162,7 +162,7 @@ do
         startTomcat
 
         echo ===== Waiting Application Server Started =====
-        until curl http://${EC2_HOST}:8080 -I | grep "HTTP/1.1 200"
+        until curl http://${AP_HOST}:8080 -I | grep "HTTP/1.1 200"
         do
             sleep 5
         done
