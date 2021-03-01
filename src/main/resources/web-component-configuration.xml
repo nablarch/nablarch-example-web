@@ -31,7 +31,7 @@
 
   <!-- web固有設定の読み込み -->
   <!-- データベース設定 -->
-  <import file="nablarch/webui/db-for-webui.xml"/>
+  <import file="nablarch/core/db-base.xml" />
   <import file="db.xml" />
 
   <!-- Interceptorの実行順定義 -->
