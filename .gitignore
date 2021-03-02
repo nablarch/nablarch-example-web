@@ -116,3 +116,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+/monitor.log
+/app.log

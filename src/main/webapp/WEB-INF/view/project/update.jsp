@@ -51,7 +51,7 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.projectName" maxlength="64" cssClass="form-control width-300" errorCss="input-error" />
+                                    <n:text name="form.projectName" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
                                     <n:error errorCss="message-error" name="form.projectName" />
                                 </div>
                             </td>
