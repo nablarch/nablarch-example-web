@@ -80,6 +80,17 @@
                         </tr>
                         <tr>
                             <th class="width-250 required">
+                                email
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:email name="form.email" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.email" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>
