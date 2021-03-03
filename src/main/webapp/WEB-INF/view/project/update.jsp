@@ -124,6 +124,17 @@
                         </tr>
                         <tr>
                             <th class="width-250 required">
+                                time
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:time name="form.time" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.time" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>

@@ -413,4 +413,14 @@ public class ProjectDto implements Serializable {
     public void setWeek(String week) {
         this.week = week;
     }
+
+    private String time;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 }
