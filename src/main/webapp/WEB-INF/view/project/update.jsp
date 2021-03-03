@@ -69,6 +69,17 @@
                         </tr>
                         <tr>
                             <th class="width-250 required">
+                                url
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:url name="form.url" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.url" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>

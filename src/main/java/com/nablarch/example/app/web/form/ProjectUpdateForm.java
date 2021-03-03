@@ -376,4 +376,15 @@ public class ProjectUpdateForm implements Serializable {
     public void setTel(String tel) {
         this.tel = tel;
     }
+
+    @Required
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }
