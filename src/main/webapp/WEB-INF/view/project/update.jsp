@@ -146,6 +146,17 @@
                         </tr>
                         <tr>
                             <th class="width-250 required">
+                                number
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:number name="form.number" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.number" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>

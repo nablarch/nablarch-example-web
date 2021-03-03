@@ -433,4 +433,14 @@ public class ProjectDto implements Serializable {
     public void setDatetimeLocal(String datetimeLocal) {
         this.datetimeLocal = datetimeLocal;
     }
+
+    private String number;
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 }

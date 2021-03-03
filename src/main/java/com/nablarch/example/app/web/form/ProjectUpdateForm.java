@@ -453,4 +453,15 @@ public class ProjectUpdateForm implements Serializable {
     public void setDatetimeLocal(String datetimeLocal) {
         this.datetimeLocal = datetimeLocal;
     }
+
+    @Required
+    private String number;
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 }
