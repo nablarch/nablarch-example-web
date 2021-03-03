@@ -91,6 +91,17 @@
                         </tr>
                         <tr>
                             <th class="width-250 required">
+                                date
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:date name="form.date" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.date" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>
