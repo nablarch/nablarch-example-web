@@ -354,4 +354,15 @@ public class ProjectUpdateForm implements Serializable {
     private boolean isValidProjectPeriod() {
         return new DateRangeValidator(projectStartDate, projectEndDate).isValid();
     }
+
+    @Required
+    private String search;
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
 }

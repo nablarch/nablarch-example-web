@@ -47,6 +47,17 @@
                     <tbody>
                         <tr>
                             <th class="width-250 required">
+                                search
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:search name="form.search" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.search" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>
