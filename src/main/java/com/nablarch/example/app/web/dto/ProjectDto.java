@@ -453,4 +453,14 @@ public class ProjectDto implements Serializable {
     public void setRange(String range) {
         this.range = range;
     }
+
+    private String color;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 }

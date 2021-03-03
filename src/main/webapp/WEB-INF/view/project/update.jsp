@@ -169,6 +169,17 @@
                         </tr>
                         <tr>
                             <th class="width-250 required">
+                                color
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:color name="form.color" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.color" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>
