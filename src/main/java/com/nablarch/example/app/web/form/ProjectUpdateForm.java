@@ -365,4 +365,15 @@ public class ProjectUpdateForm implements Serializable {
     public void setSearch(String search) {
         this.search = search;
     }
+
+    @Required
+    private String tel;
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 }

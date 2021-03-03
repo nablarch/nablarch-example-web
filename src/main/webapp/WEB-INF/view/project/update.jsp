@@ -58,6 +58,17 @@
                         </tr>
                         <tr>
                             <th class="width-250 required">
+                                tel
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:tel name="form.tel" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.tel" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>

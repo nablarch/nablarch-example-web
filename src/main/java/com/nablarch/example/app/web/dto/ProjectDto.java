@@ -343,4 +343,24 @@ public class ProjectDto implements Serializable {
     public boolean hasClientId() {
         return clientId != null;
     }
+
+    private String search;
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
+
+    private String tel;
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 }
