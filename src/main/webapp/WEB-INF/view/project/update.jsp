@@ -135,6 +135,17 @@
                         </tr>
                         <tr>
                             <th class="width-250 required">
+                                datetime-local
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:datetimeLocal name="form.datetimeLocal" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.datetimeLocal" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>

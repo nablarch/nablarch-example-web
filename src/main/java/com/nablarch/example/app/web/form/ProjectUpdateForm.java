@@ -442,4 +442,15 @@ public class ProjectUpdateForm implements Serializable {
     public void setTime(String time) {
         this.time = time;
     }
+
+    @Required
+    private String datetimeLocal;
+
+    public String getDatetimeLocal() {
+        return datetimeLocal;
+    }
+
+    public void setDatetimeLocal(String datetimeLocal) {
+        this.datetimeLocal = datetimeLocal;
+    }
 }
