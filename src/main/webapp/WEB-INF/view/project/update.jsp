@@ -113,6 +113,17 @@
                         </tr>
                         <tr>
                             <th class="width-250 required">
+                                week
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:week name="form.week" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.week" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>
