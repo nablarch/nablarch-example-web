@@ -443,4 +443,14 @@ public class ProjectDto implements Serializable {
     public void setNumber(String number) {
         this.number = number;
     }
+
+    private String range;
+
+    public String getRange() {
+        return range;
+    }
+
+    public void setRange(String range) {
+        this.range = range;
+    }
 }
