@@ -102,6 +102,17 @@
                         </tr>
                         <tr>
                             <th class="width-250 required">
+                                month
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:month name="form.month" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.month" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>

@@ -393,4 +393,14 @@ public class ProjectDto implements Serializable {
     public void setDate(String date) {
         this.date = date;
     }
+
+    private String month;
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
 }

@@ -409,4 +409,15 @@ public class ProjectUpdateForm implements Serializable {
     public void setDate(String date) {
         this.date = date;
     }
+
+    @Required
+    private String month;
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
 }
