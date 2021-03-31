@@ -3,6 +3,73 @@ nablarch-example-web
 
 Nablarchアプリケーションフレームワークを利用して作成したウェブExampleアプリケーションです。
 
+## 本ブランチについて
+### ブランチを作成した理由
+本ブランチは5u19リリース時にwildflyでの動作確認するために作成しました。
+以下の環境で起動します。
+* wildfly:23.0.0.Final(Java11が組み込まれているDockerイメージを使用)
+* PostgreSQL 11  
+  アプリサーバに配置した際にH2を使用することに手間が掛かるため使用しました。
+  PostgreSQLのバージョンにシビアな機能は使用していないため、他のバージョンでもおそらく起動します。
+
+### masterブランチ、developブランチとの違い
+- Java 11で動作可能にするためpom.xmlに依存関係を追加しています。
+- アプリとGSPの接続先DBをPostgreSQLにしています。  
+  `env.properties` の記述が分かりにいため補足します。  
+  以下の記述はdockerコンテナないからホストのpostgreSQLに接続するための記述です。
+  `nablarch.db.url=jdbc:postgresql://host.docker.internal:5432/postgres`
+- edmファイルがPostgreSQL用にしています。
+- Actionクラスからクエリを発行する箇所の一部を、PostgreSQLのデータ型に合わせて書き換えています。
+- wildflyは Nablarchの仕様上、routes.xmlに`<match path="/action/:controller/:action"/>` を記載しても機能しないため、マッピングをすべて明記。
+- テストコードを削除してあります。
+
+
+### 今後のNablarchのリリースでwildflyでテストをする場合
+以下のいずれかを行ってください。
+- Nablarchリリース直前のdevelopブランチまたはリリースブランチから新しくブランチを作成して、このブランチの変更を取りこむ。
+  5u19ではこの「新しくブランチを作る」で行いました。
+- このブランチにリリース直前のdevelopブランチまたはリリースブランチのマージを行ってください。
+
+### このブランチのビルド方法
+#### ビルド環境
+ビルドはローカルPCで行います。  
+#### 事前準備
+- ローカルPCのJava11を現行のものに更新してください。  
+  wildflyのテストが目的ですので、厳密に最新にする必要はないですが、古いバージョンを使用してJavaの不具合に遭遇することを避けるためです。
+- ビルド時にGSPがPostgreSQLに接続するので、PostgreSQLを起動しておいてください。  
+- PostgreSQLの管理者ユーザとパスワードをpom.xmlの `db.adminUser` , `db.adminPassword` に設定してください。
+
+#### ビルド
+`mvn package` でビルドできます。
+
+
+### wildflyの準備
+#### Dockerfileの用意
+docker/Dockerfile の `FROM` の部分に記載されているイメージを使用したいwildflyのバージョンに合わせて書き換えます。
+
+Dockerfileでは以下を行っています。
+- ロケールの設定
+- 管理者ユーザ/パスワードの設定
+
+#### Dockerイメージのビルド
+
+Dockerfileを配置したディレクトリをカレントにし、以下のコマンドを実行します。  
+`docker build --tag=jboss/wildfly-admin .`
+
+#### 起動方法
+以下のコマンドで起動します。  
+管理コンソールが `9990` ポート。デプロイしたアプリが公開されるポートが `8080` です。
+
+`docker run -p 8080:8080 -p 9990:9990 -it jboss/wildfly-admin`
+
+#### アプリのデプロイ方法
+管理コンソールからデプロイできます。  
+[WildFlyにアプリケーションをデプロイする](https://qiita.com/tama1/items/a4479cbd5b15d8c4677e) の「管理画面からデプロイする」が参考になります。
+
+
+## 以降の記述について
+以降はmasterブランチ、developブランチに存在するREADME.mdと同一の記述です。
+
 ## 実行手順
 
 ### 1.動作環境
