@@ -59,10 +59,16 @@
       <groupId>com.nablarch.profile</groupId>
       <artifactId>nablarch-web</artifactId>
     </dependency>
-    
+
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-fw-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.nablarch.framework</groupId>
+      <artifactId>nablarch-fw-web-tag</artifactId>
+      <version>5-NEXT-SNAPSHOT</version>
     </dependency>
 
     <dependency>

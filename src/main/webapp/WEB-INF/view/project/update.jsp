@@ -47,11 +47,144 @@
                     <tbody>
                         <tr>
                             <th class="width-250 required">
+                                search
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:search name="form.search" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.search" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                tel
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:tel name="form.tel" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.tel" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                url
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:url name="form.url" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.url" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                email
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:email name="form.email" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.email" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                date
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:date name="form.date" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.date" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                month
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:month name="form.month" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.month" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                week
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:week name="form.week" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.week" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                time
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:time name="form.time" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.time" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                datetime-local
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:datetimeLocal name="form.datetimeLocal" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.datetimeLocal" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                number
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:number name="form.number" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.number" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                range
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:range name="form.range" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value"
+                                             min="0" max="8" step="2" />
+                                    <n:error errorCss="message-error" name="form.range" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
+                                color
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <n:color name="form.color" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
+                                    <n:error errorCss="message-error" name="form.color" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="width-250 required">
                                 プロジェクト名
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.projectName" maxlength="64" cssClass="form-control width-300" errorCss="input-error" />
+                                    <n:text name="form.projectName" maxlength="64" cssClass="form-control width-300" errorCss="input-error" data-test="data-value" />
                                     <n:error errorCss="message-error" name="form.projectName" />
                                 </div>
                             </td>
