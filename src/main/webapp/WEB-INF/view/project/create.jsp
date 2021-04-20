@@ -299,6 +299,7 @@
                         </n:forConfirmationPage>
                     </div>
                 </div>
+                <n:hiddenStore name="nablarch_hiddenStore" />
             </n:form>
         </section>
         <n:include path="/WEB-INF/view/common/footer.jsp" />

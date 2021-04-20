@@ -80,7 +80,7 @@ public class ProjectAction {
         Project project = BeanUtil.createAndCopy(Project.class, form);
         LoginUserPrincipal userContext = SessionUtil.get(context, "userContext");
         project.setUserId(userContext.getUserId());
-        SessionUtil.put(context, "project", project);
+        SessionUtil.put(context, "project", project,"hidden");
         final ProjectProfit projectProfit = new ProjectProfit(
                 project.getSales(),
                 project.getCostOfGoodsSold(),
@@ -292,7 +292,7 @@ public class ProjectAction {
         // 出力情報をリクエストスコープにセット
         context.setRequestScopedVar("form", dto);
 
-        SessionUtil.put(context, "project", BeanUtil.createAndCopy(Project.class, dto));
+        SessionUtil.put(context, "project", BeanUtil.createAndCopy(Project.class, dto),"hidden");
 
         return new HttpResponse("/WEB-INF/view/project/update.jsp");
     }
