@@ -352,6 +352,23 @@
           </excludes>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <configuration>
+          <mainClass>org.h2.tools.Console</mainClass>
+          <arguments>
+            <argument>-web</argument>
+            <argument>-url</argument>
+            <argument>jdbc:h2:${project.basedir}/h2/db/nablarch_example;AUTO_SERVER=true</argument>
+            <argument>-user</argument>
+            <argument>NABLARCH_EXAMPLE</argument>
+            <argument>-password</argument>
+            <argument>NABLARCH_EXAMPLE</argument>
+          </arguments>
+        </configuration>
+      </plugin>
     </plugins>
     <extensions>
       <extension>
