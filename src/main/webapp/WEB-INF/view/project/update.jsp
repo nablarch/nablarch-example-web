@@ -20,7 +20,7 @@
             <n:include path="/WEB-INF/view/common/header.jsp" />
         </div>
         <section>
-            <n:form method="POST" useToken="true">
+            <n:form method="POST">
                 <div class="title-nav">
                     <span class="page-title">プロジェクト変更画面</span>
                     <div class="button-nav">
@@ -42,7 +42,7 @@
             <h2 class="font-group">
                 プロジェクト詳細
             </h2>
-            <n:form useToken="true">
+            <n:form>
                 <table class="table">
                     <tbody>
                         <tr>
