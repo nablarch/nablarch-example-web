@@ -88,7 +88,13 @@
 
         <component class="nablarch.fw.web.handler.HttpResponseHandler"/>
 
-        <component class="nablarch.fw.web.handler.SecureHandler" />
+        <!-- CacheControlHeaderでno-storeが付与されると、
+        戻るボタン押下時に再読み込みを手動で行うかブラウザに聞かれる。
+        NOを押すと戻れないので、2重サブミットを実行できない。
+        YESを押すと、トークンが新規で付与されるので2重サブミットが効かなくなる。
+        デモを行う際にはわかりにくいので、コメントアウトする。
+        -->
+<!--        <component class="nablarch.fw.web.handler.SecureHandler" />-->
 
         <component-ref name="multipartHandler"/>
 
@@ -171,5 +177,7 @@
       </list>
     </property>
   </component>
+
+
 
 </component-configuration>
