@@ -205,6 +205,11 @@
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-testing-jetty6</artifactId>
+      <!--
+        最終的には jetty11 に対応したアーティファクトに切り替えてバージョンは bom で管理する。
+        ここでバージョンを明記しているのは CI を通すための一次的な処置。
+       -->
+      <version>5-NEXT-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
 
