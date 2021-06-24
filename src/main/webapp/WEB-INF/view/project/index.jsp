@@ -33,7 +33,74 @@
                                     <div class="title-nav">
                                         <span>プロジェクト検索一覧画面</span>
                                         <div class="button-nav">
-                                            <n:a href="/action/project" cssClass="btn btn-raised btn-default">新規登録</n:a>
+                                            <n:form>
+                                                <n:popupLink uri="/action/project" cssClass="btn btn-raised btn-default">新規登録</n:popupLink>
+                                                <n:popupLink uri="/action/project" cssClass="btn btn-raised btn-default" onclick="return openNewWindow(event,this)">エラーにならない</n:popupLink>
+                                                <n:popupLink uri="/action/project" cssClass="btn btn-raised btn-default" onclick="return openNewWindow2(event,this)">エラーになる（自画面が遷移）</n:popupLink>
+                                                <button class="btn btn-raised btn-default" onclick="return openNewWindow()">エラーにならない</button>
+                                                <button class="btn btn-raised btn-default" onclick="return openNewWindow2()">エラーになる（自画面が遷移）</button>
+                                                <%--いずれもnablarch_hidden引き継いでないので開いたウィンドウは400エラー--%>
+                                                <n:script type="text/javascript">
+                                                    function openNewWindow() {
+                                                        let window_name = 'new_window' + (+new Date());
+                                                        window.open('', window_name); //新しいタブを開く
+                                                        let form = document.createElement('form'); // フォーム要素を宣言
+                                                        form.action = '/action/project'; // 投げる先のURLを設定
+                                                        form.method = 'POST';
+                                                        form.style.display = 'none'; // 画面に表示しない
+                                                        form.target = window_name; // 新しいタブがターゲット
+                                                        form.id = 'form'; // 後で消すためにID指定
+                                                        document.body.appendChild(form); // HTMLのbody要素に作ったform要素を追加
+    
+                                                        //input要素作成
+                                                        let inputHs = document.createElement('input'), inputValue = document.createElement('input');
+                                                        inputHs.type = inputValue.type = 'hidden';
+                                                        //要素名と値を追加
+                                                        inputHs.name = 'hs';
+                                                        inputHs.value = 'test';
+                                                        inputValue.name = 'value';
+                                                        inputValue.value = 'test';
+                                                        //form要素に作ったinput要素を追加
+                                                        form.appendChild(inputHs);
+                                                        form.appendChild(inputValue);
+    
+                                                        // 送信
+                                                        form.submit();
+                                                        // 後始末で削除
+                                                        document.body.removeChild(form);
+                                                        return false;
+                                                    }
+                                                    function openNewWindow2() {
+                                                        let window_name = 'new_window' + (+new Date());
+                                                        window.open('', window_name); //新しいタブを開く
+                                                        let form = document.createElement('form'); // フォーム要素を宣言
+                                                        form.action = '/action/project'; // 投げる先のURLを設定
+                                                        form.method = 'POST';
+                                                        form.style.display = 'none'; // 画面に表示しない
+                                                        form.target = window_name; // 新しいタブがターゲット
+                                                        form.id = 'form'; // 後で消すためにID指定
+                                                        document.body.appendChild(form); // HTMLのbody要素に作ったform要素を追加
+    
+                                                        //input要素作成
+                                                        let inputHs = document.createElement('input'), inputValue = document.createElement('input');
+                                                        inputHs.type = inputValue.type = 'hidden';
+                                                        //要素名と値を追加
+                                                        inputHs.name = 'hs';
+                                                        inputHs.value = 'test';
+                                                        inputValue.name = 'value';
+                                                        inputValue.value = 'test';
+                                                        //form要素に作ったinput要素を追加
+                                                        form.appendChild(inputHs);
+                                                        form.appendChild(inputValue);
+    
+                                                        // 送信
+                                                        form.submit();
+                                                        // 後始末で削除
+                                                        document.getElementById('form').remove();
+                                                        return false;
+                                                    }
+                                                </n:script>
+                                            </n:form>
                                         </div>
                                     </div>
                                     <!-- 検索フォームでバリデーションエラーが発生していない場合だけ、検索結果を表示する。 -->
