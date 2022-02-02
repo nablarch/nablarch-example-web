@@ -13,11 +13,23 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * web-example向けのリクエスト単体テスト基底クラス。
+ * web-example向けのリクエスト単体テストサポートクラス。
  *
  * @author Nabu Rakutaro
  */
-public abstract class ExampleHttpRequestTestTemplate extends AbstractHttpRequestTestTemplate<ExampleTestCaseInfo> {
+public class ExampleHttpRequestTestSupport extends AbstractHttpRequestTestTemplate<ExampleTestCaseInfo> {
+
+    private final String baseUri;
+
+    public ExampleHttpRequestTestSupport(Class<?> testClass, String baseUri) {
+        super(testClass);
+        this.baseUri = baseUri;
+    }
+
+    @Override
+    protected String getBaseUri() {
+        return baseUri;
+    }
 
     /**
      * リクエストスコープに格納されたBeanのリストをアサートする。
@@ -31,7 +43,7 @@ public abstract class ExampleHttpRequestTestTemplate extends AbstractHttpRequest
      * @param testCaseInfo         テストケース情報
      * @param context              実行コンテキスト
      */
-    protected void assertBeanList(String sheetName, String prefix, String requestScopedVarName,
+    public void assertBeanList(String sheetName, String prefix, String requestScopedVarName,
                                   TestCaseInfo testCaseInfo, ExecutionContext context) {
 
         List<Object> actualList = context.getRequestScopedVar(requestScopedVarName);
@@ -53,7 +65,7 @@ public abstract class ExampleHttpRequestTestTemplate extends AbstractHttpRequest
      * @param testCaseInfo テストケース情報
      * @param actualList   実際に取得したリスト
      */
-    protected void assertBeanList(String sheetName, String prefix,
+    public void assertBeanList(String sheetName, String prefix,
                                   TestCaseInfo testCaseInfo, List<Object> actualList) {
 
         String expectedName = prefix + testCaseInfo.getTestCaseNo();
