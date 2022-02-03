@@ -1,7 +1,8 @@
 package com.nablarch.example.app.web.common.authentication;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,12 +24,12 @@ import nablarch.core.repository.di.config.xml.XmlComponentDefinitionLoader;
 import nablarch.core.util.DateUtil;
 
 import org.h2.jdbcx.JdbcDataSource;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import please.change.me.util.FixedSystemTimeProvider;
 
 import com.nablarch.example.app.web.common.authentication.encrypt.PBKDF2PasswordEncryptor;
@@ -42,7 +43,7 @@ import com.nablarch.example.app.web.common.authentication.exception.UserIdLocked
  *
  * @author Nabu Rakutaro
  */
-public class SystemAccountAuthenticatorTest {
+class SystemAccountAuthenticatorTest {
 
     /**
      * テストデータなどをセットアップするためのコネクション
@@ -73,8 +74,8 @@ public class SystemAccountAuthenticatorTest {
      *
      * @throws java.sql.SQLException 例外
      */
-    @BeforeClass
-    public static void classSetup() throws SQLException {
+    @BeforeAll
+    static void classSetup() throws SQLException {
 
         JdbcDataSource ds = new JdbcDataSource();
         ds.setURL("jdbc:h2:~/nablarch_test");
@@ -113,8 +114,8 @@ public class SystemAccountAuthenticatorTest {
 
     }
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeEach
+    void setUp() throws Exception {
         DbConnectionContext.removeConnection();
 
         PreparedStatement truncate = con.prepareStatement("truncate table system_account");
@@ -178,8 +179,8 @@ public class SystemAccountAuthenticatorTest {
 
     }
 
-    @After
-    public void tearDown() throws Exception {
+    @AfterEach
+    void tearDown() throws Exception {
         DbConnectionContext.getTransactionManagerConnection("transaction").commit();
         DbConnectionContext.removeConnection();
     }
@@ -189,8 +190,8 @@ public class SystemAccountAuthenticatorTest {
      *
      * @throws Exception 例外
      */
-    @AfterClass
-    public static void classDown() throws Exception {
+    @AfterAll
+    static void classDown() throws Exception {
         if (con != null) {
             con.close();
         }
@@ -200,7 +201,7 @@ public class SystemAccountAuthenticatorTest {
      * 認可対象のユーザIDがnullの場合は、{@link AuthenticationFailedException}が送出されること。
      */
     @Test
-    public void testUserIdIsNull() {
+    void testUserIdIsNull() {
         SystemAccountAuthenticator authenticator = createPasswordAuthenticator("20130802");
 
         try {

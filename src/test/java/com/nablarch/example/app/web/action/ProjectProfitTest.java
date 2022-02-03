@@ -1,30 +1,26 @@
 package com.nablarch.example.app.web.action;
 
-import static org.hamcrest.CoreMatchers.is;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * {@link ProjectProfit}のテスト
  */
-@RunWith(Enclosed.class)
-public class ProjectProfitTest {
+class ProjectProfitTest {
 
-    @RunWith(Parameterized.class)
-    public static class 売上総利益 {
-
-        private final Param<Long> param;
-
-        @Parameterized.Parameters
-        public static List<Param<Long>> parameters() {
+    @Nested
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    class 売上総利益 {
+        List<Param<Long>> parameters() {
             return Arrays.asList(
                     new Param<>(new ProjectProfit(987654321, 123456789, 200, 300), 864197532L),
                     new Param<>(new ProjectProfit(999999999, 0, 200, 300), 999999999L),
@@ -37,23 +33,17 @@ public class ProjectProfitTest {
                     new Param<Long>(new ProjectProfit(null, null, 200, 300), null));
         }
 
-        public 売上総利益(Param<Long> param) {
-            this.param = param;
-        }
-
-        @Test
-        public void test() throws Exception {
-            Assert.assertThat(param.projectProfit.getGrossProfit(), is(param.expected));
+        @ParameterizedTest
+        @MethodSource("parameters")
+        public void test(Param<Long> param) throws Exception {
+            assertThat(param.projectProfit.getGrossProfit(), is(param.expected));
         }
     }
 
-    @RunWith(Parameterized.class)
-    public static class 配賦前利益 {
-
-        private final Param<Long> param;
-
-        @Parameterized.Parameters
-        public static List<Param<Long>> parameters() {
+    @Nested
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    class 配賦前利益 {
+        List<Param<Long>> parameters() {
             return Arrays.asList(
                     new Param<>(new ProjectProfit(987654321, 123456789, 12345678, 300), 851851854L),
                     new Param<>(new ProjectProfit(999999999, 0, 0, 300), 999999999L),
@@ -67,23 +57,17 @@ public class ProjectProfitTest {
             );
         }
 
-        public 配賦前利益(Param<Long> param) {
-            this.param = param;
-        }
-
-        @Test
-        public void test() throws Exception {
-            Assert.assertThat(param.projectProfit.getProfitBeforeAllocation(), is(param.expected));
+        @ParameterizedTest
+        @MethodSource("parameters")
+        void test(Param<Long> param) throws Exception {
+            assertThat(param.projectProfit.getProfitBeforeAllocation(), is(param.expected));
         }
     }
 
-    @RunWith(Parameterized.class)
-    public static class 配賦前利益率 {
-
-        private final Param<Long> param;
-
-        @Parameterized.Parameters
-        public static List<Param<BigDecimal>> parameters() {
+    @Nested
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    class 配賦前利益率 {
+        List<Param<BigDecimal>> parameters() {
             return Arrays.asList(
                     new Param<>(new ProjectProfit(987654321, 123456789, 12345678, 300), new BigDecimal("0.862")),
                     new Param<>(new ProjectProfit(999999999, 0, 0, 300), new BigDecimal("1.000")),
@@ -97,24 +81,17 @@ public class ProjectProfitTest {
             );
         }
 
-        public 配賦前利益率(Param<Long> param) {
-            this.param = param;
-        }
-
-        @Test
-        public void test() throws Exception {
-            Assert.assertThat(param.projectProfit.getProfitRateBeforeAllocation(), is(param.expected));
+        @ParameterizedTest
+        @MethodSource("parameters")
+        void test(Param<Long> param) throws Exception {
+            assertThat(param.projectProfit.getProfitRateBeforeAllocation(), is(param.expected));
         }
     }
 
-
-    @RunWith(Parameterized.class)
-    public static class 営業利益 {
-
-        private final Param<Long> param;
-
-        @Parameterized.Parameters
-        public static List<Param<Long>> parameters() {
+    @Nested
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    class 営業利益 {
+        List<Param<Long>> parameters() {
             return Arrays.asList(
                     new Param<>(new ProjectProfit(987654321, 123456789, 12345678, 1234567), 850617287L),
                     new Param<>(new ProjectProfit(999999999, 0, 0, 0), 999999999L),
@@ -128,23 +105,17 @@ public class ProjectProfitTest {
             );
         }
 
-        public 営業利益(Param<Long> param) {
-            this.param = param;
-        }
-
-        @Test
-        public void test() throws Exception {
-            Assert.assertThat(param.projectProfit.getOperatingProfit(), is(param.expected));
+        @ParameterizedTest
+        @MethodSource("parameters")
+        void test(Param<Long> param) throws Exception {
+            assertThat(param.projectProfit.getOperatingProfit(), is(param.expected));
         }
     }
 
-    @RunWith(Parameterized.class)
-    public static class 営業利益率 {
-
-        private final Param<Long> param;
-
-        @Parameterized.Parameters
-        public static List<Param<BigDecimal>> parameters() {
+    @Nested
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    class 営業利益率 {
+        List<Param<BigDecimal>> parameters() {
             return Arrays.asList(
                     new Param<>(new ProjectProfit(987654321, 123456789, 12345678, 1234567), new BigDecimal("0.861")),
                     new Param<>(new ProjectProfit(999999999, 0, 0, 0), new BigDecimal("1.000")),
@@ -159,13 +130,10 @@ public class ProjectProfitTest {
             );
         }
 
-        public 営業利益率(Param<Long> param) {
-            this.param = param;
-        }
-
-        @Test
-        public void test() throws Exception {
-            Assert.assertThat(param.projectProfit.getOperatingProfitRate(), is(param.expected));
+        @ParameterizedTest
+        @MethodSource("parameters")
+        void test(Param<Long> param) throws Exception {
+            assertThat(param.projectProfit.getOperatingProfitRate(), is(param.expected));
         }
     }
 
