@@ -69,9 +69,9 @@ public class AuthenticationAction {
                     MessageLevel.ERROR, "errors.login"));
         }
 
-        // 認証OKの場合、ログイン前のセッションを破棄後、
-        // 認証情報をセッション（新規）に格納後、トップ画面にリダイレクトする。
-        SessionUtil.invalidate(context);
+        // 認証OKの場合、セッションIDを変更後、
+        // 認証情報をセッションに格納後、トップ画面にリダイレクトする。
+        SessionUtil.changeId(context);
         LoginUserPrincipal userContext = createLoginUserContext(form.getLoginId());
         SessionUtil.put(context, "userContext", userContext);
         SessionUtil.put(context,"user.id",String.valueOf(userContext.getUserId()));
