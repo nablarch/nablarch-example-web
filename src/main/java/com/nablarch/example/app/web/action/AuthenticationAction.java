@@ -1,6 +1,7 @@
 package com.nablarch.example.app.web.action;
 
 import nablarch.common.dao.UniversalDao;
+import nablarch.common.web.csrf.CsrfTokenUtil;
 import nablarch.common.web.session.SessionUtil;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.message.ApplicationException;
@@ -72,6 +73,8 @@ public class AuthenticationAction {
         // 認証OKの場合、セッションIDを変更後、
         // 認証情報をセッションに格納後、トップ画面にリダイレクトする。
         SessionUtil.changeId(context);
+        CsrfTokenUtil.regenerateCsrfToken(context);
+
         LoginUserPrincipal userContext = createLoginUserContext(form.getLoginId());
         SessionUtil.put(context, "userContext", userContext);
         SessionUtil.put(context,"user.id",String.valueOf(userContext.getUserId()));
