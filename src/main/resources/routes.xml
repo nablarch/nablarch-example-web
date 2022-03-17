@@ -5,13 +5,56 @@
     <get  path="/action/logout" to="Authentication#logout"/>
     <get  path="/action/project" to="Project#newEntity"/>
     <get  path="/action/projectUpload" to="ProjectUpload#index"/>
+    <get  path="/action/project/index" to="Project#index"/>
+
     <get  path="/api/clients" to="Client#find"/>
     <get  path="/api/industries" to="Industry#find"/>
-    <match path="/action/:controller/:action"/>
+
+    <!--↓ for Wildfly :controller/:actionでのマッチにWildflyは対応してない。 -->
+    <get path="/action/project/list" to="Project#list" />
+    <get path="/action/project/download" to="Project#download" />
+    <get path="/action/project/show/:projectId" to="Project#show">
+        <requirements>
+            <requirement name="projectId" value="\d+$" />
+        </requirements>
+    </get>
+
+    <post  path="/action/project/confirmOfCreate" to="Project#confirmOfCreate"/>
+    <post  path="/action/project/backToNew" to="Project#backToNew"/>
+    <post  path="/action/project/create" to="Project#create"/>
+    <get   path="/action/project/completeOfCreate" to="Project#completeOfCreate"/>
+
+    <get path="/action/project/edit/:projectId" to="Project#edit">
+        <requirements>
+            <requirement name="projectId" value="\d+$" />
+        </requirements>
+    </get>
+    <post  path="/action/project/confirmOfUpdate" to="Project#confirmOfUpdate"/>
+    <post  path="/action/project/backToEdit" to="Project#backToEdit"/>
+    <post  path="/action/project/update" to="Project#update"/>
+    <get   path="/action/project/completeOfUpdate" to="Project#completeOfUpdate"/>
+    <post  path="/action/project/delete" to="Project#delete"/>
+    <get   path="/action/project/completeOfDelete" to="Project#completeOfDelete"/>
+
+    <get   path="/action/projectBulk/index" to="ProjectBulk#index"/>
+    <get   path="/action/projectBulk/list" to="ProjectBulk#list"/>
+    <post  path="/action/projectBulk/backToList" to="ProjectBulk#backToList"/>
+    <post  path="/action/projectBulk/update" to="ProjectBulk#update"/>
+    <post  path="/action/projectBulk/confirmOfUpdate" to="ProjectBulk#confirmOfUpdate"/>
+    <get   path="/action/projectBulk/completeOfUpdate" to="ProjectBulk#completeOfUpdate"/>
+
+
+    <post  path="/action/projectUpload/upload" to="ProjectUpload#upload"/>
+    <!--↑ for Wildfly-->
+
+
+    <!--
     <match path="/action/:controller/:action/:projectId">
         <requirements>
             <requirement name="projectId" value="\d+$" />
         </requirements>
     </match>
 
+    <match path="/action/:controller/:action"/>
+    -->
 </routes>
