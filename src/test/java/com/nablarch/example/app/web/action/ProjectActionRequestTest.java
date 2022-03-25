@@ -1,47 +1,45 @@
 package com.nablarch.example.app.web.action;
 
 import com.nablarch.example.app.entity.Project;
+import com.nablarch.example.app.test.ExampleHttpRequestTest;
 import com.nablarch.example.app.test.ExampleTestCaseInfo;
 import com.nablarch.example.app.test.advice.SignedInAdvice;
-import com.nablarch.example.app.test.ExampleHttpRequestTestTemplate;
+import com.nablarch.example.app.test.ExampleHttpRequestTestSupport;
 import nablarch.common.web.session.SessionUtil;
 import nablarch.core.util.DateUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.test.Assertion;
 import nablarch.test.core.file.FileSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * {@link ProjectAction}のリクエスト単体テストクラス。
  *
  * @author Nabu Rakutaro
  */
-public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
-
-    @Override
-    protected String getBaseUri() {
-        return "/action/project/";
-    }
+@ExampleHttpRequestTest(baseUri = "/action/project/")
+class ProjectActionRequestTest {
+    ExampleHttpRequestTestSupport support;
 
     /**
      * プロジェクト登録画面表示正常系ケース。
      */
     @Test
-    public void newEntityNormal() {
-        execute("newEntityNormal", new SignedInAdvice());
+    void newEntityNormal() {
+        support.execute("newEntityNormal", new SignedInAdvice());
     }
 
     /**
      * プロジェクト登録確認画面表示正常系ケース。
      */
     @Test
-    public void confirmOfCreateNormal() {
-        execute("confirmOfCreateNormal", new SignedInAdvice() {
+    void confirmOfCreateNormal() {
+        support.execute("confirmOfCreateNormal", new SignedInAdvice() {
 
             @Override
             public void afterExecute(ExampleTestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
-                assertEntity(testCaseInfo.getSheetName(),
+                support.assertEntity(testCaseInfo.getSheetName(),
                         "project" + testCaseInfo.getTestCaseNo(),
                         context.getRequestScopedVar("project"));
             }
@@ -52,16 +50,16 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト登録確認異常系ケース。
      */
     @Test
-    public void confirmOfCreateAbNormal() {
-        execute("confirmOfCreateAbNormal", new SignedInAdvice());
+    void confirmOfCreateAbNormal() {
+        support.execute("confirmOfCreateAbNormal", new SignedInAdvice());
     }
 
     /**
      * プロジェクト登録正常系ケース。
      */
     @Test
-    public void createNormal() {
-        execute("createNormal", new SignedInAdvice() {
+    void createNormal() {
+        support.execute("createNormal", new SignedInAdvice() {
             @Override
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
@@ -75,8 +73,8 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト登録異常系ケース。
      */
     @Test
-    public void createAbNormal() {
-        execute("createAbNormal", new SignedInAdvice() {
+    void createAbNormal() {
+        support.execute("createAbNormal", new SignedInAdvice() {
             @Override
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
@@ -90,8 +88,8 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト登録画面へ戻る正常系ケース。
      */
     @Test
-    public void backToNewNormal() {
-        execute("backToNewNormal", new SignedInAdvice() {
+    void backToNewNormal() {
+        support.execute("backToNewNormal", new SignedInAdvice() {
             @Override
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
@@ -104,7 +102,7 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
             @Override
             public void afterExecute(ExampleTestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
-                assertEntity(testCaseInfo.getSheetName(),
+                support.assertEntity(testCaseInfo.getSheetName(),
                         "project" + testCaseInfo.getTestCaseNo(),
                         context.getRequestScopedVar("project"));
             }
@@ -115,27 +113,27 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * 登録完了画面表示正常系ケース。
      */
     @Test
-    public void completeOfCreateNormal() {
-        execute("completeOfCreateNormal", new SignedInAdvice());
+    void completeOfCreateNormal() {
+        support.execute("completeOfCreateNormal", new SignedInAdvice());
     }
 
     /**
      * プロジェクト検索画面初期表示正常系ケース。
      */
     @Test
-    public void indexNormal() {
-        execute("indexNormal", new SignedInAdvice() {
+    void indexNormal() {
+        support.execute("indexNormal", new SignedInAdvice() {
 
             @Override
             public void afterExecute(ExampleTestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 // 検索フォームの確認
-                assertEntity(testCaseInfo.getSheetName(),
+                support.assertEntity(testCaseInfo.getSheetName(),
                         "searchForm" + testCaseInfo.getTestCaseNo(),
                         context.getRequestScopedVar("searchForm"));
 
                 // 検索結果の確認
-                assertBeanList(testCaseInfo.getSheetName(), "project", "searchResult", testCaseInfo, context);
+                support.assertBeanList(testCaseInfo.getSheetName(), "project", "searchResult", testCaseInfo, context);
             }
         });
     }
@@ -144,8 +142,8 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト検索正常系ケース。
      */
     @Test
-    public void listNormal() {
-        execute("listNormal", new SignedInAdvice() {
+    void listNormal() {
+        support.execute("listNormal", new SignedInAdvice() {
 
             @Override
             public void afterExecute(ExampleTestCaseInfo testCaseInfo,
@@ -153,11 +151,11 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
                 String sheetName = testCaseInfo.getSheetName();
 
                 // 検索フォームの確認
-                assertEntity(sheetName, "searchForm" + testCaseInfo.getTestCaseNo(),
+                support.assertEntity(sheetName, "searchForm" + testCaseInfo.getTestCaseNo(),
                         context.getRequestScopedVar("searchForm"));
 
                 // 検索結果の確認
-                assertBeanList(sheetName, "project", "searchResult", testCaseInfo, context);
+                support.assertBeanList(sheetName, "project", "searchResult", testCaseInfo, context);
             }
         });
     }
@@ -166,21 +164,21 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト検索異常系ケース。
      */
     @Test
-    public void listAbNormal() {
-        execute("listAbNormal", new SignedInAdvice());
+    void listAbNormal() {
+        support.execute("listAbNormal", new SignedInAdvice());
     }
 
     /**
      * プロジェクト詳細表示正常系ケース。
      */
     @Test
-    public void showNormal() {
-        execute("showNormal", new SignedInAdvice() {
+    void showNormal() {
+        support.execute("showNormal", new SignedInAdvice() {
 
             @Override
             public void afterExecute(ExampleTestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
-                assertEntity(testCaseInfo.getSheetName(),
+                support.assertEntity(testCaseInfo.getSheetName(),
                         "projectDto" + testCaseInfo.getTestCaseNo(),
                         context.getRequestScopedVar("form"));
             }
@@ -191,16 +189,16 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト詳細表示異常系ケース。
      */
     @Test
-    public void showAbNormal() {
-        execute("showAbNormal", new SignedInAdvice());
+    void showAbNormal() {
+        support.execute("showAbNormal", new SignedInAdvice());
     }
 
     /**
      * 更新画面表示正常系ケース。
      */
     @Test
-    public void editNormal() {
-        execute("editNormal", new SignedInAdvice() {
+    void editNormal() {
+        support.execute("editNormal", new SignedInAdvice() {
 
             @Override
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
@@ -212,7 +210,7 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
             @Override
             public void afterExecute(ExampleTestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
-                assertEntity(testCaseInfo.getSheetName(),
+                support.assertEntity(testCaseInfo.getSheetName(),
                         "form" + testCaseInfo.getTestCaseNo(),
                         context.getRequestScopedVar("form"));
 
@@ -227,16 +225,16 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * 更新画面表示異常系ケース。
      */
     @Test
-    public void editAbNormal() {
-        execute("editAbNormal", new SignedInAdvice());
+    void editAbNormal() {
+        support.execute("editAbNormal", new SignedInAdvice());
     }
 
     /**
      * プロジェクト更新確認画面表示正常系ケース。
      */
     @Test
-    public void confirmOfUpdateNormal() {
-        execute("confirmOfUpdateNormal", new SignedInAdvice() {
+    void confirmOfUpdateNormal() {
+        support.execute("confirmOfUpdateNormal", new SignedInAdvice() {
 
             @Override
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
@@ -248,7 +246,7 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
             @Override
             public void afterExecute(ExampleTestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
-                assertEntity(testCaseInfo.getSheetName(),
+                support.assertEntity(testCaseInfo.getSheetName(),
                         "project" + testCaseInfo.getTestCaseNo(),
                         context.getRequestScopedVar("project"));
             }
@@ -259,16 +257,16 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト更新確認画面表示異常系ケース。
      */
     @Test
-    public void confirmOfUpdateAbNormal() {
-        execute("confirmOfUpdateAbNormal", new SignedInAdvice());
+    void confirmOfUpdateAbNormal() {
+        support.execute("confirmOfUpdateAbNormal", new SignedInAdvice());
     }
 
     /**
      * プロジェクト更新画面へ戻る正常系ケース。
      */
     @Test
-    public void backToEditNormal() {
-        execute("backToEditNormal", new SignedInAdvice() {
+    void backToEditNormal() {
+        support.execute("backToEditNormal", new SignedInAdvice() {
             @Override
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
@@ -281,7 +279,7 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
             @Override
             public void afterExecute(ExampleTestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
-                assertEntity(testCaseInfo.getSheetName(),
+                support.assertEntity(testCaseInfo.getSheetName(),
                         "project" + testCaseInfo.getTestCaseNo(),
                         context.getRequestScopedVar("project"));
             }
@@ -292,8 +290,8 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト更新正常系ケース。
      */
     @Test
-    public void updateNormal() {
-        execute("updateNormal", new SignedInAdvice() {
+    void updateNormal() {
+        support.execute("updateNormal", new SignedInAdvice() {
             @Override
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
@@ -310,8 +308,8 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト更新異常系ケース。
      */
     @Test
-    public void updateAbNormal() {
-        execute("updateAbNormal", new SignedInAdvice() {
+    void updateAbNormal() {
+        support.execute("updateAbNormal", new SignedInAdvice() {
             @Override
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
@@ -328,16 +326,16 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト更新完了画面表示正常系ケース。
      */
     @Test
-    public void completeOfUpdateNormal() {
-        execute("completeOfUpdateNormal", new SignedInAdvice());
+    void completeOfUpdateNormal() {
+        support.execute("completeOfUpdateNormal", new SignedInAdvice());
     }
 
     /**
      * プロジェクト削除正常系ケース。
      */
     @Test
-    public void deleteNormal() {
-        execute("deleteNormal", new SignedInAdvice() {
+    void deleteNormal() {
+        support.execute("deleteNormal", new SignedInAdvice() {
             @Override
             public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
@@ -353,24 +351,24 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * プロジェクト削除異常系ケース。
      */
     @Test
-    public void deleteAbNormal() {
-        execute("deleteAbNormal", new SignedInAdvice());
+    void deleteAbNormal() {
+        support.execute("deleteAbNormal", new SignedInAdvice());
     }
 
     /**
      * プロジェクト削除完了画面表示正常系ケース。
      */
     @Test
-    public void completeOfDeleteNormal() {
-        execute("completeOfDeleteNormal", new SignedInAdvice());
+    void completeOfDeleteNormal() {
+        support.execute("completeOfDeleteNormal", new SignedInAdvice());
     }
 
     /**
      * プロジェクト一覧ダウンロード正常系ケース。
      */
     @Test
-    public void downloadNormal() {
-        execute("downloadNormal", new SignedInAdvice() {
+    void downloadNormal() {
+        support.execute("downloadNormal", new SignedInAdvice() {
 
             @Override
             public void afterExecute(ExampleTestCaseInfo testCaseInfo, ExecutionContext context) {
@@ -384,8 +382,8 @@ public class ProjectActionRequestTest extends ExampleHttpRequestTestTemplate {
      * * プロジェクト一覧ダウンロード異常系ケース。
      */
     @Test
-    public void downloadAbNormal() {
-        execute("downloadAbNormal", new SignedInAdvice());
+    void downloadAbNormal() {
+        support.execute("downloadAbNormal", new SignedInAdvice());
     }
 
     /**

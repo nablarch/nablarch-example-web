@@ -2,21 +2,21 @@ package com.nablarch.example.app.test;
 
 import com.nablarch.example.app.entity.core.validation.validator.MoneyRange;
 import nablarch.core.validation.ee.ValidatorUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
-import static org.junit.Assert.assertThat;
 
 
 /**
  * {@link com.nablarch.example.app.entity.core.validation.validator.MoneyRange}のテストクラス。
  */
-public class MoneyRangeTest {
+class MoneyRangeTest {
 
     private final Validator validator = ValidatorUtil.getValidator();
 
@@ -53,7 +53,7 @@ public class MoneyRangeTest {
      * 属性を何も指定しないときのテスト。
      */
     @Test
-    public void testNoAttributes() {
+    void testNoAttributes() {
         TestBean testBean = new TestBean();
         Set<ConstraintViolation<TestBean>> violations;
         ConstraintViolation<TestBean> v;
@@ -85,7 +85,7 @@ public class MoneyRangeTest {
      * minを指定したときのテスト。
      */
     @Test
-    public void testMinAttribute() {
+    void testMinAttribute() {
         TestBean testBean = new TestBean();
         Set<ConstraintViolation<TestBean>> violations;
         ConstraintViolation<TestBean> v;
@@ -111,7 +111,7 @@ public class MoneyRangeTest {
      * maxを指定したときのテスト。
      */
     @Test
-    public void testMaxAttribute() {
+    void testMaxAttribute() {
         TestBean testBean = new TestBean();
         Set<ConstraintViolation<TestBean>> violations;
         ConstraintViolation<TestBean> v;
@@ -137,7 +137,7 @@ public class MoneyRangeTest {
      * min, maxを指定したときのテスト。
      */
     @Test
-    public void testMinMaxAttribute() {
+    void testMinMaxAttribute() {
         TestBean testBean = new TestBean();
         Set<ConstraintViolation<TestBean>> violations;
         ConstraintViolation<TestBean> v;
@@ -170,7 +170,7 @@ public class MoneyRangeTest {
      * min. maxに同じ値を指定したときのテスト。
      */
     @Test
-    public void testMinMaxSame() {
+    void testMinMaxSame() {
         TestBean testBean = new TestBean();
         Set<ConstraintViolation<TestBean>> violations;
         ConstraintViolation<TestBean> v;
@@ -197,7 +197,7 @@ public class MoneyRangeTest {
      * min, maxがマイナス値のときのテスト。
      */
     @Test
-    public void minMaxMinus() {
+    void minMaxMinus() {
         TestBean testBean = new TestBean();
         Set<ConstraintViolation<TestBean>> violations;
         ConstraintViolation<TestBean> v;
@@ -224,7 +224,7 @@ public class MoneyRangeTest {
      * 値が数値でないときのテスト。
      */
     @Test
-    public void testNotNumeric() {
+    void testNotNumeric() {
         TestBean testBean = new TestBean();
         Set<ConstraintViolation<TestBean>> violations;
         ConstraintViolation<TestBean> v;
@@ -246,7 +246,7 @@ public class MoneyRangeTest {
      * 値が小数であるときのテスト。
      */
     @Test
-    public void testDecimal() {
+    void testDecimal() {
         TestBean testBean = new TestBean();
         Set<ConstraintViolation<TestBean>> violations;
         ConstraintViolation<TestBean> v;
@@ -268,7 +268,7 @@ public class MoneyRangeTest {
      * メッセージが指定されたときのテスト。
      */
     @Test
-    public void testMessage() {
+    void testMessage() {
         TestBean testBean = new TestBean();
         Set<ConstraintViolation<TestBean>> violations;
         ConstraintViolation<TestBean> v;

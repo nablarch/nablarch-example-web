@@ -1,21 +1,19 @@
 package com.nablarch.example.app.web.common.authentication.encrypt;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import com.nablarch.example.app.web.common.authentication.encrypt.PBKDF2PasswordEncryptor;
-import com.nablarch.example.app.web.common.authentication.encrypt.PasswordEncryptor;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * {@link PBKDF2PasswordEncryptor} のテストクラス。
  *
  * @author Nabu Rakutaro
  */
-public class PBKDF2PasswordEncryptorTest {
+class PBKDF2PasswordEncryptorTest {
 
     /**
      * テスト対象
@@ -25,15 +23,15 @@ public class PBKDF2PasswordEncryptorTest {
     /**
      * テスト対象を初期化する。
      */
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         this.sut = createEncryptor();
     }
 
     /**
      * テスト用の {@link PasswordEncryptor} を生成する。
      */
-    public PBKDF2PasswordEncryptor createEncryptor() {
+    PBKDF2PasswordEncryptor createEncryptor() {
         PBKDF2PasswordEncryptor encryptor = new PBKDF2PasswordEncryptor();
         encryptor.setFixedSalt("exampleFixedSaltString");
         return encryptor;
@@ -45,7 +43,7 @@ public class PBKDF2PasswordEncryptorTest {
      * 空文字列が引数となる場合の、例外的なケースをテストする。
      */
     @Test
-    public void testEncrypt_ExceptionalValue() {
+    void testEncrypt_ExceptionalValue() {
         assertThat("saltSeed, passwordが空文字列の場合には、空文字列が返却されること。", sut.encrypt("", ""), is(""));
         assertThat("passwordが空文字列の場合には、空文字列が返却されること。", sut.encrypt("saltSeed", ""), is(""));
         assertThat("saltSeedが空文字列の場合には、空文字列が返却されること。", sut.encrypt("", "password"), is(""));
@@ -55,7 +53,7 @@ public class PBKDF2PasswordEncryptorTest {
      * {@link PBKDF2PasswordEncryptor#encrypt(String, String)} のテスト。
      */
     @Test
-    public void testEncrypt() {
+    void testEncrypt() {
         assertThat("同じパスワードを暗号化すると、同じ文字列となること。", sut.encrypt("salt", "password"), is(sut.encrypt("salt", "password")));
         assertThat("異なるパスワードを暗号化すると、異なる文字列となること。", sut.encrypt("salt", "one"), is(not(sut.encrypt("salt", "another"))));
         assertThat("同じパスワードでも、ソルトが異なると、異なる文字列となること。", sut.encrypt("one", "password"), is(not(sut.encrypt("another", "password"))));
@@ -78,11 +76,11 @@ public class PBKDF2PasswordEncryptorTest {
     /**
      * {@link PBKDF2PasswordEncryptor#encrypt(String, String)} のテスト。
      * <p/>
-     * {@link PBKDF2PasswordEncryptor#fixedSalt} が {@code null} の場合には、例外が発生すること。
+     * {@link PBKDF2PasswordEncryptor#getFixedSalt()} が {@code null} の場合には、例外が発生すること。
      */
-    @Test(expected = IllegalStateException.class)
-    public void testEncrypt_NoFixedSalt() {
-        new PBKDF2PasswordEncryptor().encrypt("salt", "password");
+    @Test
+    void testEncrypt_NoFixedSalt() {
+        assertThrows(IllegalStateException.class, () -> new PBKDF2PasswordEncryptor().encrypt("salt", "password"));
     }
 
     /**
@@ -90,9 +88,9 @@ public class PBKDF2PasswordEncryptorTest {
      * <p/>
      * {@code saltSeed} が {@code null} の場合には、 {@link IllegalArgumentException} が発生すること。
      */
-    @Test(expected = IllegalArgumentException.class)
-    public void testEncrypt_NullSaltSeed() {
-        sut.encrypt(null, "password");
+    @Test
+    void testEncrypt_NullSaltSeed() {
+        assertThrows(IllegalArgumentException.class, () -> sut.encrypt(null, "password"));
     }
 
     /**
@@ -100,8 +98,8 @@ public class PBKDF2PasswordEncryptorTest {
      * <p/>
      * {@code password} が {@code null} の場合には、 {@link IllegalArgumentException} が発生すること。
      */
-    @Test(expected = IllegalArgumentException.class)
-    public void testEncrypt_NullPassword() {
-        sut.encrypt("saltSeed", null);
+    @Test
+    void testEncrypt_NullPassword() {
+        assertThrows(IllegalArgumentException.class, () -> sut.encrypt("saltSeed", null));
     }
 }
