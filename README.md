@@ -72,7 +72,6 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 ### 5. DBの確認方法
 
 1. https://www.h2database.com/html/download.html からH2をインストールしてください。  
-  ※2021年4月時点の最新版Version1.4.200には[既知の問題](https://github.com/h2database/h2database/issues/2078)があり、このリポジトリに含まれるDBにアクセスできないため、Last Stable版であるVersion1.4.199をご利用ください。
 
 
 2. {インストールフォルダ}/bin/h2.bat を実行してください(コマンドプロンプトが開く)。  
