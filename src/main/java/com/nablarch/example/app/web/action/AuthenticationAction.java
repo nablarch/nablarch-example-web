@@ -12,7 +12,6 @@ import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
-import nablarch.fw.web.interceptor.OnErrors;
 
 import com.nablarch.example.app.entity.SystemAccount;
 import com.nablarch.example.app.entity.Users;
