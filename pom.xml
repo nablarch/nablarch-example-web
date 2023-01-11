@@ -101,6 +101,11 @@
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-core-jdbc</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>com.nablarch.framework</groupId>
+      <artifactId>nablarch-common-auth-session</artifactId>
+    </dependency>
     
     <dependency>
       <groupId>com.nablarch.integration</groupId>
