@@ -23,6 +23,14 @@ class ProjectUploadActionRequestTest {
     }
 
     /**
+     * プロジェクト登録確認画面表示、権限エラーケース。
+     */
+    @Test
+    void indexForbidden() {
+        support.execute("indexForbidden", new SignedInAdvice());
+    }
+
+    /**
      * プロジェクト一括登録正常系ケース。
      */
     @Test
@@ -36,6 +44,14 @@ class ProjectUploadActionRequestTest {
     @Test
     void uploadAbNormal() {
         support.execute("uploadAbNormal", new SignedInAdvice());
+    }
+
+    /**
+     * プロジェクト一括登録、権限エラーケース。
+     */
+    @Test
+    void uploadForbidden() {
+        support.execute("uploadForbidden", new SignedInAdvice());
     }
 
 }
