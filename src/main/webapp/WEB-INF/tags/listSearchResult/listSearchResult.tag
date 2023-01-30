@@ -73,7 +73,7 @@
 <c:if test="${empty showResult}"><n:set var="showResult" value="true" scope="page" /></c:if>
 <%-- 検索結果件数 --%>
 <c:if test="${empty useResultCount}"><n:set var="useResultCount" value="true" scope="page" /></c:if>
-<c:if test="${empty resultCountCss}"><n:set var="resultCountCss" value="true" scope="page" /></c:if>
+<c:if test="${empty resultCountCss}"><n:set var="resultCountCss" value="nablarch_resultCount" scope="page" /></c:if>
 <%-- ページング --%>
 <c:if test="${empty usePaging}"><n:set var="usePaging" value="true" scope="page" /></c:if>
 
@@ -95,7 +95,7 @@
     <jsp:invoke fragment="resultCountFragment" var="resultCountTag" />
     <div class="<n:write name="resultCountCss" withHtmlFormat="false" />">
         <c:if test="${empty resultCountTag}">
-            検索結果 <n:write name="${listSearchInfoName}.pagination.resultCount" />件
+            検索結果 <n:write name="pagination.resultCount" />件
         </c:if>
         <c:if test="${not empty resultCountTag}">
             <jsp:invoke fragment="resultCountFragment" />
