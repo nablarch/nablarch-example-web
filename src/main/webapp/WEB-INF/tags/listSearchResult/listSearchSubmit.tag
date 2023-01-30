@@ -14,7 +14,6 @@
 <%@ attribute name="uri" required="true" rtexprvalue="true" %>
 <%@ attribute name="name" required="true" rtexprvalue="true" %>
 <%@ attribute name="pageNumber" required="true" rtexprvalue="true" %>
-<%@ attribute name="sortId" required="false" rtexprvalue="true" %>
 <%@ attribute name="listSearchInfoName" required="true" rtexprvalue="true" %>
 
 <%--------------------------------------------------------------
@@ -25,9 +24,6 @@
     <c:url value="${uri}" var="uri" context="/">
         <c:if test="${not empty pageNumber}">
             <c:param name="${listSearchInfoName}.pageNumber" value="${pageNumber}" />
-        </c:if>
-        <c:if test="${not empty sortId}">
-            <c:param name="${listSearchInfoName}.sortId" value="${sortId}" />
         </c:if>
     </c:url>
     <n:a href="${uri}" name="${name}" cssClass="${css}"><n:write name="label" /></n:a>

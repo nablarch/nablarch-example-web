@@ -30,7 +30,6 @@
 <%@ attribute name="prevSubmitName" required="false" rtexprvalue="true" %>
 <%-- ページ番号(1 2 3 ...n) --%>
 <%@ attribute name="usePageNumberSubmit" required="false" rtexprvalue="true" %>
-<%@ attribute name="pageNumberSubmitWrapperCss" required="false" rtexprvalue="true" %>
 <%@ attribute name="pageNumberSubmitCss" required="false" rtexprvalue="true" %>
 <%@ attribute name="pageNumberSubmitName" required="false" rtexprvalue="true" %>
 <%-- 次へ --%>
@@ -63,7 +62,6 @@
 <c:if test="${empty prevSubmitName}"><n:set var="prevSubmitName" value="prevSubmit" scope="page" /></c:if>
 <%-- ページ番号(1 2 3 ...n) --%>
 <c:if test="${empty usePageNumberSubmit}"><n:set var="usePageNumberSubmit" value="false" scope="page" /></c:if>
-<c:if test="${empty pageNumberSubmitWrapperCss}"><n:set var="pageNumberSubmitWrapperCss" value="nablarch_pageNumberSubmitWrapper" scope="page" /></c:if>
 <c:if test="${empty pageNumberSubmitCss}"><n:set var="pageNumberSubmitCss" value="nablarch_pageNumberSubmit" scope="page" /></c:if>
 <c:if test="${empty pageNumberSubmitName}"><n:set var="pageNumberSubmitName" value="pageNumberSubmit" scope="page" /></c:if>
 <%-- 次へ --%>

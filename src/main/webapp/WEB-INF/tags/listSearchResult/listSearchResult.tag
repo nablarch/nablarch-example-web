@@ -37,7 +37,6 @@
 <%@ attribute name="prevSubmitName" required="false" rtexprvalue="true" %>
 <%-- ページング(ページ番号(1 2 3 ...n)) --%>
 <%@ attribute name="usePageNumberSubmit" required="false" rtexprvalue="true" %>
-<%@ attribute name="pageNumberSubmitWrapperCss" required="false" rtexprvalue="true" %>
 <%@ attribute name="pageNumberSubmitCss" required="false" rtexprvalue="true" %>
 <%@ attribute name="pageNumberSubmitName" required="false" rtexprvalue="true" %>
 <%-- ページング(次へ) --%>
@@ -120,7 +119,6 @@
                         prevSubmitLabel="${prevSubmitLabel}"
                         prevSubmitName="${prevSubmitName}"
                         usePageNumberSubmit="${usePageNumberSubmit}"
-                        pageNumberSubmitWrapperCss="${pageNumberSubmitWrapperCss}"
                         pageNumberSubmitCss="${pageNumberSubmitCss}"
                         pageNumberSubmitName="${pageNumberSubmitName}"
                         useNextSubmit="${useNextSubmit}"
@@ -174,7 +172,6 @@
                         prevSubmitLabel="${prevSubmitLabel}"
                         prevSubmitName="${prevSubmitName}"
                         usePageNumberSubmit="${usePageNumberSubmit}"
-                        pageNumberSubmitWrapperCss="${pageNumberSubmitWrapperCss}"
                         pageNumberSubmitCss="${pageNumberSubmitCss}"
                         pageNumberSubmitName="${pageNumberSubmitName}"
                         useNextSubmit="${useNextSubmit}"
