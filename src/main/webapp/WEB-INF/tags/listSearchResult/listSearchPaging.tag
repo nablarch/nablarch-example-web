@@ -93,7 +93,7 @@
             <div class="<n:write name="currentPageNumberCss" withHtmlFormat="false" />">
                 <jsp:invoke fragment="currentPageNumberFragment" var="currentPageTag" />
                 <c:if test="${empty currentPageTag}">
-                    [<n:write name="${resultSetName}.pagination.pageNumber" />/<n:write name="${resultSetName}.pagination.pageCount" />ページ]
+                    [<n:write name="pagination.pageNumber" />/<n:write name="pagination.pageCount" />ページ]
                 </c:if>
                 <c:if test="${not empty currentPageTag}">
                     <jsp:invoke fragment="currentPageNumberFragment" />
