@@ -126,7 +126,7 @@
                                             prevSubmitCss="prev-page-link"
                                             nextSubmitCss="next-page-link"
                                             resultSetCss="table table-striped table-hover"
-                                            listSearchInfoName="searchForm"
+                                            listSearchInfo="searchForm"
                                             searchUri="${uri}"
                                             resultSetName="projectListDto.projectList"
                                             useResultCount="false">

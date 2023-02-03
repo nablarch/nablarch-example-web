@@ -10,7 +10,7 @@
 属性
 --------------------------------------------------------------%>
 <%@ attribute name="resultSetName" required="true" rtexprvalue="true" %>
-<%@ attribute name="listSearchInfoName" required="true" rtexprvalue="true" %>
+<%@ attribute name="listSearchInfo" required="true" rtexprvalue="true" %>
 <%@ attribute name="pagingCss" required="false" rtexprvalue="true" %>
 <%@ attribute name="searchUri" required="true" rtexprvalue="true" %>
 <%@ attribute name="submitNameSuffix" required="false" rtexprvalue="true" %>
@@ -78,7 +78,6 @@
 <%--------------------------------------------------------------
 本体処理
 --------------------------------------------------------------%>
-<n:set var="listSearchInfo" name="${listSearchInfoName}" scope="page" bySingleValue="false" />
 <n:set var="resultSet" name="${resultSetName}" scope="page" bySingleValue="false" />
 <%-- resultSetはListを継承したクラスであるため、EL式ではindex番号以外でのアクセスができない。 --%>
 <%-- そのため、paginationを一旦別変数に保存して使用する。 --%>
@@ -108,7 +107,7 @@
                                 uri="${searchUri}"
                                 name="${firstSubmitName}${submitNameSuffix}"
                                 pageNumber="${pagination.firstPageNumber}"
-                                listSearchInfoName="${listSearchInfoName}" />
+                                listSearchInfo="${listSearchInfo}" />
         </c:if>
         <%-- 前へ --%>
         <c:if test="${usePrevSubmit}">
@@ -119,7 +118,7 @@
                                 uri="${searchUri}"
                                 name="${prevSubmitName}${submitNameSuffix}"
                                 pageNumber="${pagination.prevPageNumber}"
-                                listSearchInfoName="${listSearchInfoName}" />
+                                listSearchInfo="${listSearchInfo}" />
         </c:if>
         <%--  ページ番号(1 2 3 ...n) --%>
         <c:if test="${(usePageNumberSubmit == 'true') && (pagination.pageCount != 1)}">
@@ -133,7 +132,7 @@
                                         uri="${searchUri}"
                                         name="${pageNumberSubmitName}${pageNumber}${submitNameSuffix}"
                                         pageNumber="${pageNumber}"
-                                        listSearchInfoName="${listSearchInfoName}" />
+                                        listSearchInfo="${listSearchInfo}" />
                 </c:forEach>
         </c:if>
         <%-- 次へ --%>
@@ -145,7 +144,7 @@
                                 uri="${searchUri}"
                                 name="${nextSubmitName}${submitNameSuffix}"
                                 pageNumber="${pagination.nextPageNumber}"
-                                listSearchInfoName="${listSearchInfoName}" />
+                                listSearchInfo="${listSearchInfo}" />
         </c:if>
         <%-- 最後 --%>
         <c:if test="${useLastSubmit}">
@@ -156,7 +155,7 @@
                                 uri="${searchUri}"
                                 name="${lastSubmitName}${submitNameSuffix}"
                                 pageNumber="${pagination.lastPageNumber}"
-                                listSearchInfoName="${listSearchInfoName}" />
+                                listSearchInfo="${listSearchInfo}" />
         </c:if>
         </ul>
     </div>
