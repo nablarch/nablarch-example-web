@@ -11,7 +11,7 @@
 --------------------------------------------------------------%>
 <%-- 全体ラッパ --%>
 <%@ attribute name="listSearchResultWrapperCss" required="false" rtexprvalue="true" %>
-<%@ attribute name="listSearchInfoName" required="false" rtexprvalue="true" %>
+<%@ attribute name="searchFormName" required="false" rtexprvalue="true" %>
 <%-- 検索結果件数 --%>
 <%@ attribute name="useResultCount" required="false" rtexprvalue="true" %>
 <%@ attribute name="resultCountCss" required="false" rtexprvalue="true" %>
@@ -85,12 +85,9 @@
 <%-- そのため、paginationを一旦別変数に保存して使用する。 --%>
 <n:set var="pagination" name="${resultSetName}.pagination" scope="page" />
 <c:if test="${resultSet != null}">
-<c:if test="${not empty listSearchInfoName}">
-    <n:set var="listSearchInfo" name="${listSearchInfoName}" scope="page" bySingleValue="false" />
-</c:if>
 <div class="<n:write name="listSearchResultWrapperCss" withHtmlFormat="false" />">
     <%-- 検索結果件数 --%>
-    <c:if test="${not empty listSearchInfo && (useResultCount == 'true')}">
+    <c:if test="${not empty pagination && (useResultCount == 'true')}">
     <jsp:invoke fragment="resultCountFragment" var="resultCountTag" />
     <div class="<n:write name="resultCountCss" withHtmlFormat="false" />">
         <c:if test="${empty resultCountTag}">
@@ -102,9 +99,9 @@
     </div>
     </c:if>
     <%-- ページング(top) --%>
-    <c:if test="${(not empty listSearchInfo && (usePaging == 'true')) && ((pagingPosition == 'top') || (pagingPosition == 'both'))}">
+    <c:if test="${(not empty pagination && (usePaging == 'true')) && ((pagingPosition == 'top') || (pagingPosition == 'both'))}">
     <app:listSearchPaging resultSetName="${resultSetName}"
-                        listSearchInfoName="${listSearchInfoName}"
+                        searchFormName="${searchFormName}"
                         pagingCss="${pagingCss}"
                         searchUri="${searchUri}"
                         submitNameSuffix="_top"
@@ -134,10 +131,10 @@
     </c:if>
     <%-- 検索結果 --%>
     <c:if test="${showResult}">
-        <c:if test="${not empty listSearchInfo}">
+        <c:if test="${not empty pagination}">
             <n:set var="startPosition" value="${pagination.startPosition}" scope="page" />
         </c:if>
-        <c:if test="${empty listSearchInfo}">
+        <c:if test="${empty pagination}">
             <n:set var="startPosition" value="1" scope="page" />
         </c:if>
         <app:table resultSetName="${resultSetName}"
@@ -155,9 +152,9 @@
         </app:table>
     </c:if>
     <%-- ページング(bottom) --%>
-    <c:if test="${(not empty listSearchInfo && (usePaging == 'true')) && ((pagingPosition == 'bottom') || (pagingPosition == 'both'))}">
+    <c:if test="${(not empty pagination && (usePaging == 'true')) && ((pagingPosition == 'bottom') || (pagingPosition == 'both'))}">
     <app:listSearchPaging resultSetName="${resultSetName}"
-                        listSearchInfoName="${listSearchInfoName}"
+                        searchFormName="${searchFormName}"
                         pagingCss="${pagingCss}"
                         searchUri="${searchUri}"
                         submitNameSuffix="_bottom"
