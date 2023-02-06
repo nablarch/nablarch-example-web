@@ -83,7 +83,7 @@
 <n:set var="resultSet" name="${resultSetName}" scope="page" bySingleValue="false" />
 <%-- resultSetはListを継承したクラスであるため、EL式ではindex番号以外でのアクセスができない。 --%>
 <%-- そのため、paginationを一旦別変数に保存して使用する。 --%>
-<n:set var="pagination" name="${resultSetName}.pagination" scope="request" />
+<n:set var="pagination" name="${resultSetName}.pagination" />
 <c:if test="${resultSet != null}">
 <div class="<n:write name="listSearchResultWrapperCss" withHtmlFormat="false" />">
     <%-- 検索結果件数 --%>
