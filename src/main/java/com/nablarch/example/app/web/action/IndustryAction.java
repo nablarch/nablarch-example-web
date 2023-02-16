@@ -3,8 +3,8 @@ package com.nablarch.example.app.web.action;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;

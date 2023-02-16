@@ -3,8 +3,8 @@ package com.nablarch.example.app.entity.core.validation.validator;
 import nablarch.core.util.DateUtil;
 import nablarch.core.util.StringUtil;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 /**
  * 検証処理が実装された内部クラス。

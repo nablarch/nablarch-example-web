@@ -3,8 +3,8 @@ package com.nablarch.example.app.entity.core.validation.validator;
 import com.nablarch.example.app.web.common.code.CodeEnum;
 import nablarch.core.util.StringUtil;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.util.Arrays;
 
 /**

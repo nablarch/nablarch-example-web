@@ -1,6 +1,6 @@
 package com.nablarch.example.app.web.form;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.io.Serializable;
 import java.util.ArrayList;
 

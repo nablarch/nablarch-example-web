@@ -4,8 +4,8 @@ import com.nablarch.example.app.entity.core.validation.validator.MoneyRange;
 import nablarch.core.validation.ee.ValidatorUtil;
 import org.junit.jupiter.api.Test;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validator;
 import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.is;
