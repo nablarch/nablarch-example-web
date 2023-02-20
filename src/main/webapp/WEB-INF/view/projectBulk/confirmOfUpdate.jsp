@@ -1,6 +1,6 @@
 <%@page import="com.nablarch.example.app.web.common.code.ProjectType"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="n" uri="http://tis.co.jp/nablarch" %>
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags/listSearchResult" %>
 <%@ page session="false" %>
