@@ -1,5 +1,6 @@
 package com.nablarch.example.app.web.action;
 
+import nablarch.common.authorization.role.session.SessionStoreUserRoleUtil;
 import nablarch.common.dao.UniversalDao;
 import nablarch.common.web.csrf.CsrfTokenUtil;
 import nablarch.common.web.session.SessionUtil;
@@ -12,7 +13,6 @@ import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
-import nablarch.fw.web.interceptor.OnErrors;
 
 import com.nablarch.example.app.entity.SystemAccount;
 import com.nablarch.example.app.entity.Users;
@@ -20,6 +20,8 @@ import com.nablarch.example.app.web.common.authentication.AuthenticationUtil;
 import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
 import com.nablarch.example.app.web.common.authentication.exception.AuthenticationException;
 import com.nablarch.example.app.web.form.LoginForm;
+
+import java.util.Collections;
 
 /**
  * 認証アクション。
@@ -76,6 +78,11 @@ public class AuthenticationAction {
         CsrfTokenUtil.regenerateCsrfToken(context);
 
         LoginUserPrincipal userContext = createLoginUserContext(form.getLoginId());
+
+        if (userContext.isAdmin()) {
+            SessionStoreUserRoleUtil.save(Collections.singleton(LoginUserPrincipal.ROLE_ADMIN), context);
+        }
+
         SessionUtil.put(context, "userContext", userContext);
         SessionUtil.put(context,"user.id",String.valueOf(userContext.getUserId()));
         return new HttpResponse(303, "redirect:///action/project/index");
@@ -96,6 +103,7 @@ public class AuthenticationAction {
         LoginUserPrincipal userContext = new LoginUserPrincipal();
         userContext.setUserId(account.getUserId());
         userContext.setKanjiName(users.getKanjiName());
+        userContext.setAdmin(account.isAdminFlag());
         userContext.setLastLoginDateTime(account.getLastLoginDateTime());
 
         return userContext;

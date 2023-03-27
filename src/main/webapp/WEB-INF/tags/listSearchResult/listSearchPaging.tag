@@ -10,7 +10,7 @@
 属性
 --------------------------------------------------------------%>
 <%@ attribute name="resultSetName" required="true" rtexprvalue="true" %>
-<%@ attribute name="listSearchInfoName" required="true" rtexprvalue="true" %>
+<%@ attribute name="searchFormName" required="true" rtexprvalue="true" %>
 <%@ attribute name="pagingCss" required="false" rtexprvalue="true" %>
 <%@ attribute name="searchUri" required="true" rtexprvalue="true" %>
 <%@ attribute name="submitNameSuffix" required="false" rtexprvalue="true" %>
@@ -30,7 +30,6 @@
 <%@ attribute name="prevSubmitName" required="false" rtexprvalue="true" %>
 <%-- ページ番号(1 2 3 ...n) --%>
 <%@ attribute name="usePageNumberSubmit" required="false" rtexprvalue="true" %>
-<%@ attribute name="pageNumberSubmitWrapperCss" required="false" rtexprvalue="true" %>
 <%@ attribute name="pageNumberSubmitCss" required="false" rtexprvalue="true" %>
 <%@ attribute name="pageNumberSubmitName" required="false" rtexprvalue="true" %>
 <%-- 次へ --%>
@@ -63,7 +62,6 @@
 <c:if test="${empty prevSubmitName}"><n:set var="prevSubmitName" value="prevSubmit" scope="page" /></c:if>
 <%-- ページ番号(1 2 3 ...n) --%>
 <c:if test="${empty usePageNumberSubmit}"><n:set var="usePageNumberSubmit" value="false" scope="page" /></c:if>
-<c:if test="${empty pageNumberSubmitWrapperCss}"><n:set var="pageNumberSubmitWrapperCss" value="nablarch_pageNumberSubmitWrapper" scope="page" /></c:if>
 <c:if test="${empty pageNumberSubmitCss}"><n:set var="pageNumberSubmitCss" value="nablarch_pageNumberSubmit" scope="page" /></c:if>
 <c:if test="${empty pageNumberSubmitName}"><n:set var="pageNumberSubmitName" value="pageNumberSubmit" scope="page" /></c:if>
 <%-- 次へ --%>
@@ -80,7 +78,6 @@
 <%--------------------------------------------------------------
 本体処理
 --------------------------------------------------------------%>
-<n:set var="listSearchInfo" name="${listSearchInfoName}" scope="page" bySingleValue="false" />
 <n:set var="resultSet" name="${resultSetName}" scope="page" bySingleValue="false" />
 <%-- resultSetはListを継承したクラスであるため、EL式ではindex番号以外でのアクセスができない。 --%>
 <%-- そのため、paginationを一旦別変数に保存して使用する。 --%>
@@ -93,7 +90,7 @@
             <div class="<n:write name="currentPageNumberCss" withHtmlFormat="false" />">
                 <jsp:invoke fragment="currentPageNumberFragment" var="currentPageTag" />
                 <c:if test="${empty currentPageTag}">
-                    [<n:write name="${resultSetName}.pagination.pageNumber" />/<n:write name="${resultSetName}.pagination.pageCount" />ページ]
+                    [<n:write name="pagination.pageNumber" />/<n:write name="pagination.pageCount" />ページ]
                 </c:if>
                 <c:if test="${not empty currentPageTag}">
                     <jsp:invoke fragment="currentPageNumberFragment" />
@@ -110,7 +107,7 @@
                                 uri="${searchUri}"
                                 name="${firstSubmitName}${submitNameSuffix}"
                                 pageNumber="${pagination.firstPageNumber}"
-                                listSearchInfoName="${listSearchInfoName}" />
+                                searchFormName="${searchFormName}" />
         </c:if>
         <%-- 前へ --%>
         <c:if test="${usePrevSubmit}">
@@ -121,7 +118,7 @@
                                 uri="${searchUri}"
                                 name="${prevSubmitName}${submitNameSuffix}"
                                 pageNumber="${pagination.prevPageNumber}"
-                                listSearchInfoName="${listSearchInfoName}" />
+                                searchFormName="${searchFormName}" />
         </c:if>
         <%--  ページ番号(1 2 3 ...n) --%>
         <c:if test="${(usePageNumberSubmit == 'true') && (pagination.pageCount != 1)}">
@@ -135,7 +132,7 @@
                                         uri="${searchUri}"
                                         name="${pageNumberSubmitName}${pageNumber}${submitNameSuffix}"
                                         pageNumber="${pageNumber}"
-                                        listSearchInfoName="${listSearchInfoName}" />
+                                        searchFormName="${searchFormName}" />
                 </c:forEach>
         </c:if>
         <%-- 次へ --%>
@@ -147,7 +144,7 @@
                                 uri="${searchUri}"
                                 name="${nextSubmitName}${submitNameSuffix}"
                                 pageNumber="${pagination.nextPageNumber}"
-                                listSearchInfoName="${listSearchInfoName}" />
+                                searchFormName="${searchFormName}" />
         </c:if>
         <%-- 最後 --%>
         <c:if test="${useLastSubmit}">
@@ -158,7 +155,7 @@
                                 uri="${searchUri}"
                                 name="${lastSubmitName}${submitNameSuffix}"
                                 pageNumber="${pagination.lastPageNumber}"
-                                listSearchInfoName="${listSearchInfoName}" />
+                                searchFormName="${searchFormName}" />
         </c:if>
         </ul>
     </div>

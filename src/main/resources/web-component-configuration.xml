@@ -26,6 +26,9 @@
   <!-- 各PJ固有の設定を読み込む。 -->
   <import file="com/nablarch/example/app/web/common/authentication/authenticator.xml" />
 
+  <!-- 認可設定 -->
+  <import file="nablarch/common/authorization/role/session/authorization-session.xml" />
+
   <!-- ユニバーサルDAO機能 -->
   <import file="nablarch/common/dao.xml" />
 
@@ -168,6 +171,9 @@
         <component-ref name="tokenManager"/>
         <component-ref name="packageMapping" />
         <component-ref name="jaxrsPackageMapping"/>
+        <component class="nablarch.common.authorization.role.CheckRoleLogger">
+          <property name="targetPackage" value="com.nablarch.example.app.web.action" />
+        </component>
       </list>
     </property>
   </component>

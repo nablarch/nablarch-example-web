@@ -9,6 +9,10 @@ import java.util.Date;
  * @author Nabu Rakutaro
  */
 public class LoginUserPrincipal implements Serializable {
+    /**
+     * 管理者を表すロール名。
+     */
+    public static final String ROLE_ADMIN = "ADMIN";
 
     /**
      * serialVersionUID.
@@ -20,6 +24,9 @@ public class LoginUserPrincipal implements Serializable {
 
     /** 漢字氏名 */
     private String kanjiName;
+
+    /** 管理者フラグ */
+    private boolean admin;
 
     /** 最終ログイン日時 */
     private Date lastLoginDateTime;
@@ -58,6 +65,22 @@ public class LoginUserPrincipal implements Serializable {
      */
     public void setKanjiName(String kanjiName) {
         this.kanjiName = kanjiName;
+    }
+
+    /**
+     * 管理者フラグを取得する。
+     * @return 管理者フラグ
+     */
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    /**
+     * 管理者フラグを設定する。
+     * @param admin 管理者フラグ
+     */
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     /**
