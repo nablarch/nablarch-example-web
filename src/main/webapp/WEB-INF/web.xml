@@ -32,7 +32,11 @@
   </filter>
   <filter>
     <filter-name>jaxrsEntryPoint</filter-name>
-    <filter-class>com.nablarch.example.app.web.filter.RestfulWebFrontController</filter-class>
+    <filter-class>nablarch.fw.web.servlet.RepositoryBasedWebFrontController</filter-class>
+    <init-param>
+      <param-name>controllerName</param-name>
+      <param-value>jaxrsController</param-value>
+    </init-param>
   </filter>
 
   <filter-mapping>
