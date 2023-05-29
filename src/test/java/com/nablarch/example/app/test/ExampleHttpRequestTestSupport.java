@@ -1,14 +1,9 @@
 package com.nablarch.example.app.test;
 
-import nablarch.core.util.StringUtil;
 import nablarch.fw.ExecutionContext;
-import nablarch.fw.web.HttpRequest;
-import nablarch.fw.web.MockHttpRequest;
 import nablarch.test.core.http.AbstractHttpRequestTestTemplate;
 import nablarch.test.core.http.TestCaseInfo;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
@@ -77,39 +72,12 @@ public class ExampleHttpRequestTestSupport extends AbstractHttpRequestTestTempla
     }
 
     @Override
-    protected HttpRequest createHttpRequest(ExampleTestCaseInfo testCaseInfo) {
-        MockHttpRequest request = (MockHttpRequest) super.createHttpRequest(testCaseInfo);
-        request.setMethod(testCaseInfo.getHttpMethod());
-
-        if ("GET".equals(testCaseInfo.getHttpMethod())) {
-            Map<String, String> paramMap = testCaseInfo.getRequestParameters();
-
-            // Excelから読み込んだパラメータをURIクエリに変換する
-            if (!paramMap.isEmpty()) {
-                StringBuilder sb = new StringBuilder();
-                sb.append(request.getRequestUri());
-                sb.append("?");
-                for (String key : paramMap.keySet()) {
-                    String value = paramMap.get(key);
-                    if (!StringUtil.isNullOrEmpty(value)) {
-                        sb.append(key);
-                        sb.append("=");
-                        try {
-                            sb.append(URLEncoder.encode(value, "UTF-8"));
-                        } catch (UnsupportedEncodingException e) {
-                            throw new RuntimeException(e);
-                        }
-                        sb.append("&");
-                    }
-                }
-                request.setRequestUri(sb.toString().substring(0, sb.toString().length() - 1));
-            }
-        }
-        return request;
+    protected ExampleTestCaseInfo createTestCaseInfo(String sheetName, Map<String, String> testCaseParams, List<Map<String, String>> contexts, List<Map<String, String>> requests, List<Map<String, String>> expectedResponses, List<Map<String, String>> cookie) {
+        return createTestCaseInfo(sheetName, testCaseParams, contexts, requests, expectedResponses, cookie, null);
     }
 
     @Override
-    protected ExampleTestCaseInfo createTestCaseInfo(String sheetName, Map<String, String> testCaseParams, List<Map<String, String>> contexts, List<Map<String, String>> requests, List<Map<String, String>> expectedResponses, List<Map<String, String>> cookie) {
-        return new ExampleTestCaseInfo(sheetName, testCaseParams, contexts, requests, expectedResponses, cookie);
+    protected ExampleTestCaseInfo createTestCaseInfo(String sheetName, Map<String, String> testCaseParams, List<Map<String, String>> contexts, List<Map<String, String>> requests, List<Map<String, String>> expectedResponses, List<Map<String, String>> cookie, List<Map<String, String>> queryParams) {
+        return new ExampleTestCaseInfo(sheetName, testCaseParams, contexts, requests, expectedResponses, cookie, queryParams);
     }
 }
