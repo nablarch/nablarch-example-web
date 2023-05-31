@@ -2,13 +2,13 @@ package com.nablarch.example.app.web.action;
 
 import com.nablarch.example.app.test.ExampleHttpRequestTest;
 import com.nablarch.example.app.test.ExampleHttpRequestTestSupport;
-import com.nablarch.example.app.test.ExampleTestCaseInfo;
 import com.nablarch.example.app.test.advice.ExampleAdvice;
 import com.nablarch.example.app.test.advice.SignedInAdvice;
 import com.nablarch.example.app.web.common.authentication.context.LoginUserPrincipal;
 import nablarch.common.web.session.SessionUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.test.Assertion;
+import nablarch.test.core.http.TestCaseInfo;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -45,12 +45,12 @@ class AuthenticationActionRequestTest {
         support.execute("loginPostNormal", new ExampleAdvice() {
 
             @Override
-            public void beforeExecute(ExampleTestCaseInfo testCaseInfo, ExecutionContext context) {
+            public void beforeExecute(TestCaseInfo testCaseInfo, ExecutionContext context) {
                 SessionUtil.invalidate(context);
             }
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
 
                 LoginUserPrincipal userContext = SessionUtil.orNull(context, "userContext");
@@ -72,7 +72,7 @@ class AuthenticationActionRequestTest {
         support.execute("loginAbNormal", new ExampleAdvice() {
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 if (SessionUtil.orNull(context, "userContext") != null) {
                     Assertion.fail();
@@ -89,7 +89,7 @@ class AuthenticationActionRequestTest {
         support.execute("logoutNormal", new SignedInAdvice() {
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 if (SessionUtil.orNull(context, "userContext") != null) {
                     Assertion.fail();

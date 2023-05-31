@@ -1,18 +1,17 @@
 package com.nablarch.example.app.test;
 
 import nablarch.fw.ExecutionContext;
-import nablarch.test.core.http.AbstractHttpRequestTestTemplate;
+import nablarch.test.core.http.BasicHttpRequestTestTemplate;
 import nablarch.test.core.http.TestCaseInfo;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * web-example向けのリクエスト単体テストサポートクラス。
  *
  * @author Nabu Rakutaro
  */
-public class ExampleHttpRequestTestSupport extends AbstractHttpRequestTestTemplate<ExampleTestCaseInfo> {
+public class ExampleHttpRequestTestSupport extends BasicHttpRequestTestTemplate {
 
     private final String baseUri;
 
@@ -69,15 +68,5 @@ public class ExampleHttpRequestTestSupport extends AbstractHttpRequestTestTempla
             index++;
             assertEntity(sheetName, expectedName + "_" + index, actual);
         }
-    }
-
-    @Override
-    protected ExampleTestCaseInfo createTestCaseInfo(String sheetName, Map<String, String> testCaseParams, List<Map<String, String>> contexts, List<Map<String, String>> requests, List<Map<String, String>> expectedResponses, List<Map<String, String>> cookie) {
-        return createTestCaseInfo(sheetName, testCaseParams, contexts, requests, expectedResponses, cookie, null);
-    }
-
-    @Override
-    protected ExampleTestCaseInfo createTestCaseInfo(String sheetName, Map<String, String> testCaseParams, List<Map<String, String>> contexts, List<Map<String, String>> requests, List<Map<String, String>> expectedResponses, List<Map<String, String>> cookie, List<Map<String, String>> queryParams) {
-        return new ExampleTestCaseInfo(sheetName, testCaseParams, contexts, requests, expectedResponses, cookie, queryParams);
     }
 }
