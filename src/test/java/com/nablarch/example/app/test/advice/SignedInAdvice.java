@@ -11,7 +11,7 @@ import nablarch.core.db.transaction.SimpleDbTransactionExecutor;
 import nablarch.core.db.transaction.SimpleDbTransactionManager;
 import nablarch.core.repository.SystemRepository;
 import nablarch.fw.ExecutionContext;
-import nablarch.test.core.http.Advice;
+import nablarch.test.core.http.BasicAdvice;
 import nablarch.test.core.http.TestCaseInfo;
 
 import java.util.Collections;
@@ -19,14 +19,14 @@ import java.util.Collections;
 
 /**
  * テストケースの事前準備で毎回ログイン処理を実装しなくて済むように、
- * 自動的にログイン状態になるように設定した {@link ExampleAdvice}の拡張クラス。
+ * 自動的にログイン状態になるように設定した {@link BasicAdvice}の拡張クラス。
  *</p>
  * ログインユーザのIDは、デフォルトでは {@code 105} となる。
  * ユーザIDは {@link #setUserId(Integer)} で指定可能。
  *
  * @author Nabu Rakutaro
  */
-public class SignedInAdvice extends ExampleAdvice {
+public class SignedInAdvice extends BasicAdvice {
 
     /** ログインユーザのID */
     private Integer userId = 105;
