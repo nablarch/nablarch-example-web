@@ -3,7 +3,6 @@ package com.nablarch.example.app.web.action;
 import com.nablarch.example.app.entity.Project;
 import com.nablarch.example.app.test.ExampleHttpRequestTest;
 import com.nablarch.example.app.test.ExampleHttpRequestTestSupport;
-import com.nablarch.example.app.test.ExampleTestCaseInfo;
 import com.nablarch.example.app.test.MockEntityList;
 import com.nablarch.example.app.test.advice.SignedInAdvice;
 import com.nablarch.example.app.web.dto.ProjectListDto;
@@ -13,6 +12,7 @@ import nablarch.core.beans.BeanUtil;
 import nablarch.core.util.DateUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.test.Assertion;
+import nablarch.test.core.http.TestCaseInfo;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -34,7 +34,7 @@ class ProjectBulkActionRequestTest {
         support.execute("indexNormal", new SignedInAdvice() {
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 // 検索フォームの確認
                 support.assertEntity(testCaseInfo.getSheetName(),
@@ -56,7 +56,7 @@ class ProjectBulkActionRequestTest {
         support.execute("listNormal", new SignedInAdvice() {
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 // 検索フォームの確認
                 support.assertEntity(testCaseInfo.getSheetName(),
@@ -95,7 +95,7 @@ class ProjectBulkActionRequestTest {
         support.execute("confirmOfUpdateNormal", new SignedInAdvice() {
 
             @Override
-            protected void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            protected void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                                  ExecutionContext context) {
 
                 // セッションに更新対象のプロジェクトを設定する
@@ -134,7 +134,7 @@ class ProjectBulkActionRequestTest {
             }
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
 
                 // 更新内容が上書きされたことを確認する
@@ -159,7 +159,7 @@ class ProjectBulkActionRequestTest {
     void backToListNormal() {
         support.execute("backToListNormal", new SignedInAdvice() {
             @Override
-            protected void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            protected void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                                  ExecutionContext context) {
 
                 ProjectListDto projectListDto = new ProjectListDto();
@@ -188,7 +188,7 @@ class ProjectBulkActionRequestTest {
             }
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 // 検索フォームの確認
                 support.assertEntity(testCaseInfo.getSheetName(),
@@ -210,7 +210,7 @@ class ProjectBulkActionRequestTest {
     void updateNormal() {
         support.execute("updateNormal", new SignedInAdvice() {
             @Override
-            protected void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            protected void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                                  ExecutionContext context) {
 
                 // セッションに更新対象のプロジェクトを設定する
@@ -272,7 +272,7 @@ class ProjectBulkActionRequestTest {
     void completeOfUpdateNormal() {
         support.execute("completeOfUpdateNormal", new SignedInAdvice() {
             @Override
-            protected void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            protected void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                                  ExecutionContext context) {
 
                 ProjectListDto projectListDto = new ProjectListDto();
@@ -284,7 +284,7 @@ class ProjectBulkActionRequestTest {
             }
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
 
                 if (SessionUtil.orNull(context, "projectListDto") != null) {

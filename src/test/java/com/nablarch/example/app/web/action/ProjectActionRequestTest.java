@@ -2,7 +2,6 @@ package com.nablarch.example.app.web.action;
 
 import com.nablarch.example.app.entity.Project;
 import com.nablarch.example.app.test.ExampleHttpRequestTest;
-import com.nablarch.example.app.test.ExampleTestCaseInfo;
 import com.nablarch.example.app.test.advice.SignedInAdvice;
 import com.nablarch.example.app.test.ExampleHttpRequestTestSupport;
 import nablarch.common.web.session.SessionUtil;
@@ -10,6 +9,7 @@ import nablarch.core.util.DateUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.test.Assertion;
 import nablarch.test.core.file.FileSupport;
+import nablarch.test.core.http.TestCaseInfo;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -37,7 +37,7 @@ class ProjectActionRequestTest {
         support.execute("confirmOfCreateNormal", new SignedInAdvice() {
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 support.assertEntity(testCaseInfo.getSheetName(),
                         "project" + testCaseInfo.getTestCaseNo(),
@@ -61,7 +61,7 @@ class ProjectActionRequestTest {
     void createNormal() {
         support.execute("createNormal", new SignedInAdvice() {
             @Override
-            public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            public void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
                 SessionUtil.put(context, "project", createMinimalProject());
@@ -76,7 +76,7 @@ class ProjectActionRequestTest {
     void createAbNormal() {
         support.execute("createAbNormal", new SignedInAdvice() {
             @Override
-            public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            public void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
                 SessionUtil.put(context, "project", createMinimalProject());
@@ -91,7 +91,7 @@ class ProjectActionRequestTest {
     void backToNewNormal() {
         support.execute("backToNewNormal", new SignedInAdvice() {
             @Override
-            public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            public void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
                 Project project = createMinimalProject();
@@ -100,7 +100,7 @@ class ProjectActionRequestTest {
             }
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 support.assertEntity(testCaseInfo.getSheetName(),
                         "project" + testCaseInfo.getTestCaseNo(),
@@ -125,7 +125,7 @@ class ProjectActionRequestTest {
         support.execute("indexNormal", new SignedInAdvice() {
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 // 検索フォームの確認
                 support.assertEntity(testCaseInfo.getSheetName(),
@@ -146,7 +146,7 @@ class ProjectActionRequestTest {
         support.execute("listNormal", new SignedInAdvice() {
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 String sheetName = testCaseInfo.getSheetName();
 
@@ -176,7 +176,7 @@ class ProjectActionRequestTest {
         support.execute("showNormal", new SignedInAdvice() {
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 support.assertEntity(testCaseInfo.getSheetName(),
                         "projectDto" + testCaseInfo.getTestCaseNo(),
@@ -201,14 +201,14 @@ class ProjectActionRequestTest {
         support.execute("editNormal", new SignedInAdvice() {
 
             @Override
-            public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            public void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
                 SessionUtil.put(context, "project", createMinimalProject());
             }
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 support.assertEntity(testCaseInfo.getSheetName(),
                         "form" + testCaseInfo.getTestCaseNo(),
@@ -237,14 +237,14 @@ class ProjectActionRequestTest {
         support.execute("confirmOfUpdateNormal", new SignedInAdvice() {
 
             @Override
-            public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            public void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
                 SessionUtil.put(context, "project", createMinimalProject());
             }
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 support.assertEntity(testCaseInfo.getSheetName(),
                         "project" + testCaseInfo.getTestCaseNo(),
@@ -268,7 +268,7 @@ class ProjectActionRequestTest {
     void backToEditNormal() {
         support.execute("backToEditNormal", new SignedInAdvice() {
             @Override
-            public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            public void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
                 Project project = createMinimalProject();
@@ -277,7 +277,7 @@ class ProjectActionRequestTest {
             }
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo,
+            public void afterExecute(TestCaseInfo testCaseInfo,
                                      ExecutionContext context) {
                 support.assertEntity(testCaseInfo.getSheetName(),
                         "project" + testCaseInfo.getTestCaseNo(),
@@ -293,7 +293,7 @@ class ProjectActionRequestTest {
     void updateNormal() {
         support.execute("updateNormal", new SignedInAdvice() {
             @Override
-            public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            public void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
                 Project project = createMinimalProject();
@@ -311,7 +311,7 @@ class ProjectActionRequestTest {
     void updateAbNormal() {
         support.execute("updateAbNormal", new SignedInAdvice() {
             @Override
-            public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            public void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
                 Project project = createMinimalProject();
@@ -337,7 +337,7 @@ class ProjectActionRequestTest {
     void deleteNormal() {
         support.execute("deleteNormal", new SignedInAdvice() {
             @Override
-            public void signedInBeforeExecute(ExampleTestCaseInfo testCaseInfo,
+            public void signedInBeforeExecute(TestCaseInfo testCaseInfo,
                                               ExecutionContext context) {
                 SessionUtil.delete(context, "project");
                 Project project = createMinimalProject();
@@ -371,7 +371,7 @@ class ProjectActionRequestTest {
         support.execute("downloadNormal", new SignedInAdvice() {
 
             @Override
-            public void afterExecute(ExampleTestCaseInfo testCaseInfo, ExecutionContext context) {
+            public void afterExecute(TestCaseInfo testCaseInfo, ExecutionContext context) {
                 FileSupport fileSupport = new FileSupport(ProjectActionRequestTest.class);
                 fileSupport.assertFile("CSVの検証処理でエラーが発生しました。", "downloadNormal");
             }
