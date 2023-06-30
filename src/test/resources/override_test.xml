@@ -10,7 +10,6 @@
   <component name="tokenManager" class="nablarch.common.web.token.HttpSessionTokenManager"/>
 
   <!-- CSRF対策の無効化 -->
-  <component name="csrfTokenVerificationHandler"
-             class="com.nablarch.example.app.test.NopHandler" />
+  <component name="csrfTokenVerificationHandler" class="nablarch.test.NopHandler" />
 
 </component-configuration>
