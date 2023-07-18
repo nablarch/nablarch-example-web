@@ -1,11 +1,12 @@
 package com.nablarch.example.app.web.common.code;
 
+import nablarch.core.validation.ee.EnumElement.WithValue;
 /**
  * プロジェクト種別を定義したEnum。
  * 
  * @author Nabu Rakutaro
  */
-public enum ProjectType implements CodeEnum {
+public enum ProjectType implements WithValue<String> {
     /** 新規開発PJ */
     DEVELOPMENT("development", "新規開発PJ"),
     /** 保守PJ */
@@ -26,13 +27,16 @@ public enum ProjectType implements CodeEnum {
         this.code = code;
     }
 
-    @Override
     public String getLabel() {
         return label;
     }
 
-    @Override
     public String getCode() {
+        return code;
+    }
+
+    @Override
+    public String getValue() {
         return code;
     }
 }

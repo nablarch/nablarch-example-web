@@ -1,11 +1,12 @@
 package com.nablarch.example.app.web.common.code;
 
+import nablarch.core.validation.ee.EnumElement.WithValue;
 /**
  * プロジェクト規模を定義したEnum。
  * 
  * @author Nabu Rakutaro
  */
-public enum ProjectClass implements CodeEnum {
+public enum ProjectClass implements WithValue<String> {
     /** SS級 */
     SS("ss", "SS"),
     /** S級 */
@@ -34,13 +35,16 @@ public enum ProjectClass implements CodeEnum {
         this.code = code;
     }
 
-    @Override
     public String getLabel() {
         return label;
     }
 
-    @Override
     public String getCode() {
+        return code;
+    }
+
+    @Override
+    public String getValue() {
         return code;
     }
 }
