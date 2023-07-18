@@ -1,9 +1,6 @@
 package com.nablarch.example.app.entity.core.validation.validator;
 
-import nablarch.core.validation.ee.Digits;
-import nablarch.core.validation.ee.Length;
-import nablarch.core.validation.ee.NumberRange;
-import nablarch.core.validation.ee.SystemChar;
+import nablarch.core.validation.ee.*;
 
 import com.nablarch.example.app.web.common.code.ClientSortKey;
 import com.nablarch.example.app.web.common.code.ProjectClass;
@@ -56,11 +53,11 @@ public class ExampleDomainType {
     private String projectClass;
 
     /** 日付 */
-    @YYYYMMDD()
+    @DateFormat
     private String date;
 
     /** 日付(slashあり) */
-    @YYYYMMDD(allowFormat = "yyyy/MM/dd")
+    @DateFormat("yyyy/MM/dd")
     private String dateWithSlash;
 
     /** プロジェクトの一覧画面において、並び順の基準にする項目を表すコード値 */
