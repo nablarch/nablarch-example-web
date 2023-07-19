@@ -1,12 +1,11 @@
 package com.nablarch.example.app.web.common.code;
 
-import nablarch.core.validation.ee.EnumElement.WithValue;
 /**
  * プロジェクトのソートキーを定義したEnum。
  * 
  * @author Nabu Rakutaro
  */
-public enum ProjectSortKey implements WithValue<String> {
+public enum ProjectSortKey implements CodeEnum {
     /** プロジェクトID */
     ID("id", "プロジェクトＩＤ"),
     /** プロジェクト名 */
@@ -19,28 +18,25 @@ public enum ProjectSortKey implements WithValue<String> {
     /** ソートキーのラベル */
     private final String label;
     /** ソートキーのコード */
-    private final String code;
+    private final String value;
 
     /**
      * コンストラクタ。
-     * @param code コード値
+     * @param value コード値
      * @param label ラベル
      */
-    ProjectSortKey(String code, String label) {
+    ProjectSortKey(String value, String label) {
         this.label = label;
-        this.code = code;
+        this.value = value;
     }
 
+    @Override
     public String getLabel() {
         return label;
     }
 
-    public String getCode() {
-        return code;
-    }
-
     @Override
     public String getValue() {
-        return code;
+        return value;
     }
 }

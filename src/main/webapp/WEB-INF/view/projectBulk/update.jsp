@@ -84,7 +84,7 @@
                                                     id="sortKey"
                                                     name="searchForm.sortKey"
                                                     listName="sortKeyList"
-                                                    elementValueProperty="code"
+                                                    elementValueProperty="value"
                                                     elementLabelProperty="label"
                                                     elementLabelPattern="$LABEL$"
                                                     cssClass="btn dropdown-toggle"/>
@@ -93,7 +93,7 @@
                                                     id="sortDir"
                                                     name="searchForm.sortDir"
                                                     listName="sortOrderList"
-                                                    elementValueProperty="code"
+                                                    elementValueProperty="value"
                                                     elementLabelProperty="label"
                                                     elementLabelPattern="$LABEL$"
                                                     cssClass="btn dropdown-toggle"/>
@@ -159,7 +159,7 @@
                                                             <n:set var="projectTypeList" value="<%= ProjectType.values() %>"/>
                                                             <n:select name="bulkForm.projectList[${status.index}].projectType"
                                                                       listName="projectTypeList"
-                                                                      elementValueProperty="code"
+                                                                      elementValueProperty="value"
                                                                       elementLabelProperty="label"
                                                                       elementLabelPattern="$LABEL$"
                                                                       cssClass="form-control btn dropdown-toggle"/>

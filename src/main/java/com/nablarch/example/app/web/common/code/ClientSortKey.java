@@ -1,12 +1,11 @@
 package com.nablarch.example.app.web.common.code;
 
-import nablarch.core.validation.ee.EnumElement.WithValue;
 /**
  * 顧客を定義したEnum。
  * 
  * @author Nabu Rakutaro
  */
-public enum ClientSortKey implements WithValue<String> {
+public enum ClientSortKey implements CodeEnum {
     /** 顧客ID */
     ID("id", "顧客ＩＤ"),
     /** 顧客名 */
@@ -15,28 +14,25 @@ public enum ClientSortKey implements WithValue<String> {
     /** 顧客のラベル */
     private final String label;
     /** 顧客のコード */
-    private final String code;
+    private final String value;
 
     /**
      * コンストラクタ。
-     * @param code コード値
+     * @param value コード値
      * @param label ラベル
      */
-    ClientSortKey(String code, String label) {
+    ClientSortKey(String value, String label) {
         this.label = label;
-        this.code = code;
+        this.value = value;
     }
 
+    @Override
     public String getLabel() {
         return label;
     }
 
-    public String getCode() {
-        return code;
-    }
-
     @Override
     public String getValue() {
-        return code;
+        return value;
     }
 }

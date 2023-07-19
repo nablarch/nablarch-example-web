@@ -65,7 +65,7 @@
                                     <n:set var="projectTypeList" value="<%= ProjectType.values() %>"/>
                                     <n:select name="form.projectType"
                                               listName="projectTypeList"
-                                              elementValueProperty="code"
+                                              elementValueProperty="value"
                                               elementLabelProperty="label"
                                               elementLabelPattern="$LABEL$"
                                               cssClass="form-control"/>
@@ -82,7 +82,7 @@
                                     <n:set var="projectClassList" value="<%= ProjectClass.values() %>"/>
                                     <n:select name="form.projectClass"
                                               listName="projectClassList"
-                                              elementValueProperty="code"
+                                              elementValueProperty="value"
                                               elementLabelProperty="label"
                                               elementLabelPattern="$LABEL$"
                                               cssClass="form-control"/>

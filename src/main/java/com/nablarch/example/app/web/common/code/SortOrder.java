@@ -1,12 +1,11 @@
 package com.nablarch.example.app.web.common.code;
 
-import nablarch.core.validation.ee.EnumElement.WithValue;
 /**
  * 並び順を定義したEnum。
  * 
  * @author Nabu Rakutaro
  */
-public enum SortOrder implements WithValue<String> {
+public enum SortOrder implements CodeEnum {
     /** 昇順 */
     ASC("asc", "昇順"),
     /** 降順 */
@@ -15,28 +14,25 @@ public enum SortOrder implements WithValue<String> {
     /** 並び順のラベル */
     private final String label;
     /** 並び順のコード */
-    private final String code;
+    private final String value;
 
     /**
      * コンストラクタ。
-     * @param code コード値
+     * @param value コード値
      * @param label ラベル
      */
-    SortOrder(String code, String label) {
+    SortOrder(String value, String label) {
         this.label = label;
-        this.code = code;
+        this.value = value;
     }
 
+    @Override
     public String getLabel() {
         return label;
     }
 
-    public String getCode() {
-        return code;
-    }
-
     @Override
     public String getValue() {
-        return code;
+        return value;
     }
 }

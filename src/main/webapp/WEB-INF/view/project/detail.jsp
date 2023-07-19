@@ -54,7 +54,7 @@
                         </th>
                         <td>
                             <c:forEach var="projectType" items="<%= ProjectType.values() %>">
-                                <c:if test="${projectType.code == form.projectType}">
+                                <c:if test="${projectType.value == form.projectType}">
                                     <n:write name="projectType.label" />
                                 </c:if>
                             </c:forEach>
@@ -66,7 +66,7 @@
                         </th>
                         <td>
                             <c:forEach var="projectClass" items="<%= ProjectClass.values() %>">
-                                <c:if test="${projectClass.code == form.projectClass}">
+                                <c:if test="${projectClass.value == form.projectClass}">
                                     <n:write name="projectClass.label" />
                                 </c:if>
                             </c:forEach>

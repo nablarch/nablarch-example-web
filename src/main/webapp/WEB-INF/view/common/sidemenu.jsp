@@ -29,7 +29,7 @@
                                         <li>
                                             <div class="checkbox">
                                                 <label>
-                                                    <n:checkbox name="searchForm.projectClass" value="${projectClass.code}"/>
+                                                    <n:checkbox name="searchForm.projectClass" value="${projectClass.value}"/>
                                                     <span class="checkbox-material">
                                                         <span class="check"></span>
                                                     </span>
