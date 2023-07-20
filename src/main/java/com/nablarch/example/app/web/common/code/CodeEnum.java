@@ -1,6 +1,5 @@
 package com.nablarch.example.app.web.common.code;
 
-import nablarch.core.validation.ee.EnumElement;
 import nablarch.core.validation.ee.EnumElement.WithValue;
 /**
  * コード値を定義したEnumが実装するインタフェース。
@@ -16,7 +15,7 @@ public interface CodeEnum extends WithValue<String> {
 
     /**
      * コード値を返却する。
-     * また、{@link EnumElement}で許容する列挙値を取得するためにも使用する。
+     * また、{@link WithValue}で許容する列挙値を取得するためにも使用する。
      * @return コード値
      */
     @Override
