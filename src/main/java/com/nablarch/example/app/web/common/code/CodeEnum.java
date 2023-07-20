@@ -15,7 +15,7 @@ public interface CodeEnum extends WithValue<String> {
 
     /**
      * コード値を返却する。
-     * また、{@link WithValue}で許容する列挙値を取得するためにも使用する。
+     * コード値はバリデーション時に許容する列挙値としても使用する。
      * @return コード値
      */
     @Override
