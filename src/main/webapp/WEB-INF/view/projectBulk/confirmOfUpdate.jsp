@@ -47,7 +47,7 @@
                                 </td>
                                 <td>
                                     <c:forEach var="projectType" items="<%= ProjectType.values() %>">
-                                        <c:if test="${projectType.code == row.projectType}">
+                                        <c:if test="${projectType.value == row.projectType}">
                                             <n:write name="projectType.label" />
                                         </c:if>
                                     </c:forEach>
