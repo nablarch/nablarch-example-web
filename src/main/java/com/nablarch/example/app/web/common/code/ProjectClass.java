@@ -22,16 +22,16 @@ public enum ProjectClass implements CodeEnum {
     /** プロジェクト規模のラベル */
     private final String label;
     /** プロジェクト規模のコード */
-    private final String code;
+    private final String value;
 
     /**
      * コンストラクタ。
-     * @param code コード値
+     * @param value コード値
      * @param label ラベル
      */
-    ProjectClass(String code, String label) {
+    ProjectClass(String value, String label) {
         this.label = label;
-        this.code = code;
+        this.value = value;
     }
 
     @Override
@@ -40,7 +40,7 @@ public enum ProjectClass implements CodeEnum {
     }
 
     @Override
-    public String getCode() {
-        return code;
+    public String getValue() {
+        return value;
     }
 }

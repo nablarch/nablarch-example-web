@@ -18,16 +18,16 @@ public enum ProjectSortKey implements CodeEnum {
     /** ソートキーのラベル */
     private final String label;
     /** ソートキーのコード */
-    private final String code;
+    private final String value;
 
     /**
      * コンストラクタ。
-     * @param code コード値
+     * @param value コード値
      * @param label ラベル
      */
-    ProjectSortKey(String code, String label) {
+    ProjectSortKey(String value, String label) {
         this.label = label;
-        this.code = code;
+        this.value = value;
     }
 
     @Override
@@ -36,7 +36,7 @@ public enum ProjectSortKey implements CodeEnum {
     }
 
     @Override
-    public String getCode() {
-        return code;
+    public String getValue() {
+        return value;
     }
 }
