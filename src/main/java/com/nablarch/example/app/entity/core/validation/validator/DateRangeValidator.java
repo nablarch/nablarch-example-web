@@ -14,6 +14,9 @@ public class DateRangeValidator {
     /** 終了日 */
     private final String end;
 
+    /** 日付の形式 */
+    private final String dateFormat;
+
     /**
      * 開始日と終了日を設定するコンストラクタ。
      *
@@ -21,8 +24,20 @@ public class DateRangeValidator {
      * @param end 終了日
      */
     public DateRangeValidator(final String start, final String end) {
+        this(start, end, "yyyyMMdd");
+    }
+
+    /**
+     * 開始日と終了日を設定するコンストラクタ。
+     *
+     * @param start 開始日
+     * @param end 終了日
+     * @param dateFormat 日付の形式
+     */
+    public DateRangeValidator(final String start, final String end, final String dateFormat) {
         this.start = start;
         this.end = end;
+        this.dateFormat = dateFormat;
     }
 
     /**
@@ -33,7 +48,7 @@ public class DateRangeValidator {
      */
     public boolean isValid() {
         if (isValidDate(start) && isValidDate(end)) {
-            return DateUtil.getDate(start).compareTo(DateUtil.getDate(end)) <= 0;
+            return DateUtil.getParsedDate(start, dateFormat).compareTo(DateUtil.getParsedDate(end, dateFormat)) <= 0;
         }
         // 日付以外はバリデーション対象外
         return true;
@@ -49,6 +64,6 @@ public class DateRangeValidator {
         if (StringUtil.isNullOrEmpty(date)) {
             return false;
         }
-        return DateUtil.isValid(date, "yyyyMMdd");
+        return DateUtil.isValid(date, dateFormat);
     }
 }
