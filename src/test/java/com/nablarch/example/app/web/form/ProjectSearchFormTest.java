@@ -1,8 +1,10 @@
 package com.nablarch.example.app.web.form;
 
 import nablarch.test.core.db.EntityTestSupport;
+import nablarch.test.junit5.extension.db.EntityTest;
 import org.junit.Test;
 
+@EntityTest
 public class ProjectSearchFormTest extends EntityTestSupport {
 
     private final Class<?> targetClass = ProjectSearchForm.class;

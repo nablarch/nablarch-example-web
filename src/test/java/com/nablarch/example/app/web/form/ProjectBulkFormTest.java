@@ -1,18 +1,22 @@
 package com.nablarch.example.app.web.form;
 
 import nablarch.test.core.db.EntityTestSupport;
-import org.junit.Test;
+import nablarch.test.junit5.extension.db.EntityTest;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;
 
-public class ProjectBulkFormTest extends EntityTestSupport {
+@EntityTest
+public class ProjectBulkFormTest {
 
     private static final Class<?> targetClass = ProjectBulkForm.class;
+
+    EntityTestSupport support;
 
     @Test
     public void 全子フォームが正しいことを検証する() {
 
-        testBeanValidation(targetClass, "testBeanValidation");
+        support.testBeanValidation(targetClass, "testBeanValidation");
     }
 
 }
