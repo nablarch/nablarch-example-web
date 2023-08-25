@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class ProjectUploadDtoTest {
     private static final Class<?> targetClass = ProjectUploadDto.class;
 
-    EntityTestSupport support;
+    private EntityTestSupport support;
 
     @Test
     public void 文字列長と文字種の単項目精査結果が正しいことを検証する() {

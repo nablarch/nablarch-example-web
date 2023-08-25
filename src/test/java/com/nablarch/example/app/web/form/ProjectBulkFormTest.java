@@ -11,7 +11,7 @@ public class ProjectBulkFormTest {
 
     private static final Class<?> targetClass = ProjectBulkForm.class;
 
-    EntityTestSupport support;
+    private EntityTestSupport support;
 
     @Test
     public void 全子フォームが正しいことを検証する() {

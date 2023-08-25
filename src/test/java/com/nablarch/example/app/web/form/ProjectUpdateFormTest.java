@@ -9,7 +9,7 @@ public class ProjectUpdateFormTest {
 
     private static final Class<?> targetClass = ProjectUpdateForm.class;
 
-    EntityTestSupport support;
+    private EntityTestSupport support;
 
     @Test
     public void 文字列長と文字種の単項目精査結果が正しいことを検証する() {
