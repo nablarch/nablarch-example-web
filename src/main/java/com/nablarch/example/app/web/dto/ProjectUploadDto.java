@@ -41,6 +41,9 @@ public class ProjectUploadDto implements Serializable {
     /** シリアルバージョンUID */
     private static final long serialVersionUID = 1L;
 
+    /** 日付の形式 */
+    private static final String dateFormat = "yyyy/MM/dd";
+
     /** 数値判定用の正規表現 */
     private static final Pattern NUMERIC_PATTERN = Pattern.compile("^[-]?[0-9]+$");
 
@@ -380,6 +383,6 @@ public class ProjectUploadDto implements Serializable {
      */
     @AssertTrue(message = "{com.nablarch.example.app.entity.core.validation.validator.DateRangeValidator.message}")
     private boolean isValidProjectPeriod() {
-        return new DateRangeValidator(projectStartDate, projectEndDate).isValid();
+        return new DateRangeValidator(projectStartDate, projectEndDate, dateFormat).isValid();
     }
 }
