@@ -42,6 +42,7 @@ class ProjectBulkActionRequestTest {
                         context.getRequestScopedVar("searchForm"));
 
                 // プロジェクト表示結果の確認
+                //noinspection unchecked
                 support.assertBeanList(testCaseInfo.getSheetName(), "projectListDto", testCaseInfo,
                         (List<Object>) BeanUtil.getProperty(context.getRequestScopedVar("bulkForm"), "projectList"));
             }
@@ -64,10 +65,12 @@ class ProjectBulkActionRequestTest {
                         context.getRequestScopedVar("searchForm"));
 
                 // プロジェクト表示結果の確認
+                //noinspection unchecked
                 support.assertBeanList(testCaseInfo.getSheetName(), "projectListDto", testCaseInfo,
                         (List<Object>) BeanUtil.getProperty(context.getRequestScopedVar("bulkForm"), "projectList"));
 
                 // 検索結果がセッションに格納されていることの確認
+                //noinspection unchecked
                 support.assertBeanList(testCaseInfo.getSheetName(), "projectListDtoInSession", testCaseInfo,
                         (List<Object>) BeanUtil.getProperty(SessionUtil.get(context, "projectListDto"), "projectList"));
 
@@ -138,6 +141,7 @@ class ProjectBulkActionRequestTest {
                                      ExecutionContext context) {
 
                 // 更新内容が上書きされたことを確認する
+                //noinspection unchecked
                 support.assertBeanList(testCaseInfo.getSheetName(), "projectListDtoInSession", testCaseInfo,
                         (List<Object>) BeanUtil.getProperty(SessionUtil.get(context, "projectListDto"), "projectList"));
             }
@@ -163,7 +167,7 @@ class ProjectBulkActionRequestTest {
                                                  ExecutionContext context) {
 
                 ProjectListDto projectListDto = new ProjectListDto();
-                MockEntityList<Project> projectList = new MockEntityList<Project>();
+                MockEntityList<Project> projectList = new MockEntityList<>();
                 projectList.setUpMockList(1, 20L, 1);
                 projectListDto.setProjectList(projectList);
 
@@ -196,6 +200,7 @@ class ProjectBulkActionRequestTest {
                         context.getRequestScopedVar("searchForm"));
 
                 // プロジェクト表示結果の確認
+                //noinspection unchecked
                 support.assertBeanList(testCaseInfo.getSheetName(), "projectListDto", testCaseInfo,
                         (List<Object>) BeanUtil.getProperty(context.getRequestScopedVar("bulkForm"), "projectList"));
             }
