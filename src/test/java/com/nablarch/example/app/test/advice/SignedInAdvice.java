@@ -59,7 +59,6 @@ public class SignedInAdvice extends BasicAdvice {
     }
 
     /**
-     * {@inheritDoc}
      * テストの事前処理を実装する。
      * <p>
      * 本メソッド実行前にログイン処理が自動実行される。
