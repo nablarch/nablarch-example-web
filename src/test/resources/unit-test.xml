@@ -34,4 +34,21 @@
   <!-- テスト用HttpServerにJetty12を定義する -->
   <component name="httpServerFactory" class="nablarch.fw.web.httpserver.HttpServerFactoryJetty12"/>
 
+  <!-- エンティティテスト設定 -->
+  <component name="entityTestConfiguration" class="nablarch.test.core.entity.EntityTestConfiguration">
+    <property name="maxMessageId" value="{nablarch.core.validation.ee.Length.max.message}"/>
+    <property name="maxAndMinMessageId" value="{nablarch.core.validation.ee.Length.min.max.message}"/>
+    <property name="fixLengthMessageId" value="{nablarch.core.validation.ee.Length.fixed.message}"/>
+    <property name="underLimitMessageId" value="{nablarch.core.validation.ee.Length.min.max.message}"/>
+    <property name="minMessageId" value="{nablarch.core.validation.ee.Length.min.message}"/>
+    <property name="emptyInputMessageId" value="{nablarch.core.validation.ee.Required.message}"/>
+    <property name="characterGenerator">
+      <component name="characterGenerator"
+                 class="nablarch.test.core.util.generator.BasicJapaneseCharacterGenerator"/>
+    </property>
+    <property name="validationTestStrategy">
+      <component class="nablarch.test.core.entity.BeanValidationTestStrategy"/>
+    </property>
+  </component>
+
 </component-configuration>

@@ -163,7 +163,7 @@ class ProjectBulkActionRequestTest {
                                                  ExecutionContext context) {
 
                 ProjectListDto projectListDto = new ProjectListDto();
-                MockEntityList<Project> projectList = new MockEntityList<Project>();
+                MockEntityList<Project> projectList = new MockEntityList<>();
                 projectList.setUpMockList(1, 20L, 1);
                 projectListDto.setProjectList(projectList);
 
