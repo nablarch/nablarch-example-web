@@ -14,16 +14,16 @@ public enum ProjectType implements CodeEnum {
     /** プロジェクト種別のラベル */
     private final String label;
     /** プロジェクト種別のコード */
-    private final String code;
+    private final String value;
 
     /**
      * コンストラクタ。
-     * @param code コード値
+     * @param value コード値
      * @param label ラベル
      */
-    ProjectType(String code, String label) {
+    ProjectType(String value, String label) {
         this.label = label;
-        this.code = code;
+        this.value = value;
     }
 
     @Override
@@ -32,7 +32,7 @@ public enum ProjectType implements CodeEnum {
     }
 
     @Override
-    public String getCode() {
-        return code;
+    public String getValue() {
+        return value;
     }
 }

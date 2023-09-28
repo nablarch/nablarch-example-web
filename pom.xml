@@ -4,7 +4,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
-  <version>5u22</version>
+  <version>5u23</version>
   <packaging>war</packaging>
 
   <properties>
@@ -41,7 +41,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>5u22</version>
+        <version>5u23</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -163,7 +163,7 @@
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
-      <version>2.1.214</version>
+      <version>2.2.220</version>
       <scope>runtime</scope>
     </dependency>
     
@@ -288,7 +288,7 @@
           <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>2.1.214</version>
+            <version>2.2.220</version>
             <scope>runtime</scope>
           </dependency>
         </dependencies>

@@ -14,16 +14,16 @@ public enum ClientSortKey implements CodeEnum {
     /** 顧客のラベル */
     private final String label;
     /** 顧客のコード */
-    private final String code;
+    private final String value;
 
     /**
      * コンストラクタ。
-     * @param code コード値
+     * @param value コード値
      * @param label ラベル
      */
-    ClientSortKey(String code, String label) {
+    ClientSortKey(String value, String label) {
         this.label = label;
-        this.code = code;
+        this.value = value;
     }
 
     @Override
@@ -32,7 +32,7 @@ public enum ClientSortKey implements CodeEnum {
     }
 
     @Override
-    public String getCode() {
-        return code;
+    public String getValue() {
+        return value;
     }
 }

@@ -1,6 +1,8 @@
 package com.nablarch.example.app.entity.core.validation.validator;
 
+import nablarch.core.validation.ee.DateFormat;
 import nablarch.core.validation.ee.Digits;
+import nablarch.core.validation.ee.EnumElement;
 import nablarch.core.validation.ee.Length;
 import nablarch.core.validation.ee.NumberRange;
 import nablarch.core.validation.ee.SystemChar;
@@ -48,31 +50,31 @@ public class ExampleDomainType {
     private String projectName;
 
     /** 新規開発PJ、または保守PJを表すコード値 */
-    @CodeValue(enumClass = ProjectType.class)
+    @EnumElement(ProjectType.class)
     private String projectType;
 
     /** プロジェクトの規模を表すコード値 */
-    @CodeValue(enumClass = ProjectClass.class)
+    @EnumElement(ProjectClass.class)
     private String projectClass;
 
     /** 日付 */
-    @YYYYMMDD()
+    @DateFormat
     private String date;
 
     /** 日付(slashあり) */
-    @YYYYMMDD(allowFormat = "yyyy/MM/dd")
+    @DateFormat("yyyy/MM/dd")
     private String dateWithSlash;
 
     /** プロジェクトの一覧画面において、並び順の基準にする項目を表すコード値 */
-    @CodeValue(enumClass = ProjectSortKey.class)
+    @EnumElement(ProjectSortKey.class)
     private String projectAlignmentItem;
 
     /** 顧客の一覧画面において、並び順の基準にする項目を表すコード値 */
-    @CodeValue(enumClass = ClientSortKey.class)
+    @EnumElement(ClientSortKey.class)
     private String clientAlignmentItem;
 
     /** 昇順、または降順を表すコード値 */
-    @CodeValue(enumClass = SortOrder.class)
+    @EnumElement(SortOrder.class)
     private String alignment;
 
     /** ユーザ氏名（漢字） */
