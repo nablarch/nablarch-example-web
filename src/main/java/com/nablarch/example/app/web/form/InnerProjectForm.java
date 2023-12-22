@@ -2,7 +2,7 @@ package com.nablarch.example.app.web.form;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.AssertTrue;
 
 import com.nablarch.example.app.entity.core.validation.validator.DateRangeValidator;
 import nablarch.core.validation.ee.Domain;

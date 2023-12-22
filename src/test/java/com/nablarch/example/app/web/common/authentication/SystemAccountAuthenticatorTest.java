@@ -23,6 +23,7 @@ import nablarch.core.repository.di.DiContainer;
 import nablarch.core.repository.di.config.xml.XmlComponentDefinitionLoader;
 import nablarch.core.util.DateUtil;
 
+import nablarch.test.RepositoryInitializer;
 import org.h2.jdbcx.JdbcDataSource;
 
 import org.junit.jupiter.api.AfterAll;
@@ -195,6 +196,8 @@ class SystemAccountAuthenticatorTest {
         if (con != null) {
             con.close();
         }
+        SystemRepository.clear();
+        RepositoryInitializer.initializeDefaultRepository();
     }
 
     /**
@@ -545,4 +548,3 @@ class SystemAccountAuthenticatorTest {
         return authenticator;
     }
 }
-

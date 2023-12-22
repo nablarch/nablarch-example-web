@@ -31,8 +31,8 @@
     <property name="schema" value="PUBLIC"/>
   </component>
 
-  <!-- テスト用HttpServerにJetty6を定義する -->
-  <component name="httpServerFactory" class="nablarch.fw.web.httpserver.HttpServerFactoryJetty6"/>
+  <!-- テスト用HttpServerにJetty12を定義する -->
+  <component name="httpServerFactory" class="nablarch.fw.web.httpserver.HttpServerFactoryJetty12"/>
 
   <!-- エンティティテスト設定 -->
   <component name="entityTestConfiguration" class="nablarch.test.core.entity.EntityTestConfiguration">
