@@ -27,7 +27,6 @@ public class ClientAction {
      */
     @Produces(MediaType.APPLICATION_JSON)
     public List<ClientDto> find(JaxRsHttpRequest req) {
-
         final ClientSearchForm form = BeanUtil.createAndCopy(ClientSearchForm.class, req.getParamMap());
 
         // Beanバリデーション実行
