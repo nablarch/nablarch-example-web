@@ -4,9 +4,9 @@ import com.nablarch.example.app.web.dto.ClientDto;
 import com.nablarch.example.app.web.dto.ClientSearchDto;
 import com.nablarch.example.app.web.form.ClientSearchForm;
 import nablarch.common.dao.UniversalDao;
-import nablarch.common.util.WebRequestUtil;
 import nablarch.core.beans.BeanUtil;
-import nablarch.fw.web.HttpRequest;
+import nablarch.core.validation.ee.ValidatorUtil;
+import nablarch.fw.jaxrs.JaxRsHttpRequest;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -26,10 +26,12 @@ public class ClientAction {
      * @return 顧客情報リスト
      */
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ClientDto> find(HttpRequest req) {
+    public List<ClientDto> find(JaxRsHttpRequest req) {
 
-        // リクエストパラメータをBeanに変換し、BeanValidation実行
-        final ClientSearchForm form = WebRequestUtil.getValidatedBean(ClientSearchForm.class, req);
+        final ClientSearchForm form = BeanUtil.createAndCopy(ClientSearchForm.class, req.getParamMap());
+
+        // Beanバリデーション実行
+        ValidatorUtil.validate(form);
 
         final ClientSearchDto condition = BeanUtil.createAndCopy(ClientSearchDto.class, form);
         return UniversalDao.findAllBySqlFile(ClientDto.class, "SEARCH_CLIENT", condition);
