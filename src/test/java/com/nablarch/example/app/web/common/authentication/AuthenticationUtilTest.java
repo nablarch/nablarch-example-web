@@ -5,19 +5,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.nablarch.example.app.web.common.authentication.encrypt.PasswordEncryptor;
 import com.nablarch.example.app.web.common.authentication.exception.AuthenticationException;
 
-import nablarch.core.repository.ObjectLoader;
+import nablarch.core.message.ApplicationException;
+import nablarch.core.message.Message;
 import nablarch.core.repository.SystemRepository;
+import nablarch.core.validation.ValidationResultMessage;
+import nablarch.core.validation.ee.Required;
+import nablarch.fw.web.HttpRequest;
+import nablarch.fw.web.MockHttpRequest;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static nablarch.test.Assertion.fail;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 
 /**
  * {@link AuthenticationUtil}のテストクラス
@@ -44,15 +51,10 @@ class AuthenticationUtilTest {
      * @param encryptor {@link SystemRepository} に登録する {@link PasswordEncryptor}
      */
     private static void setupAuthenticationComponents(final PasswordAuthenticator authenticator, final PasswordEncryptor encryptor) {
-        SystemRepository.load(new ObjectLoader() {
-            @Override
-            public Map<String, Object> load() {
-                return new HashMap<String, Object>() {
-                    {
-                        put("authenticator", authenticator);
-                        put("passwordEncryptor", encryptor);
-                    }
-                };
+        SystemRepository.load(() -> new HashMap<String, Object>() {
+            {
+                put("authenticator", authenticator);
+                put("passwordEncryptor", encryptor);
             }
         });
     }
@@ -210,8 +212,8 @@ class AuthenticationUtilTest {
         void initialize() {
             this.actualCalled = 0;
             this.expectedCall = 0;
-            this.calledWith = new ArrayList<List<String>>();
-            this.expectedParams = new ArrayList<List<String>>();
+            this.calledWith = new ArrayList<>();
+            this.expectedParams = new ArrayList<>();
         }
 
         /**
@@ -232,5 +234,64 @@ class AuthenticationUtilTest {
         Constructor<AuthenticationUtil> constructor = AuthenticationUtil.class.getDeclaredConstructor();
         constructor.setAccessible(true);
         constructor.newInstance();
+    }
+
+    /**
+     * HTTPリクエストからBeanが生成され、バリデーションエラーが発生しないこと
+     */
+    @Test
+    public void testGetValidatedBean_Success () {
+        HttpRequest req = new MockHttpRequest()
+                .setParam("id", "1")
+                .setParam("name", "山田太郎");
+        Person person = AuthenticationUtil.getValidatedBean(Person.class, req);
+        assertThat(person.getId(), is(1L));
+        assertThat(person.getName(), is("山田太郎"));
+    }
+
+    /**
+     * HTTPリクエストからBeanが生成され、バリデーションエラーが発生すること
+     */
+    @Test
+    public void testGetValidatedBean_FailedValidation () {
+        HttpRequest req = new MockHttpRequest().setParam("id", "1");
+        try {
+            AuthenticationUtil.getValidatedBean(Person.class, req);
+            fail("とおらない");
+        } catch (ApplicationException e) {
+            List<Message> messages = e.getMessages();
+            assertThat(messages, hasSize(1));
+            ValidationResultMessage message = (ValidationResultMessage) messages.get(0);
+            assertThat(message.getPropertyName(), Matchers.is("name"));
+            assertThat(message.formatMessage(), Matchers.is("入力してください。"));
+        }
+    }
+
+    /**
+     * テスト用のデータクラス
+     */
+    public static class Person {
+
+        private Long id;
+
+        private String name;
+
+        @Required
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        @Required
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }

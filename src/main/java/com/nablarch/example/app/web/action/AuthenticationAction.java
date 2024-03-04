@@ -2,7 +2,6 @@ package com.nablarch.example.app.web.action;
 
 import nablarch.common.authorization.role.session.SessionStoreUserRoleUtil;
 import nablarch.common.dao.UniversalDao;
-import nablarch.common.util.WebRequestUtil;
 import nablarch.common.web.csrf.CsrfTokenUtil;
 import nablarch.common.web.session.SessionUtil;
 import nablarch.core.message.ApplicationException;
@@ -57,7 +56,7 @@ public class AuthenticationAction {
         final LoginForm form;
 
         try {
-            form = WebRequestUtil.getValidatedBean(LoginForm.class, request);
+            form = AuthenticationUtil.getValidatedBean(LoginForm.class, request);
         } catch (ApplicationException ignore) {
             throw new ApplicationException(MessageUtil.createMessage(
                     MessageLevel.ERROR, "errors.login"));
