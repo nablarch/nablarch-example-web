@@ -4,7 +4,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
-  <version>5u23</version>
+  <version>5u24</version>
   <packaging>war</packaging>
 
   <properties>
@@ -41,7 +41,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>5u23</version>
+        <version>5u24</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -171,12 +171,6 @@
       <groupId>com.zaxxer</groupId>
       <artifactId>HikariCP</artifactId>
       <version>3.3.1</version>
-      <scope>runtime</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>com.nablarch.integration</groupId>
-      <artifactId>slf4j-nablarch-adaptor</artifactId>
       <scope>runtime</scope>
     </dependency>
 

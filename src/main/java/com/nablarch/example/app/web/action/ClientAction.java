@@ -6,7 +6,7 @@ import com.nablarch.example.app.web.form.ClientSearchForm;
 import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.validation.ee.ValidatorUtil;
-import nablarch.fw.web.HttpRequest;
+import nablarch.fw.jaxrs.JaxRsHttpRequest;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -26,7 +26,7 @@ public class ClientAction {
      * @return 顧客情報リスト
      */
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ClientDto> find(HttpRequest req) {
+    public List<ClientDto> find(JaxRsHttpRequest req) {
         final ClientSearchForm form = BeanUtil.createAndCopy(ClientSearchForm.class, req.getParamMap());
 
         // Beanバリデーション実行
