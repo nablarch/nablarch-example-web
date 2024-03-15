@@ -4,7 +4,10 @@ import com.nablarch.example.app.web.common.authentication.encrypt.PasswordEncryp
 import com.nablarch.example.app.web.common.authentication.exception.AuthenticationFailedException;
 import com.nablarch.example.app.web.common.authentication.exception.PasswordExpiredException;
 import com.nablarch.example.app.web.common.authentication.exception.UserIdLockedException;
+import nablarch.core.beans.BeanUtil;
 import nablarch.core.repository.SystemRepository;
+import nablarch.core.validation.ee.ValidatorUtil;
+import nablarch.fw.web.HttpRequest;
 
 /**
  * 認証関連の処理のユーティリティクラス。
@@ -62,5 +65,18 @@ public final class AuthenticationUtil {
         throws AuthenticationFailedException, UserIdLockedException, PasswordExpiredException {
         PasswordAuthenticator authenticator = SystemRepository.get(AUTHENTICATOR);
         authenticator.authenticate(userId, password);
+    }
+
+    /**
+     * HTTPリクエストからBeanを生成し、Bean Validationを行う。
+     *
+     * @param beanClass 生成したいBeanクラス
+     * @param request HTTPリクエスト
+     * @return  プロパティに値が登録されたBeanオブジェクト
+     */
+    public static <T> T getValidatedBean(Class<T> beanClass, HttpRequest request) {
+        T bean = BeanUtil.createAndCopy(beanClass, request.getParamMap());
+        ValidatorUtil.validate(bean);
+        return bean;
     }
 }

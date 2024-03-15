@@ -4,11 +4,9 @@ import nablarch.common.authorization.role.session.SessionStoreUserRoleUtil;
 import nablarch.common.dao.UniversalDao;
 import nablarch.common.web.csrf.CsrfTokenUtil;
 import nablarch.common.web.session.SessionUtil;
-import nablarch.core.beans.BeanUtil;
 import nablarch.core.message.ApplicationException;
 import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
-import nablarch.core.validation.ee.ValidatorUtil;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
@@ -55,10 +53,10 @@ public class AuthenticationAction {
     @OnError(type = ApplicationException.class, path = "/WEB-INF/view/login/index.jsp",statusCode = 403)
     public HttpResponse login(HttpRequest request, ExecutionContext context) {
 
-        final LoginForm form = BeanUtil.createAndCopy(LoginForm.class, request.getParamMap());
+        final LoginForm form;
 
         try {
-            ValidatorUtil.validate(form);
+            form = AuthenticationUtil.getValidatedBean(LoginForm.class, request);
         } catch (ApplicationException ignore) {
             throw new ApplicationException(MessageUtil.createMessage(
                     MessageLevel.ERROR, "errors.login"));
