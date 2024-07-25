@@ -39,9 +39,9 @@
 <%-- javascripts --%>
 <n:script type="text/javascript" src="/javascripts/lib/jquery-1.11.2.min.js"></n:script>
 <n:script type="text/javascript" src="/javascripts/lib/jquery-ui.min.js"></n:script>
-<script type="text/javascript" charset="UTF-8" src="//cdn.jsdelivr.net/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript" charset="UTF-8" src="//cdn.jsdelivr.net/bootstrap.material-design/0.5.6/js/material.min.js"></script>
-<script type="text/javascript" charset="UTF-8" src="//cdn.jsdelivr.net/bootstrap.material-design/0.5.6/js/ripples.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="//cdn.jsdelivr.net/bootstrap/3.3.6/js/bootstrap.min.js" nonce="<n:cspNonce/>"></script>
+<script type="text/javascript" charset="UTF-8" src="//cdn.jsdelivr.net/bootstrap.material-design/0.5.6/js/material.min.js" nonce="<n:cspNonce/>"></script>
+<script type="text/javascript" charset="UTF-8" src="//cdn.jsdelivr.net/bootstrap.material-design/0.5.6/js/ripples.min.js" nonce="<n:cspNonce/>"></script>
 <n:script type="text/javascript" charset="UTF-8" src="/javascripts/lib/jquery-ui-datepicker-ja.js"></n:script>
 <n:script type="text/javascript" charset="UTF-8" src="/javascripts/common.js"></n:script>
 
@@ -58,7 +58,7 @@
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.material-design/0.5.6/css/bootstrap-material-design.css">
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.material-design/0.5.6/css/ripples.min.css">
 
-<script>
+<script nonce="<n:cspNonce/>">
   $.material.init();
 </script>
 
