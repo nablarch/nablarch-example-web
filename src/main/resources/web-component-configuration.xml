@@ -91,7 +91,25 @@
 
         <component class="nablarch.fw.web.handler.HttpResponseHandler"/>
 
-        <component class="nablarch.fw.web.handler.SecureHandler" />
+        <component class="nablarch.fw.web.handler.SecureHandler">
+          <property name="generateCspNonce" value="true" />
+          <property name="secureResponseHeaderList">
+            <list>
+              <component class="nablarch.fw.web.handler.secure.FrameOptionsHeader" />
+              <component class="nablarch.fw.web.handler.secure.XssProtectionHeader" />
+              <component class="nablarch.fw.web.handler.secure.ContentTypeOptionsHeader" />
+              <component class="nablarch.fw.web.handler.secure.ReferrerPolicyHeader" />
+              <component class="nablarch.fw.web.handler.secure.CacheControlHeader" />
+
+              <!-- Content-Security-Policyを付与するコンポーネント -->
+              <component class="nablarch.fw.web.handler.secure.ContentSecurityPolicyHeader">
+                <!-- ポリシーを設定する -->
+<!--                <property name="policy" value="default-src 'self'; script-src '$cspNonceSource$' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdn.jsdelivr.net; font-src fonts.gstatic.com cdn.jsdelivr.net;" />-->
+                <property name="policy" value="script-src '$cspNonceSource$' cdn.jsdelivr.net;" />
+              </component>
+            </list>
+          </property>
+        </component>
 
         <component-ref name="multipartHandler"/>
 
