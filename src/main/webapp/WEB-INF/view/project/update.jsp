@@ -123,8 +123,8 @@
                                 </div>
                                 <n:forInputPage>
                                   <div class="btn-group-sm">
-                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#client-search-dialog"  class="btn btn-default btn-fab"><i class="material-icons">search</i></a>
-                                    <a href="javascript:void(0)" class="btn btn-default btn-fab" id="client-remove"><i class="material-icons">remove</i></a>
+                                    <a data-toggle="modal" data-target="#client-search-dialog"  class="btn btn-default btn-fab"><i class="material-icons">search</i></a>
+                                    <a class="btn btn-default btn-fab" id="client-remove"><i class="material-icons">remove</i></a>
                                   </div>
                                 </n:forInputPage>
                                 <n:error errorCss="message-error" name="form.clientId" />
