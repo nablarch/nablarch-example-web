@@ -35,7 +35,7 @@
           </div>
         </div>
         <div>
-          <a class="btn btn-raised btn-primary pull-right" id="client-search">検索</a>
+          <a href="javascript:void(0)" class="btn btn-raised btn-primary pull-right" id="client-search">検索</a>
         </div>
         <div style="overflow-y: scroll; height: 250px;" class="col-md-12">
           <table class="table table-striped table-hover" id="search-result">

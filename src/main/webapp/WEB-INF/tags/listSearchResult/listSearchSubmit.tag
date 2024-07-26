@@ -36,6 +36,6 @@
     <c:if test="${label != pageNumber}">
         <li class="disabled">
     </c:if>
-    <a><n:write name="label" /></a>
+    <a href="javascript:void(0)"><n:write name="label" /></a>
     </li>
 </c:if>
