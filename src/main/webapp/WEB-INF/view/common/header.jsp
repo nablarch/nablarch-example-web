@@ -58,7 +58,7 @@
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.material-design/0.5.6/css/bootstrap-material-design.css">
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.material-design/0.5.6/css/ripples.min.css">
 
-<script nonce="<n:cspNonce/>">
+<script nonce="<n:cspNonce />">
   $.material.init();
 </script>
 
