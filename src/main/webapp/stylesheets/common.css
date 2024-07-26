@@ -605,3 +605,6 @@ th.width-250{
 	margin-left:5%;
 }
 
+.btn-client {
+    cursor:pointer;
+}
