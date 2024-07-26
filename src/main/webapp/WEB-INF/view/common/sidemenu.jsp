@@ -82,8 +82,8 @@
                                       <n:text id="client-name" name="searchForm.clientName" readonly="true" cssClass="form-control" placeholder="顧客名"/>
                                     </div>
                                     <div class="btn-group-sm pull-right">
-                                      <a href="#" data-toggle="modal" data-target="#client-search-dialog"  class="btn btn-default btn-fab btn-client"><i class="material-icons">search</i></a>
-                                      <a href="#" class="btn btn-default btn-fab btn-client" id="client-remove"><i class="material-icons">remove</i></a>
+                                      <a href="#" data-toggle="modal" data-target="#client-search-dialog"  class="btn btn-default btn-fab btn-disable-link"><i class="material-icons">search</i></a>
+                                      <a href="#" class="btn btn-default btn-fab btn-disable-link" id="client-remove"><i class="material-icons">remove</i></a>
                                     </div>
                                 </div>
                             </div>

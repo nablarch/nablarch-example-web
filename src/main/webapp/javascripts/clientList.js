@@ -66,7 +66,7 @@ $(function () {
                     $('<a>', {
                       href: '#',
                       text: item.clientId,
-                      class: "btn-client"
+                      class: "btn-disable-link"
                     }).click(setClientInfo))
                     .append($('<span>').text(item.clientId).addClass('id').hide())
                     .append($('<span>').text(item.clientName).addClass('name').hide()))
