@@ -25,7 +25,9 @@ $(function() {
   $(".datepicker").datepicker();
 
 
-  $('#client-remove').click(function () {
+  $('#client-remove').click(function (event) {
+    // href属性に#を指定しているaタグに、ページ遷移を行わなせないようpreventDefault()を呼び出している
+    event.preventDefault();
     $clientId.val('');
     $clientName.val('');
   })

@@ -20,7 +20,9 @@ $(function () {
   /**
    * 選択したクライアント情報を設定する
    */
-  function setClientInfo() {
+  function setClientInfo(event) {
+    // href属性に#を指定しているaタグに、ページ遷移を行わなせないようpreventDefault()を呼び出している
+    event.preventDefault();
     var $td = $(this).parent();
     $clientId.val($td.children('span.id').first().text());
     $clientName.val($td.children('span.name').first().text());
@@ -30,10 +32,10 @@ $(function () {
   /**
    * ダイアログ表示時のイベント
    */
-  $modal.on('shown.bs.modal', function () {
+  $modal.on('shown.bs.modal', function (event) {
     $searchClientName.val('');
     $searchIndustryCode.val('');
-    searchClientList();
+    searchClientList(event);
   });
 
   /**
@@ -49,7 +51,9 @@ $(function () {
   /**
    * 顧客検索を行う。
    */
-  function searchClientList() {
+  function searchClientList(event) {
+    // href属性に#を指定しているaタグに、ページ遷移を行わなせないようpreventDefault()を呼び出している
+    event.preventDefault()
     $('div.alert-area').remove();
     $searchResult.empty();
     $.ajax({
@@ -64,7 +68,7 @@ $(function () {
             .append($('<tr>')
                 .append($('<td>').addClass("client-id").append(
                     $('<a>', {
-                      href: 'javascript:void(0)',
+                      href: '#',
                       text: item.clientId
                     }).click(setClientInfo))
                     .append($('<span>').text(item.clientId).addClass('id').hide())
