@@ -25,7 +25,8 @@ $(function() {
   $(".datepicker").datepicker();
 
 
-  $('#client-remove').click(function () {
+  $('#client-remove').click(function (event) {
+    event.preventDefault();
     $clientId.val('');
     $clientName.val('');
   })

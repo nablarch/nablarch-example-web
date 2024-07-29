@@ -13,7 +13,8 @@ $(function() {
 $(function () {
   var $clientId = $('#client-id');
   var $clientName = $('#client-name');
-  $('#client-remove').click(function () {
+  $('#client-remove').click(function (event) {
+    event.preventDefault();
     $clientId.val('');
     $clientName.val('');
   })

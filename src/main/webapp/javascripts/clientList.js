@@ -66,7 +66,10 @@ $(function () {
                     $('<a>', {
                       href: '#',
                       text: item.clientId
-                    }).click(setClientInfo))
+                    }).click(function (event) {
+                        event.preventDefault();
+                        setClientInfo.call(this);
+                    }))
                     .append($('<span>').text(item.clientId).addClass('id').hide())
                     .append($('<span>').text(item.clientName).addClass('name').hide()))
                 .append($('<td>').text(item.clientName))
@@ -99,7 +102,10 @@ $(function () {
   /**
    * 顧客の検索処理
    */
-  $clientSearchButton.click(searchClientList);
+  $clientSearchButton.click(function (element) {
+    element.preventDefault();
+    searchClientList();
+  });
   
   /**
    * 業種を取得する
