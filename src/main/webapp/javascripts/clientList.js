@@ -22,7 +22,7 @@ $(function () {
    */
   function setClientInfo(event) {
     event.preventDefault();
-    var $td = $(this).parent  ();
+    var $td = $(this).parent();
     $clientId.val($td.children('span.id').first().text());
     $clientName.val($td.children('span.name').first().text());
     $modal.modal('hide');
