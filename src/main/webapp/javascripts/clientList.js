@@ -102,8 +102,8 @@ $(function () {
   /**
    * 顧客の検索処理
    */
-  $clientSearchButton.click(function (element) {
-    element.preventDefault();
+  $clientSearchButton.click(function (event) {
+    event.preventDefault();
     searchClientList();
   });
   
