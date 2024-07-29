@@ -21,6 +21,7 @@ $(function () {
    * 選択したクライアント情報を設定する
    */
   function setClientInfo(event) {
+    // href属性に#を指定しているaタグに、ページ遷移を行わなせないようpreventDefault()を呼び出している
     event.preventDefault();
     var $td = $(this).parent();
     $clientId.val($td.children('span.id').first().text());
@@ -51,6 +52,7 @@ $(function () {
    * 顧客検索を行う。
    */
   function searchClientList(event) {
+    // href属性に#を指定しているaタグに、ページ遷移を行わなせないようpreventDefault()を呼び出している
     event.preventDefault()
     $('div.alert-area').remove();
     $searchResult.empty();
