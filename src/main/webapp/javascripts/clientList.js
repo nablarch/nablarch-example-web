@@ -64,7 +64,7 @@ $(function () {
             .append($('<tr>')
                 .append($('<td>').addClass("client-id").append(
                     $('<a>', {
-                      href: 'javascript:void(0)',
+                      href: '#',
                       text: item.clientId
                     }).click(setClientInfo))
                     .append($('<span>').text(item.clientId).addClass('id').hide())
