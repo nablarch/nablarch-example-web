@@ -91,7 +91,21 @@
 
         <component class="nablarch.fw.web.handler.HttpResponseHandler"/>
 
-        <component class="nablarch.fw.web.handler.SecureHandler" />
+        <component class="nablarch.fw.web.handler.SecureHandler">
+          <property name="generateCspNonce" value="true" />
+          <property name="secureResponseHeaderList">
+            <list>
+              <component class="nablarch.fw.web.handler.secure.FrameOptionsHeader" />
+              <component class="nablarch.fw.web.handler.secure.XssProtectionHeader" />
+              <component class="nablarch.fw.web.handler.secure.ContentTypeOptionsHeader" />
+              <component class="nablarch.fw.web.handler.secure.ReferrerPolicyHeader" />
+              <component class="nablarch.fw.web.handler.secure.CacheControlHeader" />
+              <component class="nablarch.fw.web.handler.secure.ContentSecurityPolicyHeader">
+                <property name="policy" value="script-src 'self' '$cspNonceSource$' cdn.jsdelivr.net" />
+              </component>
+            </list>
+          </property>
+        </component>
 
         <component-ref name="multipartHandler"/>
 
