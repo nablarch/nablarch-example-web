@@ -26,7 +26,7 @@ public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
     /**
      * 暗号化アルゴリズム名
      */
-    private static final String CRYPT_ALGORITHM = "PBKDF2WithHmacSha1";
+    private static final String CRYPT_ALGORITHM = "PBKDF2WithHmacSHA256";
 
     /**
      * パスワード暗号化のストレッチング回数
