@@ -26,12 +26,12 @@
                     <div class="button-nav">
                         <n:forInputPage>
                             <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-raised btn-default">戻る</n:a>
-                            <n:submit value="削除" uri="#" id="topDeleteButton" cssClass="btn btn-raised btn-danger" allowDoubleSubmission="false" type="button" />
-                            <n:submit value="更新" uri="#" id="topUpdateButton" cssClass="btn btn-raised btn-success" type="button" />
+                            <n:submit value="削除" uri="#" id="topDeleteButton" cssClass="btn btn-raised btn-danger" type="button" allowDoubleSubmission="false" suppressDefaultSubmit="true" />
+                            <n:submit value="更新" uri="#" id="topUpdateButton" cssClass="btn btn-raised btn-success" type="button" suppressDefaultSubmit="true" />
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:submit value="入力へ戻る" uri="#" id="topBackButton" cssClass="btn btn-raised btn-default" type="button" />
-                            <n:submit value="確定" uri="#" id="topSubmitButton" cssClass="btn btn-raised btn-success" allowDoubleSubmission="false" type="button" />
+                            <n:submit value="入力へ戻る" uri="#" id="topBackButton" cssClass="btn btn-raised btn-default" type="button" suppressDefaultSubmit="true" />
+                            <n:submit value="確定" uri="#" id="topSubmitButton" cssClass="btn btn-raised btn-success" type="button" allowDoubleSubmission="false" suppressDefaultSubmit="true" />
                         </n:forConfirmationPage>
                     </div>
                 </div>
