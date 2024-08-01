@@ -141,7 +141,7 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
             // 記録しない場合は現在の失敗回数のままとする。（変更しない）
             @SuppressWarnings("NumericCastThatLosesPrecision")
             short failedCount = isChecksFailedCount()
-                    ? (short) (account.getFailedCount() + Short.valueOf("1"))
+                    ? (short) (account.getFailedCount() + Short.parseShort("1"))
                     : account.getFailedCount();
             updateAuthenticationFailed(account.getUserId(), failedCount);
             throw new AuthenticationFailedException(String.valueOf(account.getUserId()));
