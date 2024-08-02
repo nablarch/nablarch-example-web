@@ -6,10 +6,6 @@ $(function() {
     $("#bottomUpdateButton").click();
   });
 
-  $("#topCreateButton").click(function() {
-    $("#bottomCreateButton").click();
-  });
-
   $("#topDeleteButton").click(function() {
     $("#bottomDeleteButton").click();
   });

@@ -44,7 +44,7 @@
                                         </span>
                                         <n:set var="isUpdatable" value="${fn:length(projectListDto.projectList) == 0 ? 'disabled' : ''}" />
                                         <div class="button-nav">
-                                            <button id="topUpdateButton" class="btn btn-raised btn-success" <n:write name="isUpdatable" />>更新</button>
+                                            <button id="topUpdateButton" class="btn btn-raised btn-success" suppressDefaultSubmit="true" <n:write name="isUpdatable" />>更新</button>
                                             <n:a href="/action/project" cssClass="btn btn-raised btn-default">新規登録</n:a>
                                         </div>
                                     </div>
