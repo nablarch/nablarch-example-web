@@ -338,6 +338,12 @@
         <groupId>org.eclipse.jetty.ee10</groupId>
         <artifactId>jetty-ee10-maven-plugin</artifactId>
         <version>12.0.3</version>
+        <configuration>
+          <webApp>
+            <!-- Jettyに含まれるJSTLと重複するので、Webアプリに含まれるJSTLはJettyで起動する際には除外する -->
+            <webInfIncludeJarPattern><![CDATA[.*/[^/]+(?<!jakarta\.servlet\.jsp\.jstl-[^/]+)\.jar$]]></webInfIncludeJarPattern>
+          </webApp>
+        </configuration>
       </plugin>
       <!-- カバレッジ取得 -->
       <plugin>
