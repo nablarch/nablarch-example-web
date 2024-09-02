@@ -29,7 +29,7 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 
 
 ### 3. アプリケーションのビルドと起動
-jetty-ee10-maven-pluginを実行し、組み込みTomcatを起動させます。以下のコマンドを実行してください。
+jetty-ee10-maven-pluginを実行し、組み込みJetty 12を起動させます。以下のコマンドを実行してください。
 
     $mvn jetty:run
 
