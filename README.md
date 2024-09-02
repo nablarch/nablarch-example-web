@@ -31,6 +31,7 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 ### 3. アプリケーションのビルドと起動
 jetty-ee10-maven-pluginを実行して、アプリケーションのビルドとJetty 12の起動を行います。以下のコマンドを実行してください。
 
+    $cd nablarch-example-web
     $mvn jetty:run
 
 起動に成功したら、ブラウザで http://localhost:8080/ を開いてください。ログイン画面が表示されます。
