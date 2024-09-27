@@ -1,6 +1,6 @@
 package com.nablarch.example.app.web.common.authentication.encrypt;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
@@ -26,7 +26,7 @@ public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
     /**
      * 暗号化アルゴリズム名
      */
-    private static final String CRYPT_ALGORITHM = "PBKDF2WithHmacSha1";
+    private static final String CRYPT_ALGORITHM = "PBKDF2WithHmacSHA256";
 
     /**
      * パスワード暗号化のストレッチング回数
@@ -142,7 +142,7 @@ public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
         if (fixed == null) {
             throw new IllegalStateException("Fixed salt string is not set.");
         }
-        return (fixed + saltSeed).getBytes(Charset.forName("UTF-8"));
+        return (fixed + saltSeed).getBytes(StandardCharsets.UTF_8);
     }
 
     /**
