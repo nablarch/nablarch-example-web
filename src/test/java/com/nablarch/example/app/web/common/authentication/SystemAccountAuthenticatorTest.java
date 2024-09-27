@@ -12,12 +12,9 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.HashMap;
-import java.util.Map;
 
 import nablarch.core.db.connection.ConnectionFactory;
 import nablarch.core.db.connection.DbConnectionContext;
-import nablarch.core.db.transaction.SimpleDbTransactionManager;
-import nablarch.core.repository.ObjectLoader;
 import nablarch.core.repository.SystemRepository;
 import nablarch.core.repository.di.DiContainer;
 import nablarch.core.repository.di.config.xml.XmlComponentDefinitionLoader;
@@ -52,7 +49,7 @@ class SystemAccountAuthenticatorTest {
     private static Connection con;
 
     /** パスワード暗号化コンポーネント */
-    private static PasswordEncryptor encryptor = getEncryptor();
+    private static final PasswordEncryptor encryptor = getEncryptor();
 
     /**
      * 必要な初期設定を行った {@link PasswordEncryptor} を返却する。
@@ -70,7 +67,7 @@ class SystemAccountAuthenticatorTest {
 
     /**
      * セットアップ。
-     *
+     * <p>
      * テスト時に使用するデータベース接続の生成及びテスト用のテーブルのセットアップを行う。
      *
      * @throws java.sql.SQLException 例外
@@ -336,7 +333,7 @@ class SystemAccountAuthenticatorTest {
         } catch (PasswordExpiredException e) {
             assertThat(e.getUserId(), is("1"));
             assertThat(e.getPasswordExpirationDate(), is(DateUtil.getDate("20130804")));
-            assertThat(e.getBusinessDate(), is(DateUtil.getDate("20130805")));
+            assertThat(e.getSysDate(), is(DateUtil.getDate("20130805")));
         }
     }
 
@@ -364,21 +361,23 @@ class SystemAccountAuthenticatorTest {
     public void testLoginSuccess() throws Exception {
 
         //**********************************************************************
-        // 業務日付がユーザの有効期限（開始日）と同日
+        // 現在日付がユーザの有効期限（開始日）と同日
         //**********************************************************************
         createPasswordAuthenticator("20130802").authenticate("active user2", "pass!!!");
 
-        PreparedStatement statement = con.prepareStatement("select * from system_account where user_id = ?");
-        statement.setString(1, "5");
-        ResultSet resultSet = statement.executeQuery();
-        assertThat(resultSet.next(), is(true));
-        assertThat("ユーザはロック中のまま", resultSet.getString("USER_ID_LOCKED"), is("FALSE"));
-        assertThat("失敗回数は変わらない", resultSet.getInt("FAILED_COUNT"), is(0));
-        assertThat("最終ログイン日時が更新されること", resultSet.getTimestamp("LAST_LOGIN_DATE_TIME"),
-                is(Timestamp.valueOf("2013-08-02 00:11:22.000")));
+        try(PreparedStatement statement = con.prepareStatement("select * from system_account where user_id = ?")) {
+            statement.setString(1, "5");
+            try(ResultSet resultSet = statement.executeQuery()) {
+                assertThat(resultSet.next(), is(true));
+                assertThat("ユーザはロック中のまま", resultSet.getString("USER_ID_LOCKED"), is("FALSE"));
+                assertThat("失敗回数は変わらない", resultSet.getInt("FAILED_COUNT"), is(0));
+                assertThat("最終ログイン日時が更新されること", resultSet.getTimestamp("LAST_LOGIN_DATE_TIME"),
+                        is(Timestamp.valueOf("2013-08-02 00:11:22.000")));
+            }
+        }
 
         //**********************************************************************
-        // 業務日付がユーザの有効期限（終了日）と同日
+        // 現在日付がユーザの有効期限（終了日）と同日
         //**********************************************************************
         createPasswordAuthenticator("20130805").authenticate("active user2", "pass!!!");
     }
@@ -386,7 +385,7 @@ class SystemAccountAuthenticatorTest {
     /**
      * 対象のユーザが未ロックだが、認証失敗しロックされた場合{@link UserIdLockedException}が送出されること。
      * また、対象のユーザのロック状態が未ロックからロックに変更されること。
-     *
+     * <p>
      * 以下の順でテストを実施する。
      * <ol>
      *     <li>認証が成功することを確認</li>
@@ -518,30 +517,24 @@ class SystemAccountAuthenticatorTest {
     /**
      * テスト対象の{@link SystemAccountAuthenticator}を生成する。
      *
-     * @param businessDate 業務日付
+     * @param sysDate 現在日付
      *
      * @return 生成した {@link SystemAccountAuthenticator}
      */
-    private SystemAccountAuthenticator createPasswordAuthenticator(final String businessDate) {
+    private SystemAccountAuthenticator createPasswordAuthenticator(final String sysDate) {
         SystemAccountAuthenticator authenticator = new SystemAccountAuthenticator();
 
         authenticator.setFailedCountToLock(1);
 
-        authenticator.setDbManager(SystemRepository.<SimpleDbTransactionManager>get("dbManager"));
+        authenticator.setDbManager(SystemRepository.get("dbManager"));
         authenticator.setPasswordEncryptor(encryptor);
 
         // テストのために固定日付で動作させる。
         final FixedSystemTimeProvider systemTimeProvider = new FixedSystemTimeProvider();
-        systemTimeProvider.setFixedDate(businessDate + "001122");
-        SystemRepository.load(new ObjectLoader() {
-
-            @Override
-            public Map<String, Object> load() {
-                return new HashMap<String, Object>() {
-                    {
-                        put("systemTimeProvider", systemTimeProvider);
-                    }
-                };
+        systemTimeProvider.setFixedDate(sysDate + "001122");
+        SystemRepository.load(() -> new HashMap<String, Object>() {
+            {
+                put("systemTimeProvider", systemTimeProvider);
             }
         });
 

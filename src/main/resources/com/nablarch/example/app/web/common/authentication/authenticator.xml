@@ -10,6 +10,7 @@
   <!-- 認証モジュールの設定 -->
   <component name="authenticator"
       class="com.nablarch.example.app.web.common.authentication.SystemAccountAuthenticator">
+    <property name="passwordEncryptor" ref="passwordEncryptor" />
     <property name="dbManager">
       <component
           class="nablarch.core.db.transaction.SimpleDbTransactionManager">
