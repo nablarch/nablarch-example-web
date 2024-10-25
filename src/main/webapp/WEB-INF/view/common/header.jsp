@@ -37,7 +37,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <%-- javascripts --%>
-<n:script type="text/javascript" src="/javascripts/lib/jquery-1.11.2.min.js"></n:script>
+<n:script type="text/javascript" src="/javascripts/lib/jquery-3.7.1.min.js"></n:script>
 <n:script type="text/javascript" src="/javascripts/lib/jquery-ui.min.js"></n:script>
 <script type="text/javascript" charset="UTF-8" src="//cdn.jsdelivr.net/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript" charset="UTF-8" src="//cdn.jsdelivr.net/bootstrap.material-design/0.5.6/js/material.min.js"></script>

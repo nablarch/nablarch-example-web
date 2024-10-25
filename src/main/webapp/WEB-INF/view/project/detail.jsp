@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%-- javascript --%>
-        <n:script type="text/javascript" src="/javascripts/lib/jquery-1.11.2.min.js"></n:script>
+        <n:script type="text/javascript" src="/javascripts/lib/jquery-3.7.1.min.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/projectInput.js"></n:script>
         <title>プロジェクト詳細画面</title>
     </head>

@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%-- javascript --%>
-        <n:script type="text/javascript" src="/javascripts/lib/jquery-1.11.2.min.js"></n:script>
+        <n:script type="text/javascript" src="/javascripts/lib/jquery-3.7.1.min.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/projectList.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/clientList.js"></n:script>
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">

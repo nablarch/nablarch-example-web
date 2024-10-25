@@ -8,7 +8,7 @@
 <html>
     <head>
         <%-- javascript --%>
-        <n:script type="text/javascript" src="/javascripts/lib/jquery-1.11.2.min.js"></n:script>
+        <n:script type="text/javascript" src="/javascripts/lib/jquery-3.7.1.min.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/projectList.js"></n:script>
         <title>プロジェクト検索一覧更新画面</title>
     </head>
