@@ -25,15 +25,15 @@
             <n:include path="/WEB-INF/view/common/header.jsp" />
             <div class="row">
                 <n:include path="/WEB-INF/view/common/sidemenu.jsp" />
-                <div class="pages col-xs-10">
+                <div class="pages col-md-10">
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
+                            <div class="card">
+                                <div class="card-body">
                                     <div class="title-nav">
                                         <span>プロジェクト検索一覧画面</span>
                                         <div class="button-nav">
-                                            <n:a href="/action/project" cssClass="btn btn-raised btn-default">新規登録</n:a>
+                                            <n:a href="/action/project" cssClass="btn btn-light">新規登録</n:a>
                                         </div>
                                     </div>
                                     <!-- 検索フォームでバリデーションエラーが発生していない場合だけ、検索結果を表示する。 -->
@@ -129,13 +129,14 @@
 
                                         <!-- 検索結果 -->
                                         <app:listSearchResult
-                                            currentPageNumberCss="form-control"
-                                            pagingCss="paging"
+                                            currentPageNumberCss="form-control mb-3"
+                                            pagingCss="paging mb-3"
                                             usePageNumberSubmit="true"
                                             prevSubmitLabel="«"
                                             nextSubmitLabel="»"
-                                            prevSubmitCss="prev-page-link"
-                                            nextSubmitCss="next-page-link"
+                                            prevSubmitCss="prev-page-link page-link"
+                                            pageNumberSubmitCss="page-link"
+                                            nextSubmitCss="next-page-link page-link"
                                             resultSetCss="table table-striped table-hover"
                                             searchFormName="searchForm"
                                             searchUri="${uri}"
@@ -181,7 +182,7 @@
 
                                     <div class="title-nav page-footer">
                                         <div class="button-nav">
-                                            <n:a href="/action/project" cssClass="btn btn-raised btn-default">新規登録</n:a>
+                                            <n:a href="/action/project" cssClass="btn btn-light">新規登録</n:a>
                                         </div>
                                     </div>
                                 </div>

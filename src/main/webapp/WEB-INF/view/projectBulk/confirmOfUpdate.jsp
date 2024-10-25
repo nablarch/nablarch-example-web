@@ -22,12 +22,12 @@
                     <span>プロジェクト検索一覧更新画面</span>
                     <div class="button-nav">
                         <n:form useToken="true">
-                            <n:submit type="button" uri="backToList" cssClass="btn btn-raised btn-default" value="入力へ戻る"></n:submit>
-                            <n:submit type="button" uri="update" allowDoubleSubmission="false" cssClass="btn btn-raised btn-success" value="確定"></n:submit>
+                            <n:submit type="button" uri="backToList" cssClass="btn btn-light" value="入力へ戻る"></n:submit>
+                            <n:submit type="button" uri="update" allowDoubleSubmission="false" cssClass="btn btn-success" value="確定"></n:submit>
                         </n:form>
                     </div>
                 </div>
-                <h4 class="font-group">プロジェクト変更一覧</h4>
+                <h2 class="font-group my-3">プロジェクト変更一覧</h2>
                 <div>
                     <table class="table table-striped table-hover">
                         <tr>
@@ -66,8 +66,8 @@
             <div class="title-nav page-footer">
                 <div class="button-nav">
                     <n:form useToken="true">
-                        <n:submit type="button" uri="backToList" cssClass="btn btn-raised btn-default" value="入力へ戻る"></n:submit>
-                        <n:submit type="button" uri="update" allowDoubleSubmission="false" cssClass="btn btn-raised btn-success" value="確定"></n:submit>
+                        <n:submit type="button" uri="backToList" cssClass="btn btn-light" value="入力へ戻る"></n:submit>
+                        <n:submit type="button" uri="update" allowDoubleSubmission="false" cssClass="btn btn-success" value="確定"></n:submit>
                     </n:form>
                 </div>
             </div>

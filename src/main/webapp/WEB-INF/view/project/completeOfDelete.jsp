@@ -18,10 +18,10 @@
 
             <n:form>
                 <div class="title-nav">
-                    <h1 class="page-title">プロジェクト削除完了画面</h1>
+                    <span class="page-title">プロジェクト削除完了画面</span>
                     <div class="button-nav">
                         <div class="button-block link-button-block">
-                            <n:a id="topReturnList" href="#" cssClass="btn btn-raised btn-success">次へ</n:a>
+                            <n:a id="topReturnList" href="#" cssClass="btn btn-success">次へ</n:a>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="title-nav">
                     <div class="button-nav">
                         <div class="button-block link-button-block">
-                            <n:a id="bottomReturnList" href="#" cssClass="btn btn-raised btn-success">次へ</n:a>
+                            <n:a id="bottomReturnList" href="#" cssClass="btn btn-success">次へ</n:a>
                         </div>
                     </div>
                 </div>

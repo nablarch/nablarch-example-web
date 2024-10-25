@@ -25,13 +25,13 @@
                     <span class="page-title">プロジェクト変更画面</span>
                     <div class="button-nav">
                         <n:forInputPage>
-                            <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-raised btn-default">戻る</n:a>
-                            <n:submit value="削除" uri="#" id="topDeleteButton" cssClass="btn btn-raised btn-danger" type="button" allowDoubleSubmission="false" suppressDefaultSubmit="true" />
-                            <n:submit value="更新" uri="#" id="topUpdateButton" cssClass="btn btn-raised btn-success" type="button" suppressDefaultSubmit="true" />
+                            <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-light">戻る</n:a>
+                            <n:submit value="削除" uri="#" id="topDeleteButton" cssClass="btn btn-danger" type="button" allowDoubleSubmission="false" suppressDefaultSubmit="true" />
+                            <n:submit value="更新" uri="#" id="topUpdateButton" cssClass="btn btn-success" type="button" suppressDefaultSubmit="true" />
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:submit value="入力へ戻る" uri="#" id="topBackButton" cssClass="btn btn-raised btn-default" type="button" suppressDefaultSubmit="true" />
-                            <n:submit value="確定" uri="#" id="topSubmitButton" cssClass="btn btn-raised btn-success" type="button" allowDoubleSubmission="false" suppressDefaultSubmit="true" />
+                            <n:submit value="入力へ戻る" uri="#" id="topBackButton" cssClass="btn btn-light" type="button" suppressDefaultSubmit="true" />
+                            <n:submit value="確定" uri="#" id="topSubmitButton" cssClass="btn btn-success" type="button" allowDoubleSubmission="false" suppressDefaultSubmit="true" />
                         </n:forConfirmationPage>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
             <div class="message-area margin-top">
                 <n:errors filter="global" cssClass="message-error"/>
             </div>
-            <h2 class="font-group">
+            <h2 class="font-group mb-3">
                 プロジェクト詳細
             </h2>
             <n:form useToken="true">
@@ -118,13 +118,13 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                  <n:text name="form.clientId" maxlength="10" readonly="true" cssClass="form-control input-label" tabindex="-1" id="client-id" />
-                                  <n:text name="form.clientName" maxlength="64" readonly="true" cssClass="form-control  input-label" tabindex="-1" id="client-name" />
+                                  <n:text name="form.clientId" maxlength="10" readonly="true" cssClass="form-control mb-1" tabindex="-1" id="client-id" />
+                                  <n:text name="form.clientName" maxlength="64" readonly="true" cssClass="form-control mb-1" tabindex="-1" id="client-name" />
                                 </div>
                                 <n:forInputPage>
                                   <div class="btn-group-sm">
-                                    <a href="#" data-toggle="modal" data-target="#client-search-dialog"  class="btn btn-default btn-fab"><i class="material-icons">search</i></a>
-                                    <a href="#" class="btn btn-default btn-fab" id="client-remove"><i class="material-icons">remove</i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#client-search-dialog" class="badge rounded-pill text-dark bg-body-secondary"><i class="material-icons">search</i></a>
+                                    <a href="#" class="badge rounded-pill text-dark bg-body-secondary" id="client-remove"><i class="material-icons">remove</i></a>
                                   </div>
                                 </n:forInputPage>
                                 <n:error errorCss="message-error" name="form.clientId" />
@@ -289,13 +289,13 @@
                 <div class="title-nav page-footer">
                     <div class="button-nav">
                         <n:forInputPage>
-                            <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-raised btn-default">戻る</n:a>
-                            <n:submit value="削除" uri="/action/project/delete" id="bottomDeleteButton" cssClass="btn btn-raised btn-danger" allowDoubleSubmission="false" type="button" />
-                            <n:submit value="更新" uri="/action/project/confirmOfUpdate" id="bottomUpdateButton" cssClass="btn btn-raised btn-success" type="button" />
+                            <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-light">戻る</n:a>
+                            <n:submit value="削除" uri="/action/project/delete" id="bottomDeleteButton" cssClass="btn btn-danger" allowDoubleSubmission="false" type="button" />
+                            <n:submit value="更新" uri="/action/project/confirmOfUpdate" id="bottomUpdateButton" cssClass="btn btn-success" type="button" />
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:submit value="入力へ戻る" uri="/action/project/backToEdit" id="bottomBackButton" cssClass="btn btn-raised btn-default" type="button" />
-                            <n:submit value="確定" uri="/action/project/update" id="bottomSubmitButton" cssClass="btn btn-raised btn-success" allowDoubleSubmission="false" type="button" />
+                            <n:submit value="入力へ戻る" uri="/action/project/backToEdit" id="bottomBackButton" cssClass="btn btn-light" type="button" />
+                            <n:submit value="確定" uri="/action/project/update" id="bottomSubmitButton" cssClass="btn btn-success" allowDoubleSubmission="false" type="button" />
                         </n:forConfirmationPage>
                     </div>
                 </div>

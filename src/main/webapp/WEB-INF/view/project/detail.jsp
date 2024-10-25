@@ -25,20 +25,20 @@
                 <span class="page-title">プロジェクト詳細画面</span>
                 <div class="button-nav">
                     <div class="button-block real-button-block">
-                        <n:a href="/action/project/edit/${projectId}" cssClass="btn btn-raised btn-success">変更</n:a>
+                        <n:a href="/action/project/edit/${projectId}" cssClass="btn btn-success">変更</n:a>
                     </div>
                     <div class="button-block link-button-block">
-                        <n:a id="topReturnList" href="#" cssClass="btn btn-raised btn-default">戻る</n:a>
+                        <n:a id="topReturnList" href="#" cssClass="btn btn-light">戻る</n:a>
                     </div>
                 </div>
             </div>
             <div class="message-area margin-top">
                 <n:errors cssClass="message-error"/>
             </div>
-            <h4 class="font-group">
+            <h2 class="font-group mb-3">
                 プロジェクト詳細
-            </h4>
-            <table class="table table-striped table-hover">
+            </h2>
+            <table class="table">
                 <tbody>
                     <tr>
                         <th class="width-250">
@@ -199,10 +199,10 @@
             <div class="title-nav page-footer">
                 <div class="button-nav">
                     <div class="button-block real-button-block">
-                        <n:a href="/action/project/edit/${projectId}" cssClass="btn btn-raised btn-success">変更</n:a>
+                        <n:a href="/action/project/edit/${projectId}" cssClass="btn btn-success">変更</n:a>
                     </div>
                     <div class="button-block link-button-block">
-                        <n:a id="bottomReturnList" href="#" cssClass="btn btn-raised btn-default">戻る</n:a>
+                        <n:a id="bottomReturnList" href="#" cssClass="btn btn-light">戻る</n:a>
                     </div>
                 </div>
             </div>

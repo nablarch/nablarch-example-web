@@ -28,22 +28,22 @@
                     <div class="button-nav">
                         <n:forInputPage>
                             <div class="button-block real-button-block">
-                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-raised btn-success">登録</n:button>
+                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-success">登録</n:button>
                             </div>
                             <div class="button-block link-button-block">
-                                <n:a id="topBackLink" href="#" cssClass="btn btn-raised btn-default">戻る</n:a>
+                                <n:a id="topBackLink" href="#" cssClass="btn btn-light">戻る</n:a>
                             </div>
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:button uri="/action/project/backToNew" cssClass="btn btn-raised btn-default">入力へ戻る</n:button>
-                            <n:button uri="/action/project/create" cssClass="btn btn-raised btn-success" allowDoubleSubmission="false">確定</n:button>
+                            <n:button uri="/action/project/backToNew" cssClass="btn btn-light">入力へ戻る</n:button>
+                            <n:button uri="/action/project/create" cssClass="btn btn-success" allowDoubleSubmission="false">確定</n:button>
                         </n:forConfirmationPage>
                     </div>
                 </div>
                 <div class="message-area margin-top">
                     <n:errors filter="global" cssClass="message-error"/>
                 </div>
-                <h2 class="font-group">
+                <h2 class="font-group mb-3">
                     プロジェクト情報
                 </h2>
                 <table class="table">
@@ -121,13 +121,13 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.clientId" maxlength="10" readonly="true" cssClass="form-control input-label" tabindex="-1" id="client-id" />
-                                    <n:text name="form.clientName" maxlength="64" readonly="true" cssClass="form-control  input-label" tabindex="-1" id="client-name" />
+                                    <n:text name="form.clientId" maxlength="10" readonly="true" cssClass="form-control mb-1" tabindex="-1" id="client-id" />
+                                    <n:text name="form.clientName" maxlength="64" readonly="true" cssClass="form-control mb-1" tabindex="-1" id="client-name" />
                                 </div>
                                 <n:forInputPage>
                                   <div class="btn-group-sm">
-                                    <a href="#" data-toggle="modal" data-target="#client-search-dialog"  class="btn btn-default btn-fab"><i class="material-icons">search</i></a>
-                                    <a href="#" class="btn btn-default btn-fab" id="client-remove"><i class="material-icons">remove</i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#client-search-dialog" class="badge rounded-pill text-dark bg-body-secondary"><i class="material-icons">search</i></a>
+                                    <a href="#" class="badge rounded-pill text-dark bg-body-secondary" id="client-remove"><i class="material-icons">remove</i></a>
                                   </div>
                                 </n:forInputPage>
                                 <n:error errorCss="message-error" name="form.clientId" />
@@ -287,15 +287,15 @@
                     <div class="button-nav">
                         <n:forInputPage>
                             <div class="button-block real-button-block">
-                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-raised btn-success">登録</n:button>
+                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-success">登録</n:button>
                             </div>
                             <div class="button-block link-button-block">
-                                <n:a id="bottomBackLink" href="#" cssClass="btn btn-raised btn-default">戻る</n:a>
+                                <n:a id="bottomBackLink" href="#" cssClass="btn btn-light">戻る</n:a>
                             </div>
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:button uri="/action/project/backToNew" cssClass="btn btn-raised btn-default">入力へ戻る</n:button>
-                            <n:button uri="/action/project/create" cssClass="btn btn-raised btn-success" allowDoubleSubmission="false">確定</n:button>
+                            <n:button uri="/action/project/backToNew" cssClass="btn btn-light">入力へ戻る</n:button>
+                            <n:button uri="/action/project/create" cssClass="btn btn-success" allowDoubleSubmission="false">確定</n:button>
                         </n:forConfirmationPage>
                     </div>
                 </div>
@@ -308,7 +308,6 @@
                     setListUrlTo("topBackLink");
                     setListUrlTo("bottomBackLink");
                 });
-                $.material.init()
             </n:script>
         </n:forInputPage>
 

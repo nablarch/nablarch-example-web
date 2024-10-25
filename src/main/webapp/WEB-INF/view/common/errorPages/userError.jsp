@@ -19,11 +19,10 @@
 
             <n:form>
                 <div class="title-nav">
-                    <h1 class="page-title">エラー画面</h1>
+                    <span class="page-title">エラー画面</span>
                 </div>
                 <div class="message-area">
                     <n:errors errorCss="message-error"/>
-                    <br />
                     <p>
                         処理を正常に終了することができませんでした。<br/>
                         お手数ですが、入力内容をご確認の上、少し間をおいてから、もう一度手順をやりなおして下さい。<br/>
