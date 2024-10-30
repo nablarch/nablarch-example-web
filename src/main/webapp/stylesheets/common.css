@@ -31,7 +31,8 @@ hr {
 }
 
 tr, th, td {
-  line-height: 2.5
+  line-height: 2.5;
+  font-size: 1.25rem;
 }
 
 .table th, .table th a  {
@@ -511,7 +512,7 @@ th.width-250{
 .required:after{
 	content:"必須";
 	color:#DB8B9A;
-	font-size:8px;
+	font-size:1rem;
 }
 
 .project-search-list table,

@@ -29,8 +29,8 @@
                                         <c:forEach var="projectClass" items="<%= ProjectClass.values() %>">
                                             <li>
                                                 <div class="checkbox form-check">
-                                                    <label>
-                                                        <n:checkbox name="searchForm.projectClass" value="${projectClass.value}"/>
+                                                    <label class="form-check-label form-control-lg">
+                                                        <n:checkbox name="searchForm.projectClass" cssClass="form-check-input" value="${projectClass.value}"/>
                                                         <n:write name="projectClass.label"/>
                                                     </label>
                                                 </div>
@@ -39,7 +39,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <span class="text-primary">期間からさがす</span>
+                                    <span class="text-primary pb-2">期間からさがす</span>
                                     <c:url value="list" var="uri">
                                         <c:param name="searchForm.clientId" value="${searchForm.clientId}"/>
                                         <c:param name="searchForm.clientName" value="${searchForm.clientName}"/>
@@ -53,19 +53,19 @@
                                         <c:param name="searchForm.pageNumber" value="1"/>
                                     </c:url>
                                     <ul>
-                                        <li class="ps-4">
+                                        <li class="ps-3 pb-2">
                                             <n:a id="startThisYear" href="${uri}">
-                                                <span class="text-muted">今年開始</span>
+                                                <span class="text-muted fs-5">今年開始</span>
                                             </n:a>
                                         </li>
-                                        <li class="ps-4">
+                                        <li class="ps-3 pb-2">
                                             <n:a id="endThisYear" href="${uri}">
-                                                <span class="text-muted">今年終了</span>
+                                                <span class="text-muted fs-5">今年終了</span>
                                             </n:a>
                                         </li>
-                                        <li class="ps-4">
+                                        <li class="ps-3 pb-2">
                                             <n:a id="endLastYear" href="${uri}">
-                                                <span class="text-muted">昨年までに終了</span>
+                                                <span class="text-muted fs-5">昨年までに終了</span>
                                             </n:a>
                                         </li>
                                     </ul>
@@ -75,9 +75,9 @@
                                 <div>
                                     <div class="form-group label-static">
                                         <div class="mb-3">
-                                            <label for="client-name" class="control-label mb-1">顧客名</label>
-                                            <n:text id="client-id" name="searchForm.clientId" readonly="true" cssClass="form-control mb-1" placeholder="顧客ID"/>
-                                            <n:text id="client-name" name="searchForm.clientName" readonly="true" cssClass="form-control mb-1" placeholder="顧客名"/>
+                                            <label for="client-name" class="control-label mb-2">顧客名</label>
+                                            <n:text id="client-id" name="searchForm.clientId" readonly="true" cssClass="form-control form-control-lg mb-2" placeholder="顧客ID"/>
+                                            <n:text id="client-name" name="searchForm.clientName" readonly="true" cssClass="form-control form-control-lg mb-2" placeholder="顧客名"/>
                                         </div>
                                         <div class="text-end mb-3">
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#client-search-dialog" class="badge rounded-pill text-dark bg-body-secondary"><i class="material-icons">search</i></a>
@@ -89,7 +89,7 @@
                                     <div class="form-group">
                                         <label for="projectName" class="control-label">プロジェクト名</label>
                                         <div>
-                                            <n:text id="projectName" name="searchForm.projectName" size="25" maxlength="64" cssClass="form-control" errorCss="input-error form-control" placeholder="プロジェクト名"/>
+                                            <n:text id="projectName" name="searchForm.projectName" size="25" maxlength="64" cssClass="form-control form-control-lg" errorCss="input-error form-control form-control-lg" placeholder="プロジェクト名"/>
                                             <n:error errorCss="message-error" name="searchForm.projectName" />
                                         </div>
                                     </div>

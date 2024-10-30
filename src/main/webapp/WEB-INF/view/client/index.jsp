@@ -22,15 +22,15 @@
           </div>
         </div>
         <div class="row m-3">
-          <label for="search-client-name" class="col-md-2 col-form-label">顧客名</label>
+          <label for="search-client-name" class="col-md-2 m-auto col-form-label">顧客名</label>
           <div class="col-md-10">
-            <input type="text" class="form-control" id="search-client-name" name="form.clientName">
+            <input type="text" class="form-control form-control-lg" id="search-client-name" name="form.clientName">
           </div>
         </div>
         <div class="row m-3">
-          <label for="search-industry-code" class="col-md-2 col-form-label">業種</label>
+          <label for="search-industry-code" class="col-md-2 m-auto col-form-label">業種</label>
           <div class="col-md-10">
-            <select id="search-industry-code" class="form-select" name="form.industryCode">
+            <select id="search-industry-code" class="form-control form-control-lg" name="form.industryCode">
             </select>
           </div>
         </div>

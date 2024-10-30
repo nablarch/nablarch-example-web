@@ -51,7 +51,7 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.projectName" maxlength="64" cssClass="form-control width-300" errorCss="input-error" />
+                                    <n:text name="form.projectName" maxlength="64" cssClass="form-control form-control-lg width-300" errorCss="input-error" />
                                     <n:error errorCss="message-error" name="form.projectName" />
                                 </div>
                             </td>
@@ -68,7 +68,7 @@
                                               elementValueProperty="value"
                                               elementLabelProperty="label"
                                               elementLabelPattern="$LABEL$"
-                                              cssClass="form-control"/>
+                                              cssClass="form-control form-control-lg"/>
                                     <n:error errorCss="message-error" name="form.projectType" />
                                 </div>
                             </td>
@@ -85,7 +85,7 @@
                                               elementValueProperty="value"
                                               elementLabelProperty="label"
                                               elementLabelPattern="$LABEL$"
-                                              cssClass="form-control"/>
+                                              cssClass="form-control form-control-lg"/>
                                     <n:error errorCss="message-error" name="form.projectClass" />
                                 </div>
                             </td>
@@ -96,7 +96,7 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.projectManager" maxlength="64" cssClass="form-control width-300" errorCss="input-error"/>
+                                    <n:text name="form.projectManager" maxlength="64" cssClass="form-control form-control-lg width-300" errorCss="input-error"/>
                                     <n:error errorCss="message-error" name="form.projectManager" />
                                 </div>
                             </td>
@@ -107,7 +107,7 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.projectLeader" maxlength="64" cssClass="form-control width-300" errorCss="input-error"/>
+                                    <n:text name="form.projectLeader" maxlength="64" cssClass="form-control form-control-lg width-300" errorCss="input-error"/>
                                     <n:error errorCss="message-error" name="form.projectLeader" />
                                 </div>
                             </td>
@@ -118,8 +118,8 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                  <n:text name="form.clientId" maxlength="10" readonly="true" cssClass="form-control mb-1" tabindex="-1" id="client-id" />
-                                  <n:text name="form.clientName" maxlength="64" readonly="true" cssClass="form-control mb-1" tabindex="-1" id="client-name" />
+                                  <n:text name="form.clientId" maxlength="10" readonly="true" cssClass="form-control form-control-lg mb-1" tabindex="-1" id="client-id" />
+                                  <n:text name="form.clientName" maxlength="64" readonly="true" cssClass="form-control form-control-lg mb-1" tabindex="-1" id="client-name" />
                                 </div>
                                 <n:forInputPage>
                                   <div class="btn-group-sm">
@@ -140,7 +140,7 @@
                                   <n:set var="projectStartDate" name="form.projectStartDate" scope="page" />
                                   <n:text name="form.projectStartDate" nameAlias="form.date"
                                           value="${n:formatByDefault('dateTime', projectStartDate)}"
-                                          cssClass="form-control datepicker" errorCss="input-error" />
+                                          cssClass="form-control form-control-lg datepicker" errorCss="input-error" />
                                     <n:error errorCss="message-error" name="form.projectStartDate" />
                                 </div>
                             </td>
@@ -154,7 +154,7 @@
                                   <n:set var="projectEndDate" name="form.projectEndDate" scope="page" />
                                   <n:text name="form.projectEndDate" nameAlias="form.date"
                                           value="${n:formatByDefault('dateTime', projectEndDate)}"
-                                          cssClass="form-control datepicker" errorCss="input-error" />
+                                          cssClass="form-control form-control-lg datepicker" errorCss="input-error" />
                                     <n:error errorCss="message-error" name="form.projectEndDate" />
                                     <n:error errorCss="message-error" name="form.validProjectPeriod" />
                                 </div>
@@ -166,7 +166,7 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:textarea rows="5" cols="50" name="form.note" cssClass="form-control" errorCss="input-error"/>
+                                    <n:textarea rows="5" cols="50" name="form.note" cssClass="form-control form-control-lg" errorCss="input-error"/>
                                     <n:error errorCss="message-error" name="form.note" />
                                 </div>
                             </td>
@@ -178,7 +178,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.sales" maxlength="9" cssClass="form-control width-200" errorCss="input-error" style="float:left" />
+                                    <n:text name="form.sales" maxlength="9" cssClass="form-control form-control-lg width-200" errorCss="input-error" style="float:left" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.sales" /></div>
                                 </div>
@@ -195,7 +195,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.costOfGoodsSold" maxlength="9" cssClass="form-control width-200" errorCss="input-error" style="float:left" />
+                                    <n:text name="form.costOfGoodsSold" maxlength="9" cssClass="form-control form-control-lg width-200" errorCss="input-error" style="float:left" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.costOfGoodsSold" /></div>
                                 </div>
@@ -212,7 +212,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.sga" maxlength="9" cssClass="form-control width-200" errorCss="input-error" style="float:left" />
+                                    <n:text name="form.sga" maxlength="9" cssClass="form-control form-control-lg width-200" errorCss="input-error" style="float:left" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.sga" /></div>
                                 </div>
@@ -229,7 +229,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.allocationOfCorpExpenses" maxlength="9" cssClass="form-control width-200" errorCss="input-error" style="float:left" />
+                                    <n:text name="form.allocationOfCorpExpenses" maxlength="9" cssClass="form-control form-control-lg width-200" errorCss="input-error" style="float:left" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.allocationOfCorpExpenses" /></div>
                                 </div>

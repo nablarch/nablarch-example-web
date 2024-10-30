@@ -39,7 +39,7 @@
                             <th class="width-250 required">プロジェクト情報ファイル</th>
                             <td >
                                 <div class="input-group">
-                                    <n:file name="uploadFile" cssClass="form-control" id="uploadFile"/>
+                                    <n:file name="uploadFile" cssClass="form-control form-control-lg" id="uploadFile"/>
                                 </div>
                             </td>
                         </tr>

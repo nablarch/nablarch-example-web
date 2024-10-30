@@ -27,16 +27,16 @@
                 </div>
                 <h2 class="font-group">ログイン情報</h2>
                 <div class="row m-3">
-                    <label for="loginId" class="col-md-2 col-form-label">ログインID</label>
+                    <label for="loginId" class="col-md-2 m-auto col-form-label">ログインID</label>
                     <div class="col-md-10">
-                        <n:text id="loginId" name="loginId" cssClass="form-control" errorCss="input-error" placeholder="ログインID"/>
+                        <n:text id="loginId" name="loginId" cssClass="form-control form-control-lg form-control-lg" errorCss="input-error" placeholder="ログインID"/>
                         <n:error errorCss="message-error" name="loginId" />
                     </div>
                 </div>
                 <div class="row m-3">
-                    <label for="userPassword" class="col-md-2 col-form-label">パスワード</label>
+                    <label for="userPassword" class="col-md-2 m-auto col-form-label">パスワード</label>
                     <div class="col-md-10">
-                        <n:password id="userPassword" name="userPassword" restoreValue="false" cssClass="form-control" placeholder="パスワード" autocomplete="off"/>
+                        <n:password id="userPassword" name="userPassword" restoreValue="false" cssClass="form-control form-control-lg" placeholder="パスワード" autocomplete="off"/>
                         <n:error errorCss="message-error" name="userPassword" />
                     </div>
                 </div>

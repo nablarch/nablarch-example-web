@@ -118,7 +118,7 @@
                                             <c:param name="searchForm.sortId" value="${projectSearchDto.sortId}"/>
                                         </c:url>
                                         <app:listSearchResult
-                                            currentPageNumberCss="form-control mb-3"
+                                            currentPageNumberCss="fs-5 mb-3 border-0"
                                             pagingCss="paging mb-3"
                                             usePageNumberSubmit="true"
                                             prevSubmitLabel="«"
@@ -151,7 +151,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <n:text name="bulkForm.projectList[${status.index}].projectName" maxlength="64" cssClass="form-control" errorCss="input-error input-text"/>
+                                                            <n:text name="bulkForm.projectList[${status.index}].projectName" maxlength="64" cssClass="form-control form-control-lg" errorCss="input-error input-text"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectName" />
                                                         </div>
                                                     </td>
@@ -163,7 +163,7 @@
                                                                       elementValueProperty="value"
                                                                       elementLabelProperty="label"
                                                                       elementLabelPattern="$LABEL$"
-                                                                      cssClass="form-select"/>
+                                                                      cssClass="form-control form-control-lg"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectType" />
                                                         </div>
                                                     </td>
@@ -174,7 +174,7 @@
                                                                     nameAlias="bulkForm.projectList[${status.index}].date"
                                                                     value="${n:formatByDefault('dateTime', projectStartDate)}"
                                                                     maxlength="10"
-                                                                    cssClass="form-control datepicker"
+                                                                    cssClass="form-control form-control-lg datepicker"
                                                                     errorCss="input-error input-text"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectStartDate" />
                                                         </div>
@@ -186,7 +186,7 @@
                                                                     nameAlias="bulkForm.projectList[${status.index}].date"
                                                                     value="${n:formatByDefault('dateTime', projectEndDate)}"
                                                                     maxlength="10"
-                                                                    cssClass="form-control datepicker"
+                                                                    cssClass="form-control form-control-lg datepicker"
                                                                     errorCss="input-error input-text"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectEndDate" />
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].validProjectPeriod" />

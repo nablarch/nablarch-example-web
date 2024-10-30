@@ -129,7 +129,7 @@
 
                                         <!-- 検索結果 -->
                                         <app:listSearchResult
-                                            currentPageNumberCss="form-control mb-3"
+                                            currentPageNumberCss="fs-5 mb-3 border-0"
                                             pagingCss="paging mb-3"
                                             usePageNumberSubmit="true"
                                             prevSubmitLabel="«"
