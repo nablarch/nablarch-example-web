@@ -178,7 +178,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.sales" maxlength="9" cssClass="form-control form-control-lg width-200" errorCss="input-error" style="float:left" />
+                                    <n:text name="form.sales" maxlength="9" cssClass="form-control form-control-lg width-200 me-3" errorCss="input-error" style="float:left" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.sales" /></div>
                                 </div>
@@ -195,7 +195,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.costOfGoodsSold" maxlength="9" cssClass="form-control form-control-lg width-200" errorCss="input-error" style="float:left" />
+                                    <n:text name="form.costOfGoodsSold" maxlength="9" cssClass="form-control form-control-lg width-200 me-3" errorCss="input-error" style="float:left" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.costOfGoodsSold" /></div>
                                 </div>
@@ -212,7 +212,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.sga" maxlength="9" cssClass="form-control form-control-lg width-200" errorCss="input-error" style="float:left" />
+                                    <n:text name="form.sga" maxlength="9" cssClass="form-control form-control-lg width-200 me-3" errorCss="input-error" style="float:left" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.sga" /></div>
                                 </div>
@@ -229,7 +229,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.allocationOfCorpExpenses" maxlength="9" cssClass="form-control form-control-lg width-200" errorCss="input-error" style="float:left" />
+                                    <n:text name="form.allocationOfCorpExpenses" maxlength="9" cssClass="form-control form-control-lg width-200 me-3" errorCss="input-error" style="float:left" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.allocationOfCorpExpenses" /></div>
                                 </div>
