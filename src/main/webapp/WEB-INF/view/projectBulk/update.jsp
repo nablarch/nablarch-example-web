@@ -11,10 +11,10 @@
 <html>
     <head>
         <%-- javascript --%>
-        <n:script type="text/javascript" src="/javascripts/lib/jquery-1.11.2.min.js"></n:script>
+        <n:script type="text/javascript" src="/javascripts/lib/jquery-3.7.1.min.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/projectList.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/projectInput.js"></n:script>
-          <n:script type="text/javascript" src="/javascripts/clientList.js"></n:script>
+        <n:script type="text/javascript" src="/javascripts/clientList.js"></n:script>
         <%-- stylesheet --%>
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
@@ -36,23 +36,23 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
+                            <div class="card">
+                                <div class="card-body">
                                     <div class="title-nav">
                                         <span>
                                             プロジェクト検索一覧更新画面
                                         </span>
                                         <n:set var="isUpdatable" value="${fn:length(projectListDto.projectList) == 0 ? 'disabled' : ''}" />
                                         <div class="button-nav">
-                                            <button id="topUpdateButton" class="btn btn-raised btn-success" suppressDefaultSubmit="true" <n:write name="isUpdatable" />>更新</button>
-                                            <n:a href="/action/project" cssClass="btn btn-raised btn-default">新規登録</n:a>
+                                            <button id="topUpdateButton" class="btn btn-lg btn-success" suppressDefaultSubmit="true" <n:write name="isUpdatable" />>更新</button>
+                                            <n:a href="/action/project" cssClass="btn btn-lg btn-light">新規登録</n:a>
                                         </div>
                                     </div>
                                     <div class="message-area margin-top">
                                           <n:errors filter="global" cssClass="message-error"/>
                                     </div>
                                     <n:form method="GET" action="/action/projectBulk/list">
-                                        <div class="sort-nav">
+                                        <div class="sort-nav  mb-3">
                                             <div style="float:left;">
                                                 <span class="font-group">
                                                 検索結果
@@ -80,23 +80,29 @@
                                             <n:plainHidden name="searchForm.projectEndDateEnd" />
                                             <input type="hidden" name="searchForm.pageNumber" value="1" />
                                             <n:set var="sortKeyList" value="<%= ProjectSortKey.values() %>"/>
-                                            <n:select
-                                                    id="sortKey"
-                                                    name="searchForm.sortKey"
-                                                    listName="sortKeyList"
-                                                    elementValueProperty="value"
-                                                    elementLabelProperty="label"
-                                                    elementLabelPattern="$LABEL$"
-                                                    cssClass="btn dropdown-toggle"/>
-                                            <n:set var="sortOrderList" value="<%= SortOrder.values() %>"/>
-                                            <n:select
-                                                    id="sortDir"
-                                                    name="searchForm.sortDir"
-                                                    listName="sortOrderList"
-                                                    elementValueProperty="value"
-                                                    elementLabelProperty="label"
-                                                    elementLabelPattern="$LABEL$"
-                                                    cssClass="btn dropdown-toggle"/>
+                                            <div class="row justify-content-end">
+                                                <div class="col-md-2">
+                                                    <n:select
+                                                            id="sortKey"
+                                                            name="searchForm.sortKey"
+                                                            listName="sortKeyList"
+                                                            elementValueProperty="value"
+                                                            elementLabelProperty="label"
+                                                            elementLabelPattern="$LABEL$"
+                                                            cssClass="form-select form-select-lg"/>
+                                                    <n:set var="sortOrderList" value="<%= SortOrder.values() %>"/>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <n:select
+                                                            id="sortDir"
+                                                            name="searchForm.sortDir"
+                                                            listName="sortOrderList"
+                                                            elementValueProperty="value"
+                                                            elementLabelProperty="label"
+                                                            elementLabelPattern="$LABEL$"
+                                                            cssClass="form-select form-select-lg"/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </n:form>
                                     <n:form>
@@ -118,13 +124,16 @@
                                             <c:param name="searchForm.sortId" value="${projectSearchDto.sortId}"/>
                                         </c:url>
                                         <app:listSearchResult
-                                            currentPageNumberCss="form-control"
-                                            pagingCss="paging"
+                                            useFirstSubmit="true"
+                                            currentPageNumberCss="fs-5 mb-3 border-0"
+                                            pagingCss="paging mb-3"
                                             usePageNumberSubmit="true"
-                                            prevSubmitLabel="«"
-                                            nextSubmitLabel="»"
-                                            prevSubmitCss="prev-page-link"
-                                            nextSubmitCss="next-page-link"
+                                            firstSubmitCss="page-link"
+                                            prevSubmitCss="page-link"
+                                            pageNumberSubmitCss="page-link"
+                                            nextSubmitCss="page-link"
+                                            useLastSubmit="true"
+                                            lastSubmitCss="page-link"
                                             resultSetCss="table table-striped table-hover"
                                             searchFormName="searchForm"
                                             searchUri="${uri}"
@@ -150,7 +159,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <n:text name="bulkForm.projectList[${status.index}].projectName" maxlength="64" cssClass="form-control" errorCss="input-error input-text"/>
+                                                            <n:text name="bulkForm.projectList[${status.index}].projectName" maxlength="64" cssClass="form-control form-control-lg" errorCss="input-error input-text"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectName" />
                                                         </div>
                                                     </td>
@@ -162,7 +171,7 @@
                                                                       elementValueProperty="value"
                                                                       elementLabelProperty="label"
                                                                       elementLabelPattern="$LABEL$"
-                                                                      cssClass="form-control btn dropdown-toggle"/>
+                                                                      cssClass="form-control form-control-lg"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectType" />
                                                         </div>
                                                     </td>
@@ -173,7 +182,7 @@
                                                                     nameAlias="bulkForm.projectList[${status.index}].date"
                                                                     value="${n:formatByDefault('dateTime', projectStartDate)}"
                                                                     maxlength="10"
-                                                                    cssClass="form-control datepicker"
+                                                                    cssClass="form-control form-control-lg datepicker"
                                                                     errorCss="input-error input-text"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectStartDate" />
                                                         </div>
@@ -185,7 +194,7 @@
                                                                     nameAlias="bulkForm.projectList[${status.index}].date"
                                                                     value="${n:formatByDefault('dateTime', projectEndDate)}"
                                                                     maxlength="10"
-                                                                    cssClass="form-control datepicker"
+                                                                    cssClass="form-control form-control-lg datepicker"
                                                                     errorCss="input-error input-text"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectEndDate" />
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].validProjectPeriod" />
@@ -196,8 +205,8 @@
                                         </app:listSearchResult>
                                         <div class="title-nav page-footer">
                                             <div class="button-nav">
-                                                <n:button id="bottomUpdateButton" uri="/action/projectBulk/confirmOfUpdate" disabled="${isUpdatable}" cssClass="btn btn-raised btn-success">更新</n:button>
-                                                <n:a id="bottomCreateButton" href="/action/project" cssClass="btn btn-raised btn-default">新規登録</n:a>
+                                                <n:button id="bottomUpdateButton" uri="/action/projectBulk/confirmOfUpdate" disabled="${isUpdatable}" cssClass="btn btn-lg btn-success">更新</n:button>
+                                                <n:a id="bottomCreateButton" href="/action/project" cssClass="btn btn-lg btn-light">新規登録</n:a>
                                             </div>
                                         </div>
                                     </n:form>

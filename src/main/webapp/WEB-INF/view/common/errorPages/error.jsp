@@ -19,11 +19,11 @@
 
             <n:form>
                 <div class="title-nav">
-                    <h1 class="page-title">エラー画面</h1>
+                    <span class="page-title">エラー画面</span>
                 </div>
                 <div class="message-area">
                     <p>
-                         システムエラーが発生しました。<br/>
+                        システムエラーが発生しました。<br/>
                         このシステムの管理者に連絡してください。
                     </p>
                 </div>

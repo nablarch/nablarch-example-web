@@ -9,7 +9,7 @@
 <html>
     <head>
         <%-- javascript --%>
-        <n:script type="text/javascript" src="/javascripts/lib/jquery-1.11.2.min.js"></n:script>
+        <n:script type="text/javascript" src="/javascripts/lib/jquery-3.7.1.min.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/projectInput.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/clientList.js"></n:script>
         <title>プロジェクト登録画面</title>
@@ -28,22 +28,22 @@
                     <div class="button-nav">
                         <n:forInputPage>
                             <div class="button-block real-button-block">
-                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-raised btn-success">登録</n:button>
+                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-lg btn-success">登録</n:button>
                             </div>
                             <div class="button-block link-button-block">
-                                <n:a id="topBackLink" href="#" cssClass="btn btn-raised btn-default">戻る</n:a>
+                                <n:a id="topBackLink" href="#" cssClass="btn btn-lg btn-light">戻る</n:a>
                             </div>
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:button uri="/action/project/backToNew" cssClass="btn btn-raised btn-default">入力へ戻る</n:button>
-                            <n:button uri="/action/project/create" cssClass="btn btn-raised btn-success" allowDoubleSubmission="false">確定</n:button>
+                            <n:button uri="/action/project/backToNew" cssClass="btn btn-lg btn-light">入力へ戻る</n:button>
+                            <n:button uri="/action/project/create" cssClass="btn btn-lg btn-success" allowDoubleSubmission="false">確定</n:button>
                         </n:forConfirmationPage>
                     </div>
                 </div>
                 <div class="message-area margin-top">
                     <n:errors filter="global" cssClass="message-error"/>
                 </div>
-                <h2 class="font-group">
+                <h2 class="font-group mb-3">
                     プロジェクト情報
                 </h2>
                 <table class="table">
@@ -54,7 +54,7 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.projectName" maxlength="64" cssClass="form-control width-300" errorCss="input-error" />
+                                    <n:text name="form.projectName" maxlength="64" cssClass="form-control form-control-lg width-300" errorCss="input-error" />
                                     <n:error errorCss="message-error" name="form.projectName" />
                                 </div>
                             </td>
@@ -71,7 +71,7 @@
                                               elementValueProperty="value"
                                               elementLabelProperty="label"
                                               elementLabelPattern="$LABEL$"
-                                              cssClass="form-control"/>
+                                              cssClass="form-control form-control-lg"/>
                                     <n:error errorCss="message-error" name="form.projectType" />
                                 </div>
                             </td>
@@ -88,7 +88,7 @@
                                               elementValueProperty="value"
                                               elementLabelProperty="label"
                                               elementLabelPattern="$LABEL$"
-                                              cssClass="form-control"/>
+                                              cssClass="form-control form-control-lg"/>
                                     <n:error errorCss="message-error" name="form.projectClass" />
                                 </div>
                             </td>
@@ -99,7 +99,7 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.projectManager" maxlength="64" cssClass="form-control width-300" errorCss="input-error"/>
+                                    <n:text name="form.projectManager" maxlength="64" cssClass="form-control form-control-lg width-300" errorCss="input-error"/>
                                     <n:error errorCss="message-error" name="form.projectManager" />
                                 </div>
                             </td>
@@ -110,7 +110,7 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.projectLeader" maxlength="64" cssClass="form-control width-300" errorCss="input-error"/>
+                                    <n:text name="form.projectLeader" maxlength="64" cssClass="form-control form-control-lg width-300" errorCss="input-error"/>
                                     <n:error errorCss="message-error" name="form.projectLeader" />
                                 </div>
                             </td>
@@ -121,13 +121,13 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:text name="form.clientId" maxlength="10" readonly="true" cssClass="form-control input-label" tabindex="-1" id="client-id" />
-                                    <n:text name="form.clientName" maxlength="64" readonly="true" cssClass="form-control  input-label" tabindex="-1" id="client-name" />
+                                    <n:text name="form.clientId" maxlength="10" readonly="true" cssClass="form-control form-control-lg mb-1" tabindex="-1" id="client-id" />
+                                    <n:text name="form.clientName" maxlength="64" readonly="true" cssClass="form-control form-control-lg mb-1" tabindex="-1" id="client-name" />
                                 </div>
                                 <n:forInputPage>
                                   <div class="btn-group-sm">
-                                    <a href="#" data-toggle="modal" data-target="#client-search-dialog"  class="btn btn-default btn-fab"><i class="material-icons">search</i></a>
-                                    <a href="#" class="btn btn-default btn-fab" id="client-remove"><i class="material-icons">remove</i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#client-search-dialog" class="badge rounded-pill text-dark bg-body-secondary"><i class="material-icons">search</i></a>
+                                    <a href="#" class="badge rounded-pill text-dark bg-body-secondary" id="client-remove"><i class="material-icons">remove</i></a>
                                   </div>
                                 </n:forInputPage>
                                 <n:error errorCss="message-error" name="form.clientId" />
@@ -141,7 +141,7 @@
                             <td>
                                 <div class="form-group">
                                     <n:set var="projectStartDate" name="form.projectStartDate" scope="page" />
-                                    <n:text name="form.projectStartDate" nameAlias="form.date" value="${n:formatByDefault('dateTime', projectStartDate)}" cssClass="form-control datepicker" errorCss="input-error"/>
+                                    <n:text name="form.projectStartDate" nameAlias="form.date" value="${n:formatByDefault('dateTime', projectStartDate)}" cssClass="form-control form-control-lg datepicker" errorCss="input-error"/>
                                     <n:error errorCss="message-error" name="form.projectStartDate" />
                                 </div>
                             </td>
@@ -153,7 +153,7 @@
                             <td>
                                 <div class="form-group">
                                     <n:set var="projectEndDate" name="form.projectEndDate" scope="page" />
-                                    <n:text name="form.projectEndDate" nameAlias="form.date" value="${n:formatByDefault('dateTime', projectEndDate)}" cssClass="form-control datepicker" errorCss="input-error" />
+                                    <n:text name="form.projectEndDate" nameAlias="form.date" value="${n:formatByDefault('dateTime', projectEndDate)}" cssClass="form-control form-control-lg datepicker" errorCss="input-error" />
                                     <n:error errorCss="message-error" name="form.projectEndDate" />
                                     <n:error errorCss="message-error" name="form.validProjectPeriod" />
                                 </div>
@@ -165,7 +165,7 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <n:textarea rows="5" cols="50" name="form.note" cssClass="form-control" errorCss="input-error"/>
+                                    <n:textarea rows="5" cols="50" name="form.note" cssClass="form-control form-control-lg" errorCss="input-error"/>
                                     <n:error errorCss="message-error" name="form.note" />
                                 </div>
                             </td>
@@ -177,7 +177,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.sales" maxlength="9" cssClass="form-control width-200" errorCss="input-error" style="float:left;" />
+                                    <n:text name="form.sales" maxlength="9" cssClass="form-control form-control-lg width-200 me-3" errorCss="input-error" style="float:left;" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.sales" /></div>
                                 </div>
@@ -194,7 +194,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.costOfGoodsSold" maxlength="9" cssClass="form-control width-200" errorCss="input-error" style="float:left;" />
+                                    <n:text name="form.costOfGoodsSold" maxlength="9" cssClass="form-control form-control-lg width-200 me-3" errorCss="input-error" style="float:left;" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.costOfGoodsSold" /></div>
                                 </div>
@@ -211,7 +211,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.sga" maxlength="9" cssClass="form-control width-200" errorCss="input-error" style="float:left;" />
+                                    <n:text name="form.sga" maxlength="9" cssClass="form-control form-control-lg width-200 me-3" errorCss="input-error" style="float:left;" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.sga" /></div>
                                 </div>
@@ -228,7 +228,7 @@
                             <td>
                                 <n:forInputPage>
                                 <div class="form-group">
-                                    <n:text name="form.allocationOfCorpExpenses" maxlength="9" cssClass="form-control width-200" errorCss="input-error" style="float:left;" />
+                                    <n:text name="form.allocationOfCorpExpenses" maxlength="9" cssClass="form-control form-control-lg width-200 me-3" errorCss="input-error" style="float:left;" />
                                     <div style="display:table-cell;height:30px;vertical-align:bottom;">千円</div>
                                     <div style="clear:left;"><n:error errorCss="message-error" name="form.allocationOfCorpExpenses" /></div>
                                 </div>
@@ -287,15 +287,15 @@
                     <div class="button-nav">
                         <n:forInputPage>
                             <div class="button-block real-button-block">
-                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-raised btn-success">登録</n:button>
+                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-lg btn-success">登録</n:button>
                             </div>
                             <div class="button-block link-button-block">
-                                <n:a id="bottomBackLink" href="#" cssClass="btn btn-raised btn-default">戻る</n:a>
+                                <n:a id="bottomBackLink" href="#" cssClass="btn btn-lg btn-light">戻る</n:a>
                             </div>
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:button uri="/action/project/backToNew" cssClass="btn btn-raised btn-default">入力へ戻る</n:button>
-                            <n:button uri="/action/project/create" cssClass="btn btn-raised btn-success" allowDoubleSubmission="false">確定</n:button>
+                            <n:button uri="/action/project/backToNew" cssClass="btn btn-lg btn-light">入力へ戻る</n:button>
+                            <n:button uri="/action/project/create" cssClass="btn btn-lg btn-success" allowDoubleSubmission="false">確定</n:button>
                         </n:forConfirmationPage>
                     </div>
                 </div>
@@ -308,7 +308,6 @@
                     setListUrlTo("topBackLink");
                     setListUrlTo("bottomBackLink");
                 });
-                $.material.init()
             </n:script>
         </n:forInputPage>
 

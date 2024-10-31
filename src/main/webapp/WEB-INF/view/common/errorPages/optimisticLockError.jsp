@@ -19,7 +19,7 @@
 
             <n:form>
                 <div class="title-nav">
-                    <h1 class="page-title">エラー画面</h1>
+                    <span class="page-title">エラー画面</span>
                 </div>
                 <div class="message-area">
                     <p>
