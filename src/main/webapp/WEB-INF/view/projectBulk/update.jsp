@@ -44,8 +44,8 @@
                                         </span>
                                         <n:set var="isUpdatable" value="${fn:length(projectListDto.projectList) == 0 ? 'disabled' : ''}" />
                                         <div class="button-nav">
-                                            <button id="topUpdateButton" class="btn btn-success" suppressDefaultSubmit="true" <n:write name="isUpdatable" />>更新</button>
-                                            <n:a href="/action/project" cssClass="btn btn-light">新規登録</n:a>
+                                            <button id="topUpdateButton" class="btn btn-lg btn-success" suppressDefaultSubmit="true" <n:write name="isUpdatable" />>更新</button>
+                                            <n:a href="/action/project" cssClass="btn btn-lg btn-light">新規登録</n:a>
                                         </div>
                                     </div>
                                     <div class="message-area margin-top">
@@ -205,8 +205,8 @@
                                         </app:listSearchResult>
                                         <div class="title-nav page-footer">
                                             <div class="button-nav">
-                                                <n:button id="bottomUpdateButton" uri="/action/projectBulk/confirmOfUpdate" disabled="${isUpdatable}" cssClass="btn btn-success">更新</n:button>
-                                                <n:a id="bottomCreateButton" href="/action/project" cssClass="btn btn-light">新規登録</n:a>
+                                                <n:button id="bottomUpdateButton" uri="/action/projectBulk/confirmOfUpdate" disabled="${isUpdatable}" cssClass="btn btn-lg btn-success">更新</n:button>
+                                                <n:a id="bottomCreateButton" href="/action/project" cssClass="btn btn-lg btn-light">新規登録</n:a>
                                             </div>
                                         </div>
                                     </n:form>
