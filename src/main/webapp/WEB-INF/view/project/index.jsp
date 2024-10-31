@@ -65,7 +65,7 @@
                                                 <c:param name="searchForm.sortKey" value="${searchForm.sortKey}"/>
                                                 <c:param name="searchForm.sortDir" value="${searchForm.sortDir}"/>
                                             </c:url>
-                                            <div class="sort-nav">
+                                            <div class="sort-nav mb-3">
                                                 <div style="float:left;">
                                                     <span class="font-group">
                                                     検索結果
@@ -106,37 +106,45 @@
                                                 <n:plainHidden name="searchForm.projectEndDateBegin"/>
                                                 <n:plainHidden name="searchForm.projectEndDateEnd"/>
                                                 <n:set var="sortKeyList" value="<%= ProjectSortKey.values() %>"/>
-                                                <n:select
-                                                        id="sortKey"
-                                                        name="searchForm.sortKey"
-                                                        listName="sortKeyList"
-                                                        elementValueProperty="value"
-                                                        elementLabelProperty="label"
-                                                        elementLabelPattern="$LABEL$"
-                                                        cssClass="btn dropdown-toggle"/>
-                                                <n:set var="sortOrderList" value="<%= SortOrder.values() %>"/>
-                                                <n:select
-                                                        id="sortDir"
-                                                        name="searchForm.sortDir"
-                                                        listName="sortOrderList"
-                                                        elementValueProperty="value"
-                                                        elementLabelProperty="label"
-                                                        elementLabelPattern="$LABEL$"
-                                                        cssClass="btn dropdown-toggle"/>
-                                                <input id="firstPageNumber" type="hidden" name="searchForm.pageNumber" value="1" />
+                                                <div class="row justify-content-end">
+                                                    <div class="col-md-2">
+                                                        <n:select
+                                                                id="sortKey"
+                                                                name="searchForm.sortKey"
+                                                                listName="sortKeyList"
+                                                                elementValueProperty="value"
+                                                                elementLabelProperty="label"
+                                                                elementLabelPattern="$LABEL$"
+                                                                cssClass="form-select form-select-lg"/>
+                                                        <n:set var="sortOrderList" value="<%= SortOrder.values() %>"/>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <n:select
+                                                                id="sortDir"
+                                                                name="searchForm.sortDir"
+                                                                listName="sortOrderList"
+                                                                elementValueProperty="value"
+                                                                elementLabelProperty="label"
+                                                                elementLabelPattern="$LABEL$"
+                                                                cssClass="form-select form-select-lg"/>
+                                                        <input id="firstPageNumber" type="hidden" name="searchForm.pageNumber" value="1" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </n:form>
 
                                         <!-- 検索結果 -->
                                         <app:listSearchResult
+                                            useFirstSubmit="true"
                                             currentPageNumberCss="fs-5 mb-3 border-0"
                                             pagingCss="paging mb-3"
                                             usePageNumberSubmit="true"
-                                            prevSubmitLabel="«"
-                                            nextSubmitLabel="»"
-                                            prevSubmitCss="prev-page-link page-link"
+                                            firstSubmitCss="page-link"
+                                            prevSubmitCss="page-link"
                                             pageNumberSubmitCss="page-link"
-                                            nextSubmitCss="next-page-link page-link"
+                                            nextSubmitCss="page-link"
+                                            useLastSubmit="true"
+                                            lastSubmitCss="page-link"
                                             resultSetCss="table table-striped table-hover"
                                             searchFormName="searchForm"
                                             searchUri="${uri}"

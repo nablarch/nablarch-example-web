@@ -544,6 +544,17 @@ th.width-250{
 .input.width-200{
 	display:inline-block;
 }
+
+.pagination li:first-child .page-link {
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+}
+
+.pagination li:last-child .page-link {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+}
+
 .paging{
 	float:right;
 }
