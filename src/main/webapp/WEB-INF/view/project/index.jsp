@@ -20,7 +20,7 @@
     </head>
     <body>
         <n:include path="/WEB-INF/view/common/noscript.jsp" />
-        <div class="container-fluid mainContents">
+        <div class="mainContents">
             <n:include path="/WEB-INF/view/common/menu.jsp" />
             <n:include path="/WEB-INF/view/common/header.jsp" />
             <div class="row">
