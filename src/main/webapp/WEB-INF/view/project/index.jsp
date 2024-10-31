@@ -23,11 +23,13 @@
         <div class="mainContents">
             <n:include path="/WEB-INF/view/common/menu.jsp" />
             <n:include path="/WEB-INF/view/common/header.jsp" />
+        </div>
+        <div class="container-fluid mainContents">
             <div class="row">
                 <n:include path="/WEB-INF/view/common/sidemenu.jsp" />
                 <div class="pages col-md-10">
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="title-nav">
