@@ -22,8 +22,8 @@
                     <span>プロジェクト検索一覧更新画面</span>
                     <div class="button-nav">
                         <n:form useToken="true">
-                            <n:submit type="button" uri="backToList" cssClass="btn btn-light" value="入力へ戻る"></n:submit>
-                            <n:submit type="button" uri="update" allowDoubleSubmission="false" cssClass="btn btn-success" value="確定"></n:submit>
+                            <n:submit type="button" uri="backToList" cssClass="btn btn-lg btn-light" value="入力へ戻る"></n:submit>
+                            <n:submit type="button" uri="update" allowDoubleSubmission="false" cssClass="btn btn-lg btn-success" value="確定"></n:submit>
                         </n:form>
                     </div>
                 </div>
@@ -66,8 +66,8 @@
             <div class="title-nav page-footer">
                 <div class="button-nav">
                     <n:form useToken="true">
-                        <n:submit type="button" uri="backToList" cssClass="btn btn-light" value="入力へ戻る"></n:submit>
-                        <n:submit type="button" uri="update" allowDoubleSubmission="false" cssClass="btn btn-success" value="確定"></n:submit>
+                        <n:submit type="button" uri="backToList" cssClass="btn btn-lg btn-light" value="入力へ戻る"></n:submit>
+                        <n:submit type="button" uri="update" allowDoubleSubmission="false" cssClass="btn btn-lg btn-success" value="確定"></n:submit>
                     </n:form>
                 </div>
             </div>

@@ -16,7 +16,7 @@
                 <div class="title-nav">
                     <span>プロジェクト一括登録画面</span>
                     <div class="button-nav">
-                        <n:button uri="/action/projectUpload/upload" allowDoubleSubmission="false" cssClass="btn btn-light">登録</n:button>
+                        <n:button uri="/action/projectUpload/upload" allowDoubleSubmission="false" cssClass="btn btn-lg btn-light">登録</n:button>
                     </div>
                 </div>
                 <div class="message-area margin-top">
@@ -47,7 +47,7 @@
                 </table>
                 <div class="title-nav">
                     <div class="button-nav">
-                        <n:button uri="/action/projectUpload/upload" allowDoubleSubmission="false" cssClass="btn btn-light">登録</n:button>
+                        <n:button uri="/action/projectUpload/upload" allowDoubleSubmission="false" cssClass="btn btn-lg btn-light">登録</n:button>
                     </div>
                 </div>
             </n:form>

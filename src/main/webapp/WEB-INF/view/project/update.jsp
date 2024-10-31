@@ -25,13 +25,13 @@
                     <span class="page-title">プロジェクト変更画面</span>
                     <div class="button-nav">
                         <n:forInputPage>
-                            <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-light">戻る</n:a>
-                            <n:submit value="削除" uri="#" id="topDeleteButton" cssClass="btn btn-danger" type="button" allowDoubleSubmission="false" suppressDefaultSubmit="true" />
-                            <n:submit value="更新" uri="#" id="topUpdateButton" cssClass="btn btn-success" type="button" suppressDefaultSubmit="true" />
+                            <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-lg btn-light">戻る</n:a>
+                            <n:submit value="削除" uri="#" id="topDeleteButton" cssClass="btn btn-lg btn-danger" type="button" allowDoubleSubmission="false" suppressDefaultSubmit="true" />
+                            <n:submit value="更新" uri="#" id="topUpdateButton" cssClass="btn btn-lg btn-success" type="button" suppressDefaultSubmit="true" />
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:submit value="入力へ戻る" uri="#" id="topBackButton" cssClass="btn btn-light" type="button" suppressDefaultSubmit="true" />
-                            <n:submit value="確定" uri="#" id="topSubmitButton" cssClass="btn btn-success" type="button" allowDoubleSubmission="false" suppressDefaultSubmit="true" />
+                            <n:submit value="入力へ戻る" uri="#" id="topBackButton" cssClass="btn btn-lg btn-light" type="button" suppressDefaultSubmit="true" />
+                            <n:submit value="確定" uri="#" id="topSubmitButton" cssClass="btn btn-lg btn-success" type="button" allowDoubleSubmission="false" suppressDefaultSubmit="true" />
                         </n:forConfirmationPage>
                     </div>
                 </div>
@@ -289,13 +289,13 @@
                 <div class="title-nav page-footer">
                     <div class="button-nav">
                         <n:forInputPage>
-                            <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-light">戻る</n:a>
-                            <n:submit value="削除" uri="/action/project/delete" id="bottomDeleteButton" cssClass="btn btn-danger" allowDoubleSubmission="false" type="button" />
-                            <n:submit value="更新" uri="/action/project/confirmOfUpdate" id="bottomUpdateButton" cssClass="btn btn-success" type="button" />
+                            <n:a href="/action/project/show/${project.projectId}" cssClass="btn btn-lg btn-light">戻る</n:a>
+                            <n:submit value="削除" uri="/action/project/delete" id="bottomDeleteButton" cssClass="btn btn-lg btn-danger" allowDoubleSubmission="false" type="button" />
+                            <n:submit value="更新" uri="/action/project/confirmOfUpdate" id="bottomUpdateButton" cssClass="btn btn-lg btn-success" type="button" />
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:submit value="入力へ戻る" uri="/action/project/backToEdit" id="bottomBackButton" cssClass="btn btn-light" type="button" />
-                            <n:submit value="確定" uri="/action/project/update" id="bottomSubmitButton" cssClass="btn btn-success" allowDoubleSubmission="false" type="button" />
+                            <n:submit value="入力へ戻る" uri="/action/project/backToEdit" id="bottomBackButton" cssClass="btn btn-lg btn-light" type="button" />
+                            <n:submit value="確定" uri="/action/project/update" id="bottomSubmitButton" cssClass="btn btn-lg btn-success" allowDoubleSubmission="false" type="button" />
                         </n:forConfirmationPage>
                     </div>
                 </div>

@@ -25,10 +25,10 @@
                 <span class="page-title">プロジェクト詳細画面</span>
                 <div class="button-nav">
                     <div class="button-block real-button-block">
-                        <n:a href="/action/project/edit/${projectId}" cssClass="btn btn-success">変更</n:a>
+                        <n:a href="/action/project/edit/${projectId}" cssClass="btn btn-lg btn-success">変更</n:a>
                     </div>
                     <div class="button-block link-button-block">
-                        <n:a id="topReturnList" href="#" cssClass="btn btn-light">戻る</n:a>
+                        <n:a id="topReturnList" href="#" cssClass="btn btn-lg btn-light">戻る</n:a>
                     </div>
                 </div>
             </div>
@@ -199,10 +199,10 @@
             <div class="title-nav page-footer">
                 <div class="button-nav">
                     <div class="button-block real-button-block">
-                        <n:a href="/action/project/edit/${projectId}" cssClass="btn btn-success">変更</n:a>
+                        <n:a href="/action/project/edit/${projectId}" cssClass="btn btn-lg btn-success">変更</n:a>
                     </div>
                     <div class="button-block link-button-block">
-                        <n:a id="bottomReturnList" href="#" cssClass="btn btn-light">戻る</n:a>
+                        <n:a id="bottomReturnList" href="#" cssClass="btn btn-lg btn-light">戻る</n:a>
                     </div>
                 </div>
             </div>

@@ -28,15 +28,15 @@
                     <div class="button-nav">
                         <n:forInputPage>
                             <div class="button-block real-button-block">
-                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-success">登録</n:button>
+                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-lg btn-success">登録</n:button>
                             </div>
                             <div class="button-block link-button-block">
-                                <n:a id="topBackLink" href="#" cssClass="btn btn-light">戻る</n:a>
+                                <n:a id="topBackLink" href="#" cssClass="btn btn-lg btn-light">戻る</n:a>
                             </div>
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:button uri="/action/project/backToNew" cssClass="btn btn-light">入力へ戻る</n:button>
-                            <n:button uri="/action/project/create" cssClass="btn btn-success" allowDoubleSubmission="false">確定</n:button>
+                            <n:button uri="/action/project/backToNew" cssClass="btn btn-lg btn-light">入力へ戻る</n:button>
+                            <n:button uri="/action/project/create" cssClass="btn btn-lg btn-success" allowDoubleSubmission="false">確定</n:button>
                         </n:forConfirmationPage>
                     </div>
                 </div>
@@ -287,15 +287,15 @@
                     <div class="button-nav">
                         <n:forInputPage>
                             <div class="button-block real-button-block">
-                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-success">登録</n:button>
+                                <n:button uri="/action/project/confirmOfCreate" cssClass="btn btn-lg btn-success">登録</n:button>
                             </div>
                             <div class="button-block link-button-block">
-                                <n:a id="bottomBackLink" href="#" cssClass="btn btn-light">戻る</n:a>
+                                <n:a id="bottomBackLink" href="#" cssClass="btn btn-lg btn-light">戻る</n:a>
                             </div>
                         </n:forInputPage>
                         <n:forConfirmationPage>
-                            <n:button uri="/action/project/backToNew" cssClass="btn btn-light">入力へ戻る</n:button>
-                            <n:button uri="/action/project/create" cssClass="btn btn-success" allowDoubleSubmission="false">確定</n:button>
+                            <n:button uri="/action/project/backToNew" cssClass="btn btn-lg btn-light">入力へ戻る</n:button>
+                            <n:button uri="/action/project/create" cssClass="btn btn-lg btn-success" allowDoubleSubmission="false">確定</n:button>
                         </n:forConfirmationPage>
                     </div>
                 </div>

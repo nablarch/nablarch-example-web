@@ -44,7 +44,7 @@
                 <div class="title-nav page-footer" >
                     <div class="button-nav">
                         <div class="button-block real-button-block">
-                            <n:button uri="/action/login" cssClass="btn btn-light " allowDoubleSubmission="false">ログイン</n:button>
+                            <n:button uri="/action/login" cssClass="btn btn-lg btn-light" allowDoubleSubmission="false">ログイン</n:button>
                         </div>
                     </div>
                 </div>

@@ -367,7 +367,7 @@ ol.flow-navigation li div.active-step {
 }
 .button-block {
   float: right;
-  width: 104px;
+  width: 110px;
   height: 24px;
 }
 .sort-nav {
@@ -584,4 +584,8 @@ th.width-250{
 
 .navbar {
     background-color: #3F51B5;
+}
+
+.form-group {
+    font-size: 1.25rem
 }

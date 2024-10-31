@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <input type="submit" id="search" class="btn btn-primary" value="検索" />
+                                    <input type="submit" id="search" class="btn btn-lg btn-primary" value="検索" />
                                 </div>
                             </fieldset>
                         </n:form>

@@ -33,7 +33,7 @@
                                     <div class="title-nav">
                                         <span>プロジェクト検索一覧画面</span>
                                         <div class="button-nav">
-                                            <n:a href="/action/project" cssClass="btn btn-light">新規登録</n:a>
+                                            <n:a href="/action/project" cssClass="btn btn-lg btn-light">新規登録</n:a>
                                         </div>
                                     </div>
                                     <!-- 検索フォームでバリデーションエラーが発生していない場合だけ、検索結果を表示する。 -->
@@ -190,7 +190,7 @@
 
                                     <div class="title-nav page-footer">
                                         <div class="button-nav">
-                                            <n:a href="/action/project" cssClass="btn btn-light">新規登録</n:a>
+                                            <n:a href="/action/project" cssClass="btn btn-lg btn-light">新規登録</n:a>
                                         </div>
                                     </div>
                                 </div>
