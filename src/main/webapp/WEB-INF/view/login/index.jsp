@@ -29,7 +29,7 @@
                 <div class="row m-3">
                     <label for="loginId" class="col-md-2 m-auto col-form-label">ログインID</label>
                     <div class="col-md-10">
-                        <n:text id="loginId" name="loginId" cssClass="form-control form-control-lg form-control-lg" errorCss="input-error" placeholder="ログインID"/>
+                        <n:text id="loginId" name="loginId" cssClass="form-control form-control-lg" errorCss="input-error" placeholder="ログインID"/>
                         <n:error errorCss="message-error" name="loginId" />
                     </div>
                 </div>

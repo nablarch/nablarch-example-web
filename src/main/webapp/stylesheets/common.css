@@ -586,6 +586,11 @@ th.width-250{
     background-color: #3F51B5;
 }
 
+.nav-link {
+    color: #ffffff !important;
+}
+
 .form-group {
-    font-size: 1.25rem
+    font-size: 1.25rem;
+    margin: auto;
 }
