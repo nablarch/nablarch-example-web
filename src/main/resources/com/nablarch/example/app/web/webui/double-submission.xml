@@ -20,13 +20,20 @@
   </component>
   
   <!-- トークンをデータベースに保存する -->
-  <component name="tokenManager" class="nablarch.common.web.token.DbTokenManager">
-    <property name="dbManager">
-      <component class="nablarch.core.db.transaction.SimpleDbTransactionManager">
-        <property name="dbTransactionName" value="tokenTransaction"/>
-      </component>
-    </property>
+<!--  <component name="tokenManager" class="nablarch.common.web.token.DbTokenManager">-->
+<!--    <property name="dbManager">-->
+<!--      <component class="nablarch.core.db.transaction.SimpleDbTransactionManager">-->
+<!--        <property name="dbTransactionName" value="tokenTransaction"/>-->
+<!--      </component>-->
+<!--    </property>-->
+<!--  </component>-->
+
+    <!-- トークンをRedisに保存する -->
+  <component name="tokenManager" class="com.nablarch.example.app.web.token.RedisTokenManager">
+    <property name="client" ref="lettuceRedisClientProvider" />
+    <property name="expires" value="10"/>
   </component>
+
   <component name="tokenGenerator" class="nablarch.common.web.token.UUIDV4TokenGenerator" />
 
 </component-configuration>
