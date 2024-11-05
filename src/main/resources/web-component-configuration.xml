@@ -9,11 +9,17 @@
   
   <!-- jsr310 -->
   <import file="JSR310.xml" />
-  
+
+  <!-- redis -->
+  <config-file file="nablarch/webui/redisstore-lettuce.config" />
+
   <!-- 環境設定ファイル -->
   <config-file file="env.properties" />
   <config-file file="common.properties" />
   <config-file file="RegistrationPdfFile.properties" />
+
+  <!-- redis -->
+  <import file="nablarch/webui/redisstore-lettuce.xml" />
 
   <!-- バリデーション -->
   <import file="com/nablarch/example/app/core/validation.xml" />
@@ -64,7 +70,7 @@
   <import file="com/nablarch/example/app/web/webui/request-mapper-for-webui.xml" />
 
   <!-- セッションストア機能 -->
-  <import file="nablarch/webui/session-store.xml" />
+<!--  <import file="nablarch/webui/session-store.xml" />-->
   <import file="com/nablarch/example/app/web/webui/session-store.xml" />
 
   <!-- ダイアレクト設定 -->
@@ -183,7 +189,7 @@
     <property name="initializeList">
       <list>
         <!-- web/session-store.xml:DBストア-->
-        <component-ref name="dbStore" />
+<!--        <component-ref name="dbStore" />-->
         <component-ref name="expiration" />
         <component-ref name="tokenManager"/>
         <component-ref name="packageMapping" />
@@ -191,6 +197,7 @@
         <component class="nablarch.common.authorization.role.CheckRoleLogger">
           <property name="targetPackage" value="com.nablarch.example.app.web.action" />
         </component>
+        <component-ref name="lettuceRedisClientProvider"/>
       </list>
     </property>
   </component>
