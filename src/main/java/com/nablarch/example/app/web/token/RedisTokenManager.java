@@ -26,9 +26,6 @@ public class RedisTokenManager implements TokenManager {
     /** 有効期間(ミリ秒) */
     private Long expiresMilliSeconds;
 
-    /** セッションID */
-    private String sessionId;
-
     /**
      * セッションIDを保持するクッキー名
      * */
@@ -46,6 +43,7 @@ public class RedisTokenManager implements TokenManager {
     @Override
     public void saveToken(String serverToken, NablarchHttpServletRequestWrapper request) {
         // セッションIDを取得する
+        String sessionId;
         final Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -65,6 +63,7 @@ public class RedisTokenManager implements TokenManager {
     @Override
     public boolean isValidToken(String clientToken, ServletExecutionContext context) {
         // セッションIDを取得する
+        String sessionId;
         final Cookie[] cookies = context.getServletRequest().getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
