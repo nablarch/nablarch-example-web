@@ -114,18 +114,8 @@ public class RedisTokenManager implements TokenManager {
      *
      * @param expires 有効期限(単位:秒)
      */
-    public void setExpires(Long expires) {
-        setExpires(expires, TimeUnit.SECONDS);
-    }
-
-    /**
-     * 有効期限を設定する。
-     *
-     * @param expires 有効期限
-     * @param timeUnit 時間単位
-     */
-    public void setExpires(Long expires, TimeUnit timeUnit) {
-        this.expiresMilliSeconds = timeUnit.toMillis(expires);
+    public void setExpiresSeconds(Long expires) {
+        this.expiresMilliSeconds = TimeUnit.SECONDS.toMillis(expires);
     }
 
     /**
