@@ -30,6 +30,7 @@
 
     <!-- トークンをRedisに保存する -->
   <component name="tokenManager" class="com.nablarch.example.app.web.token.RedisTokenManager">
+    <property name="cookieName"   value="${nablarch.sessionStoreHandler.cookieName}"/>
     <property name="client" ref="lettuceRedisClientProvider" />
     <property name="expires" value="10"/>
   </component>

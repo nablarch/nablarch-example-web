@@ -1,7 +1,7 @@
 package com.nablarch.example.app.web.token;
 
+import jakarta.servlet.http.Cookie;
 import nablarch.common.web.token.TokenManager;
-import nablarch.fw.ExecutionContext;
 import nablarch.fw.web.servlet.NablarchHttpServletRequestWrapper;
 import nablarch.fw.web.servlet.ServletExecutionContext;
 import nablarch.integration.redisstore.lettuce.LettuceRedisClient;
@@ -21,34 +21,68 @@ public class RedisTokenManager implements TokenManager {
      * 詳しくは以下の解説書を参考にすること
      * @see <a href="https://nablarch.github.io/docs/6u2/doc/application_framework/adaptors/lettuce_adaptor/redisstore_lettuce_adaptor.html#redisstore-redis-client-config-client-classes">Redisストア(Lettuce)アダプタ - 構成ごとに用意されたクライアントクラス</a>
      */
-    private LettuceRedisClient client;
+    private LettuceRedisClient redisClient;
 
     /** 有効期間(ミリ秒) */
     private Long expiresMilliSeconds;
 
-    /** Redis に格納するときに使用するキー */
-    private static final String toSessionStoreKey = ExecutionContext.FW_PREFIX  + "double_submission_token";
+    /** セッションID */
+    private String sessionId;
+
+    /**
+     * セッションIDを保持するクッキー名
+     * */
+    private String cookieName = "NABLARCH_SID";
+
+    /**
+     * セッションIDを元に、 Redis に格納するときに使用するキーを作成する。
+     * @param sessionId セッションID
+     * @return Redis への格納に使用するキー
+     */
+    public static String toSessionStoreKey(String sessionId) {
+        return "nablarch.double.submission." + sessionId;
+    }
 
     @Override
     public void saveToken(String serverToken, NablarchHttpServletRequestWrapper request) {
+        // セッションIDを取得する
+        final Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookieName.equals(cookie.getName())) {
+                    sessionId = cookie.getValue();
+                }
+            }
+        }
+
         // severTokenを保存する
-        client.set(toSessionStoreKey, serverToken.getBytes(StandardCharsets.UTF_8));
+        redisClient.set(toSessionStoreKey(sessionId), serverToken.getBytes(StandardCharsets.UTF_8));
         // 有効期限を設定する
         // 有効期限はコンポーネント tokenManager のプロパティ expires で設定された値を使用する。
-        client.pexpire(toSessionStoreKey, getExpiresMilliSeconds());
+        redisClient.pexpire(toSessionStoreKey(sessionId), getExpiresMilliSeconds());
     }
 
     @Override
     public boolean isValidToken(String clientToken, ServletExecutionContext context) {
+        // セッションIDを取得する
+        final Cookie[] cookies = context.getServletRequest().getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookieName.equals(cookie.getName())) {
+                    sessionId = cookie.getValue();
+                }
+            }
+        }
+
         String serverToken;
         // サーバートークンが有効期限切れなどで存在しない場合は無効とする。
         try {
-            serverToken = new String(client.get(toSessionStoreKey), StandardCharsets.UTF_8);
+            serverToken = new String(redisClient.get(toSessionStoreKey(sessionId)), StandardCharsets.UTF_8);
         }catch (NullPointerException e){
             return false;
         }
 
-        client.del(toSessionStoreKey);
+        redisClient.del(toSessionStoreKey(sessionId));
         return clientToken.equals(serverToken);
     }
 
@@ -58,11 +92,21 @@ public class RedisTokenManager implements TokenManager {
     }
 
     /**
+     * セッションIDを保持するクッキーの名称を設定する。
+     * デフォルトは "NABLARCH_SID"
+     *
+     * @param cookieName クッキー名
+     */
+    public void setCookieName(final String cookieName) {
+        this.cookieName = cookieName;
+    }
+
+    /**
      * {@link LettuceRedisClient} を設定する。
      * @param client {@link LettuceRedisClient}
      */
     public void setClient(LettuceRedisClient client) {
-        this.client = client;
+        this.redisClient = client;
     }
 
     /**
