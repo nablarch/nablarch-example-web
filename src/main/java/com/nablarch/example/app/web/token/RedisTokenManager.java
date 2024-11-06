@@ -43,7 +43,7 @@ public class RedisTokenManager implements TokenManager {
     @Override
     public void saveToken(String serverToken, NablarchHttpServletRequestWrapper request) {
         // セッションIDを取得する
-        String sessionId;
+        String sessionId = null;
         final Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -63,7 +63,7 @@ public class RedisTokenManager implements TokenManager {
     @Override
     public boolean isValidToken(String clientToken, ServletExecutionContext context) {
         // セッションIDを取得する
-        String sessionId;
+        String sessionId = null;
         final Cookie[] cookies = context.getServletRequest().getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -102,6 +102,7 @@ public class RedisTokenManager implements TokenManager {
 
     /**
      * {@link LettuceRedisClient} を設定する。
+     *
      * @param client {@link LettuceRedisClient}
      */
     public void setClient(LettuceRedisClient client) {
