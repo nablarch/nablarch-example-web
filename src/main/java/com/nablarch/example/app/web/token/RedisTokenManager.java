@@ -59,7 +59,7 @@ public class RedisTokenManager implements TokenManager {
         redisClient.set(toSessionStoreKey(sessionId), serverToken.getBytes(StandardCharsets.UTF_8));
         // 有効期限を設定する
         // 有効期限はコンポーネント tokenManager のプロパティ expires で設定された値を使用する。
-        redisClient.pexpire(toSessionStoreKey(sessionId), getExpiresMilliSeconds());
+        redisClient.pexpire(toSessionStoreKey(sessionId), expiresMilliSeconds);
     }
 
     @Override
@@ -116,15 +116,6 @@ public class RedisTokenManager implements TokenManager {
      */
     public void setExpiresSeconds(Long expires) {
         this.expiresMilliSeconds = TimeUnit.SECONDS.toMillis(expires);
-    }
-
-    /**
-     * 有効期限(単位:ミリ秒)で取得する。
-     *
-     * @return 有効期限(単位:ミリ秒)
-     */
-    public long getExpiresMilliSeconds() {
-        return expiresMilliSeconds;
     }
 
 }
