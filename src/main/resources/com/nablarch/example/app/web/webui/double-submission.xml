@@ -32,7 +32,7 @@
   <component name="tokenManager" class="com.nablarch.example.app.web.token.RedisTokenManager">
     <property name="cookieName"   value="${nablarch.sessionStoreHandler.cookieName}"/>
     <property name="client" ref="lettuceRedisClientProvider" />
-    <property name="expiresSeconds" value="10"/>
+    <property name="expiresSeconds" value="${nablarch.sessionManager.expires}"/>
   </component>
 
   <component name="tokenGenerator" class="nablarch.common.web.token.UUIDV4TokenGenerator" />
