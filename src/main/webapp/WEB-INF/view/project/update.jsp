@@ -118,8 +118,8 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                  <n:text name="form.clientId" maxlength="10" readonly="true" cssClass="form-control form-control-lg mb-1" tabindex="-1" id="client-id" />
-                                  <n:text name="form.clientName" maxlength="64" readonly="true" cssClass="form-control form-control-lg mb-1" tabindex="-1" id="client-name" />
+                                  <n:text name="form.clientId" maxlength="10" readonly="true" cssClass="form-control form-control-lg mb-1" tabindex="-1" id="client-id" errorCss="input-error" />
+                                  <n:text name="form.clientName" maxlength="64" readonly="true" cssClass="form-control form-control-lg mb-1" tabindex="-1" id="client-name" errorCss="input-error" />
                                 </div>
                                 <n:forInputPage>
                                   <div class="btn-group-sm">
