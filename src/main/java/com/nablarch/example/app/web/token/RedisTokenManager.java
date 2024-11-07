@@ -1,6 +1,5 @@
 package com.nablarch.example.app.web.token;
 
-import jakarta.servlet.http.Cookie;
 import nablarch.common.web.token.TokenManager;
 import nablarch.fw.web.servlet.NablarchHttpServletRequestWrapper;
 import nablarch.fw.web.servlet.ServletExecutionContext;
@@ -26,77 +25,29 @@ public class RedisTokenManager implements TokenManager {
     /** 有効期間(ミリ秒) */
     private Long expiresMilliSeconds;
 
-    /**
-     * セッションIDを保持するクッキー名
-     * */
-    private String cookieName = "NABLARCH_SID";
-
-    /**
-     * セッションIDを元に、 Redis に格納するときに使用するキーを作成する。
-     * @param sessionId セッションID
-     * @return Redis への格納に使用するキー
-     */
-    public static String toSessionStoreKey(String sessionId) {
-        return "nablarch.double.submission." + sessionId;
-    }
-
     @Override
     public void saveToken(String serverToken, NablarchHttpServletRequestWrapper request) {
-        // セッションIDを取得する
-        String sessionId = null;
-        final Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookieName.equals(cookie.getName())) {
-                    sessionId = cookie.getValue();
-                }
-            }
-        }
-
         // severTokenを保存する
-        redisClient.set(toSessionStoreKey(sessionId), serverToken.getBytes(StandardCharsets.UTF_8));
+        redisClient.set(serverToken,"dummy".getBytes(StandardCharsets.UTF_8));
         // 有効期限を設定する
         // 有効期限はコンポーネント tokenManager のプロパティ expires で設定された値を使用する。
-        redisClient.pexpire(toSessionStoreKey(sessionId), expiresMilliSeconds);
+        redisClient.pexpire(serverToken, expiresMilliSeconds);
     }
 
     @Override
     public boolean isValidToken(String clientToken, ServletExecutionContext context) {
-        // セッションIDを取得する
-        String sessionId = null;
-        final Cookie[] cookies = context.getServletRequest().getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookieName.equals(cookie.getName())) {
-                    sessionId = cookie.getValue();
-                }
-            }
-        }
-
         // サーバートークンが有効期限切れなどで存在しない場合は無効とする。
-        byte[] serverTokenBytes = redisClient.get(toSessionStoreKey(sessionId));
+        byte[] serverTokenBytes = redisClient.get(clientToken);
         if(serverTokenBytes == null){
             return false;
         }
-        String serverToken = new String(serverTokenBytes, StandardCharsets.UTF_8);
-
-        redisClient.del(toSessionStoreKey(sessionId));
-        return clientToken.equals(serverToken);
+        redisClient.del(clientToken);
+        return true;
     }
 
     @Override
     public void initialize() {
         //何もしない
-    }
-
-    /**
-     * セッションIDを保持するクッキーの名称を設定する。
-     * デフォルトは "NABLARCH_SID"
-     *
-     * @param cookieName クッキー名
-     */
-    public void setCookieName(final String cookieName) {
-        this.cookieName = cookieName;
     }
 
     /**
