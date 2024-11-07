@@ -73,13 +73,12 @@ public class RedisTokenManager implements TokenManager {
             }
         }
 
-        String serverToken;
         // サーバートークンが有効期限切れなどで存在しない場合は無効とする。
-        try {
-            serverToken = new String(redisClient.get(toSessionStoreKey(sessionId)), StandardCharsets.UTF_8);
-        }catch (NullPointerException e){
+        byte[] serverTokenBytes = redisClient.get(toSessionStoreKey(sessionId));
+        if(serverTokenBytes == null){
             return false;
         }
+        String serverToken = new String(serverTokenBytes, StandardCharsets.UTF_8);
 
         redisClient.del(toSessionStoreKey(sessionId));
         return clientToken.equals(serverToken);
