@@ -89,7 +89,7 @@
                                     <div class="form-group mb-3">
                                         <label for="projectName" class="control-label mb-3">プロジェクト名</label>
                                         <div>
-                                            <n:text id="projectName" name="searchForm.projectName" size="25" maxlength="64" cssClass="form-control form-control-lg" errorCss="input-error form-control form-control-lg" placeholder="プロジェクト名"/>
+                                            <n:text id="projectName" name="searchForm.projectName" size="25" maxlength="64" cssClass="form-control form-control-lg" errorCss="input-error" placeholder="プロジェクト名"/>
                                             <n:error errorCss="message-error" name="searchForm.projectName" />
                                         </div>
                                     </div>

@@ -159,7 +159,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <n:text name="bulkForm.projectList[${status.index}].projectName" maxlength="64" cssClass="form-control form-control-lg" errorCss="input-error input-text"/>
+                                                            <n:text name="bulkForm.projectList[${status.index}].projectName" maxlength="64" cssClass="form-control form-control-lg" errorCss="input-error"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectName" />
                                                         </div>
                                                     </td>
@@ -183,7 +183,7 @@
                                                                     value="${n:formatByDefault('dateTime', projectStartDate)}"
                                                                     maxlength="10"
                                                                     cssClass="form-control form-control-lg datepicker"
-                                                                    errorCss="input-error input-text"/>
+                                                                    errorCss="input-error"/>
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectStartDate" />
                                                         </div>
                                                     </td>
@@ -195,7 +195,7 @@
                                                                     value="${n:formatByDefault('dateTime', projectEndDate)}"
                                                                     maxlength="10"
                                                                     cssClass="form-control form-control-lg datepicker"
-                                                                    errorCss="input-error input-text"/>
+                                                                    errorCss="input-error" />
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].projectEndDate" />
                                                             <n:error errorCss="message-error" name="bulkForm.projectList[${status.index}].validProjectPeriod" />
                                                         </div>

@@ -586,6 +586,15 @@ th.width-250{
     background-color: #3F51B5;
 }
 
+.nav-link {
+    color: #ffffff;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
 .form-group {
-    font-size: 1.25rem
+    font-size: 1.25rem;
+    margin: auto;
 }

@@ -14,14 +14,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item px-2">
-                        <n:a href="/action/project/index" cssClass="nav-link active">プロジェクト検索</n:a>
+                        <n:a href="/action/project/index" cssClass="nav-link">プロジェクト検索</n:a>
                     </li>
                     <li class="nav-item px-2">
-                        <n:a href="/action/projectBulk/index" cssClass="nav-link active">プロジェクト一括更新</n:a>
+                        <n:a href="/action/projectBulk/index" cssClass="nav-link">プロジェクト一括更新</n:a>
                     </li>
                     <c:if test="${userContext.admin}">
                         <li class="nav-item px-2">
-                            <n:a href="/action/projectUpload" cssClass="nav-link active">プロジェクト一括登録</n:a>
+                            <n:a href="/action/projectUpload" cssClass="nav-link">プロジェクト一括登録</n:a>
                         </li>
                     </c:if>
                 </ul>
