@@ -35,35 +35,35 @@ public class RedisTokenManager implements TokenManager {
      * @param redisToken トークン
      * @return Redis への格納に使用するキー
      */
-    private static String toRedisStoreKey(String redisToken) {
+    private static String createKeyFromToken(String redisToken) {
         return "nablarch.double.submission." + redisToken;
     }
 
     @Override
     public void saveToken(String serverToken, NablarchHttpServletRequestWrapper request) {
-        String serverRedisStoreKey = toRedisStoreKey(serverToken);
+        String key = createKeyFromToken(serverToken);
 
         // トークンそのものを紐づけてキーとして保存する。
         // トークンを保持することが目的なので、値はダミーを設定している。
         // ユーザーごとにトークンを管理したい場合はユーザーに紐づく情報をキーにするよう検討してください。
-        redisClient.set(serverRedisStoreKey, "dummy".getBytes(StandardCharsets.UTF_8));
+        redisClient.set(key, "dummy".getBytes(StandardCharsets.UTF_8));
 
         // 有効期限を設定する。
         // 有効期限はコンポーネント tokenManager のプロパティ expiresSeconds で設定された値を使用する。
-        redisClient.pexpire(serverRedisStoreKey, expiresMilliSeconds);
+        redisClient.pexpire(key, expiresMilliSeconds);
     }
 
     @Override
     public boolean isValidToken(String clientToken, ServletExecutionContext context) {
-        String clientRedisStoreKey = toRedisStoreKey(clientToken);
+        String key = createKeyFromToken(clientToken);
 
         // クライアントトークンを紐づけたキーで値を取得できれば、トークンが有効であると判断できる。
         // サーバートークンが有効期限切れなどで存在しない場合は無効とする。
-        byte[] serverTokenBytes = redisClient.get(clientRedisStoreKey);
+        byte[] serverTokenBytes = redisClient.get(key);
         if (serverTokenBytes == null) {
             return false;
         }
-        redisClient.del(clientRedisStoreKey);
+        redisClient.del(key);
         return true;
     }
 
