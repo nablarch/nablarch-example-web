@@ -27,8 +27,11 @@ public class RedisTokenManager implements TokenManager {
 
     @Override
     public void saveToken(String serverToken, NablarchHttpServletRequestWrapper request) {
-        // severTokenを保存する
+        // トークンそのものをキーとして保存する。
+        // トークンを保持することが目的なので、値はダミーです。
+        // ユーザーごとにトークンを管理したい場合はユーザーに紐づく情報をキーにするよう検討してください。
         redisClient.set(serverToken,"dummy".getBytes(StandardCharsets.UTF_8));
+
         // 有効期限を設定する
         // 有効期限はコンポーネント tokenManager のプロパティ expires で設定された値を使用する。
         redisClient.pexpire(serverToken, expiresMilliSeconds);
