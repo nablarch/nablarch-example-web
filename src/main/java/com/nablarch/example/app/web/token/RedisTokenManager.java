@@ -103,10 +103,10 @@ public class RedisTokenManager implements TokenManager {
     /**
      * {@link LettuceRedisClient} を設定する。
      *
-     * @param client {@link LettuceRedisClient}
+     * @param redisClient {@link LettuceRedisClient}
      */
-    public void setClient(LettuceRedisClient client) {
-        this.redisClient = client;
+    public void setRedisClient(LettuceRedisClient redisClient) {
+        this.redisClient = redisClient;
     }
 
     /**
