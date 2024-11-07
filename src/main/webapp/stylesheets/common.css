@@ -590,6 +590,10 @@ th.width-250{
     color: #ffffff;
 }
 
+.nav-link:hover {
+    color: #ffffff;
+}
+
 .form-group {
     font-size: 1.25rem;
     margin: auto;
