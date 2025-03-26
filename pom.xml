@@ -277,6 +277,7 @@
           <entityPackageName>entity</entityPackageName>
           <dataDirectory>src/test/resources/data/h2</dataDirectory>
           <erdFile>src/main/resources/entity/h2.edm</erdFile>
+          <extraDdlDirectory>src/main/resources/extraDdl/h2</extraDdlDirectory>
         </configuration>
         <dependencies>
           <dependency>
