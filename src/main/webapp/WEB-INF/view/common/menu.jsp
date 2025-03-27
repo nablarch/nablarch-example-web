@@ -2,32 +2,26 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="n" uri="http://tis.co.jp/nablarch" %>
 <%@ page session="false" %>
-<n:link rel="stylesheet" type="text/css" href="/stylesheets/menu.css" />
 
 <div>
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse">
-        <!-- Brand and toggle get grouped for better mobile display -->
+    <nav class="navbar navbar-expand-md p-3" data-bs-theme="dark">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand">Project</a>
-            </div>
-            <div class="navbar-collapse collapse navbar-responsive-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <n:a href="/action/project/index">プロジェクト検索</n:a>
+            <a class="navbar-brand px-2 fs-4">Project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item px-2">
+                        <n:a href="/action/project/index" cssClass="nav-link">プロジェクト検索</n:a>
                     </li>
-                    <li>
-                        <n:a href="/action/projectBulk/index">プロジェクト一括更新</n:a>
+                    <li class="nav-item px-2">
+                        <n:a href="/action/projectBulk/index" cssClass="nav-link">プロジェクト一括更新</n:a>
                     </li>
                     <c:if test="${userContext.admin}">
-                        <li>
-                            <n:a href="/action/projectUpload">プロジェクト一括登録</n:a>
+                        <li class="nav-item px-2">
+                            <n:a href="/action/projectUpload" cssClass="nav-link">プロジェクト一括登録</n:a>
                         </li>
                     </c:if>
                 </ul>

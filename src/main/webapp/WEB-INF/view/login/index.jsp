@@ -8,11 +8,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%-- javascript --%>
-        <n:script type="text/javascript" src="/javascripts/lib/jquery-1.11.2.min.js"></n:script>
+        <n:script type="text/javascript" src="/javascripts/lib/jquery-3.7.1.min.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/projectInput.js"></n:script>
-        <%-- stylesheet --%>
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
         <title>ログイン</title>
     </head>
@@ -29,25 +26,25 @@
                     <n:errors filter="global" cssClass="message-error"/>
                 </div>
                 <h2 class="font-group">ログイン情報</h2>
-                <div class="form-group">
-                    <label for="loginId" class="col-md-2 control-label">ログインID</label>
+                <div class="row m-3">
+                    <label for="loginId" class="col-md-2 m-auto col-form-label">ログインID</label>
                     <div class="col-md-10">
-                        <n:text id="loginId" name="loginId" cssClass="form-control" errorCss="input-error" placeholder="ログインID"/>
+                        <n:text id="loginId" name="loginId" cssClass="form-control form-control-lg" errorCss="input-error" placeholder="ログインID"/>
                         <n:error errorCss="message-error" name="loginId" />
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="userPassword" class="col-md-2 control-label">パスワード</label>
+                <div class="row m-3">
+                    <label for="userPassword" class="col-md-2 m-auto col-form-label">パスワード</label>
                     <div class="col-md-10">
-                        <n:password id="userPassword" name="userPassword" restoreValue="false" cssClass="form-control" placeholder="パスワード" autocomplete="off"/>
+                        <n:password id="userPassword" name="userPassword" restoreValue="false" cssClass="form-control form-control-lg" placeholder="パスワード" autocomplete="off"/>
                         <n:error errorCss="message-error" name="userPassword" />
                     </div>
                 </div>
 
                 <div class="title-nav page-footer" >
                     <div class="button-nav">
-                        <div class="button-block real-button-block" style="float:right">
-                            <n:button uri="/action/login" cssClass="btn btn-raised" allowDoubleSubmission="false">ログイン</n:button>
+                        <div class="button-block real-button-block">
+                            <n:button uri="/action/login" cssClass="btn btn-lg btn-light" allowDoubleSubmission="false">ログイン</n:button>
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,7 @@
                 <div class="title-nav">
                     <span>プロジェクト一括登録画面</span>
                     <div class="button-nav">
-                        <n:button uri="/action/projectUpload/upload" allowDoubleSubmission="false" cssClass="btn btn-raised btn-default">登録</n:button>
+                        <n:button uri="/action/projectUpload/upload" allowDoubleSubmission="false" cssClass="btn btn-lg btn-light">登録</n:button>
                     </div>
                 </div>
                 <div class="message-area margin-top">
@@ -26,8 +26,7 @@
                     <n:errors errorCss="message-error"/>
                 </div>
                 <div class="floatClear"></div>
-                <br /><br />
-                <h4 class="font-group">プロジェクト情報ファイル選択</h4>
+                <h2 class="font-group mb-3">プロジェクト情報ファイル選択</h2>
                 <table class="table">
                     <col width="20%" />
                     <col width="30%" />
@@ -39,16 +38,8 @@
                         <tr>
                             <th class="width-250 required">プロジェクト情報ファイル</th>
                             <td >
-                                <div class="form-group is-fileinput">
-                                    <div class="input-group">
-                                        <n:file name="uploadFile" id="uploadFile"/>
-                                        <input type="text" readonly="readonly" class="form-control" placeholder="Browse...">
-                                        <span class="input-group-btn input-group-sm">
-                                            <button type="button" class="btn btn-fab btn-fab-mini">
-                                                <i class="material-icons">attach_file</i>
-                                            </button>
-                                        </span>
-                                    </div>
+                                <div class="input-group">
+                                    <n:file name="uploadFile" cssClass="form-control form-control-lg" id="uploadFile"/>
                                 </div>
                             </td>
                         </tr>
@@ -56,7 +47,7 @@
                 </table>
                 <div class="title-nav">
                     <div class="button-nav">
-                        <n:button uri="/action/projectUpload/upload" allowDoubleSubmission="false" cssClass="btn btn-raised btn-default">登録</n:button>
+                        <n:button uri="/action/projectUpload/upload" allowDoubleSubmission="false" cssClass="btn btn-lg btn-light">登録</n:button>
                     </div>
                 </div>
             </n:form>

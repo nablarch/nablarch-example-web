@@ -4,7 +4,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-web</artifactId>
-  <version>6u2</version>
+  <version>6u3</version>
   <packaging>war</packaging>
 
   <properties>
@@ -41,7 +41,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>6u2</version>
+        <version>6u3</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -263,7 +263,7 @@
       <plugin>
         <groupId>jp.co.tis.gsp</groupId>
         <artifactId>gsp-dba-maven-plugin</artifactId>
-        <version>5.1.0</version>
+        <version>5.2.0</version>
         <configuration>
           <driver>org.h2.Driver</driver>
           <url>jdbc:h2:./h2/db/nablarch_example</url>
@@ -277,6 +277,7 @@
           <entityPackageName>entity</entityPackageName>
           <dataDirectory>src/test/resources/data/h2</dataDirectory>
           <erdFile>src/main/resources/entity/h2.edm</erdFile>
+          <extraDdlDirectory>src/main/resources/extraDdl/h2</extraDdlDirectory>
         </configuration>
         <dependencies>
           <dependency>

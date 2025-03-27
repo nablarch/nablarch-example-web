@@ -19,74 +19,36 @@ table, caption, tbody, tfoot, thead, tr, th, td, input, select, textarea {
 }
 body {
   color: #222;
-  background: #FFF;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-left: 35px;
-  margin-right: 15px;
+  background: #EEEEEE;
 }
 hr {
   color: #DDDDDD;
   height: 1px;
   margin: 3px 0px 3px 0px;
 }
-
-table {
-    border-collapse: separate;
-}
-tr, th, td {
-    border: 1px solid #FFFFFF;
-    padding: 3px;
-    line-height: 18px;
-}
 .table {
   width: 100%;
 }
+
+tr, th, td {
+  line-height: 2.5;
+  font-size: 1.25rem;
+}
+
 .table th, .table th a  {
-  padding: 1px 6px 1px 6px;
-  font-weight: normal;
-  text-align: left;
-  height: 22px;
   background: #3F51B5;
   color: #FFFFFF;
+  font-weight: normal;
 }
-.table td {
-  padding: 1px 6px 1px 6px;
-  background-color: #E8EAF4;
-  align: left;
-  border-bottom: 1px solid #F0F0EE;
 
+a {
+  text-decoration: none;
 }
-.table td.center, .table th.center {
-  text-align: center;
+
+.btn {
+    padding: .5rem 2rem;
+    margin-top: 1rem;
 }
-/* start ワークフロー（申請/承認状況一覧） */
-td.border-left-top-bottom {
-  border-left:3px solid #00ccff;
-  border-top:3px solid #00ccff;
-  border-bottom:3px solid #00ccff;
-}
-td.border-top-bottom {
-  border-top:3px solid #00ccff;
-  border-bottom:3px solid #00ccff;
-}
-td.border-right-top-bottom {
-  border-right:3px solid #00ccff;
-  border-top:3px solid #00ccff;
-  border-bottom:3px solid #00ccff;
-}
-td.border-left-bottom {
-  border-left:3px solid #00ccff;
-  border-bottom:3px solid #00ccff;
-}
-td.border-bottom {
-  border-bottom:3px solid #00ccff;
-}
-td.border-right-bottom {
-  border-right:3px solid #00ccff;
-  border-bottom:3px solid #00ccff;
-}
-/* end ワークフロー（申請/承認状況一覧） */
 
 .list-table {
   table-layout: fixed;
@@ -405,7 +367,7 @@ ol.flow-navigation li div.active-step {
 }
 .button-block {
   float: right;
-  width: 104px;
+  width: 110px;
   height: 24px;
 }
 .sort-nav {
@@ -550,7 +512,7 @@ th.width-250{
 .required:after{
 	content:"必須";
 	color:#DB8B9A;
-	font-size:8px;
+	font-size:1rem;
 }
 
 .project-search-list table,
@@ -582,8 +544,23 @@ th.width-250{
 .input.width-200{
 	display:inline-block;
 }
+
+.pagination li:first-child .page-link {
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+}
+
+.pagination li:last-child .page-link {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+}
+
 .paging{
 	float:right;
+}
+
+.paging ul {
+    flex-wrap: wrap;
 }
 .page-footer {
 	margin-top: 10px;
@@ -597,11 +574,27 @@ th.width-250{
 	color:#0000FF;
 	font-size:17px;
 	font-weight: 700;
-	text-shadow: 2px 2px 2px #CCCCFF;}
-
+	text-shadow: 2px 2px 2px #CCCCFF;
+}
 
 .sideMenu{
 	width:90%;
 	margin-left:5%;
 }
 
+.navbar {
+    background-color: #3F51B5;
+}
+
+.nav-link {
+    color: #ffffff;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+.form-group {
+    font-size: 1.25rem;
+    margin: auto;
+}

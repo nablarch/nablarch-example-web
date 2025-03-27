@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%-- javascript --%>
-        <n:script type="text/javascript" src="/javascripts/lib/jquery-1.11.2.min.js"></n:script>
+        <n:script type="text/javascript" src="/javascripts/lib/jquery-3.7.1.min.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/projectList.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/clientList.js"></n:script>
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
@@ -20,20 +20,22 @@
     </head>
     <body>
         <n:include path="/WEB-INF/view/common/noscript.jsp" />
-        <div class="container-fluid mainContents">
+        <div class="mainContents">
             <n:include path="/WEB-INF/view/common/menu.jsp" />
             <n:include path="/WEB-INF/view/common/header.jsp" />
+        </div>
+        <div class="container-fluid mainContents">
             <div class="row">
                 <n:include path="/WEB-INF/view/common/sidemenu.jsp" />
-                <div class="pages col-xs-10">
+                <div class="pages col-md-10">
                     <div class="row">
-                        <div class="col-xs-12">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
                                     <div class="title-nav">
                                         <span>プロジェクト検索一覧画面</span>
                                         <div class="button-nav">
-                                            <n:a href="/action/project" cssClass="btn btn-raised btn-default">新規登録</n:a>
+                                            <n:a href="/action/project" cssClass="btn btn-lg btn-light">新規登録</n:a>
                                         </div>
                                     </div>
                                     <!-- 検索フォームでバリデーションエラーが発生していない場合だけ、検索結果を表示する。 -->
@@ -65,7 +67,7 @@
                                                 <c:param name="searchForm.sortKey" value="${searchForm.sortKey}"/>
                                                 <c:param name="searchForm.sortDir" value="${searchForm.sortDir}"/>
                                             </c:url>
-                                            <div class="sort-nav">
+                                            <div class="sort-nav mb-3">
                                                 <div style="float:left;">
                                                     <span class="font-group">
                                                     検索結果
@@ -106,36 +108,45 @@
                                                 <n:plainHidden name="searchForm.projectEndDateBegin"/>
                                                 <n:plainHidden name="searchForm.projectEndDateEnd"/>
                                                 <n:set var="sortKeyList" value="<%= ProjectSortKey.values() %>"/>
-                                                <n:select
-                                                        id="sortKey"
-                                                        name="searchForm.sortKey"
-                                                        listName="sortKeyList"
-                                                        elementValueProperty="value"
-                                                        elementLabelProperty="label"
-                                                        elementLabelPattern="$LABEL$"
-                                                        cssClass="btn dropdown-toggle"/>
-                                                <n:set var="sortOrderList" value="<%= SortOrder.values() %>"/>
-                                                <n:select
-                                                        id="sortDir"
-                                                        name="searchForm.sortDir"
-                                                        listName="sortOrderList"
-                                                        elementValueProperty="value"
-                                                        elementLabelProperty="label"
-                                                        elementLabelPattern="$LABEL$"
-                                                        cssClass="btn dropdown-toggle"/>
-                                                <input id="firstPageNumber" type="hidden" name="searchForm.pageNumber" value="1" />
+                                                <div class="row justify-content-end">
+                                                    <div class="col-md-2">
+                                                        <n:select
+                                                                id="sortKey"
+                                                                name="searchForm.sortKey"
+                                                                listName="sortKeyList"
+                                                                elementValueProperty="value"
+                                                                elementLabelProperty="label"
+                                                                elementLabelPattern="$LABEL$"
+                                                                cssClass="form-select form-select-lg"/>
+                                                        <n:set var="sortOrderList" value="<%= SortOrder.values() %>"/>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <n:select
+                                                                id="sortDir"
+                                                                name="searchForm.sortDir"
+                                                                listName="sortOrderList"
+                                                                elementValueProperty="value"
+                                                                elementLabelProperty="label"
+                                                                elementLabelPattern="$LABEL$"
+                                                                cssClass="form-select form-select-lg"/>
+                                                        <input id="firstPageNumber" type="hidden" name="searchForm.pageNumber" value="1" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </n:form>
 
                                         <!-- 検索結果 -->
                                         <app:listSearchResult
-                                            currentPageNumberCss="form-control"
-                                            pagingCss="paging"
+                                            useFirstSubmit="true"
+                                            currentPageNumberCss="fs-5 mb-3 border-0"
+                                            pagingCss="paging mb-3"
                                             usePageNumberSubmit="true"
-                                            prevSubmitLabel="«"
-                                            nextSubmitLabel="»"
-                                            prevSubmitCss="prev-page-link"
-                                            nextSubmitCss="next-page-link"
+                                            firstSubmitCss="page-link"
+                                            prevSubmitCss="page-link"
+                                            pageNumberSubmitCss="page-link"
+                                            nextSubmitCss="page-link"
+                                            useLastSubmit="true"
+                                            lastSubmitCss="page-link"
                                             resultSetCss="table table-striped table-hover"
                                             searchFormName="searchForm"
                                             searchUri="${uri}"
@@ -181,7 +192,7 @@
 
                                     <div class="title-nav page-footer">
                                         <div class="button-nav">
-                                            <n:a href="/action/project" cssClass="btn btn-raised btn-default">新規登録</n:a>
+                                            <n:a href="/action/project" cssClass="btn btn-lg btn-light">新規登録</n:a>
                                         </div>
                                     </div>
                                 </div>
