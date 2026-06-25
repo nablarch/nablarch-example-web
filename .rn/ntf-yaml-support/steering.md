@@ -107,13 +107,13 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 **Steps**:
 
-- [ ] 各 xlsx について、代表的なシート・行をいくつかピックアップしてYAMLと突き合わせ、値・型・行数が一致することを確認する（全件でなくサンプリングで可）
-- [ ] 不一致があれば報告して止まる
-- [ ] 全 `.xlsx` ファイルを削除する
-- [ ] 削除をコミット・プッシュする
-- [ ] self-check (OK/NG per completion criterion, record in checks/task-4.md)
-- [ ] QA expert review (subagent)
-- [ ] user review
+- [x] 各 xlsx について、代表的なシート・行をいくつかピックアップしてYAMLと突き合わせ、値・型・行数が一致することを確認する（全件でなくサンプリングで可）
+- [x] 不一致があれば報告して止まる
+- [x] 全 `.xlsx` ファイルを削除する
+- [x] 削除をコミット・プッシュする
+- [x] self-check (OK/NG per completion criterion, record in checks/task-4.md)
+- [x] QA expert review (subagent)
+- [x] user review
 
 **Completion criteria**:
 
