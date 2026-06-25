@@ -99,18 +99,40 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 - 変換されたYAMLがスキーマに対して有効である（変換ツールが検証済み）
 - 変換済みYAMLがgitでtracked filesとして存在する
 
-### #4: unit-test.xml に YamlTestDataParser を設定してYAMLテストデータで全テストをパスさせる
+### #4: ExcelとYAMLの内容一致をサンプリング確認して xlsx を削除する
 
-**Purpose**: `unit-test.xml` に `YamlTestDataParser` を設定し、`.xlsx` なしで全テストがパスすることを確認する。
+**Purpose**: 変換済みYAMLがExcelの内容を正しく再現していることをサンプリングで確認し、xlsx を削除してコミット・プッシュする。
 
 **Prerequisites**: #3
 
 **Steps**:
 
-- [ ] `src/test/resources/unit-test.xml` に `YamlTestDataParser` の設定を追加する（PR #211の`climan-project/unit-test.xml`変更を参照）
+- [ ] 各 xlsx について、代表的なシート・行をいくつかピックアップしてYAMLと突き合わせ、値・型・行数が一致することを確認する（全件でなくサンプリングで可）
+- [ ] 不一致があれば報告して止まる
 - [ ] 全 `.xlsx` ファイルを削除する
-- [ ] `mvn test` が BUILD SUCCESS になることを確認する
+- [ ] 削除をコミット・プッシュする
 - [ ] self-check (OK/NG per completion criterion, record in checks/task-4.md)
+- [ ] QA expert review (subagent)
+- [ ] user review
+
+**Completion criteria**:
+
+- サンプリングした全行でExcelとYAMLの値・行数が一致している
+- 全 `.xlsx` ファイルが削除されている
+- 削除がコミット・プッシュされている
+
+### #5: unit-test.xml に YamlTestDataParser を設定してYAMLテストデータで全テストをパスさせる
+
+**Purpose**: `unit-test.xml` に `YamlTestDataParser` を設定し、xlsx なしで全テストがパスすることを確認する。
+
+**Prerequisites**: #4
+
+**Steps**:
+
+- [ ] `src/test/resources/unit-test.xml` に `YamlTestDataParser` の設定を追加する（PR #211 の `climan-project/unit-test.xml` 変更を参照）
+- [ ] `mvn test` が BUILD SUCCESS になることを確認する
+- [ ] テストログで YamlTestDataParser が実際に使われていることを確認する
+- [ ] self-check (OK/NG per completion criterion, record in checks/task-5.md)
 - [ ] QA expert review (subagent)
 - [ ] language expert review (subagent)
 - [ ] software-engineering expert review (subagent)
@@ -119,9 +141,8 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 **Completion criteria**:
 
 - `src/test/resources/unit-test.xml` に `testDataParser` として `YamlTestDataParser` が定義されている
-- `mvn test` が BUILD SUCCESS で終了する（全テストパス）
-- `.xlsx` ファイルが全て削除されている
-- テストがYAMLテストデータで実行されている（ログで確認）
+- `mvn test` が BUILD SUCCESS で終了する（全テストパス、xlsx なし）
+- テストログで YamlTestDataParser が実際に使われていることが確認できる
 
 # Decisions
 
