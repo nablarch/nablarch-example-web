@@ -81,16 +81,16 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 **Steps**:
 
-- [ ] `AuthenticationActionRequestTest.xlsx` をYAMLに変換する
-- [ ] `ClientActionTest.xlsx` をYAMLに変換する
-- [ ] `IndustryActionTest.xlsx` をYAMLに変換する
-- [ ] `ProjectActionRequestTest.xlsx` をYAMLに変換する
-- [ ] `ProjectBulkActionRequestTest.xlsx` をYAMLに変換する
-- [ ] `ProjectUploadActionRequestTest.xlsx` をYAMLに変換する
-- [ ] 変換済みのYAMLファイルを各テストクラスと同じディレクトリ（`src/test/java/.../`）に配置する
-- [ ] 変換済みYAMLファイルをgitに追加してコミットする
-- [ ] self-check (OK/NG per completion criterion, record in checks/task-3.md)
-- [ ] QA expert review (subagent)
+- [x] `AuthenticationActionRequestTest.xlsx` をYAMLに変換する
+- [x] `ClientActionTest.xlsx` をYAMLに変換する
+- [x] `IndustryActionTest.xlsx` をYAMLに変換する
+- [x] `ProjectActionRequestTest.xlsx` をYAMLに変換する
+- [x] `ProjectBulkActionRequestTest.xlsx` をYAMLに変換する
+- [x] `ProjectUploadActionRequestTest.xlsx` をYAMLに変換する
+- [x] 変換済みのYAMLファイルを各テストクラスと同じディレクトリ（`src/test/java/.../`）に配置する
+- [x] 変換済みYAMLファイルをgitに追加してコミットする
+- [x] self-check (OK/NG per completion criterion, record in checks/task-3.md)
+- [x] QA expert review (subagent)
 - [ ] user review
 
 **Completion criteria**:
@@ -150,6 +150,6 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 - **Status**: not suspended
 - **Date**: 2026-06-25
-- **Last completed**: #2 pom.xml に nablarch-testing-yaml / nablarch-testing-converter 追加
-- **Next**: #3 ExcelテストデータをYAMLに変換
+- **Last completed**: #3 ExcelテストデータをYAMLに変換（50ファイル、全スキーマ検証済み）
+- **Next**: #4 サンプリング確認 → xlsx 削除
 - **Notes**: user review 待ち。
