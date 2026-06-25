@@ -1,0 +1,19 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - context: "userContext"
+        description: "権限チェックエラー発生"
+        expectedMessageId: ""
+        expectedSearch: ""
+        expectedStatusCode: "403"
+        forwardUri: "/WEB-INF/view/common/errorPages/permissionError.jsp"
+        isValidToken: "true"
+        no: "1"
+  - id: "userContext"
+    rows:
+      - HTTP_METHOD: "GET"
+        REQUEST_ID: "index"
+        USER_ID: "106"
+  - id: "requestParams"
+    rows:
+      - {}

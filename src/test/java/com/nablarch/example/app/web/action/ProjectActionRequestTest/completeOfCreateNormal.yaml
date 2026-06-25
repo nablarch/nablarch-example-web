@@ -1,0 +1,20 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - context: "user"
+        description: "登録完了画面へ遷移する。"
+        expectedMessageId: ""
+        expectedSearch: ""
+        expectedStatusCode: "200"
+        expectedTable: ""
+        forwardUri: "/WEB-INF/view/project/completeOfCreate.jsp"
+        isValidToken: "true"
+        no: "1"
+  - id: "user"
+    rows:
+      - HTTP_METHOD: "POST"
+        REQUEST_ID: "completeOfCreate"
+        USER_ID: "105"
+  - id: "requestParams"
+    rows:
+      - {}

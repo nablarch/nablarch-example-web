@@ -1,0 +1,47 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - context: "user"
+        description: "プロジェクト削除"
+        expectedMessageId: ""
+        expectedSearch: ""
+        expectedStatusCode: "303"
+        expectedTable: "1"
+        forwardUri: "completeOfDelete"
+        isValidToken: "true"
+        no: "1"
+        setUpTable: "1"
+  - id: "user"
+    rows:
+      - HTTP_METHOD: "POST"
+        REQUEST_ID: "delete"
+        USER_ID: "105"
+  - id: "requestParams"
+    rows:
+      - {}
+
+setup_tables:
+  - group_id: "1"
+    table: "PROJECT"
+    rows:
+      - PROJECT_ID: "99999"
+        PROJECT_NAME: "プロジェクト００１"
+        PROJECT_TYPE: "development"
+        PROJECT_CLASS: "s"
+        PROJECT_START_DATE: "null"
+        PROJECT_END_DATE: "null"
+        CLIENT_ID: "1"
+        PROJECT_MANAGER: "null"
+        PROJECT_LEADER: "null"
+        USER_ID: "105"
+        NOTE: "null"
+        SALES: "null"
+        COST_OF_GOODS_SOLD: "null"
+        SGA: "null"
+        ALLOCATION_OF_CORP_EXPENSES: "null"
+        VERSION: "0"
+
+expected_tables:
+  - group_id: "1"
+    table: "PROJECT"
+    rows: []

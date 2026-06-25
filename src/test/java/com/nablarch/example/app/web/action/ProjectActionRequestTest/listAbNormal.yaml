@@ -1,0 +1,46 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - context: "user"
+        description: "バリデーションエラーが発生する場合"
+        expectedMessageId: "nablarch.core.validation.ee.Required"
+        expectedSearch: ""
+        expectedStatusCode: "400"
+        forwardUri: "/WEB-INF/view/project/index.jsp"
+        isValidToken: "true"
+        no: "1"
+        queryParams: "searchCondition"
+        setUpTable: "1"
+  - id: "user"
+    rows:
+      - HTTP_METHOD: "GET"
+        REQUEST_ID: "list"
+        USER_ID: "105"
+  - id: "requestParams"
+    rows:
+      - {}
+  - id: "searchCondition"
+    rows:
+      - searchForm.pageNumber: ""
+        searchForm.projectName: "プロジェクト００１"
+        searchForm.sortKey: ""
+
+setup_tables:
+  - group_id: "1"
+    table: "PROJECT"
+    rows:
+      - PROJECT_NAME: "プロジェクト００１"
+        PROJECT_TYPE: "development"
+        PROJECT_CLASS: "s"
+        PROJECT_START_DATE: "null"
+        PROJECT_END_DATE: "null"
+        CLIENT_ID: "1"
+        PROJECT_MANAGER: "null"
+        PROJECT_LEADER: "null"
+        USER_ID: "null"
+        NOTE: "null"
+        SALES: "null"
+        COST_OF_GOODS_SOLD: "null"
+        SGA: "null"
+        ALLOCATION_OF_CORP_EXPENSES: "null"
+        VERSION: "0"

@@ -1,0 +1,20 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - context: "user"
+        description: "完了画面表示"
+        expectedMessageId: ""
+        expectedSearch: ""
+        expectedStatusCode: "200"
+        forwardUri: "/WEB-INF/view/projectBulk/completeOfUpdate.jsp"
+        isValidToken: "true"
+        no: "1"
+        setUpTable: "1"
+  - id: "user"
+    rows:
+      - HTTP_METHOD: "POST"
+        REQUEST_ID: "completeOfUpdate"
+        USER_ID: "105"
+  - id: "requestParams"
+    rows:
+      - {}
