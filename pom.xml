@@ -209,7 +209,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- nablarch-bom 未登録のため version を明示（SNAPSHOT リリース待ち） -->
+    <!-- 以下2依存は nablarch-bom 未登録のため version を明示（SNAPSHOT リリース待ち） -->
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-testing-yaml</artifactId>
