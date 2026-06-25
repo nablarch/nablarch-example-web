@@ -1,0 +1,17 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - case: "全て妥当な値の場合"
+        expectedMessageId1: ""
+        propertyName1: ""
+        title: "正常系-1"
+      - case: "子Formの1つで、不正なプロジェクトクラスが設定されていた場合"
+        expectedMessageId1: "{nablarch.core.validation.ee.EnumElement.message}"
+        propertyName1: "projectClass[0].projectClass"
+        title: ""
+  - id: "params"
+    rows:
+      - "projectClass[0].projectClass": "ss"
+        "projectClass[1].projectClass": "s"
+      - "projectClass[0].projectClass": "hoge"
+        "projectClass[1].projectClass": "s"

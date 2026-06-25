@@ -17,6 +17,26 @@
   <!-- メインを上書きする設定-->
   <import file="override_test.xml"/>
 
+  <!-- YAML 用インタープリタリスト（QuotationTrimmer を含まない）
+       YAML 1.2 ではライブラリがダブルクォートを構文として処理済みで返すため、
+       QuotationTrimmer は不要かつ二重処理になる。 -->
+  <list name="yamlInterpreters">
+    <component-ref name="nullInterpreter"/>
+    <component-ref name="dateTimeInterpreter"/>
+    <component-ref name="lineSeparatorInterpreter"/>
+    <component-ref name="compositeInterpreter"/>
+  </list>
+
+  <!-- testDataParser を YamlTestDataParser に設定 -->
+  <component name="testDataParser" class="nablarch.test.core.reader.YamlTestDataParser"
+             autowireType="None">
+    <property name="dbInfo" ref="dbInfo"/>
+    <property name="interpreters" ref="yamlInterpreters"/>
+    <property name="defaultValues">
+      <component class="nablarch.test.core.db.BasicDefaultValues"/>
+    </property>
+  </component>
+
   <!-- HTML5の仕様で記述しているため既存のHTMLチェッカを外す -->
   <component name="httpTestConfiguration" class="nablarch.test.core.http.HttpTestConfiguration">
     <property name="checkHtml" value="false" />
