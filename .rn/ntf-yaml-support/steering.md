@@ -41,11 +41,11 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 **Steps**:
 
-- [ ] `mvn -P gsp clean generate-resources` を実行してエンティティクラスを生成する
-- [ ] `mvn test` を実行する
-- [ ] 全テストがパスすることを確認する（失敗があれば報告して止まる）
-- [ ] self-check (OK/NG per completion criterion, record in checks/task-1.md)
-- [ ] QA expert review (subagent)
+- [x] `mvn -P gsp clean generate-resources` を実行してエンティティクラスを生成する
+- [x] `mvn test` を実行する
+- [x] 全テストがパスすることを確認する（失敗があれば報告して止まる）
+- [x] self-check (OK/NG per completion criterion, record in checks/task-1.md)
+- [x] QA expert review (subagent)
 - [ ] user review
 
 **Completion criteria**:
@@ -150,6 +150,6 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 - **Status**: not suspended
 - **Date**: 2026-06-25
-- **Last completed**: (none)
-- **Next**: #1 現状のビルド・テストで全PASSを確認する
-- **Notes**: セッション開始。PR #211（nablarch-system-development-guide）の変更内容を nablarch-example-web に適用する。
+- **Last completed**: #1 現状のビルド・テストで全PASSを確認する（Tests run: 151, Failures: 0）
+- **Next**: #2 pom.xml に依存追加
+- **Notes**: ベースライン確認済み。次はタスク #2。
