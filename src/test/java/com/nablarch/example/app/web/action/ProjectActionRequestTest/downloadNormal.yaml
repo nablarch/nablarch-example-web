@@ -41,7 +41,7 @@ setup_tables:
         USER_ID: "105"
         NOTE: "テスト備考"
         SALES: "1000"
-        COST_OF_GOODS_SOLD: "2000"
+        COST_OF_GOODS_SOLD: "2000.0"
         SGA: "3000"
         ALLOCATION_OF_CORP_EXPENSES: "4000"
         VERSION: "0"
