@@ -60,12 +60,12 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 **Steps**:
 
-- [ ] `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT` をtest scopeで追加する
-- [ ] `pom.xml` に `nablarch-testing-converter:1.0.0-SNAPSHOT` をtest scopeで追加する
-- [ ] `mvn dependency:resolve` で依存が解決できることを確認する
-- [ ] self-check (OK/NG per completion criterion, record in checks/task-2.md)
-- [ ] QA expert review (subagent)
-- [ ] software-engineering expert review (subagent)
+- [x] `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT` をtest scopeで追加する
+- [x] `pom.xml` に `nablarch-testing-converter:1.0.0-SNAPSHOT` をtest scopeで追加する
+- [x] `mvn dependency:resolve` で依存が解決できることを確認する
+- [x] self-check (OK/NG per completion criterion, record in checks/task-2.md)
+- [x] QA expert review (subagent)
+- [x] software-engineering expert review (subagent)
 - [ ] user review
 
 **Completion criteria**:
@@ -150,6 +150,6 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 - **Status**: not suspended
 - **Date**: 2026-06-25
-- **Last completed**: #1 現状のビルド・テストで全PASSを確認する（Tests run: 151, Failures: 0）
-- **Next**: #2 pom.xml に依存追加
-- **Notes**: ベースライン確認済み。次はタスク #2。
+- **Last completed**: #2 pom.xml に nablarch-testing-yaml / nablarch-testing-converter 追加
+- **Next**: #3 ExcelテストデータをYAMLに変換
+- **Notes**: user review 待ち。
