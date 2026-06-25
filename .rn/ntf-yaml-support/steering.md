@@ -129,13 +129,13 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 **Steps**:
 
-- [ ] `src/test/resources/unit-test.xml` に `YamlTestDataParser` の設定を追加する（PR #211 の `climan-project/unit-test.xml` 変更を参照）
-- [ ] `mvn test` が BUILD SUCCESS になることを確認する
-- [ ] テストログで YamlTestDataParser が実際に使われていることを確認する
-- [ ] self-check (OK/NG per completion criterion, record in checks/task-5.md)
-- [ ] QA expert review (subagent)
-- [ ] language expert review (subagent)
-- [ ] software-engineering expert review (subagent)
+- [x] `src/test/resources/unit-test.xml` に `YamlTestDataParser` の設定を追加する（PR #211 の `climan-project/unit-test.xml` 変更を参照）
+- [x] `mvn test` が BUILD SUCCESS になることを確認する
+- [x] テストログで YamlTestDataParser が実際に使われていることを確認する
+- [x] self-check (OK/NG per completion criterion, record in checks/task-5.md)
+- [x] QA expert review (subagent)
+- [x] language expert review (subagent)
+- [x] software-engineering expert review (subagent)
 - [ ] user review
 
 **Completion criteria**:
@@ -148,4 +148,18 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 # State
 
-<!-- placeholder -->
+- **Status**: paused
+- **Date**: 2026-06-25
+- **Last completed**: #4 xlsx削除・サンプリング確認完了
+- **Next**: #5 ユーザーレビュー待ち → 承認後チェックオフ → Acceptance criteria 確認
+- **Notes**: |
+    タスク #5 の実装・レビューは全て完了。ユーザーレビュー待ちで一時停止。
+    - unit-test.xml に YamlTestDataParser を設定済み（コミット 373edd8）
+    - yamlInterpreters はインライン component 定義（component-ref は使わない）
+    - form/dto の .xls 9ファイルも変換・削除済み（計 15ファイル削除）
+    - 孤立 YAML（ProjectSearchFormTest/testBeanValidation.yaml）を削除済み
+    - mvn test: Tests run: 151, Failures: 0 — BUILD SUCCESS
+    - QA・SE レビュー全て PASS（Language は N/A — XML 設定変更のみ）
+    - task-5.md は checks/ に作成済み（未コミット、このコミットで保存）
+    - PR: https://github.com/nablarch/nablarch-example-web/pull/139
+    - ユーザー承認後: steering の user review をチェックオフ → complete task #5 コミット → Acceptance criteria 実行
