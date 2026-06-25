@@ -21,10 +21,19 @@
        YAML 1.2 ではライブラリがダブルクォートを構文として処理済みで返すため、
        QuotationTrimmer は不要かつ二重処理になる。 -->
   <list name="yamlInterpreters">
-    <component-ref name="nullInterpreter"/>
-    <component-ref name="dateTimeInterpreter"/>
-    <component-ref name="lineSeparatorInterpreter"/>
-    <component-ref name="compositeInterpreter"/>
+    <component class="nablarch.test.core.util.interpreter.NullInterpreter"/>
+    <component class="nablarch.test.core.util.interpreter.DateTimeInterpreter">
+      <property name="systemTimeProvider" ref="systemTimeProvider"/>
+      <property name="setUpDateTime" value="${nablarch.dateTimeInterpreter.setUpDateTime}"/>
+    </component>
+    <component class="nablarch.test.core.util.interpreter.LineSeparatorInterpreter"/>
+    <component class="nablarch.test.core.util.interpreter.CompositeInterpreter">
+      <property name="interpreters">
+        <list>
+          <component class="nablarch.test.core.util.interpreter.BasicJapaneseCharacterInterpreter"/>
+        </list>
+      </property>
+    </component>
   </list>
 
   <!-- testDataParser を YamlTestDataParser に設定 -->
