@@ -148,8 +148,16 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 # State
 
-- **Status**: not suspended
+- **Status**: paused
 - **Date**: 2026-06-25
 - **Last completed**: #3 ExcelテストデータをYAMLに変換（50ファイル、全スキーマ検証済み）
 - **Next**: #4 サンプリング確認 → xlsx 削除
-- **Notes**: user review 待ち。
+- **Notes**: |
+    タスク #3 完了・ユーザー承認済み。
+    - 50ファイルの YAML を src/test/java/.../action/ 配下に配置済み（commit 529e1c2）
+    - xlsx は 6ファイルがまだ残っている（削除はタスク #4）
+    - タスク #4: 各 xlsx の代表行を YAML と突き合わせてサンプリング確認 → 全 xlsx を git rm → コミット・プッシュ
+    - タスク #5: unit-test.xml に YamlTestDataParser を設定 → mvn test が BUILD SUCCESS（xlsx なし）を確認
+    - 注意: ルートに META-INF/ と checks/ が残っていたが削除済み（jar 解凍残骸とエキスパントの誤パス）
+    - PR: https://github.com/nablarch/nablarch-example-web/pull/139（base: develop）
+    - ブランチ: ntf-yaml-support
