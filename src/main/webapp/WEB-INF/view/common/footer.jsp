@@ -7,7 +7,7 @@
 <table class="w-100">
     <tr>
         <td class="text-end">
-            TIS株式会社
+            TISI株式会社
         </td>
     </tr>
 </table>
