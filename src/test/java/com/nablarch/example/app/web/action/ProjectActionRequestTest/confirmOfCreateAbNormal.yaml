@@ -1,23 +1,23 @@
 list_maps:
   - id: "testShots"
     rows:
-      - context: "user"
+      - no: "1"
         description: "バリデーションエラーが発生すること。"
+        context: "user"
+        isValidToken: "true"
+        expectedStatusCode: "400"
         expectedMessageId: "nablarch.core.validation.ee.Required, nablarch.core.validation.ee.Required, nablarch.core.validation.ee.Required,\
   \ nablarch.core.validation.ee.Required"
         expectedSearch: ""
-        expectedStatusCode: "400"
         forwardUri: "/WEB-INF/view/project/create.jsp"
-        isValidToken: "true"
-        no: "1"
   - id: "user"
     rows:
-      - HTTP_METHOD: "POST"
-        REQUEST_ID: "confirmOfCreate"
+      - REQUEST_ID: "confirmOfCreate"
         USER_ID: "105"
+        HTTP_METHOD: "POST"
   - id: "requestParams"
     rows:
-      - form.clientId: ""
-        form.projectClass: ""
-        form.projectName: ""
+      - form.projectName: ""
         form.projectType: ""
+        form.projectClass: ""
+        form.clientId: ""

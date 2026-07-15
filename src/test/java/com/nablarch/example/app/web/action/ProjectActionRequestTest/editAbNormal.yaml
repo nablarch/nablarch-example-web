@@ -1,20 +1,20 @@
 list_maps:
   - id: "testShots"
     rows:
-      - context: "user"
+      - no: "1"
         description: "指定したプロジェクトIDを持つプロジェクトが存在しない場合。"
+        context: "user"
+        isValidToken: "true"
+        setUpTable: "1"
+        expectedStatusCode: "404"
         expectedMessageId: ""
         expectedSearch: ""
-        expectedStatusCode: "404"
         forwardUri: "/WEB-INF/view/common/errorPages/pageNotFoundError.jsp"
-        isValidToken: "true"
-        no: "1"
-        setUpTable: "1"
   - id: "user"
     rows:
-      - HTTP_METHOD: "GET"
-        REQUEST_ID: "edit/77777"
+      - REQUEST_ID: "edit/77777"
         USER_ID: "105"
+        HTTP_METHOD: "GET"
   - id: "requestParams"
     rows:
       - {}

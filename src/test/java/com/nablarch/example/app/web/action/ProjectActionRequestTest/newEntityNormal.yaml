@@ -1,19 +1,19 @@
 list_maps:
   - id: "testShots"
     rows:
-      - context: "userContext"
+      - no: "1"
         description: "プロジェクト登録画面へ遷移すること。"
+        context: "userContext"
+        isValidToken: "true"
+        expectedStatusCode: "200"
         expectedMessageId: ""
         expectedSearch: ""
-        expectedStatusCode: "200"
         forwardUri: "/WEB-INF/view/project/create.jsp"
-        isValidToken: "true"
-        no: "1"
   - id: "userContext"
     rows:
-      - HTTP_METHOD: "GET"
-        REQUEST_ID: "newEntity"
+      - REQUEST_ID: "newEntity"
         USER_ID: "105"
+        HTTP_METHOD: "GET"
   - id: "requestParams"
     rows:
       - {}

@@ -1,20 +1,20 @@
 list_maps:
   - id: "testShots"
     rows:
-      - context: "user"
+      - no: "1"
         description: "二重サブミットエラー"
+        context: "user"
+        isValidToken: "false"
+        expectedStatusCode: "400"
         expectedMessageId: "errors.doubleSubmission"
         expectedSearch: ""
-        expectedStatusCode: "400"
         expectedTable: "1"
         forwardUri: "/WEB-INF/view/common/errorPages/doubleSubmissionError.jsp"
-        isValidToken: "false"
-        no: "1"
   - id: "user"
     rows:
-      - HTTP_METHOD: "POST"
-        REQUEST_ID: "create"
+      - REQUEST_ID: "create"
         USER_ID: "105"
+        HTTP_METHOD: "POST"
   - id: "requestParams"
     rows:
       - {}

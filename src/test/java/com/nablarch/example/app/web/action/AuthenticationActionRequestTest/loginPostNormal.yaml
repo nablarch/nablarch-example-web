@@ -1,30 +1,30 @@
 list_maps:
   - id: "testShots"
     rows:
-      - context: "user"
+      - no: "1"
         description: "ログイン成功"
+        context: "user"
+        isValidToken: "true"
+        setUpTable: "1"
+        expectedStatusCode: "303"
         expectedMessageId: ""
         expectedSearch: ""
-        expectedStatusCode: "303"
         forwardUri: "/action/project/index"
-        isValidToken: "true"
-        no: "1"
-        setUpTable: "1"
   - id: "user"
     rows:
-      - HTTP_METHOD: "POST"
-        REQUEST_ID: "login"
+      - REQUEST_ID: "login"
         USER_ID: "105"
+        HTTP_METHOD: "POST"
   - id: "requestParams"
     rows:
       - loginId: "10000001"
         userPassword: "pass123-"
   - id: "userContext1"
     rows:
-      - get: "105"
-        name: "userId"
-      - get: "一般ユーザ１"
-        name: "kanjiName"
+      - name: "userId"
+        get: "105"
+      - name: "kanjiName"
+        get: "一般ユーザ１"
 
 setup_tables:
   - group_id: "1"

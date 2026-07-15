@@ -1,21 +1,21 @@
 list_maps:
   - id: "testShots"
     rows:
-      - context: "user"
+      - no: "1"
         description: "一括更新実行"
+        context: "user"
+        isValidToken: "true"
+        setUpTable: "1"
+        expectedTable: "1"
+        expectedStatusCode: "303"
         expectedMessageId: ""
         expectedSearch: ""
-        expectedStatusCode: "303"
-        expectedTable: "1"
         forwardUri: "completeOfUpdate"
-        isValidToken: "true"
-        no: "1"
-        setUpTable: "1"
   - id: "user"
     rows:
-      - HTTP_METHOD: "POST"
-        REQUEST_ID: "update"
+      - REQUEST_ID: "update"
         USER_ID: "105"
+        HTTP_METHOD: "POST"
   - id: "requestParams"
     rows:
       - {}

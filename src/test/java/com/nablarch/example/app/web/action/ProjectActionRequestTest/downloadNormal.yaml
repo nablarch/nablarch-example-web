@@ -1,28 +1,28 @@
 list_maps:
   - id: "testShots"
     rows:
-      - context: "user"
+      - no: "1"
         description: "プロジェクト一覧ダウンロード"
+        context: "user"
+        isValidToken: "false"
+        setUpTable: "1"
+        queryParams: "searchCondition"
+        expectedStatusCode: "200"
         expectedMessageId: ""
         expectedSearch: ""
-        expectedStatusCode: "200"
         forwardUri: ""
-        isValidToken: "false"
-        no: "1"
-        queryParams: "searchCondition"
-        setUpTable: "1"
   - id: "user"
     rows:
-      - HTTP_METHOD: "GET"
-        REQUEST_ID: "download"
+      - REQUEST_ID: "download"
         USER_ID: "105"
+        HTTP_METHOD: "GET"
   - id: "requestParams"
     rows:
       - {}
   - id: "searchCondition"
     rows:
-      - searchForm.pageNumber: "1"
-        searchForm.projectName: "プロジェクト００１"
+      - searchForm.projectName: "プロジェクト００１"
+        searchForm.pageNumber: "1"
         searchForm.sortKey: "id"
 
 setup_tables:

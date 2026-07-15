@@ -1,20 +1,20 @@
 list_maps:
   - id: "testShots"
     rows:
-      - context: "user"
+      - no: "1"
         description: "確認処理でバリデーションエラー発生"
+        context: "user"
+        isValidToken: "true"
+        setUpTable: "1"
+        expectedStatusCode: "400"
         expectedMessageId: "nablarch.core.validation.ee.Required"
         expectedSearch: ""
-        expectedStatusCode: "400"
         forwardUri: "/WEB-INF/view/projectBulk/update.jsp"
-        isValidToken: "true"
-        no: "1"
-        setUpTable: "1"
   - id: "user"
     rows:
-      - HTTP_METHOD: "POST"
-        REQUEST_ID: "confirmOfUpdate"
+      - REQUEST_ID: "confirmOfUpdate"
         USER_ID: "105"
+        HTTP_METHOD: "POST"
   - id: "requestParams"
     rows:
       - "bulkForm.projectList[0].projectId": ""
