@@ -152,9 +152,12 @@ NTF 仕様（`ntf-testdata-doc.md` 8.1節）では「Excel セルは必ず文字
 
 # State
 
-<!--
-  Status: active
-  Last completed: —
-  Next: —
-  Notes: —
--->
+- **Status**: paused
+- **Date**: 2026-07-15
+- **Last completed**: mvn プラグイン経由での変換確認・xlsx 削除・全テストパス
+- **Next**: #5 ユーザーレビュー → `/rn:ty` で承認 → complete task #5 → Acceptance criteria 実行
+- **Notes**: |
+    pom.xml に nablarch-testing-converter を plugin として追加（default-cli execution）。
+    converter の重複カラム WARN 対応済み版でプラグイン動作確認完了。
+    xlsx 15ファイル削除・YAML 再変換・mvn test 151 tests PASS 確認済み（コミット 34d058c）。
+    task #5 の実装・レビューは全て完了済み（unit-test.xml YamlTestDataParser 設定）。
