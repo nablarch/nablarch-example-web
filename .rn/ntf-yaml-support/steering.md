@@ -136,7 +136,7 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 - [x] QA expert review (subagent)
 - [x] language expert review (subagent)
 - [x] software-engineering expert review (subagent)
-- [x] user review
+- [ ] user review
 
 **Completion criteria**:
 
