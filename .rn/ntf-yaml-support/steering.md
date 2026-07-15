@@ -146,20 +146,15 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 # Decisions
 
+## `downloadNormal.yaml` の `COST_OF_GOODS_SOLD: "2000.0"` について
+
+NTF 仕様（`ntf-testdata-doc.md` 8.1節）では「Excel セルは必ず文字列書式」が要件。元の xlsx のセルが数値書式だったため、コンバーターが `cell.toString()` で `"2000.0"` を出力した。修正するなら xlsx 側（セルを文字列書式に直してから再変換）だが、xlsx はすでに削除済みのため修正対象がない。`"2000.0"` のまま運用する（H2 が INTEGER カラムへ暗黙変換するためテストに影響なし）。**この判断は確定。再度議題にしない。**
+
 # State
 
-- **Status**: paused
-- **Date**: 2026-06-25
-- **Last completed**: #4 xlsx削除・サンプリング確認完了
-- **Next**: #5 ユーザーレビュー待ち → 承認後チェックオフ → Acceptance criteria 確認
-- **Notes**: |
-    タスク #5 の実装・レビューは全て完了。ユーザーレビュー待ちで一時停止。
-    - unit-test.xml に YamlTestDataParser を設定済み（コミット 373edd8）
-    - yamlInterpreters はインライン component 定義（component-ref は使わない）
-    - form/dto の .xls 9ファイルも変換・削除済み（計 15ファイル削除）
-    - 孤立 YAML（ProjectSearchFormTest/testBeanValidation.yaml）を削除済み
-    - mvn test: Tests run: 151, Failures: 0 — BUILD SUCCESS
-    - QA・SE レビュー全て PASS（Language は N/A — XML 設定変更のみ）
-    - task-5.md は checks/ に作成済み（未コミット、このコミットで保存）
-    - PR: https://github.com/nablarch/nablarch-example-web/pull/139
-    - ユーザー承認後: steering の user review をチェックオフ → complete task #5 コミット → Acceptance criteria 実行
+<!--
+  Status: active
+  Last completed: —
+  Next: —
+  Notes: —
+-->
