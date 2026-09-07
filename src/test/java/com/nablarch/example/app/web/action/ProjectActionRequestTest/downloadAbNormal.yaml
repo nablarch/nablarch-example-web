@@ -19,7 +19,7 @@ list_maps:
         HTTP_METHOD: "GET"
   - id: "requestParams"
     rows:
-      - {}
+      - "[no]": "1"
   - id: "searchCondition"
     rows:
       - searchForm.projectName: "プロジェクト００１"

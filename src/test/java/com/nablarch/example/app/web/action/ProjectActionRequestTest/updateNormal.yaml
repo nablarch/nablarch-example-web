@@ -18,7 +18,7 @@ list_maps:
         HTTP_METHOD: "POST"
   - id: "requestParams"
     rows:
-      - {}
+      - "[no]": "1"
 
 setup_tables:
   - group_id: "1"

@@ -17,7 +17,7 @@ list_maps:
         HTTP_METHOD: "POST"
   - id: "requestParams"
     rows:
-      - {}
+      - "[no]": "1"
   - id: "project1"
     rows:
       - name: "projectName"

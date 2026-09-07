@@ -17,7 +17,7 @@ list_maps:
         HTTP_METHOD: "GET"
   - id: "requestParams"
     rows:
-      - {}
+      - "[no]": "1"
   - id: "projectDto1"
     rows:
       - name: "projectId"

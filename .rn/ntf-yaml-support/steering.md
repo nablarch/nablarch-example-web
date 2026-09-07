@@ -144,6 +144,29 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 - `mvn test` が BUILD SUCCESS で終了する（全テストパス、xlsx なし）
 - テストログで YamlTestDataParser が実際に使われていることが確認できる
 
+### #6: 空の requestParams をマーカーカラムだけの行に直す
+
+**Purpose**: リクエストパラメータが無いテストショットの `requestParams` が `- {}`（空マッピング）で書かれており、`nablarch-testing-yaml` の空行スキップ以後は 0 行扱いとなってテストが失敗する。解説書が定める書き方（マーカーカラムだけの行）に直す。
+
+**Prerequisites**: #5
+
+**由来**: `YamlTableDataBuilder` は「値を 1 つも持たない行（空マッピング `{}`）」を列名解決より前に `dropBlankRows` で取り除く（`nablarch-testing-yaml` `feature/ntf-yaml` `YamlTableDataBuilder.java:37-40`@c8180f2 の Javadoc）。このため `requestParams` の `- {}` 行は 0 行になり、`TestCaseInfo.getRequestParameters`（`nablarch-testing` `TestCaseInfo.java:344-351`）の `request.size() < caseNo` に該当して `IllegalArgumentException: Request parameter is not defined or request parameter list size is invalid.` を送出する。正しい書き方は解説書 `nablarch-document` `ntf-yaml-support` の `ja/development_tools/testing_framework/implementation/testdata_examples.rst:757-768`（マーカーカラムのキーは YAML の配列構文との衝突を避けるためダブルクォートで囲む。例 `- "[no]": "1"`）。
+
+**変更**: `src/test/java` 配下の YAML 33 ファイル・34 行。`list_maps` の `id: "requestParams"` エントリ内の `- {}` を `- "[no]": "<テストショット番号>"` に置換した。`ProjectActionRequestTest/updateAbNormal.yaml` のみ 2 行あり、テストショット no.1／no.2 に対応させて `"1"`・`"2"` を採番した（`getRequestParameters` はケース番号を添字として `request.get(caseNo - 1)` で引くため、行数がテストショット数に足りないと同じ例外になる）。`requestParams` 以外の `- {}` は 0 件であり、置換対象外の書き換えはない。
+
+**検証**:
+
+- [x] `~/work/nablarch/nablarch-testing-yaml`（`feature/ntf-yaml` `c8180f2`、`e984103` 以降）を `mvn -DskipTests install` して `~/.m2` を更新
+- [x] 修正前 `mvn clean test`: `Tests run: 151, Failures: 0, Errors: 33` (BUILD FAILURE)。surefire レポートで全 33 件が `TestCaseInfo.getRequestParameters(TestCaseInfo.java:346)` 由来の `IllegalArgumentException` であることを確認（`AuthenticationActionRequestTest` 3 件／`ProjectActionRequestTest` 21 件／`ProjectBulkActionRequestTest` 7 件／`ProjectUploadActionRequestTest` 2 件）
+- [x] 置換後 `grep -rn -- '- {}' src/test/java` が 0 件
+- [x] 修正後 `mvn clean test`: `Tests run: 151, Failures: 0, Errors: 0, Skipped: 0` (BUILD SUCCESS)
+- [x] `git status --short` 空・push 済み
+
+**Completion criteria**:
+
+- `requestParams` の空マッピング行が解説書どおりのマーカーカラム行に置き換わっている
+- `mvn clean test` が 151 件全件パスで BUILD SUCCESS
+
 # Decisions
 
 ## `downloadNormal.yaml` の `COST_OF_GOODS_SOLD: "2000.0"` について
@@ -153,7 +176,7 @@ NTF 仕様（`ntf-testdata-doc.md` 8.1節）では「Excel セルは必ず文字
 # State
 
 - **Status**: paused
-- **Date**: 2026-07-23
-- **Last completed**: mvn test 151 tests PASS 確認（task #5 実装・レビュー完了済み）
-- **Next**: #5 ユーザーレビュー → `/rn:ty` で承認 → complete task #5 → Acceptance criteria 実行
-- **Notes**: task #5 の実装・全レビュー完了済み。mvn test BUILD SUCCESS（151 tests）確認済み。ユーザー承認待ち。
+- **Date**: 2026-09-07
+- **Last completed**: task #6（空の `requestParams` をマーカーカラム行に是正）実装・検証完了。`mvn clean test` 151 件全件パス
+- **Next**: #5・#6 のユーザーレビュー → 承認 → Acceptance criteria 実行
+- **Notes**: task #5 はレビュー完了・ユーザー承認待ちのまま。task #6 は指示書 `ntf-step4-15-example-web-request-params.md` によりレビュー不要（機械的置換、修正前失敗→修正後全件緑で差分が固定される）。

@@ -17,4 +17,4 @@ list_maps:
         HTTP_METHOD: "GET"
   - id: "requestParams"
     rows:
-      - {}
+      - "[no]": "1"
