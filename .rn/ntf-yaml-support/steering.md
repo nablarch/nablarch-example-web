@@ -167,6 +167,8 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 - `requestParams` の空マッピング行が解説書どおりのマーカーカラム行に置き換わっている
 - `mvn clean test` が 151 件全件パスで BUILD SUCCESS
 
+**承認**: 2026-09-07、ディレクター（`ntf-doc-renewal-b5`）が承認。scratchpad に本リポジトリを clone して独立に検証済み — `b5ed1fe` で `mvn clean test` が 151 件中 `Errors: 33`（4 クラスの surefire レポートに `Request parameter is not defined` の例外）、`8a5fe0e` で 151 件 `Errors: 0`。差分は YAML 33 ファイル 34 行と `steering.md` のみで `- {}` の残存 0 件、`updateAbNormal.yaml` の `"1"`／`"2"` 採番もテストショット 2 件に対して妥当と判定。指示書 `ntf-step4-15-example-web-request-params.md` の定めによりサブエージェントレビューは実施していない（機械的置換のため）。
+
 # Decisions
 
 ## `downloadNormal.yaml` の `COST_OF_GOODS_SOLD: "2000.0"` について
@@ -177,6 +179,6 @@ NTF 仕様（`ntf-testdata-doc.md` 8.1節）では「Excel セルは必ず文字
 
 - **Status**: paused
 - **Date**: 2026-09-07
-- **Last completed**: task #6（空の `requestParams` をマーカーカラム行に是正）実装・検証完了。`mvn clean test` 151 件全件パス
-- **Next**: #5・#6 のユーザーレビュー → 承認 → Acceptance criteria 実行
-- **Notes**: task #5 はレビュー完了・ユーザー承認待ちのまま。task #6 は指示書 `ntf-step4-15-example-web-request-params.md` によりレビュー不要（機械的置換、修正前失敗→修正後全件緑で差分が固定される）。
+- **Last completed**: task #6（空の `requestParams` をマーカーカラム行に是正）完了。ディレクター独立検証のうえ承認済み（`8a5fe0e`）
+- **Next**: #5 のユーザーレビュー → 承認 → Acceptance criteria 実行
+- **Notes**: task #6 は承認済みで残作業なし。task #5 はレビュー完了・ユーザー承認待ちのまま（task #6 の承認とは別件）。
