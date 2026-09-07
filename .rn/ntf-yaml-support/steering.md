@@ -30,6 +30,7 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 - Java: OpenJDK 17（プロジェクトのJavaバージョン）
 - ビルドは `mvn -P gsp clean generate-resources && mvn test` の順序が必要な場合あり（README確認済み）
 - 推測で作業しない。READMEやPR #211の内容を参照してから進める
+- `downloadNormal.yaml` の `COST_OF_GOODS_SOLD: "2000.0"` はこのまま運用する。元 xlsx のセルが数値書式だったためコンバーターが `cell.toString()` で `"2000.0"` を出力したもので、修正するなら xlsx 側だが xlsx は削除済み。H2 が INTEGER カラムへ暗黙変換するためテストに影響なし。**この判断は確定。再度議題にしない。**
 
 # Tasks
 
@@ -168,12 +169,6 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 - `mvn clean test` が 151 件全件パスで BUILD SUCCESS
 
 **承認**: 2026-09-07、ディレクター（`ntf-doc-renewal-b5`）が承認。scratchpad に本リポジトリを clone して独立に検証済み — `b5ed1fe` で `mvn clean test` が 151 件中 `Errors: 33`（4 クラスの surefire レポートに `Request parameter is not defined` の例外）、`8a5fe0e` で 151 件 `Errors: 0`。差分は YAML 33 ファイル 34 行と `steering.md` のみで `- {}` の残存 0 件、`updateAbNormal.yaml` の `"1"`／`"2"` 採番もテストショット 2 件に対して妥当と判定。指示書 `ntf-step4-15-example-web-request-params.md` の定めによりサブエージェントレビューは実施していない（機械的置換のため）。
-
-# Decisions
-
-## `downloadNormal.yaml` の `COST_OF_GOODS_SOLD: "2000.0"` について
-
-NTF 仕様（`ntf-testdata-doc.md` 8.1節）では「Excel セルは必ず文字列書式」が要件。元の xlsx のセルが数値書式だったため、コンバーターが `cell.toString()` で `"2000.0"` を出力した。修正するなら xlsx 側（セルを文字列書式に直してから再変換）だが、xlsx はすでに削除済みのため修正対象がない。`"2000.0"` のまま運用する（H2 が INTEGER カラムへ暗黙変換するためテストに影響なし）。**この判断は確定。再度議題にしない。**
 
 # State
 
