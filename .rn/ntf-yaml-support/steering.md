@@ -203,4 +203,4 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 - **Date**: 2026-09-07
 - **Last completed**: #7 yaml `#51`（スキーマの Excel 対称性の是正）への追随を確認。変更なし、`mvn clean test` 151 件全緑（`b12b525`、ディレクター独立検証のうえ承認済み）
 - **Next**: #5 のユーザーレビュー承認 → Acceptance criteria の確認
-- **Notes**: ブランチ `ntf-yaml-support`（PR 未作成）。次の具体アクションは #5 の承認可否をユーザーに確認すること。未決: 完了済みタスク #1–#3・#5 の Steps に残る `user review` 行は現行テンプレートの規約（ユーザー承認は plan／design／evaluation の3ゲートのみ、タスクごとには置かない）と食い違うが、#5 の承認待ちという実状態を消すことになるため今回の 0.8.0 突き合わせでは変更していない。この扱いはユーザー判断。
+- **Notes**: ブランチ `ntf-yaml-support`（PR 未作成）。次の具体アクションは #5 の承認可否をユーザーに確認すること。`~/.m2` は yaml `a404126`・converter `223f954` が入った状態で 151 件全緑を確認済み（再開時にこれらが更新されていれば `mvn clean test` を再実行する）。未決: 完了済みタスク #1–#3・#5 の Steps に残る `user review` 行は現行テンプレートの規約（ユーザー承認は plan／design／evaluation の3ゲートのみ、タスクごとには置かない）と食い違うが、#5 の承認待ちという実状態を消すことになるため今回の 0.8.0 突き合わせでは変更していない。この扱いはユーザー判断。
