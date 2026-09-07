@@ -172,10 +172,33 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 **承認**: 2026-09-07、ディレクター（`ntf-doc-renewal-b5`）が承認。scratchpad に本リポジトリを clone して独立に検証済み — `b5ed1fe` で `mvn clean test` が 151 件中 `Errors: 33`（4 クラスの surefire レポートに `Request parameter is not defined` の例外）、`8a5fe0e` で 151 件 `Errors: 0`。差分は YAML 33 ファイル 34 行と `steering.md` のみで `- {}` の残存 0 件、`updateAbNormal.yaml` の `"1"`／`"2"` 採番もテストショット 2 件に対して妥当と判定。指示書 `ntf-step4-15-example-web-request-params.md` の定めによりサブエージェントレビューは実施していない（機械的置換のため）。
 
+### #7: yaml `#51`（スキーマの Excel 対称性の是正）への追随を確認する
+
+**Purpose**: `nablarch-testing-yaml` `#51` で YAML スキーマから `record_fragment.rows` の `minItems: 1` が外れ、ディレクティブの値に文字列が許されるようになった。本リポジトリのテストデータと設定がこの変更後も全件パスすることを確認する。
+
+**Prerequisites**: #6
+
+**由来**: 指示書 `/home/tie303177/work/cowork/nablarch/ntf-doc-renewal/指示/ntf-step4-18-schema-excel-parity.md` §4。
+
+**変更**: なし（ソース・テストデータ・設定とも変更なし）。
+
+**検証**:
+
+- [x] `~/work/nablarch/nablarch-testing-yaml` `feature/ntf-yaml` `a404126` を確認（`git rev-parse HEAD` = `origin/feature/ntf-yaml` = `a404126d4c25bf568916d80d453ab557536946eb`、`git status --short` 空）
+- [x] `~/.m2` の `nablarch-testing-yaml-1.0.0-SNAPSHOT.jar` 内 `nablarch/test/ntf-testdata-yaml-schema.json` で `$defs.record_fragment.properties.rows.minItems` が無いことを `unzip -p` で確認（他セッションが同 commit を install 済みだったため本セッションでの install は不要と判断）
+- [x] `JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64 mvn clean test`: `Tests run: 151, Failures: 0, Errors: 0, Skipped: 0` (BUILD SUCCESS)。件数は `#6` の記録と同じ 151 件
+- [x] `git status --short` 空（先端 `1b7ad93`）
+
+**Completion criteria**:
+
+- yaml `#51` 後のスキーマで `mvn clean test` が 151 件全件パスで BUILD SUCCESS
+- 本リポジトリに変更が不要であることが確認できている
+
+
 # State
 
 - **Status**: paused
 - **Date**: 2026-09-07
-- **Last completed**: #6 空の `requestParams` をマーカーカラム行に是正（`8a5fe0e`、ディレクター独立検証のうえ承認済み）
+- **Last completed**: #7 yaml `#51`（スキーマの Excel 対称性の是正）への追随を確認。変更なし、`mvn clean test` 151 件全緑
 - **Next**: #5 のユーザーレビュー承認 → Acceptance criteria の確認
 - **Notes**: ブランチ `ntf-yaml-support`（PR 未作成）。次の具体アクションは #5 の承認可否をユーザーに確認すること。未決: 完了済みタスク #1–#3・#5 の Steps に残る `user review` 行は現行テンプレートの規約（ユーザー承認は plan／design／evaluation の3ゲートのみ、タスクごとには置かない）と食い違うが、#5 の承認待ちという実状態を消すことになるため今回の 0.8.0 突き合わせでは変更していない。この扱いはユーザー判断。
