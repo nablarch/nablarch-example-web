@@ -194,11 +194,13 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 - yaml `#51` 後のスキーマで `mvn clean test` が 151 件全件パスで BUILD SUCCESS
 - 本リポジトリに変更が不要であることが確認できている
 
+**承認**: 2026-09-07、ディレクター（`ntf-doc-renewal-b5`）が承認（コミット `b12b525`）。scratchpad に本リポジトリを clone し（`src`・`pom.xml` は `8a5fe0e` と差分なし）、yaml `a404126`・converter `223f954` を入れた複製リポジトリで `mvn clean test` を実行、`Tests run: 151, Failures: 0, Errors: 0` を実測（本タスクの報告と一致）。
+
 
 # State
 
 - **Status**: paused
 - **Date**: 2026-09-07
-- **Last completed**: #7 yaml `#51`（スキーマの Excel 対称性の是正）への追随を確認。変更なし、`mvn clean test` 151 件全緑
+- **Last completed**: #7 yaml `#51`（スキーマの Excel 対称性の是正）への追随を確認。変更なし、`mvn clean test` 151 件全緑（`b12b525`、ディレクター独立検証のうえ承認済み）
 - **Next**: #5 のユーザーレビュー承認 → Acceptance criteria の確認
 - **Notes**: ブランチ `ntf-yaml-support`（PR 未作成）。次の具体アクションは #5 の承認可否をユーザーに確認すること。未決: 完了済みタスク #1–#3・#5 の Steps に残る `user review` 行は現行テンプレートの規約（ユーザー承認は plan／design／evaluation の3ゲートのみ、タスクごとには置かない）と食い違うが、#5 の承認待ちという実状態を消すことになるため今回の 0.8.0 突き合わせでは変更していない。この扱いはユーザー判断。
