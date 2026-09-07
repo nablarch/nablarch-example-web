@@ -1,3 +1,5 @@
+Rn version: 0.8.0
+
 # Goal
 
 NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web` の既存のExcelテストデータをYAML形式に移行する。
@@ -174,6 +176,6 @@ NTF（Nablarch Testing Framework）のAI対応として、`nablarch-example-web`
 
 - **Status**: paused
 - **Date**: 2026-09-07
-- **Last completed**: task #6（空の `requestParams` をマーカーカラム行に是正）完了。ディレクター独立検証のうえ承認済み（`8a5fe0e`）
-- **Next**: #5 のユーザーレビュー → 承認 → Acceptance criteria 実行
-- **Notes**: task #6 は承認済みで残作業なし。task #5 はレビュー完了・ユーザー承認待ちのまま（task #6 の承認とは別件）。
+- **Last completed**: #6 空の `requestParams` をマーカーカラム行に是正（`8a5fe0e`、ディレクター独立検証のうえ承認済み）
+- **Next**: #5 のユーザーレビュー承認 → Acceptance criteria の確認
+- **Notes**: ブランチ `ntf-yaml-support`（PR 未作成）。次の具体アクションは #5 の承認可否をユーザーに確認すること。未決: 完了済みタスク #1–#3・#5 の Steps に残る `user review` 行は現行テンプレートの規約（ユーザー承認は plan／design／evaluation の3ゲートのみ、タスクごとには置かない）と食い違うが、#5 の承認待ちという実状態を消すことになるため今回の 0.8.0 突き合わせでは変更していない。この扱いはユーザー判断。
