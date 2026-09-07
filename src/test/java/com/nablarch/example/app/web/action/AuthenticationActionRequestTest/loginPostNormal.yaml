@@ -1,0 +1,49 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - no: "1"
+        description: "ログイン成功"
+        context: "user"
+        isValidToken: "true"
+        setUpTable: "1"
+        expectedStatusCode: "303"
+        expectedMessageId: ""
+        expectedSearch: ""
+        forwardUri: "/action/project/index"
+  - id: "user"
+    rows:
+      - REQUEST_ID: "login"
+        USER_ID: "105"
+        HTTP_METHOD: "POST"
+  - id: "requestParams"
+    rows:
+      - loginId: "10000001"
+        userPassword: "pass123-"
+  - id: "userContext1"
+    rows:
+      - name: "userId"
+        get: "105"
+      - name: "kanjiName"
+        get: "一般ユーザ１"
+
+setup_tables:
+  - group_id: "1"
+    table: "SYSTEM_ACCOUNT"
+    rows:
+      - USER_ID: "105"
+        LOGIN_ID: "10000001"
+        USER_PASSWORD: "otFL835Qy984IrWKA+jEhvH6CGE/woZ8LeLy7iyp8CM="
+        ADMIN_FLAG: "0"
+        USER_ID_LOCKED: "0"
+        PASSWORD_EXPIRATION_DATE: "20170410"
+        FAILED_COUNT: "0"
+        EFFECTIVE_DATE_FROM: "20130802"
+        EFFECTIVE_DATE_TO: "20170404"
+        LAST_LOGIN_DATE_TIME: ""
+        VERSION: "0"
+  - group_id: "1"
+    table: "USERS"
+    rows:
+      - USER_ID: "105"
+        KANJI_NAME: "一般ユーザ１"
+        KANA_NAME: "イッパンイチ"

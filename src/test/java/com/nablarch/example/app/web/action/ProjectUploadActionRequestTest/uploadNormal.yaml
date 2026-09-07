@@ -1,0 +1,40 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - no: "1"
+        description: "ファイルアップロード"
+        context: "userContext"
+        isValidToken: "true"
+        expectedStatusCode: "200"
+        expectedMessageId: ""
+        expectedTable: "1"
+        expectedSearch: ""
+        forwardUri: "/WEB-INF/view/projectUpload/create.jsp"
+  - id: "userContext"
+    rows:
+      - REQUEST_ID: "upload"
+        USER_ID: "105"
+        HTTP_METHOD: "POST"
+  - id: "requestParams"
+    rows:
+      - uploadFile: "${attach:./src/test/resources/data/requestTest/uploadNormal.csv}"
+
+expected_tables:
+  - group_id: "1"
+    table: "PROJECT"
+    rows:
+      - PROJECT_NAME: "プロジェクト一括登録"
+        PROJECT_TYPE: "development"
+        PROJECT_CLASS: "s"
+        PROJECT_START_DATE: "null"
+        PROJECT_END_DATE: "null"
+        CLIENT_ID: "1"
+        PROJECT_MANAGER: "マネージャ"
+        PROJECT_LEADER: "リーダ"
+        USER_ID: "105"
+        NOTE: ""
+        SALES: "null"
+        COST_OF_GOODS_SOLD: "null"
+        SGA: "null"
+        ALLOCATION_OF_CORP_EXPENSES: "null"
+        VERSION: "0"

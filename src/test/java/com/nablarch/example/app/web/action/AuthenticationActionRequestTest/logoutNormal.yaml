@@ -1,0 +1,20 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - no: "1"
+        description: "ログアウト"
+        context: "user"
+        isValidToken: "true"
+        setUpTable: ""
+        expectedStatusCode: "303"
+        expectedMessageId: ""
+        expectedSearch: ""
+        forwardUri: "/action/login"
+  - id: "user"
+    rows:
+      - REQUEST_ID: "logout"
+        USER_ID: "105"
+        HTTP_METHOD: "GET"
+  - id: "requestParams"
+    rows:
+      - "[no]": "1"

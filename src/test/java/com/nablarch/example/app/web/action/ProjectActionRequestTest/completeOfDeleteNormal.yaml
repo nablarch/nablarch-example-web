@@ -1,0 +1,21 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - no: "1"
+        description: "プロジェクト削除"
+        context: "user"
+        isValidToken: "true"
+        setUpTable: ""
+        expectedTable: ""
+        expectedStatusCode: "200"
+        expectedMessageId: ""
+        expectedSearch: ""
+        forwardUri: "/WEB-INF/view/project/completeOfDelete.jsp"
+  - id: "user"
+    rows:
+      - REQUEST_ID: "completeOfDelete"
+        USER_ID: "105"
+        HTTP_METHOD: "POST"
+  - id: "requestParams"
+    rows:
+      - "[no]": "1"

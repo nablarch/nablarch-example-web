@@ -1,0 +1,11 @@
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allow hashed passwords in test data YAML files"
+paths = [
+  '''src/test/.*\.yaml$'''
+]
+regexes = [
+  '''USER_PASSWORD'''
+]

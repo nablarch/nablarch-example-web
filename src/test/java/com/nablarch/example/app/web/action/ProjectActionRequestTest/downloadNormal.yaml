@@ -1,0 +1,94 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - no: "1"
+        description: "プロジェクト一覧ダウンロード"
+        context: "user"
+        isValidToken: "false"
+        setUpTable: "1"
+        queryParams: "searchCondition"
+        expectedStatusCode: "200"
+        expectedMessageId: ""
+        expectedSearch: ""
+        forwardUri: ""
+  - id: "user"
+    rows:
+      - REQUEST_ID: "download"
+        USER_ID: "105"
+        HTTP_METHOD: "GET"
+  - id: "requestParams"
+    rows:
+      - "[no]": "1"
+  - id: "searchCondition"
+    rows:
+      - searchForm.projectName: "プロジェクト００１"
+        searchForm.pageNumber: "1"
+        searchForm.sortKey: "id"
+
+setup_tables:
+  - group_id: "1"
+    table: "PROJECT"
+    rows:
+      - PROJECT_ID: "10000"
+        PROJECT_NAME: "プロジェクト００１"
+        PROJECT_TYPE: "development"
+        PROJECT_CLASS: "s"
+        PROJECT_START_DATE: "20150101"
+        PROJECT_END_DATE: "20161231"
+        CLIENT_ID: "1"
+        PROJECT_MANAGER: "テストマネージャー"
+        PROJECT_LEADER: "テストリーダー"
+        USER_ID: "105"
+        NOTE: "テスト備考"
+        SALES: "1000"
+        COST_OF_GOODS_SOLD: "2000.0"
+        SGA: "3000"
+        ALLOCATION_OF_CORP_EXPENSES: "4000"
+        VERSION: "0"
+
+expected_files:
+  - path: "./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェ\
+  クト一覧.csv"
+    type: "variable"
+    directives:
+      file-type: "Variable"
+      record-separator: "CRLF"
+      text-encoding: "Shift_JIS"
+      field-separator: ","
+    records:
+      - record_type: "header"
+        fields:
+          - {name: "projectName", type: "全角漢字"}
+          - {name: "projectType", type: "全角漢字"}
+          - {name: "projectClass", type: "全角漢字"}
+          - {name: "projectManager", type: "全角漢字"}
+          - {name: "projectLeader", type: "全角漢字"}
+          - {name: "clientId", type: "全角漢字"}
+          - {name: "clientName", type: "全角漢字"}
+          - {name: "projectStartDate", type: "全角漢字"}
+          - {name: "projectEndDate", type: "全角漢字"}
+          - {name: "note", type: "全角漢字"}
+          - {name: "sales", type: "全角漢字"}
+          - {name: "costOfGoodsSold", type: "全角漢字"}
+          - {name: "sga", type: "全角漢字"}
+          - {name: "allocationOfCorpExpenses", type: "全角漢字"}
+        rows:
+          - ["プロジェクト名", "プロジェクト種別", "プロジェクト分類", "プロジェクトマネージャー", "プロジェクトリーダー", "顧客ID", "顧客名", "プロジェクト開始日", "プロジェクト終了日", "備考", "売上高", "売上原価", "販管費", "本社配賦"]
+      - record_type: "data"
+        fields:
+          - {name: "projectName", type: "全角漢字"}
+          - {name: "projectType", type: "半角"}
+          - {name: "projectClass", type: "半角"}
+          - {name: "projectManager", type: "全角漢字"}
+          - {name: "projectLeader", type: "全角漢字"}
+          - {name: "clientId", type: "半角"}
+          - {name: "clientName", type: "全角漢字"}
+          - {name: "projectStartDate", type: "半角"}
+          - {name: "projectEndDate", type: "半角"}
+          - {name: "note", type: "全角漢字"}
+          - {name: "sales", type: "半角"}
+          - {name: "costOfGoodsSold", type: "半角"}
+          - {name: "sga", type: "半角"}
+          - {name: "allocationOfCorpExpenses", type: "半角"}
+        rows:
+          - ["プロジェクト００１", "development", "s", "テストマネージャー", "テストリーダー", "1", "テスト顧客名", "2015/01/01", "2016/12/31", "テスト備考", "1000", "2000", "3000", "4000"]

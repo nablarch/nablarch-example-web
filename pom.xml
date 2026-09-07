@@ -209,6 +209,14 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- 以下2依存は nablarch-bom 未登録のため version を明示（SNAPSHOT リリース待ち） -->
+    <dependency>
+      <groupId>com.nablarch.framework</groupId>
+      <artifactId>nablarch-testing-yaml</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-fw-messaging-http</artifactId>
@@ -345,6 +353,24 @@
             <webInfIncludeJarPattern><![CDATA[.*/[^/]+(?<!jakarta\.servlet\.jsp\.jstl-[^/]+)\.jar$]]></webInfIncludeJarPattern>
           </webApp>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.nablarch.framework</groupId>
+        <artifactId>nablarch-testing-converter</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <executions>
+          <execution>
+            <id>default-cli</id>
+            <goals><goal>convert</goal></goals>
+            <configuration>
+              <from>xls</from>
+              <to>yaml</to>
+              <input>${project.basedir}/src/test/java/com/nablarch/example/app/web</input>
+              <output>${project.basedir}/src/test/java/com/nablarch/example/app/web</output>
+              <overwrite>true</overwrite>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

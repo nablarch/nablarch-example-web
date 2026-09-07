@@ -1,0 +1,26 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - no: "1"
+        description: "検索でバリデーションエラーが発生"
+        context: "user"
+        isValidToken: "true"
+        setUpTable: ""
+        queryParams: "searchCondition"
+        expectedStatusCode: "400"
+        expectedMessageId: "nablarch.core.validation.ee.Required"
+        expectedSearch: ""
+        forwardUri: "/WEB-INF/view/projectBulk/update.jsp"
+  - id: "user"
+    rows:
+      - REQUEST_ID: "list"
+        USER_ID: "105"
+        HTTP_METHOD: "GET"
+  - id: "requestParams"
+    rows:
+      - "[no]": "1"
+  - id: "searchCondition"
+    rows:
+      - searchForm.projectName: "プロジェクト００１"
+        searchForm.pageNumber: ""
+        searchForm.sortKey: ""
