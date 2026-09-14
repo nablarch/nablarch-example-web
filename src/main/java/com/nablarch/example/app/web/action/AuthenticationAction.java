@@ -20,6 +20,7 @@ import com.nablarch.example.app.web.common.authentication.exception.Authenticati
 import com.nablarch.example.app.web.form.LoginForm;
 
 import java.util.Collections;
+import java.util.Set;
 
 /**
  * 認証アクション。
@@ -77,9 +78,12 @@ public class AuthenticationAction {
 
         LoginUserPrincipal userContext = createLoginUserContext(form.getLoginId());
 
-        if (userContext.isAdmin()) {
-            SessionStoreUserRoleUtil.save(Collections.singleton(LoginUserPrincipal.ROLE_ADMIN), context);
-        }
+        // ログアウトせずに別のユーザでログインした場合に前のユーザのロールが残らないよう、
+        // 管理者でない場合も空のロールでセッションストアを上書きする。
+        Set<String> roles = userContext.isAdmin()
+                ? Collections.singleton(LoginUserPrincipal.ROLE_ADMIN)
+                : Collections.emptySet();
+        SessionStoreUserRoleUtil.save(roles, context);
 
         SessionUtil.put(context, "userContext", userContext);
         SessionUtil.put(context,"user.id",String.valueOf(userContext.getUserId()));
