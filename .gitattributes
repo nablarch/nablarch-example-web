@@ -1,0 +1,8 @@
+# batだけは、動かなくなるからCRLF固定。
+*.bat text eol=crlf
+
+# CSVはCRLFとLFが混在するのでバイナリ扱いにする
+*.csv    -text
+
+# pom.xmlはLF固定（Windowsで編集してもCRLFにしない）
+pom.xml text eol=lf
