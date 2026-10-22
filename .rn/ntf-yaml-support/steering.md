@@ -21,11 +21,15 @@
 - 実行ログ等の証跡は `.rn/ntf-yaml-support/sampling/` 配下に保存する。
   - `sampling/task1-test-log.txt`（Task #1）: ベースラインでの `mvn -B clean test` ログ（先頭行は実行時の HEAD）
   - `sampling/task2-resolve-log.txt`（Task #2）: `dependency:resolve` / `dependency:list` / `help:describe` の結果
+  - `sampling/convert-log.txt`（Task #3）: converter 実行ログ
+  - `sampling/dump-<テストクラス>.tsv` / `sampling/compare-<テストクラス>.txt`（Task #3）: Excel ダンプと比較結果
+- `scripts/XlsDump.java`（Task #3）: サンプリング比較用。`.xls` / `.xlsx` の全シートの非空セルを TSV（シート/行/列/値）でダンプする（POI 3.8 の `WorkbookFactory` と `DataFormatter` による表示値）。`java -cp poi-3.8.jar:poi-ooxml-3.8.jar:poi-ooxml-schemas-3.8.jar:xmlbeans-2.3.0.jar:dom4j-1.6.1.jar XlsDump.java <file>`
+- `scripts/compare_xls_yaml.py`（Task #3）: サンプリング比較用。XlsDump の TSV と converter 出力 YAML を全データ行・全列で突合し、各 YAML から3行（3件未満は全件）をサンプル出力する。生値比較と NTF 解釈（NullInterpreter / QuotationTrimmer）後の比較、マーカーカラム除外、同名カラムの後勝ち検出を行う。`python3 -I compare_xls_yaml.py <dump.tsv> <yaml_dir>`（nablarch-example-batch の同名スクリプトを拡張）
 
 ## Status
 - Task #1 完了（self-check / QA OK）
 - Task #2 完了（self-check / QA / language / software-engineering OK、コミット `89fac0e`）
-- Task #3 実施中
+- Task #3: サンプリング比較で表記差3種類を検出 → ユーザー判断で一致として扱う。YAML をコミット、QA レビュー実施中
 - 今後の検討事項（レビューでの任意改善提案）: `nablarch-testing-yaml` / `nablarch-testing-converter` は `1.0.0-SNAPSHOT` を直書きしており pom にリポジトリ定義がないため、正式版公開時に BOM 管理または property 化してバージョンを差し替える。converter plugin への用途コメント追加
 
 ## Tasks
@@ -78,13 +82,13 @@
 **Purpose**: `nablarch-testing-converter` を使って ExcelのテストデータをYAML形式に変換し、各テストのソースツリー内に配置して、変換内容をサンプリングで確認する。
 **Prerequisites**: #2
 **Steps**:
-- [ ] 対象 Excel ファイルの所在を確認する
-- [ ] 同名の `.xls` と `.xlsx` が併存していないか確認する
-- [ ] converter README の手順に従い、全ての対象ExcelファイルをYAML変換する
-- [ ] 各YAMLファイルについてExcelの内容とサンプリングで比較し、一致を確認する（各ファイル最低3件。3件未満は全件）
-- [ ] サンプリング比較結果を `checks/task-3.md` に記録する（差異があれば修正せずユーザーへ報告して停止）
-- [ ] 変換したYAMLファイルをコミットする（Excelはまだ削除しない）
-- [ ] self-check
+- [x] 対象 Excel ファイルの所在を確認する（`src/test/java/com/nablarch/example/app/web/` の action / dto / form に `.xlsx` 6件・`.xls` 9件）
+- [x] 同名の `.xls` と `.xlsx` が併存していないか確認する → 併存なし
+- [x] converter README の手順に従い、全ての対象ExcelファイルをYAML変換する（15件 → YAML 70件。ログ: `sampling/convert-log.txt`）
+- [x] 各YAMLファイルについてExcelの内容とサンプリングで比較する（全 YAML の全データ行 1,736行を突合し、各 YAML から3行をサンプル記録）
+- [x] サンプリング比較結果を `checks/task-3.md` に記録する → 表記差3種類（外側クォート除去 / マーカー値 `1`→`1.0` / 数値セル `2000`→`2000.0`）を検出。NTF 解釈後の不一致は0件。修正せずユーザーへ報告し、**ユーザー判断により一致として扱う**
+- [x] 変換したYAMLファイルをコミットする（Excelはまだ削除しない）
+- [x] self-check
 - [ ] QA expert review (Agent: general-purpose / Opus)
 - [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:

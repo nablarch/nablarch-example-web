@@ -1,0 +1,8 @@
+SAMPLE	InnerProjectFormTest/testBeanValidation.yaml	10	LIST_MAP=testShots 行1 (4列比較)	title='正常系-1'	title='正常系-1'	OK
+SAMPLE	InnerProjectFormTest/testBeanValidation.yaml	10	LIST_MAP=params 行1 (5列比較)	projectId='${半角数字, 9}'	projectId='${半角数字, 9}'	OK
+SAMPLE	InnerProjectFormTest/testBeanValidation.yaml	10	LIST_MAP=params 行5 (5列比較)	projectId='${半角数字, 9}'	projectId='${半角数字, 9}'	OK
+SAMPLE	InnerProjectFormTest/testCharsetAndLength.yaml	1	LIST_MAP=charsetAndLength 行1 (20列比較)	propertyName='projectName'	propertyName='projectName'	OK
+SAMPLE	InnerProjectFormTest/testSingleValidation.yaml	68	LIST_MAP=singleValidation 行1 (3列比較)	propertyName='projectId'	propertyName='projectId'	OK
+SAMPLE	InnerProjectFormTest/testSingleValidation.yaml	68	LIST_MAP=singleValidation 行35 (3列比較)	propertyName='projectStartDate'	propertyName='projectStartDate'	OK
+SAMPLE	InnerProjectFormTest/testSingleValidation.yaml	68	LIST_MAP=singleValidation 行68 (3列比較)	propertyName='projectEndDate'	propertyName='projectEndDate'	OK
+CHECKED_ROWS	79	RAW_DIFF	0	MARKER_DIFF	0	ERRORS	0

@@ -1,0 +1,3 @@
+SAMPLE	LoginFormTest/testCharsetAndLength.yaml	2	LIST_MAP=charsetAndLength 行1 (21列比較)	propertyName='loginId'	propertyName='loginId'	OK
+SAMPLE	LoginFormTest/testCharsetAndLength.yaml	2	LIST_MAP=charsetAndLength 行2 (21列比較)	propertyName='userPassword'	propertyName='userPassword'	OK
+CHECKED_ROWS	2	RAW_DIFF	0	MARKER_DIFF	0	ERRORS	0

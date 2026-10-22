@@ -1,0 +1,6 @@
+SAMPLE	ClientSearchFormTest/testCharsetAndLength.yaml	2	LIST_MAP=charsetAndLength 行1 (20列比較)	propertyName='clientName'	propertyName='clientName'	OK
+SAMPLE	ClientSearchFormTest/testCharsetAndLength.yaml	2	LIST_MAP=charsetAndLength 行2 (20列比較)	propertyName='industryCode'	propertyName='industryCode'	OK
+SAMPLE	ClientSearchFormTest/testSingleValidation.yaml	36	LIST_MAP=singleValidation 行1 (3列比較)	propertyName='sortKey'	propertyName='sortKey'	OK
+SAMPLE	ClientSearchFormTest/testSingleValidation.yaml	36	LIST_MAP=singleValidation 行19 (3列比較)	propertyName='sortDir'	propertyName='sortDir'	OK
+SAMPLE	ClientSearchFormTest/testSingleValidation.yaml	36	LIST_MAP=singleValidation 行36 (3列比較)	propertyName='sortDir'	propertyName='sortDir'	OK
+CHECKED_ROWS	38	RAW_DIFF	0	MARKER_DIFF	0	ERRORS	0

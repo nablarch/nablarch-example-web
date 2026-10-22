@@ -1,0 +1,638 @@
+testCharsetAndLength	0	0	__SHEET__
+testCharsetAndLength	2	1	LIST_MAP=charsetAndLength
+testCharsetAndLength	3	1	propertyName
+testCharsetAndLength	3	2	allowEmpty
+testCharsetAndLength	3	3	min
+testCharsetAndLength	3	4	max
+testCharsetAndLength	3	5	messageIdWhenEmptyInput
+testCharsetAndLength	3	6	messageIdWhenInvalidLength
+testCharsetAndLength	3	7	messageIdWhenNotApplicable
+testCharsetAndLength	3	8	半角英字
+testCharsetAndLength	3	9	半角数字
+testCharsetAndLength	3	10	半角記号
+testCharsetAndLength	3	11	半角カナ
+testCharsetAndLength	3	12	全角英字
+testCharsetAndLength	3	13	全角数字
+testCharsetAndLength	3	14	全角ひらがな
+testCharsetAndLength	3	15	全角カタカナ
+testCharsetAndLength	3	16	全角漢字
+testCharsetAndLength	3	17	全角記号その他
+testCharsetAndLength	3	18	外字
+testCharsetAndLength	3	19	中国語
+testCharsetAndLength	3	20	サロゲートペア
+testCharsetAndLength	3	21	改行
+testCharsetAndLength	4	1	projectName
+testCharsetAndLength	4	2	x
+testCharsetAndLength	4	4	64
+testCharsetAndLength	4	5	[プロジェクト名]必須項目が入力されていません。
+testCharsetAndLength	4	6	[プロジェクト名]プロジェクト名は64文字以下の全角文字で入力してください。
+testCharsetAndLength	4	7	[プロジェクト名]プロジェクト名は64文字以下の全角文字で入力してください。
+testCharsetAndLength	4	8	x
+testCharsetAndLength	4	9	x
+testCharsetAndLength	4	10	x
+testCharsetAndLength	4	11	x
+testCharsetAndLength	4	12	o
+testCharsetAndLength	4	13	o
+testCharsetAndLength	4	14	o
+testCharsetAndLength	4	15	o
+testCharsetAndLength	4	16	o
+testCharsetAndLength	4	17	o
+testCharsetAndLength	4	18	o
+testCharsetAndLength	4	19	x
+testCharsetAndLength	4	20	x
+testCharsetAndLength	4	21	x
+testCharsetAndLength	5	1	projectManager
+testCharsetAndLength	5	2	o
+testCharsetAndLength	5	4	64
+testCharsetAndLength	5	6	[プロジェクトマネージャー]氏名は64文字以下の全角文字で入力してください。
+testCharsetAndLength	5	7	[プロジェクトマネージャー]氏名は64文字以下の全角文字で入力してください。
+testCharsetAndLength	5	8	x
+testCharsetAndLength	5	9	x
+testCharsetAndLength	5	10	x
+testCharsetAndLength	5	11	x
+testCharsetAndLength	5	12	o
+testCharsetAndLength	5	13	o
+testCharsetAndLength	5	14	o
+testCharsetAndLength	5	15	o
+testCharsetAndLength	5	16	o
+testCharsetAndLength	5	17	o
+testCharsetAndLength	5	18	o
+testCharsetAndLength	5	19	x
+testCharsetAndLength	5	20	x
+testCharsetAndLength	5	21	x
+testCharsetAndLength	6	1	projectLeader
+testCharsetAndLength	6	2	o
+testCharsetAndLength	6	4	64
+testCharsetAndLength	6	6	[プロジェクトリーダー]氏名は64文字以下の全角文字で入力してください。
+testCharsetAndLength	6	7	[プロジェクトリーダー]氏名は64文字以下の全角文字で入力してください。
+testCharsetAndLength	6	8	x
+testCharsetAndLength	6	9	x
+testCharsetAndLength	6	10	x
+testCharsetAndLength	6	11	x
+testCharsetAndLength	6	12	o
+testCharsetAndLength	6	13	o
+testCharsetAndLength	6	14	o
+testCharsetAndLength	6	15	o
+testCharsetAndLength	6	16	o
+testCharsetAndLength	6	17	o
+testCharsetAndLength	6	18	o
+testCharsetAndLength	6	19	x
+testCharsetAndLength	6	20	x
+testCharsetAndLength	6	21	x
+testCharsetAndLength	7	1	clientName
+testCharsetAndLength	7	2	o
+testCharsetAndLength	7	4	64
+testCharsetAndLength	7	6	[顧客名]顧客名は64文字以下の全角文字で入力してください。
+testCharsetAndLength	7	7	[顧客名]顧客名は64文字以下の全角文字で入力してください。
+testCharsetAndLength	7	8	x
+testCharsetAndLength	7	9	x
+testCharsetAndLength	7	10	x
+testCharsetAndLength	7	11	x
+testCharsetAndLength	7	12	o
+testCharsetAndLength	7	13	o
+testCharsetAndLength	7	14	o
+testCharsetAndLength	7	15	o
+testCharsetAndLength	7	16	o
+testCharsetAndLength	7	17	o
+testCharsetAndLength	7	18	o
+testCharsetAndLength	7	19	x
+testCharsetAndLength	7	20	x
+testCharsetAndLength	7	21	x
+testCharsetAndLength	8	1	note
+testCharsetAndLength	8	2	o
+testCharsetAndLength	8	4	64
+testCharsetAndLength	8	6	[備考]備考は64文字以下のシステム許容文字で入力してください。
+testCharsetAndLength	8	7	[備考]備考は64文字以下のシステム許容文字で入力してください。
+testCharsetAndLength	8	8	o
+testCharsetAndLength	8	9	o
+testCharsetAndLength	8	10	o
+testCharsetAndLength	8	11	o
+testCharsetAndLength	8	12	o
+testCharsetAndLength	8	13	o
+testCharsetAndLength	8	14	o
+testCharsetAndLength	8	15	o
+testCharsetAndLength	8	16	o
+testCharsetAndLength	8	17	o
+testCharsetAndLength	8	18	o
+testCharsetAndLength	8	19	x
+testCharsetAndLength	8	20	x
+testCharsetAndLength	8	21	o
+testSingleValidation	0	0	__SHEET__
+testSingleValidation	2	1	LIST_MAP=singleValidation
+testSingleValidation	3	1	propertyName
+testSingleValidation	3	2	input1
+testSingleValidation	3	3	messageId
+testSingleValidation	4	1	projectType
+testSingleValidation	4	3	[プロジェクト種別]必須項目が入力されていません。
+testSingleValidation	4	4	// emptyNG
+testSingleValidation	5	1	projectType
+testSingleValidation	5	2	development
+testSingleValidation	6	1	projectType
+testSingleValidation	6	2	maintenance
+testSingleValidation	7	1	projectType
+testSingleValidation	7	2	hoge
+testSingleValidation	7	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	8	1	projectType
+testSingleValidation	8	2	${半角英字, 1}
+testSingleValidation	8	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	9	1	projectType
+testSingleValidation	9	2	${半角数字, 1}
+testSingleValidation	9	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	10	1	projectType
+testSingleValidation	10	2	${半角記号, 1}
+testSingleValidation	10	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	11	1	projectType
+testSingleValidation	11	2	${半角カナ, 1}
+testSingleValidation	11	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	12	1	projectType
+testSingleValidation	12	2	${全角英字, 1}
+testSingleValidation	12	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	13	1	projectType
+testSingleValidation	13	2	${全角数字, 1}
+testSingleValidation	13	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	14	1	projectType
+testSingleValidation	14	2	${全角ひらがな, 1}
+testSingleValidation	14	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	15	1	projectType
+testSingleValidation	15	2	${全角カタカナ, 1}
+testSingleValidation	15	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	16	1	projectType
+testSingleValidation	16	2	${全角漢字, 1}
+testSingleValidation	16	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	17	1	projectType
+testSingleValidation	17	2	${全角記号その他, 1}
+testSingleValidation	17	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	18	1	projectType
+testSingleValidation	18	2	${外字, 1}
+testSingleValidation	18	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	19	1	projectType
+testSingleValidation	19	2	${中国語, 1}
+testSingleValidation	19	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	20	1	projectType
+testSingleValidation	20	2	${サロゲートペア, 1}
+testSingleValidation	20	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	21	1	projectType
+testSingleValidation	21	2	${改行, 1}
+testSingleValidation	21	3	[プロジェクト種別]不正な値が指定されました。
+testSingleValidation	22	1	projectClass
+testSingleValidation	22	3	[プロジェクト分類]必須項目が入力されていません。
+testSingleValidation	22	4	// emptyNG
+testSingleValidation	23	1	projectClass
+testSingleValidation	23	2	ss
+testSingleValidation	24	1	projectClass
+testSingleValidation	24	2	s
+testSingleValidation	25	1	projectClass
+testSingleValidation	25	2	a
+testSingleValidation	26	1	projectClass
+testSingleValidation	26	2	b
+testSingleValidation	27	1	projectClass
+testSingleValidation	27	2	c
+testSingleValidation	28	1	projectClass
+testSingleValidation	28	2	d
+testSingleValidation	29	1	projectClass
+testSingleValidation	29	2	x
+testSingleValidation	29	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	30	1	projectClass
+testSingleValidation	30	2	${半角数字, 1}
+testSingleValidation	30	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	31	1	projectClass
+testSingleValidation	31	2	${半角記号, 1}
+testSingleValidation	31	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	32	1	projectClass
+testSingleValidation	32	2	${半角カナ, 1}
+testSingleValidation	32	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	33	1	projectClass
+testSingleValidation	33	2	${全角英字, 1}
+testSingleValidation	33	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	34	1	projectClass
+testSingleValidation	34	2	${全角数字, 1}
+testSingleValidation	34	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	35	1	projectClass
+testSingleValidation	35	2	${全角ひらがな, 1}
+testSingleValidation	35	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	36	1	projectClass
+testSingleValidation	36	2	${全角カタカナ, 1}
+testSingleValidation	36	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	37	1	projectClass
+testSingleValidation	37	2	${全角漢字, 1}
+testSingleValidation	37	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	38	1	projectClass
+testSingleValidation	38	2	${全角記号その他, 1}
+testSingleValidation	38	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	39	1	projectClass
+testSingleValidation	39	2	${外字, 1}
+testSingleValidation	39	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	40	1	projectClass
+testSingleValidation	40	2	${中国語, 1}
+testSingleValidation	40	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	41	1	projectClass
+testSingleValidation	41	2	${サロゲートペア, 1}
+testSingleValidation	41	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	42	1	projectClass
+testSingleValidation	42	2	${改行, 1}
+testSingleValidation	42	3	[プロジェクト分類]不正な値が指定されました。
+testSingleValidation	43	1	clientId
+testSingleValidation	43	3	[顧客ID]入力してください。
+testSingleValidation	43	4	// emptyNG
+testSingleValidation	44	1	clientId
+testSingleValidation	44	2	${半角数字,9}
+testSingleValidation	45	1	clientId
+testSingleValidation	45	2	1${半角数字,9}
+testSingleValidation	45	3	[顧客ID]数値を入力してください。
+testSingleValidation	46	1	clientId
+testSingleValidation	46	2	${半角英字, 1}
+testSingleValidation	46	3	[顧客ID]数値を入力してください。
+testSingleValidation	47	1	clientId
+testSingleValidation	47	2	${半角記号, 1}
+testSingleValidation	47	3	[顧客ID]数値を入力してください。
+testSingleValidation	48	1	clientId
+testSingleValidation	48	2	${半角カナ, 1}
+testSingleValidation	48	3	[顧客ID]数値を入力してください。
+testSingleValidation	49	1	clientId
+testSingleValidation	49	2	${全角英字, 1}
+testSingleValidation	49	3	[顧客ID]数値を入力してください。
+testSingleValidation	50	1	clientId
+testSingleValidation	50	2	${全角数字, 1}
+testSingleValidation	50	3	[顧客ID]数値を入力してください。
+testSingleValidation	51	1	clientId
+testSingleValidation	51	2	${全角ひらがな, 1}
+testSingleValidation	51	3	[顧客ID]数値を入力してください。
+testSingleValidation	52	1	clientId
+testSingleValidation	52	2	${全角カタカナ, 1}
+testSingleValidation	52	3	[顧客ID]数値を入力してください。
+testSingleValidation	53	1	clientId
+testSingleValidation	53	2	${全角漢字, 1}
+testSingleValidation	53	3	[顧客ID]数値を入力してください。
+testSingleValidation	54	1	clientId
+testSingleValidation	54	2	${全角記号その他, 1}
+testSingleValidation	54	3	[顧客ID]数値を入力してください。
+testSingleValidation	55	1	clientId
+testSingleValidation	55	2	${外字, 1}
+testSingleValidation	55	3	[顧客ID]数値を入力してください。
+testSingleValidation	56	1	clientId
+testSingleValidation	56	2	${中国語, 1}
+testSingleValidation	56	3	[顧客ID]数値を入力してください。
+testSingleValidation	57	1	clientId
+testSingleValidation	57	2	${サロゲートペア, 1}
+testSingleValidation	57	3	[顧客ID]数値を入力してください。
+testSingleValidation	58	1	clientId
+testSingleValidation	58	2	${改行, 1}
+testSingleValidation	58	3	[顧客ID]数値を入力してください。
+testSingleValidation	59	1	projectStartDate
+testSingleValidation	59	4	// emptyOK
+testSingleValidation	60	1	projectStartDate
+testSingleValidation	60	2	20230817
+testSingleValidation	60	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	61	1	projectStartDate
+testSingleValidation	61	2	2023/08/17
+testSingleValidation	62	1	projectStartDate
+testSingleValidation	62	2	${半角英字, 1}
+testSingleValidation	62	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	63	1	projectStartDate
+testSingleValidation	63	2	${半角数字, 1}
+testSingleValidation	63	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	64	1	projectStartDate
+testSingleValidation	64	2	"?"
+testSingleValidation	64	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	65	1	projectStartDate
+testSingleValidation	65	2	${半角カナ, 1}
+testSingleValidation	65	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	66	1	projectStartDate
+testSingleValidation	66	2	${全角英字, 1}
+testSingleValidation	66	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	67	1	projectStartDate
+testSingleValidation	67	2	${全角数字, 1}
+testSingleValidation	67	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	68	1	projectStartDate
+testSingleValidation	68	2	${全角ひらがな, 1}
+testSingleValidation	68	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	69	1	projectStartDate
+testSingleValidation	69	2	${全角カタカナ, 1}
+testSingleValidation	69	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	70	1	projectStartDate
+testSingleValidation	70	2	${全角漢字, 1}
+testSingleValidation	70	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	71	1	projectStartDate
+testSingleValidation	71	2	${全角記号その他, 1}
+testSingleValidation	71	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	72	1	projectStartDate
+testSingleValidation	72	2	${外字, 1}
+testSingleValidation	72	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	73	1	projectStartDate
+testSingleValidation	73	2	${中国語, 1}
+testSingleValidation	73	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	74	1	projectStartDate
+testSingleValidation	74	2	${サロゲートペア, 1}
+testSingleValidation	74	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	75	1	projectStartDate
+testSingleValidation	75	2	${改行, 1}
+testSingleValidation	75	3	[プロジェクト開始日]日付の形式が正しくありません。
+testSingleValidation	76	1	projectEndDate
+testSingleValidation	76	4	// emptyOK
+testSingleValidation	77	1	projectEndDate
+testSingleValidation	77	2	20230817
+testSingleValidation	77	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	78	1	projectEndDate
+testSingleValidation	78	2	2023/08/17
+testSingleValidation	79	1	projectEndDate
+testSingleValidation	79	2	${半角英字, 1}
+testSingleValidation	79	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	80	1	projectEndDate
+testSingleValidation	80	2	${半角数字, 1}
+testSingleValidation	80	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	81	1	projectEndDate
+testSingleValidation	81	2	"?"
+testSingleValidation	81	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	82	1	projectEndDate
+testSingleValidation	82	2	${半角カナ, 1}
+testSingleValidation	82	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	83	1	projectEndDate
+testSingleValidation	83	2	${全角英字, 1}
+testSingleValidation	83	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	84	1	projectEndDate
+testSingleValidation	84	2	${全角数字, 1}
+testSingleValidation	84	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	85	1	projectEndDate
+testSingleValidation	85	2	${全角ひらがな, 1}
+testSingleValidation	85	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	86	1	projectEndDate
+testSingleValidation	86	2	${全角カタカナ, 1}
+testSingleValidation	86	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	87	1	projectEndDate
+testSingleValidation	87	2	${全角漢字, 1}
+testSingleValidation	87	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	88	1	projectEndDate
+testSingleValidation	88	2	${全角記号その他, 1}
+testSingleValidation	88	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	89	1	projectEndDate
+testSingleValidation	89	2	${外字, 1}
+testSingleValidation	89	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	90	1	projectEndDate
+testSingleValidation	90	2	${中国語, 1}
+testSingleValidation	90	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	91	1	projectEndDate
+testSingleValidation	91	2	${サロゲートペア, 1}
+testSingleValidation	91	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	92	1	projectEndDate
+testSingleValidation	92	2	${改行, 1}
+testSingleValidation	92	3	[プロジェクト終了日]日付の形式が正しくありません。
+testSingleValidation	93	1	sales
+testSingleValidation	93	4	// emptyOK
+testSingleValidation	94	1	sales
+testSingleValidation	94	2	999999999
+testSingleValidation	95	1	sales
+testSingleValidation	95	2	1000000000
+testSingleValidation	95	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	96	1	sales
+testSingleValidation	96	2	９９９９９９９９９
+testSingleValidation	97	1	sales
+testSingleValidation	97	2	１０００００００００
+testSingleValidation	97	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	98	1	sales
+testSingleValidation	98	2	${半角英字, 1}
+testSingleValidation	98	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	99	1	sales
+testSingleValidation	99	2	${半角記号, 1}
+testSingleValidation	99	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	100	1	sales
+testSingleValidation	100	2	${半角カナ, 1}
+testSingleValidation	100	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	101	1	sales
+testSingleValidation	101	2	${全角英字, 1}
+testSingleValidation	101	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	102	1	sales
+testSingleValidation	102	2	${全角ひらがな, 1}
+testSingleValidation	102	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	103	1	sales
+testSingleValidation	103	2	${全角カタカナ, 1}
+testSingleValidation	103	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	104	1	sales
+testSingleValidation	104	2	${全角漢字, 1}
+testSingleValidation	104	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	105	1	sales
+testSingleValidation	105	2	${全角記号その他, 1}
+testSingleValidation	105	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	106	1	sales
+testSingleValidation	106	2	${外字, 1}
+testSingleValidation	106	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	107	1	sales
+testSingleValidation	107	2	${中国語, 1}
+testSingleValidation	107	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	108	1	sales
+testSingleValidation	108	2	${サロゲートペア, 1}
+testSingleValidation	108	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	109	1	sales
+testSingleValidation	109	2	${改行, 1}
+testSingleValidation	109	3	[売上高]0円から999999999円の範囲で入力してください。
+testSingleValidation	110	1	costOfGoodsSold
+testSingleValidation	110	4	// emptyOK
+testSingleValidation	111	1	costOfGoodsSold
+testSingleValidation	111	2	999999999
+testSingleValidation	112	1	costOfGoodsSold
+testSingleValidation	112	2	1000000000
+testSingleValidation	112	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	113	1	costOfGoodsSold
+testSingleValidation	113	2	９９９９９９９９９
+testSingleValidation	114	1	costOfGoodsSold
+testSingleValidation	114	2	１０００００００００
+testSingleValidation	114	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	115	1	costOfGoodsSold
+testSingleValidation	115	2	${半角英字, 1}
+testSingleValidation	115	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	116	1	costOfGoodsSold
+testSingleValidation	116	2	${半角記号, 1}
+testSingleValidation	116	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	117	1	costOfGoodsSold
+testSingleValidation	117	2	${半角カナ, 1}
+testSingleValidation	117	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	118	1	costOfGoodsSold
+testSingleValidation	118	2	${全角英字, 1}
+testSingleValidation	118	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	119	1	costOfGoodsSold
+testSingleValidation	119	2	${全角ひらがな, 1}
+testSingleValidation	119	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	120	1	costOfGoodsSold
+testSingleValidation	120	2	${全角カタカナ, 1}
+testSingleValidation	120	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	121	1	costOfGoodsSold
+testSingleValidation	121	2	${全角漢字, 1}
+testSingleValidation	121	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	122	1	costOfGoodsSold
+testSingleValidation	122	2	${全角記号その他, 1}
+testSingleValidation	122	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	123	1	costOfGoodsSold
+testSingleValidation	123	2	${外字, 1}
+testSingleValidation	123	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	124	1	costOfGoodsSold
+testSingleValidation	124	2	${中国語, 1}
+testSingleValidation	124	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	125	1	costOfGoodsSold
+testSingleValidation	125	2	${サロゲートペア, 1}
+testSingleValidation	125	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	126	1	costOfGoodsSold
+testSingleValidation	126	2	${改行, 1}
+testSingleValidation	126	3	[売上原価]0円から999999999円の範囲で入力してください。
+testSingleValidation	127	1	sga
+testSingleValidation	127	4	// emptyOK
+testSingleValidation	128	1	sga
+testSingleValidation	128	2	999999999
+testSingleValidation	129	1	sga
+testSingleValidation	129	2	1000000000
+testSingleValidation	129	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	130	1	sga
+testSingleValidation	130	2	９９９９９９９９９
+testSingleValidation	131	1	sga
+testSingleValidation	131	2	１０００００００００
+testSingleValidation	131	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	132	1	sga
+testSingleValidation	132	2	${半角英字, 1}
+testSingleValidation	132	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	133	1	sga
+testSingleValidation	133	2	${半角記号, 1}
+testSingleValidation	133	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	134	1	sga
+testSingleValidation	134	2	${半角カナ, 1}
+testSingleValidation	134	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	135	1	sga
+testSingleValidation	135	2	${全角英字, 1}
+testSingleValidation	135	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	136	1	sga
+testSingleValidation	136	2	${全角ひらがな, 1}
+testSingleValidation	136	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	137	1	sga
+testSingleValidation	137	2	${全角カタカナ, 1}
+testSingleValidation	137	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	138	1	sga
+testSingleValidation	138	2	${全角漢字, 1}
+testSingleValidation	138	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	139	1	sga
+testSingleValidation	139	2	${全角記号その他, 1}
+testSingleValidation	139	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	140	1	sga
+testSingleValidation	140	2	${外字, 1}
+testSingleValidation	140	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	141	1	sga
+testSingleValidation	141	2	${中国語, 1}
+testSingleValidation	141	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	142	1	sga
+testSingleValidation	142	2	${サロゲートペア, 1}
+testSingleValidation	142	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	143	1	sga
+testSingleValidation	143	2	${改行, 1}
+testSingleValidation	143	3	[販管費]0円から999999999円の範囲で入力してください。
+testSingleValidation	144	1	allocationOfCorpExpenses
+testSingleValidation	144	4	// emptyOK
+testSingleValidation	145	1	allocationOfCorpExpenses
+testSingleValidation	145	2	999999999
+testSingleValidation	146	1	allocationOfCorpExpenses
+testSingleValidation	146	2	1000000000
+testSingleValidation	146	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	147	1	allocationOfCorpExpenses
+testSingleValidation	147	2	９９９９９９９９９
+testSingleValidation	148	1	allocationOfCorpExpenses
+testSingleValidation	148	2	１０００００００００
+testSingleValidation	148	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	149	1	allocationOfCorpExpenses
+testSingleValidation	149	2	${半角英字, 1}
+testSingleValidation	149	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	150	1	allocationOfCorpExpenses
+testSingleValidation	150	2	${半角記号, 1}
+testSingleValidation	150	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	151	1	allocationOfCorpExpenses
+testSingleValidation	151	2	${半角カナ, 1}
+testSingleValidation	151	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	152	1	allocationOfCorpExpenses
+testSingleValidation	152	2	${全角英字, 1}
+testSingleValidation	152	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	153	1	allocationOfCorpExpenses
+testSingleValidation	153	2	${全角ひらがな, 1}
+testSingleValidation	153	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	154	1	allocationOfCorpExpenses
+testSingleValidation	154	2	${全角カタカナ, 1}
+testSingleValidation	154	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	155	1	allocationOfCorpExpenses
+testSingleValidation	155	2	${全角漢字, 1}
+testSingleValidation	155	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	156	1	allocationOfCorpExpenses
+testSingleValidation	156	2	${全角記号その他, 1}
+testSingleValidation	156	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	157	1	allocationOfCorpExpenses
+testSingleValidation	157	2	${外字, 1}
+testSingleValidation	157	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	158	1	allocationOfCorpExpenses
+testSingleValidation	158	2	${中国語, 1}
+testSingleValidation	158	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	159	1	allocationOfCorpExpenses
+testSingleValidation	159	2	${サロゲートペア, 1}
+testSingleValidation	159	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testSingleValidation	160	1	allocationOfCorpExpenses
+testSingleValidation	160	2	${改行, 1}
+testSingleValidation	160	3	[本社配賦]0円から999999999円の範囲で入力してください。
+testBeanValidation	0	0	__SHEET__
+testBeanValidation	1	1	// テストケース
+testBeanValidation	3	1	LIST_MAP=testShots
+testBeanValidation	4	1	[No]
+testBeanValidation	4	2	title
+testBeanValidation	4	3	case
+testBeanValidation	4	4	expectedMessageId1
+testBeanValidation	4	5	propertyName1
+testBeanValidation	5	1	1
+testBeanValidation	5	2	正常系-1
+testBeanValidation	5	3	開始日より終了日が後の日付である場合
+testBeanValidation	5	5	validProjectPeriod
+testBeanValidation	6	1	2
+testBeanValidation	6	2	正常系-2
+testBeanValidation	6	3	開始日が空の場合
+testBeanValidation	6	5	validProjectPeriod
+testBeanValidation	7	1	3
+testBeanValidation	7	2	正常系-3
+testBeanValidation	7	3	終了日が空の場合
+testBeanValidation	7	5	validProjectPeriod
+testBeanValidation	8	1	4
+testBeanValidation	8	2	正常系-4
+testBeanValidation	8	3	開始日・終了日とも空の場合
+testBeanValidation	8	5	validProjectPeriod
+testBeanValidation	9	1	5
+testBeanValidation	9	2	異常系-1
+testBeanValidation	9	3	開始日に終了日より後の日付が設定されていた場合
+testBeanValidation	9	4	プロジェクト開始日より後の日付を入力して下さい。
+testBeanValidation	9	5	validProjectPeriod
+testBeanValidation	12	1	LIST_MAP=params
+testBeanValidation	13	1	[No]
+testBeanValidation	13	2	projectName
+testBeanValidation	13	3	projectType
+testBeanValidation	13	4	projectClass
+testBeanValidation	13	5	clientId
+testBeanValidation	13	6	projectStartDate
+testBeanValidation	13	7	projectEndDate
+testBeanValidation	14	1	1
+testBeanValidation	14	2	サンプルプロジェクト
+testBeanValidation	14	3	development
+testBeanValidation	14	4	ss
+testBeanValidation	14	5	${半角数字,9}
+testBeanValidation	14	6	2023/08/17
+testBeanValidation	14	7	2023/08/18
+testBeanValidation	15	1	2
+testBeanValidation	15	2	サンプルプロジェクト
+testBeanValidation	15	3	development
+testBeanValidation	15	4	s
+testBeanValidation	15	5	${半角数字,9}
+testBeanValidation	15	6	2023/08/17
+testBeanValidation	16	1	3
+testBeanValidation	16	2	サンプルプロジェクト
+testBeanValidation	16	3	development
+testBeanValidation	16	4	a
+testBeanValidation	16	5	${半角数字,9}
+testBeanValidation	16	7	2023/08/18
+testBeanValidation	17	1	4
+testBeanValidation	17	2	サンプルプロジェクト
+testBeanValidation	17	3	development
+testBeanValidation	17	4	b
+testBeanValidation	17	5	${半角数字,9}
+testBeanValidation	18	1	5
+testBeanValidation	18	2	サンプルプロジェクト
+testBeanValidation	18	3	development
+testBeanValidation	18	4	c
+testBeanValidation	18	5	${半角数字,9}
+testBeanValidation	18	6	2023/08/18
+testBeanValidation	18	7	2023/08/17

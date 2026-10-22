@@ -1,0 +1,9 @@
+SAMPLE	ProjectSearchFormTest/testBeanValidation.yaml	4	LIST_MAP=testShots 行1 (4列比較)	title='正常系-1'	title='正常系-1'	OK
+SAMPLE	ProjectSearchFormTest/testBeanValidation.yaml	4	LIST_MAP=params 行1 (2列比較)	projectClass[0].projectClass='ss'	projectClass[0].projectClass='ss'	OK
+SAMPLE	ProjectSearchFormTest/testBeanValidation.yaml	4	LIST_MAP=params 行2 (2列比較)	projectClass[0].projectClass='hoge'	projectClass[0].projectClass='hoge'	OK
+SAMPLE	ProjectSearchFormTest/testCharsetAndLength.yaml	2	LIST_MAP=charsetAndLength 行1 (20列比較)	propertyName='clientName'	propertyName='clientName'	OK
+SAMPLE	ProjectSearchFormTest/testCharsetAndLength.yaml	2	LIST_MAP=charsetAndLength 行2 (20列比較)	propertyName='projectName'	propertyName='projectName'	OK
+SAMPLE	ProjectSearchFormTest/testSingleValidation.yaml	155	LIST_MAP=singleValidation 行1 (7列比較)	propertyName='clientId'	propertyName='clientId'	OK
+SAMPLE	ProjectSearchFormTest/testSingleValidation.yaml	155	LIST_MAP=singleValidation 行78 (7列比較)	propertyName='projectEndDateBegin'	propertyName='projectEndDateBegin'	OK
+SAMPLE	ProjectSearchFormTest/testSingleValidation.yaml	155	LIST_MAP=singleValidation 行155 (7列比較)	propertyName='pageNumber'	propertyName='pageNumber'	OK
+CHECKED_ROWS	161	RAW_DIFF	0	MARKER_DIFF	0	ERRORS	0

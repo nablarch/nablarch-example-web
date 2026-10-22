@@ -1,0 +1,19 @@
+MARKER_DIFF	indexNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	loginGetNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	logoutNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+SAMPLE	AuthenticationActionRequestTest/indexNormal.yaml	3	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	AuthenticationActionRequestTest/indexNormal.yaml	3	LIST_MAP=user 行1 (3列比較)	REQUEST_ID='login'	REQUEST_ID='login'	OK
+SAMPLE	AuthenticationActionRequestTest/indexNormal.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	AuthenticationActionRequestTest/loginAbNormal.yaml	11	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	AuthenticationActionRequestTest/loginAbNormal.yaml	11	LIST_MAP=requestParams 行2 (2列比較)	loginId='10000001'	loginId='10000001'	OK
+SAMPLE	AuthenticationActionRequestTest/loginAbNormal.yaml	11	SETUP_TABLE[3]=USERS 行1 (3列比較)	USER_ID='105'	USER_ID='105'	OK
+SAMPLE	AuthenticationActionRequestTest/loginGetNormal.yaml	3	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	AuthenticationActionRequestTest/loginGetNormal.yaml	3	LIST_MAP=user 行1 (3列比較)	REQUEST_ID='login'	REQUEST_ID='login'	OK
+SAMPLE	AuthenticationActionRequestTest/loginGetNormal.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	AuthenticationActionRequestTest/loginPostNormal.yaml	7	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	AuthenticationActionRequestTest/loginPostNormal.yaml	7	LIST_MAP=userContext1 行1 (2列比較)	name='userId'	name='userId'	OK
+SAMPLE	AuthenticationActionRequestTest/loginPostNormal.yaml	7	SETUP_TABLE[1]=USERS 行1 (3列比較)	USER_ID='105'	USER_ID='105'	OK
+SAMPLE	AuthenticationActionRequestTest/logoutNormal.yaml	3	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	AuthenticationActionRequestTest/logoutNormal.yaml	3	LIST_MAP=user 行1 (3列比較)	REQUEST_ID='logout'	REQUEST_ID='logout'	OK
+SAMPLE	AuthenticationActionRequestTest/logoutNormal.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+CHECKED_ROWS	27	RAW_DIFF	0	MARKER_DIFF	3	ERRORS	0

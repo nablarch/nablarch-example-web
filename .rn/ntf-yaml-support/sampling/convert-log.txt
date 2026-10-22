@@ -1,0 +1,19 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.nablarch.example:nablarch-example-web >--------------
+[INFO] Building nablarch-example-web 6-NEXT-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- nablarch-testing-converter:1.0.0-SNAPSHOT:convert (default-cli) @ nablarch-example-web ---
+2026-10-22 16:20:51.648 -INFO- nablarch.core.log.basic.BasicLoggerFactory [null] boot_proc = [] proc_sys = [] req_id = [null] usr_id = [null] initialized.
+	LOGGER = [root] NAME REGEX = [.*] LEVEL = [INFO]
+10月 22, 2026 4:20:57 午後 nablarch.test.tool.converter.xls.XlsFormatReader deduplicateColumnNames
+警告: [ProjectActionRequestTest] シート "updateNormal" のブロック "testShots" に重複カラム名 "expectedTable" があります。10 列目の値を採用します。
+[INFO] Converted 15 file(s).
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  25.264 s
+[INFO] Finished at: 2026-10-22T16:21:04+09:00
+[INFO] ------------------------------------------------------------------------

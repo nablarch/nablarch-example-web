@@ -1,0 +1,21 @@
+MARKER_DIFF	indexForbidden.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	indexNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+SAMPLE	ProjectUploadActionRequestTest/indexForbidden.yaml	3	LIST_MAP=testShots 行1 (8列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectUploadActionRequestTest/indexForbidden.yaml	3	LIST_MAP=userContext 行1 (3列比較)	REQUEST_ID='index'	REQUEST_ID='index'	OK
+SAMPLE	ProjectUploadActionRequestTest/indexForbidden.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectUploadActionRequestTest/indexNormal.yaml	3	LIST_MAP=testShots 行1 (8列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectUploadActionRequestTest/indexNormal.yaml	3	LIST_MAP=userContext 行1 (3列比較)	REQUEST_ID='index'	REQUEST_ID='index'	OK
+SAMPLE	ProjectUploadActionRequestTest/indexNormal.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectUploadActionRequestTest/setUpDb.yaml	6	SETUP_TABLE=SYSTEM_ACCOUNT 行1 (11列比較)	USER_ID='105'	USER_ID='105'	OK
+SAMPLE	ProjectUploadActionRequestTest/setUpDb.yaml	6	SETUP_TABLE=USERS 行2 (3列比較)	USER_ID='106'	USER_ID='106'	OK
+SAMPLE	ProjectUploadActionRequestTest/setUpDb.yaml	6	SETUP_TABLE=CLIENT 行1 (3列比較)	CLIENT_ID='1'	CLIENT_ID='1'	OK
+SAMPLE	ProjectUploadActionRequestTest/uploadAbNormal.yaml	9	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectUploadActionRequestTest/uploadAbNormal.yaml	9	LIST_MAP=userContext 行1 (3列比較)	REQUEST_ID='upload'	REQUEST_ID='upload'	OK
+SAMPLE	ProjectUploadActionRequestTest/uploadAbNormal.yaml	9	LIST_MAP=requestParams 行4 (1列比較)	uploadFile='${attach:./src/test/resources/data/requestTest/uploadAbNormal_formatError2.csv}'	uploadFile='${attach:./src/test/resources/data/requestTest/uploadAbNormal_formatError2.csv}'	OK
+SAMPLE	ProjectUploadActionRequestTest/uploadForbidden.yaml	3	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectUploadActionRequestTest/uploadForbidden.yaml	3	LIST_MAP=userContext 行1 (3列比較)	REQUEST_ID='upload'	REQUEST_ID='upload'	OK
+SAMPLE	ProjectUploadActionRequestTest/uploadForbidden.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	uploadFile=''	uploadFile=''	OK
+SAMPLE	ProjectUploadActionRequestTest/uploadNormal.yaml	4	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectUploadActionRequestTest/uploadNormal.yaml	4	LIST_MAP=requestParams 行1 (1列比較)	uploadFile='${attach:./src/test/resources/data/requestTest/uploadNormal.csv}'	uploadFile='${attach:./src/test/resources/data/requestTest/uploadNormal.csv}'	OK
+SAMPLE	ProjectUploadActionRequestTest/uploadNormal.yaml	4	EXPECTED_TABLE[1]=PROJECT 行1 (15列比較)	PROJECT_NAME='プロジェクト一括登録'	PROJECT_NAME='プロジェクト一括登録'	OK
+CHECKED_ROWS	28	RAW_DIFF	0	MARKER_DIFF	2	ERRORS	0

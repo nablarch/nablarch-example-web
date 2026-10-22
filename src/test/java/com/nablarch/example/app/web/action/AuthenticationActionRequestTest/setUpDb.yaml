@@ -1,0 +1,7 @@
+setup_tables:
+  - table: "PROJECT"
+    rows: []
+  - table: "SYSTEM_ACCOUNT"
+    rows: []
+  - table: "USERS"
+    rows: []

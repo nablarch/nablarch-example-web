@@ -1,0 +1,130 @@
+MARKER_DIFF	backToEditNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	backToNewNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	completeOfCreateNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	completeOfDeleteNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	completeOfUpdateNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	createAbNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	createNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	deleteAbNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	deleteNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	downloadAbNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	downloadNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	editAbNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	editNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	indexNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	listAbNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	listNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	newEntityNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	showAbNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	showNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	updateAbNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+MARKER_DIFF	updateNormal.yaml LIST_MAP=requestParams row1: excel={'[no]': '1'} yaml={'[no]': '1.0'}
+DUP_COLUMN	updateNormal.yaml LIST_MAP=testShots: duplicate column expectedTable at columns [6, 10]
+SAMPLE	ProjectActionRequestTest/backToEditNormal.yaml	17	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/backToEditNormal.yaml	17	LIST_MAP=project1 行6 (2列比較)	name='projectEndDate'	name='projectEndDate'	OK
+SAMPLE	ProjectActionRequestTest/backToEditNormal.yaml	17	LIST_MAP=project1 行14 (2列比較)	name='version'	name='version'	OK
+SAMPLE	ProjectActionRequestTest/backToNewNormal.yaml	17	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/backToNewNormal.yaml	17	LIST_MAP=project1 行6 (2列比較)	name='projectEndDate'	name='projectEndDate'	OK
+SAMPLE	ProjectActionRequestTest/backToNewNormal.yaml	17	LIST_MAP=project1 行14 (2列比較)	name='version'	name='version'	OK
+SAMPLE	ProjectActionRequestTest/completeOfCreateNormal.yaml	3	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/completeOfCreateNormal.yaml	3	LIST_MAP=user 行1 (3列比較)	REQUEST_ID='completeOfCreate'	REQUEST_ID='completeOfCreate'	OK
+SAMPLE	ProjectActionRequestTest/completeOfCreateNormal.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/completeOfDeleteNormal.yaml	3	LIST_MAP=testShots 行1 (10列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/completeOfDeleteNormal.yaml	3	LIST_MAP=user 行1 (3列比較)	REQUEST_ID='completeOfDelete'	REQUEST_ID='completeOfDelete'	OK
+SAMPLE	ProjectActionRequestTest/completeOfDeleteNormal.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/completeOfUpdateNormal.yaml	3	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/completeOfUpdateNormal.yaml	3	LIST_MAP=user 行1 (3列比較)	REQUEST_ID='completeOfUpdate'	REQUEST_ID='completeOfUpdate'	OK
+SAMPLE	ProjectActionRequestTest/completeOfUpdateNormal.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/confirmOfCreateAbNormal.yaml	3	LIST_MAP=testShots 行1 (8列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/confirmOfCreateAbNormal.yaml	3	LIST_MAP=user 行1 (3列比較)	REQUEST_ID='confirmOfCreate'	REQUEST_ID='confirmOfCreate'	OK
+SAMPLE	ProjectActionRequestTest/confirmOfCreateAbNormal.yaml	3	LIST_MAP=requestParams 行1 (4列比較)	form.projectName=''	form.projectName=''	OK
+SAMPLE	ProjectActionRequestTest/confirmOfCreateNormal.yaml	17	LIST_MAP=testShots 行1 (8列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/confirmOfCreateNormal.yaml	17	LIST_MAP=project1 行6 (2列比較)	name='projectEndDate'	name='projectEndDate'	OK
+SAMPLE	ProjectActionRequestTest/confirmOfCreateNormal.yaml	17	LIST_MAP=project1 行14 (2列比較)	name='version'	name='version'	OK
+SAMPLE	ProjectActionRequestTest/confirmOfUpdateAbNormal.yaml	3	LIST_MAP=testShots 行1 (8列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/confirmOfUpdateAbNormal.yaml	3	LIST_MAP=user 行1 (3列比較)	REQUEST_ID='confirmOfUpdate'	REQUEST_ID='confirmOfUpdate'	OK
+SAMPLE	ProjectActionRequestTest/confirmOfUpdateAbNormal.yaml	3	LIST_MAP=requestParams 行1 (4列比較)	form.projectName='プロジェクト００１'	form.projectName='プロジェクト００１'	OK
+SAMPLE	ProjectActionRequestTest/confirmOfUpdateNormal.yaml	17	LIST_MAP=testShots 行1 (8列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/confirmOfUpdateNormal.yaml	17	LIST_MAP=project1 行6 (2列比較)	name='projectEndDate'	name='projectEndDate'	OK
+SAMPLE	ProjectActionRequestTest/confirmOfUpdateNormal.yaml	17	LIST_MAP=project1 行14 (2列比較)	name='version'	name='version'	OK
+SAMPLE	ProjectActionRequestTest/createAbNormal.yaml	3	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/createAbNormal.yaml	3	LIST_MAP=user 行1 (3列比較)	REQUEST_ID='create'	REQUEST_ID='create'	OK
+SAMPLE	ProjectActionRequestTest/createAbNormal.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/createNormal.yaml	4	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/createNormal.yaml	4	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/createNormal.yaml	4	EXPECTED_TABLE[1]=PROJECT 行1 (15列比較)	PROJECT_NAME='プロジェクト００１'	PROJECT_NAME='プロジェクト００１'	OK
+SAMPLE	ProjectActionRequestTest/deleteAbNormal.yaml	5	LIST_MAP=testShots 行1 (10列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/deleteAbNormal.yaml	5	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/deleteAbNormal.yaml	5	EXPECTED_TABLE[1]=PROJECT 行1 (16列比較)	PROJECT_ID='99999'	PROJECT_ID='99999'	OK
+SAMPLE	ProjectActionRequestTest/deleteNormal.yaml	4	LIST_MAP=testShots 行1 (10列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/deleteNormal.yaml	4	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/deleteNormal.yaml	4	SETUP_TABLE[1]=PROJECT 行1 (16列比較)	PROJECT_ID='99999'	PROJECT_ID='99999'	OK
+SAMPLE	ProjectActionRequestTest/downloadAbNormal.yaml	6	LIST_MAP=testShots 行1 (11列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/downloadAbNormal.yaml	6	LIST_MAP=searchCondition 行1 (3列比較)	searchForm.projectName='プロジェクト００１'	searchForm.projectName='プロジェクト００１'	OK
+SAMPLE	ProjectActionRequestTest/downloadAbNormal.yaml	6	EXPECTED_TABLE[1]=PROJECT 行1 (15列比較)	PROJECT_NAME='プロジェクト００１'	PROJECT_NAME='プロジェクト００１'	OK
+SAMPLE	ProjectActionRequestTest/downloadNormal.yaml	7	LIST_MAP=testShots 行1 (10列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/downloadNormal.yaml	7	LIST_MAP=searchCondition 行1 (3列比較)	searchForm.projectName='プロジェクト００１'	searchForm.projectName='プロジェクト００１'	OK
+SAMPLE	ProjectActionRequestTest/downloadNormal.yaml	7	EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) 行1 (14列比較)	projectName='"プロジェクト００１"'	projectName='プロジェクト００１'	表記差
+SAMPLE	ProjectActionRequestTest/editAbNormal.yaml	4	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/editAbNormal.yaml	4	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/editAbNormal.yaml	4	SETUP_TABLE[1]=PROJECT 行1 (16列比較)	PROJECT_ID='99999'	PROJECT_ID='99999'	OK
+SAMPLE	ProjectActionRequestTest/editNormal.yaml	21	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/editNormal.yaml	21	LIST_MAP=form1 行8 (2列比較)	name='clientName'	name='clientName'	OK
+SAMPLE	ProjectActionRequestTest/editNormal.yaml	21	SETUP_TABLE[1]=PROJECT 行1 (16列比較)	PROJECT_ID='99999'	PROJECT_ID='99999'	OK
+SAMPLE	ProjectActionRequestTest/indexNormal.yaml	30	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/indexNormal.yaml	30	LIST_MAP=project1_1 行1 (2列比較)	name='projectName'	name='projectName'	OK
+SAMPLE	ProjectActionRequestTest/indexNormal.yaml	30	SETUP_TABLE[1]=PROJECT 行1 (15列比較)	PROJECT_NAME='プロジェクト００１'	PROJECT_NAME='プロジェクト００１'	OK
+SAMPLE	ProjectActionRequestTest/listAbNormal.yaml	5	LIST_MAP=testShots 行1 (10列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/listAbNormal.yaml	5	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/listAbNormal.yaml	5	SETUP_TABLE[1]=PROJECT 行1 (15列比較)	PROJECT_NAME='プロジェクト００１'	PROJECT_NAME='プロジェクト００１'	OK
+SAMPLE	ProjectActionRequestTest/listNormal.yaml	31	LIST_MAP=testShots 行1 (10列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/listNormal.yaml	31	LIST_MAP=searchForm1 行12 (2列比較)	name='pageNumber'	name='pageNumber'	OK
+SAMPLE	ProjectActionRequestTest/listNormal.yaml	31	SETUP_TABLE[1]=PROJECT 行1 (15列比較)	PROJECT_NAME='プロジェクト００１'	PROJECT_NAME='プロジェクト００１'	OK
+SAMPLE	ProjectActionRequestTest/newEntityNormal.yaml	3	LIST_MAP=testShots 行1 (8列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/newEntityNormal.yaml	3	LIST_MAP=userContext 行1 (3列比較)	REQUEST_ID='newEntity'	REQUEST_ID='newEntity'	OK
+SAMPLE	ProjectActionRequestTest/newEntityNormal.yaml	3	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/setUpDb.yaml	4	SETUP_TABLE=SYSTEM_ACCOUNT 行1 (11列比較)	USER_ID='105'	USER_ID='105'	OK
+SAMPLE	ProjectActionRequestTest/setUpDb.yaml	4	SETUP_TABLE=INDUSTRY 行1 (2列比較)	INDUSTRY_CODE='01'	INDUSTRY_CODE='01'	OK
+SAMPLE	ProjectActionRequestTest/setUpDb.yaml	4	SETUP_TABLE=CLIENT 行1 (3列比較)	CLIENT_ID='1'	CLIENT_ID='1'	OK
+SAMPLE	ProjectActionRequestTest/showAbNormal.yaml	4	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/showAbNormal.yaml	4	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/showAbNormal.yaml	4	SETUP_TABLE[1]=PROJECT 行1 (16列比較)	PROJECT_ID='99999'	PROJECT_ID='99999'	OK
+SAMPLE	ProjectActionRequestTest/showNormal.yaml	21	LIST_MAP=testShots 行1 (9列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/showNormal.yaml	21	LIST_MAP=projectDto1 行8 (2列比較)	name='clientName'	name='clientName'	OK
+SAMPLE	ProjectActionRequestTest/showNormal.yaml	21	SETUP_TABLE[1]=PROJECT 行1 (16列比較)	PROJECT_ID='99999'	PROJECT_ID='99999'	OK
+SAMPLE	ProjectActionRequestTest/updateAbNormal.yaml	9	LIST_MAP=testShots 行1 (10列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/updateAbNormal.yaml	9	LIST_MAP=requestParams 行2 (1列比較)	[no]='2'	[no]='2'	OK
+SAMPLE	ProjectActionRequestTest/updateAbNormal.yaml	9	EXPECTED_TABLE[2]=PROJECT 行1 (16列比較)	PROJECT_ID='99998'	PROJECT_ID='99998'	OK
+SAMPLE	ProjectActionRequestTest/updateNormal.yaml	5	LIST_MAP=testShots 行1 (10列比較)	no='1'	no='1'	OK
+SAMPLE	ProjectActionRequestTest/updateNormal.yaml	5	LIST_MAP=requestParams 行1 (1列比較)	[no]='1'	[no]='1.0'	表記差(マーカー)
+SAMPLE	ProjectActionRequestTest/updateNormal.yaml	5	EXPECTED_TABLE[1]=PROJECT 行1 (16列比較)	PROJECT_ID='99998'	PROJECT_ID='99998'	OK
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 projectName: excel='"プロジェクト名"' yaml='プロジェクト名'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 projectType: excel='"プロジェクト種別"' yaml='プロジェクト種別'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 projectClass: excel='"プロジェクト分類"' yaml='プロジェクト分類'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 projectManager: excel='"プロジェクトマネージャー"' yaml='プロジェクトマネージャー'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 projectLeader: excel='"プロジェクトリーダー"' yaml='プロジェクトリーダー'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 clientId: excel='"顧客ID"' yaml='顧客ID'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 clientName: excel='"顧客名"' yaml='顧客名'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 projectStartDate: excel='"プロジェクト開始日"' yaml='プロジェクト開始日'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 projectEndDate: excel='"プロジェクト終了日"' yaml='プロジェクト終了日'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 note: excel='"備考"' yaml='備考'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 sales: excel='"売上高"' yaml='売上高'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 costOfGoodsSold: excel='"売上原価"' yaml='売上原価'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 sga: excel='"販管費"' yaml='販管費'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (header) row1 allocationOfCorpExpenses: excel='"本社配賦"' yaml='本社配賦'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 projectName: excel='"プロジェクト００１"' yaml='プロジェクト００１'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 projectType: excel='"development"' yaml='development'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 projectClass: excel='"s"' yaml='s'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 projectManager: excel='"テストマネージャー"' yaml='テストマネージャー'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 projectLeader: excel='"テストリーダー"' yaml='テストリーダー'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 clientId: excel='"1"' yaml='1'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 clientName: excel='"テスト顧客名"' yaml='テスト顧客名'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 projectStartDate: excel='"2015/01/01"' yaml='2015/01/01'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 projectEndDate: excel='"2016/12/31"' yaml='2016/12/31'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 note: excel='"テスト備考"' yaml='テスト備考'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 sales: excel='"1000"' yaml='1000'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 costOfGoodsSold: excel='"2000"' yaml='2000'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 sga: excel='"3000"' yaml='3000'
+RAW_DIFF	downloadNormal.yaml EXPECTED_VARIABLE=./tmp/html_dump/ProjectActionRequestTest/downloadNormal_Shot1_プロジェクト一覧ダウンロード_プロジェクト一覧.csv (data) row1 allocationOfCorpExpenses: excel='"4000"' yaml='4000'
+ERROR	downloadNormal.yaml SETUP_TABLE[1]=PROJECT row1: excel={'PROJECT_ID': '10000', 'PROJECT_NAME': 'プロジェクト００１', 'PROJECT_TYPE': 'development', 'PROJECT_CLASS': 's', 'PROJECT_START_DATE': '20150101', 'PROJECT_END_DATE': '20161231', 'CLIENT_ID': '1', 'PROJECT_MANAGER': 'テストマネージャー', 'PROJECT_LEADER': 'テストリーダー', 'USER_ID': '105', 'NOTE': 'テスト備考', 'SALES': '1000', 'COST_OF_GOODS_SOLD': '2000', 'SGA': '3000', 'ALLOCATION_OF_CORP_EXPENSES': '4000', 'VERSION': '0'} yaml={'PROJECT_ID': '10000', 'PROJECT_NAME': 'プロジェクト００１', 'PROJECT_TYPE': 'development', 'PROJECT_CLASS': 's', 'PROJECT_START_DATE': '20150101', 'PROJECT_END_DATE': '20161231', 'CLIENT_ID': '1', 'PROJECT_MANAGER': 'テストマネージャー', 'PROJECT_LEADER': 'テストリーダー', 'USER_ID': '105', 'NOTE': 'テスト備考', 'SALES': '1000', 'COST_OF_GOODS_SOLD': '2000.0', 'SGA': '3000', 'ALLOCATION_OF_CORP_EXPENSES': '4000', 'VERSION': '0'}
+CHECKED_ROWS	249	RAW_DIFF	28	MARKER_DIFF	21	ERRORS	1
