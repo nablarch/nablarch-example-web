@@ -20,6 +20,7 @@
 - `.rn/ntf-yaml-support/scripts/` 配下に格納する。作成したスクリプトは用途をここと該当 `checks/task-N.md` に記載する。
 - 実行ログ等の証跡は `.rn/ntf-yaml-support/sampling/` 配下に保存する。
   - `sampling/task1-test-log.txt`（Task #1）: ベースラインでの `mvn -B clean test` ログ（先頭行は実行時の HEAD）
+  - `sampling/task2-resolve-log.txt`（Task #2）: `dependency:resolve` / `dependency:list` / `help:describe` の結果
 
 ## Status
 - Task #1 完了（self-check / QA OK）。Task #2 実施中
@@ -53,13 +54,13 @@
 **Purpose**: `pom.xml` に `nablarch-testing-yaml`（test 依存）と `nablarch-testing-converter`（`<build><plugins>` のビルドプラグイン）を追加し、`YamlTestDataParser`（`testDataParser`）を testdata.html の設定例どおりに、`testDataParser` が参照される全フェーズで有効になる設定ファイルへ追加する。
 **Prerequisites**: #1
 **Steps**:
-- [ ] `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT`（test scope）を追加する
-- [ ] `pom.xml` の `<build><plugins>` に `nablarch-testing-converter:1.0.0-SNAPSHOT` を追加する（plugin 直下 `<configuration>` に from=xls / to=yaml / input / output / overwrite）
-- [ ] 実行中にモック等が `testDataParser` 経由でテストデータを読む構成か判定する（応答電文 `response_*` / sendSync の有無）
-- [ ] 判定結果に応じて `YamlTestDataParser` を配置する（`interpreters` は `dateTimeInterpreter` → `compositeInterpreter` の2つのみ、`dbInfo` 定義より後）
-- [ ] `mvn dependency:resolve` と `mvn help:describe` で yaml 依存・converter `convert` ゴールの解決を確認する
-- [ ] 変更したファイルをコミットする
-- [ ] self-check
+- [x] `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT`（test scope）を追加する（`nablarch-testing-jetty12` の直後）
+- [x] `pom.xml` の `<build><plugins>` に `nablarch-testing-converter:1.0.0-SNAPSHOT` を追加する（plugin 直下 `<configuration>` に from=xls / to=yaml / input=output=`${project.basedir}/src/test/java` / overwrite=true。`<executions>` なし）
+- [x] 実行中にモック等が `testDataParser` 経由でテストデータを読む構成か判定する → 非該当（`response_*`・sendSync・メッセージングモックなし。HTTP リクエスト単体テスト / Entity テストのみ）
+- [x] 判定結果に応じて `YamlTestDataParser` を配置する → `src/test/resources/unit-test.xml` の `dbInfo` 定義直後に追加（`interpreters` は `dateTimeInterpreter` → `compositeInterpreter` の2つのみ。本番用 `src/main/resources` は変更なし）
+- [x] `mvn dependency:resolve` と `mvn help:describe` で yaml 依存・converter `convert` ゴールの解決を確認する（ログ: `sampling/task2-resolve-log.txt`）
+- [x] 変更したファイルをコミットする
+- [x] self-check
 - [ ] QA expert review (Agent: general-purpose / Opus)
 - [ ] language expert review (Agent: general-purpose / Opus)
 - [ ] software-engineering expert review (Agent: general-purpose / Opus)
