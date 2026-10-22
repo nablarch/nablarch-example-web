@@ -33,7 +33,7 @@
 - Task #3 完了: サンプリング比較で表記差3種類を検出 → ユーザー判断で一致として扱う（コミット `c63b9fb`、QA OK）
 - Task #4 完了（コミット `161fce6`、QA OK）
 - Task #5: Excel なしで全151件パス（QA / language OK）。software-engineering レビューの NG 1件（テストログ全文 各約20MB のコミット）はユーザー承認により OK。Task #5 完了
-- 全 task（#1〜#5）完了。user review 待ち。push はユーザーが行う
+- 全 task（#1〜#5）完了。user review OK（全 task まとめて実施）。push はユーザーが行う
 - 今後の検討事項（レビューでの任意改善提案）: `sampling/task1-test-log.txt` / `task5-test-log.txt` を必要な行の抜粋に差し替える、`nablarch-testing-yaml` / `nablarch-testing-converter` は `1.0.0-SNAPSHOT` を直書きしており pom にリポジトリ定義がないため、正式版公開時に BOM 管理または property 化してバージョンを差し替える。converter plugin への用途コメント追加、Jackson の minor 混在（core/databind 2.17.1 と dataformat-yaml 2.18.3）、yaml→xls 逆変換時は pom の `<configuration>` が `-D` より優先されるため pom 一時変更または別 execution id が必要
 
 ## Tasks
@@ -54,7 +54,7 @@
 - [x] 変更ファイルをコミットする（`ce397e1`）
 - [x] self-check
 - [x] QA expert review (Agent: general-purpose / Opus) → OK
-- [ ] user review（全 task 完了後にまとめて実施）
+- [x] user review（全 task 完了後にまとめて実施 → OK）
 **Completion criteria**:
 - 既存の `ntf-yaml-support` ブランチ上で作業しており、コミット履歴が維持されている（過去の移行コミットが残っている）
 - ブランチの既存先端の上に、ワーキングツリー全体が `develop` と同一内容になる新規コミットが1つ積まれている
@@ -75,7 +75,7 @@
 - [x] QA expert review (Agent: general-purpose / Opus) → OK
 - [x] language expert review (Agent: general-purpose / Opus) → OK
 - [x] software-engineering expert review (Agent: general-purpose / Opus) → OK
-- [ ] user review（全 task 完了後にまとめて実施）
+- [x] user review（全 task 完了後にまとめて実施 → OK）
 **Completion criteria**:
 - `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT` が test スコープで追加されている
 - `pom.xml` の `<build><plugins>` に `nablarch-testing-converter:1.0.0-SNAPSHOT` がビルドプラグイン（plugin直下 `<configuration>` に変換パラメータを設定し、CLIで `convert` ゴールを実行）として追加されている
@@ -94,7 +94,7 @@
 - [x] 変換したYAMLファイルをコミットする（Excelはまだ削除しない）
 - [x] self-check
 - [x] QA expert review (Agent: general-purpose / Opus) → OK
-- [ ] user review（全 task 完了後にまとめて実施）
+- [x] user review（全 task 完了後にまとめて実施 → OK）
 **Completion criteria**:
 - 変換対象の全てのExcelファイルに対応するYAMLファイルが生成されている
 - サンプリング比較（各ファイル最低3件、元データが3件未満の場合は元データ件数分）でExcelとYAMLの内容が一致している
@@ -109,7 +109,7 @@
 - [x] Excelファイル削除をコミットする（`161fce6`）
 - [x] self-check
 - [x] QA expert review (Agent: general-purpose / Opus) → OK
-- [ ] user review（全 task 完了後にまとめて実施）
+- [x] user review（全 task 完了後にまとめて実施 → OK）
 **Completion criteria**:
 - 変換対象だった全 Excel ファイルが削除されている
 - 削除がコミットされている
@@ -124,7 +124,7 @@
 - [x] QA expert review (Agent: general-purpose / Opus) → OK
 - [x] language expert review (Agent: general-purpose / Opus) → OK
 - [x] software-engineering expert review (Agent: general-purpose / Opus) → NG（テストログ全文 約20MB×2 のコミット）→ ユーザー承認により OK
-- [ ] user review（全 task 完了後にまとめて実施）
+- [x] user review（全 task 完了後にまとめて実施 → OK）
 **Completion criteria**:
 - `mvn test` が BUILD SUCCESS で終了する（全テストパス、Excel ファイルなし）
 - テストログで YamlTestDataParser が実際に使われていることが確認できる
