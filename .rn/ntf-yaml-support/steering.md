@@ -23,7 +23,10 @@
   - `sampling/task2-resolve-log.txt`（Task #2）: `dependency:resolve` / `dependency:list` / `help:describe` の結果
 
 ## Status
-- Task #1 完了（self-check / QA OK）。Task #2 実施中
+- Task #1 完了（self-check / QA OK）
+- Task #2 完了（self-check / QA / language / software-engineering OK、コミット `89fac0e`）
+- Task #3 実施中
+- 今後の検討事項（レビューでの任意改善提案）: `nablarch-testing-yaml` / `nablarch-testing-converter` は `1.0.0-SNAPSHOT` を直書きしており pom にリポジトリ定義がないため、正式版公開時に BOM 管理または property 化してバージョンを差し替える。converter plugin への用途コメント追加
 
 ## Tasks
 
@@ -61,9 +64,9 @@
 - [x] `mvn dependency:resolve` と `mvn help:describe` で yaml 依存・converter `convert` ゴールの解決を確認する（ログ: `sampling/task2-resolve-log.txt`）
 - [x] 変更したファイルをコミットする
 - [x] self-check
-- [ ] QA expert review (Agent: general-purpose / Opus)
-- [ ] language expert review (Agent: general-purpose / Opus)
-- [ ] software-engineering expert review (Agent: general-purpose / Opus)
+- [x] QA expert review (Agent: general-purpose / Opus) → OK
+- [x] language expert review (Agent: general-purpose / Opus) → OK
+- [x] software-engineering expert review (Agent: general-purpose / Opus) → OK
 - [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT` が test スコープで追加されている
