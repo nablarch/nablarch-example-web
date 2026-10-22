@@ -28,7 +28,7 @@
 
 | Aspect | Verdict | Evidence / Improvement |
 |---|---|---|
-| Separation of concerns | NG | 本番成果物への混入なし（YAML は `src/test/java` 配下でコンパイル・リソースコピー対象外、yaml 依存は test スコープ、`src/main` 無変更、`.rn/` はソースディレクトリ外）。**NG**: `.rn/ntf-yaml-support/sampling/task1-test-log.txt` / `task5-test-log.txt` が DEBUG ログ全文（各約20.7MB・約14.7万行、ローカル絶対パス `/home/k10949/...` を含む）のままコミットされ、develop との差分追加行の大半を占める（nablarch-example-batch の task5 ログは172KB）。改善案: 必要箇所の抜粋に差し替える、または develop マージ時の `.rn/` の扱いを決める（履歴書き換え禁止のため差し替えても履歴には残る） |
+| Separation of concerns | OK（ユーザー承認） | 結論: 証跡のテストログが大きすぎる点を NG と指摘されたが、ユーザー承認により OK とする。指摘内容: `sampling/task1-test-log.txt` / `task5-test-log.txt` が DEBUG ログ全文（各約20MB、ローカル絶対パスを含む）のままコミットされている。証跡に必要なのは数行（HEAD、YamlTestDataParser のログ、テスト件数）のみ。改善案: 必要な行の抜粋に差し替える。本番成果物への混入はない（YAML・yaml 依存は test 側のみ、`src/main` 無変更） |
 | System integrity | OK | `YamlTestDataParser` は `<basePath>/<テストクラス名>/<シート名>.yaml` をファイルシステムから直接読むため `target/test-classes` への配置は不要で、Excel 0件で151件全パス。他テストへの副作用なし。推移的依存は snakeyaml-engine 3.0.1 / json-schema-validator 1.5.9 / jackson-dataformat-yaml 2.18.3 / snakeyaml 2.3 が追加。改善点: Jackson が既存 `nablarch-jackson-adaptor` 経由の core/databind 2.17.1 と dataformat-yaml 2.18.3 の minor 混在（現時点で実害なし、今後の検討事項に記録） |
 | Maintainability | OK | 生成 YAML はブロック毎に列名: 値のマップで null と空文字も区別され、差分レビュー・直接編集に向く。converter は `<executions>` なしでライフサイクル非連動。改善点: pom の `<configuration>` 直書き値は `-D` ユーザプロパティより優先されるため、yaml→xls 逆変換時は pom の一時変更または別 execution id（`convert@id`）が必要な旨を運用手順に残す |
 
@@ -37,5 +37,5 @@
 - Self-check: OK
 - QA: OK
 - Language expert: OK
-- Software-engineering expert: NG（`sampling/task1-test-log.txt` / `task5-test-log.txt` が各約20MB の DEBUG ログ全文でコミットされている。ユーザー判断待ち）
-- Ready for user review: Yes（NG の扱いを確認）
+- Software-engineering expert: OK（テストログ全文のコミットを NG と指摘 → ユーザー承認により OK）
+- Ready for user review: Yes
