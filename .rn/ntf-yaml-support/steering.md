@@ -13,6 +13,7 @@
 - DB セットアップおよびエンティティクラス生成（gsp-dba-maven-plugin）は `generate-resources` フェーズにバインドされており、個別実行は `mvn generate-resources`。`compile` / `test` にも含まれる。gsp プロファイル指定は不要（pom.xml に gsp プロファイルは存在しない）。
 - gsp プラグインを Java 17 で動かすための JVM オプションは `.mvn/jvm.config` で指定済み。
 - テスト実行コマンド: `mvn -B clean test`（clean → generate-resources（gsp-dba）→ compile → test を一括実行）
+- ベースラインのテスト件数: **Tests run: 151**（Task #1）。Task #5 ではこの件数と比較し、YAML 移行でテストが脱落していないことを確認する。
 - converter 実行コマンド（Task #3）: `mvn com.nablarch.framework:nablarch-testing-converter:1.0.0-SNAPSHOT:convert`（パラメータは pom.xml の plugin `<configuration>` に設定。手順は `/home/k10949/workspace/nablarch-testing-converter/README.md`）
 
 ## Scripts
@@ -21,7 +22,7 @@
   - `sampling/task1-test-log.txt`（Task #1）: ベースラインでの `mvn -B clean test` ログ（先頭行は実行時の HEAD）
 
 ## Status
-- Task #1 実施中
+- Task #1 完了（self-check / QA OK）。Task #2 実施中
 
 ## Tasks
 
@@ -38,9 +39,9 @@
 - [x] エンティティクラスを生成する（`mvn -B generate-resources`、および `mvn -B clean test` 内の generate-resources）
 - [x] テストを実行し、全テストがパスすることを確認する（Tests run: 151, Failures: 0, Errors: 0 / BUILD SUCCESS）
 - [x] 結果を `checks/task-1.md` に記録する
-- [ ] 変更ファイルをコミットする
-- [ ] self-check
-- [ ] QA expert review (Agent: general-purpose / Opus)
+- [x] 変更ファイルをコミットする（`ce397e1`）
+- [x] self-check
+- [x] QA expert review (Agent: general-purpose / Opus) → OK
 - [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - 既存の `ntf-yaml-support` ブランチ上で作業しており、コミット履歴が維持されている（過去の移行コミットが残っている）
