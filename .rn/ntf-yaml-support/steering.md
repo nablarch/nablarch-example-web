@@ -32,8 +32,8 @@
 - Task #2 完了（self-check / QA / language / software-engineering OK、コミット `89fac0e`）
 - Task #3 完了: サンプリング比較で表記差3種類を検出 → ユーザー判断で一致として扱う（コミット `c63b9fb`、QA OK）
 - Task #4 完了（コミット `161fce6`、QA OK）
-- Task #5: Excel なしで全151件パス。レビュー実施中
-- 今後の検討事項（レビューでの任意改善提案）: `nablarch-testing-yaml` / `nablarch-testing-converter` は `1.0.0-SNAPSHOT` を直書きしており pom にリポジトリ定義がないため、正式版公開時に BOM 管理または property 化してバージョンを差し替える。converter plugin への用途コメント追加
+- Task #5: Excel なしで全151件パス（QA / language OK）。software-engineering レビューで NG 1件（`sampling/task1-test-log.txt` / `task5-test-log.txt` が DEBUG ログ全文 各約20MB でコミット済み）→ 修正せずユーザー判断待ちで停止中
+- 今後の検討事項（レビューでの任意改善提案）: `nablarch-testing-yaml` / `nablarch-testing-converter` は `1.0.0-SNAPSHOT` を直書きしており pom にリポジトリ定義がないため、正式版公開時に BOM 管理または property 化してバージョンを差し替える。converter plugin への用途コメント追加、Jackson の minor 混在（core/databind 2.17.1 と dataformat-yaml 2.18.3）、yaml→xls 逆変換時は pom の `<configuration>` が `-D` より優先されるため pom 一時変更または別 execution id が必要
 
 ## Tasks
 
@@ -120,9 +120,9 @@
 - [x] `mvn test` が BUILD SUCCESS になることを確認する（`mvn -B clean test`: Tests run: 151, Failures: 0, Errors: 0 / BUILD SUCCESS。ベースラインと同数）
 - [x] テストログで YamlTestDataParser が実際に使われていることを確認する（testDataParser の BasicTestDataParser → YamlTestDataParser 上書きログ、YamlTestDataParser のロガー出力）
 - [x] self-check
-- [ ] QA expert review (Agent: general-purpose / Opus)
-- [ ] language expert review (Agent: general-purpose / Opus)
-- [ ] software-engineering expert review (Agent: general-purpose / Opus)
+- [x] QA expert review (Agent: general-purpose / Opus) → OK
+- [x] language expert review (Agent: general-purpose / Opus) → OK
+- [x] software-engineering expert review (Agent: general-purpose / Opus) → NG（テストログ全文 約20MB×2 のコミット。ユーザー判断待ち）
 - [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - `mvn test` が BUILD SUCCESS で終了する（全テストパス、Excel ファイルなし）
