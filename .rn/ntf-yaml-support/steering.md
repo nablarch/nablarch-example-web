@@ -29,7 +29,8 @@
 ## Status
 - Task #1 完了（self-check / QA OK）
 - Task #2 完了（self-check / QA / language / software-engineering OK、コミット `89fac0e`）
-- Task #3: サンプリング比較で表記差3種類を検出 → ユーザー判断で一致として扱う。YAML をコミット、QA レビュー実施中
+- Task #3 完了: サンプリング比較で表記差3種類を検出 → ユーザー判断で一致として扱う（コミット `c63b9fb`、QA OK）
+- Task #4 実施中
 - 今後の検討事項（レビューでの任意改善提案）: `nablarch-testing-yaml` / `nablarch-testing-converter` は `1.0.0-SNAPSHOT` を直書きしており pom にリポジトリ定義がないため、正式版公開時に BOM 管理または property 化してバージョンを差し替える。converter plugin への用途コメント追加
 
 ## Tasks
@@ -89,7 +90,7 @@
 - [x] サンプリング比較結果を `checks/task-3.md` に記録する → 表記差3種類（外側クォート除去 / マーカー値 `1`→`1.0` / 数値セル `2000`→`2000.0`）を検出。NTF 解釈後の不一致は0件。修正せずユーザーへ報告し、**ユーザー判断により一致として扱う**
 - [x] 変換したYAMLファイルをコミットする（Excelはまだ削除しない）
 - [x] self-check
-- [ ] QA expert review (Agent: general-purpose / Opus)
+- [x] QA expert review (Agent: general-purpose / Opus) → OK
 - [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - 変換対象の全てのExcelファイルに対応するYAMLファイルが生成されている

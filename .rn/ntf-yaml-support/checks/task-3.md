@@ -4,16 +4,16 @@
 
 | Criterion | Self-check | Evidence | QA | QA Evidence |
 |---|---|---|---|---|
-| 変換対象の全てのExcelファイルに対応するYAMLファイルが生成されている | OK | `src/test/java` 配下の Excel 15件（`.xlsx` 6件 / `.xls` 9件）を `mvn com.nablarch.framework:nablarch-testing-converter:1.0.0-SNAPSHOT:convert` で変換し `Converted 15 file(s).` / BUILD SUCCESS。YAML 70件を生成（1シート=1ファイル）。比較スクリプトで Excel 全シートに YAML が対応し、過不足なし。ブロック数も Excel マーカーと一致（LIST_MAP 189 / SETUP_TABLE 50 / EXPECTED_TABLE 12 / EXPECTED_VARIABLE 1） | | |
-| サンプリング比較でExcelとYAMLの内容が一致している | OK | 全 YAML 70件の全データ行（1,736行）を突合し、各 YAML から3行（3件未満は全件）をサンプル記録。NTF 解釈後の不一致は0件。生値の表記差3種類（下記「検出した差異」）を修正せずユーザーへ報告し、ユーザー判断により一致とみなす | | |
-| 変換後のYAMLファイルがコミットされている | OK | YAML 70件・scripts 2本・sampling（ダンプ・比較結果・変換ログ）・checks/task-3.md・steering.md を task-3 コミットに含める | | |
+| 変換対象の全てのExcelファイルに対応するYAMLファイルが生成されている | OK | `src/test/java` 配下の Excel 15件（`.xlsx` 6件 / `.xls` 9件）を `mvn com.nablarch.framework:nablarch-testing-converter:1.0.0-SNAPSHOT:convert` で変換し `Converted 15 file(s).` / BUILD SUCCESS。YAML 70件を生成（1シート=1ファイル）。比較スクリプトで Excel 全シートに YAML が対応し、過不足なし。ブロック数も Excel マーカーと一致（LIST_MAP 189 / SETUP_TABLE 50 / EXPECTED_TABLE 12 / EXPECTED_VARIABLE 1。`dump-*.tsv` の列1マーカーを awk で集計し YAML ブロック数と照合。比較スクリプトの出力ではない） | OK | リポジトリ全体（target・.rn 除く）の Excel は `src/test/java` 配下の15件のみ（.xlsx 6 / .xls 9、同名併存なし）。独自ダンプで全70シートとなり、YAML 70件とシート名集合が完全一致（.xlsx 6件も漏れなし）。Excel 列1のブロックマーカー252個がシート毎・名前単位で YAML ブロックと一致 |
+| サンプリング比較でExcelとYAMLの内容が一致している | OK | 全 YAML 70件の全データ行（1,736行）を突合し、各 YAML から3行（3件未満は全件）をサンプル記録。NTF 解釈後の不一致は0件。生値の表記差3種類（下記「検出した差異」）を修正せずユーザーへ報告し、ユーザー判断により一致とみなす | OK | 比較スクリプトの再実行結果は compare-*.txt / dump-*.tsv とバイト単位で同一（CHECKED_ROWS 1736 / RAW_DIFF 30 / MARKER_DIFF 29 / ERROR 1）。NTF 本体の解析（空行・コメント行、セル途中の `//` 切り捨て、NullInterpreter→QuotationTrimmer、マーカー除外、同名列の後勝ち、`cell.toString()`）を再現した独立突合でテーブル系全1,734行・7,784セルが YAML と一致（null と "" を区別）。サンプル外の null 9セル（ProjectBulkActionRequestTest/backToListNormal）や末尾空白（INDUSTRY_NAME）も保持を確認 |
+| 変換後のYAMLファイルがコミットされている | OK | YAML 70件・scripts 2本・sampling（ダンプ・比較結果・変換ログ）・checks/task-3.md・steering.md を task-3 コミットに含める | OK | `c63b9fb` に YAML 70件が含まれ、src/test 配下に未コミット変更なし。Excel 15件は追跡されたまま残存（Task #4 の前提どおり） |
 
 ## QA Expert Review
 
 | Aspect | Verdict | Evidence / Improvement |
 |---|---|---|
-| Meaningful tests/verification | | |
-| Edge case coverage | | |
+| Meaningful tests/verification | OK | 全セルダンプ・全行突合・NTF 解釈後の再比較の構成で必須の3件サンプリングを上回る網羅性があり、再実行で再現できる。表記差3種類の原因説明は事実として正しい（数値セル39個 = `[no]` の 1 が38個と COST_OF_GOODS_SOLD の 2000 が1個で、converter は NTF と同じ toString 値を出力）。改善点: 比較スクリプトは YAML 起点でブロックを列挙するため Excel 側のみのブロックは検出できない（ブロック数一致の根拠はマーカー集計で別途確認、出所を明記済み） |
+| Edge case coverage | OK | null と空文字の区別、外側クォート、マーカーのみの行、同名列（updateNormal の expectedTable、値同一）、末尾空白、ヘッダのみのテーブル（`rows: []` 10箇所）を独立突合で差異なし。スクリプト単体の死角: BaseLoader では null / "" / "null" を区別しない、テーブル終端判定が NTF と異なる、YAML のみのディレクティブ（`file-type: "Variable"`、NTF DataFile の既定値と同じ）を検出しない。ヘッダのみの EXPECTED_TABLE の振る舞い同一性は Task #5 の全テスト通過で確認する |
 
 ## Expert Reviews (code changes only)
 
@@ -227,6 +227,7 @@ N/A — no code changes in this task.
 | dto/ProjectUploadDtoTest/testSingleValidation.yaml | 3（全157行中） | LIST_MAP=singleValidation 行1 (3列比較) | propertyName='projectType' | propertyName='projectType' | OK |
 | 〃 | 〃 | LIST_MAP=singleValidation 行79 (3列比較) | propertyName='projectEndDate' | propertyName='projectEndDate' | OK |
 | 〃 | 〃 | LIST_MAP=singleValidation 行157 (3列比較) | propertyName='allocationOfCorpExpenses' | propertyName='allocationOfCorpExpenses' | OK |
+| action/AuthenticationActionRequestTest/setUpDb.yaml | 0（元データ0件） | SETUP_TABLE ヘッダのみ3ブロック | ブロック名・データ行0 | ブロック名一致・`rows: []` | OK |
 
 ### 検出した差異（全行比較で検出。サンプル行以外も含む）
 
@@ -249,7 +250,7 @@ N/A — no code changes in this task.
 ## Overall Verdict
 
 - Self-check: OK（表記差3種類はユーザー判断により一致とみなす）
-- QA:
+- QA: OK
 - Language expert: N/A
 - Software-engineering expert: N/A
 - Ready for user review: Yes
