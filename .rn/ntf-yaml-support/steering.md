@@ -22,6 +22,7 @@
   - `sampling/task1-test-log.txt`（Task #1）: ベースラインでの `mvn -B clean test` ログ（先頭行は実行時の HEAD）
   - `sampling/task2-resolve-log.txt`（Task #2）: `dependency:resolve` / `dependency:list` / `help:describe` の結果
   - `sampling/convert-log.txt`（Task #3）: converter 実行ログ
+  - `sampling/task5-test-log.txt`（Task #5）: Excel 削除後の `mvn -B clean test` ログ（1行目は実行時の HEAD と Excel 件数）
   - `sampling/dump-<テストクラス>.tsv` / `sampling/compare-<テストクラス>.txt`（Task #3）: Excel ダンプと比較結果
 - `scripts/XlsDump.java`（Task #3）: サンプリング比較用。`.xls` / `.xlsx` の全シートの非空セルを TSV（シート/行/列/値）でダンプする（POI 3.8 の `WorkbookFactory` と `DataFormatter` による表示値）。`java -cp poi-3.8.jar:poi-ooxml-3.8.jar:poi-ooxml-schemas-3.8.jar:xmlbeans-2.3.0.jar:dom4j-1.6.1.jar XlsDump.java <file>`
 - `scripts/compare_xls_yaml.py`（Task #3）: サンプリング比較用。XlsDump の TSV と converter 出力 YAML を全データ行・全列で突合し、各 YAML から3行（3件未満は全件）をサンプル出力する。生値比較と NTF 解釈（NullInterpreter / QuotationTrimmer）後の比較、マーカーカラム除外、同名カラムの後勝ち検出を行う。`python3 -I compare_xls_yaml.py <dump.tsv> <yaml_dir>`（nablarch-example-batch の同名スクリプトを拡張）
@@ -30,7 +31,8 @@
 - Task #1 完了（self-check / QA OK）
 - Task #2 完了（self-check / QA / language / software-engineering OK、コミット `89fac0e`）
 - Task #3 完了: サンプリング比較で表記差3種類を検出 → ユーザー判断で一致として扱う（コミット `c63b9fb`、QA OK）
-- Task #4 実施中
+- Task #4 完了（コミット `161fce6`）
+- Task #5: Excel なしで全151件パス。レビュー実施中
 - 今後の検討事項（レビューでの任意改善提案）: `nablarch-testing-yaml` / `nablarch-testing-converter` は `1.0.0-SNAPSHOT` を直書きしており pom にリポジトリ定義がないため、正式版公開時に BOM 管理または property 化してバージョンを差し替える。converter plugin への用途コメント追加
 
 ## Tasks
@@ -115,9 +117,9 @@
 **Purpose**: Excelなしで全テストがパスすることを確認する。
 **Prerequisites**: #4
 **Steps**:
-- [ ] `mvn test` が BUILD SUCCESS になることを確認する
-- [ ] テストログで YamlTestDataParser が実際に使われていることを確認する
-- [ ] self-check
+- [x] `mvn test` が BUILD SUCCESS になることを確認する（`mvn -B clean test`: Tests run: 151, Failures: 0, Errors: 0 / BUILD SUCCESS。ベースラインと同数）
+- [x] テストログで YamlTestDataParser が実際に使われていることを確認する（testDataParser の BasicTestDataParser → YamlTestDataParser 上書きログ、YamlTestDataParser のロガー出力）
+- [x] self-check
 - [ ] QA expert review (Agent: general-purpose / Opus)
 - [ ] language expert review (Agent: general-purpose / Opus)
 - [ ] software-engineering expert review (Agent: general-purpose / Opus)
