@@ -1,2 +1,0 @@
-SAMPLE	ProjectTargetFormTest/testCharsetAndLength.yaml	1	LIST_MAP=charsetAndLength 行1 (19列比較)	propertyName='projectId'	propertyName='projectId'	OK
-CHECKED_ROWS	1	RAW_DIFF	0	MARKER_DIFF	0	ERRORS	0
