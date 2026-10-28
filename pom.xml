@@ -208,6 +208,12 @@
       <artifactId>nablarch-testing-jetty12</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.nablarch.framework</groupId>
+      <artifactId>nablarch-testing-yaml</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
       <groupId>com.nablarch.framework</groupId>
@@ -344,6 +350,18 @@
             <!-- Jettyに含まれるJSTLと重複するので、Webアプリに含まれるJSTLはJettyで起動する際には除外する -->
             <webInfIncludeJarPattern><![CDATA[.*/[^/]+(?<!jakarta\.servlet\.jsp\.jstl-[^/]+)\.jar$]]></webInfIncludeJarPattern>
           </webApp>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.nablarch.framework</groupId>
+        <artifactId>nablarch-testing-converter</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <configuration>
+          <from>xls</from>
+          <to>yaml</to>
+          <input>${project.basedir}/src/test/java</input>
+          <output>${project.basedir}/src/test/java</output>
+          <overwrite>true</overwrite>
         </configuration>
       </plugin>
     </plugins>
