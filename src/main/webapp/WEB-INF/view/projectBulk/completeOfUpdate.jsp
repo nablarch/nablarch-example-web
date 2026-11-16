@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>プロジェクト一覧更新完了画面</title>
+        <title>プロジェクト一括更新完了画面</title>
     </head>
     <body>
         <n:include path="/WEB-INF/view/common/noscript.jsp" />
@@ -15,7 +15,7 @@
             <section>
                 <n:form>
                     <div class="title-nav">
-                        <span class="page-title">プロジェクト一覧更新完了画面</span>
+                        <span class="page-title">プロジェクト一括更新完了画面</span>
                         <div class="button-nav">
                             <div class="button-block link-button-block">
                                 <n:a id="topReturnList" href="#" cssClass="btn btn-lg btn-success">次へ</n:a>
