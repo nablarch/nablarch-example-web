@@ -10,7 +10,7 @@
         <%-- javascript --%>
         <n:script type="text/javascript" src="/javascripts/lib/jquery-3.7.1.min.js"></n:script>
         <n:script type="text/javascript" src="/javascripts/projectList.js"></n:script>
-        <title>プロジェクト検索一覧更新画面</title>
+        <title>プロジェクト一括更新確認画面</title>
     </head>
     <body>
         <n:include path="/WEB-INF/view/common/noscript.jsp" />
@@ -19,7 +19,7 @@
             <n:include path="/WEB-INF/view/common/header.jsp" />
             <section>
                 <div class="title-nav">
-                    <span>プロジェクト検索一覧更新画面</span>
+                    <span>プロジェクト一括更新確認画面</span>
                     <div class="button-nav">
                         <n:form useToken="true">
                             <n:submit type="button" uri="backToList" cssClass="btn btn-lg btn-light" value="入力へ戻る"></n:submit>

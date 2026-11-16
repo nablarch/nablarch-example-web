@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
         <title>
-            プロジェクト検索一覧更新画面
+            プロジェクト一括更新画面
         </title>
     </head>
     <body>
@@ -40,7 +40,7 @@
                                 <div class="card-body">
                                     <div class="title-nav">
                                         <span>
-                                            プロジェクト検索一覧更新画面
+                                            プロジェクト一括更新画面
                                         </span>
                                         <n:set var="isUpdatable" value="${fn:length(projectListDto.projectList) == 0 ? 'disabled' : ''}" />
                                         <div class="button-nav">
