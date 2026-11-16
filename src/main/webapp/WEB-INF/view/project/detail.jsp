@@ -93,7 +93,6 @@
                             顧客名
                         </th>
                         <td>
-                            <n:write name="form.clientId"/>
                             <n:write name="form.clientName"/>
                         </td>
                     </tr>

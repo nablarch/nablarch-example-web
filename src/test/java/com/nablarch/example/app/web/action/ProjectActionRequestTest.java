@@ -12,6 +12,11 @@ import nablarch.test.core.file.FileSupport;
 import nablarch.test.core.http.TestCaseInfo;
 import org.junit.jupiter.api.Test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * {@link ProjectAction}のリクエスト単体テストクラス。
  *
@@ -20,6 +25,9 @@ import org.junit.jupiter.api.Test;
 @ExampleHttpRequestTest(baseUri = "/action/project/")
 class ProjectActionRequestTest {
     ExampleHttpRequestTestSupport support;
+
+    /** 確認画面のHTMLから「顧客名」欄のセル内容を取り出す正規表現 */
+    private static final Pattern CLIENT_NAME_CELL = Pattern.compile("顧客名\\s*</th>\\s*<td>(.*?)</td>", Pattern.DOTALL);
 
     /**
      * プロジェクト登録画面表示正常系ケース。
@@ -42,6 +50,7 @@ class ProjectActionRequestTest {
                 support.assertEntity(testCaseInfo.getSheetName(),
                         "project" + testCaseInfo.getTestCaseNo(),
                         context.getRequestScopedVar("project"));
+                assertClientIdNotDisplayed(context);
             }
         });
     }
@@ -249,6 +258,7 @@ class ProjectActionRequestTest {
                 support.assertEntity(testCaseInfo.getSheetName(),
                         "project" + testCaseInfo.getTestCaseNo(),
                         context.getRequestScopedVar("project"));
+                assertClientIdNotDisplayed(context);
             }
         });
     }
@@ -384,6 +394,24 @@ class ProjectActionRequestTest {
     @Test
     void downloadAbNormal() {
         support.execute("downloadAbNormal", new SignedInAdvice());
+    }
+
+    /**
+     * 確認画面の「顧客名」欄に顧客IDが表示されていないことを検証する。
+     * <p>
+     * 確認画面の「顧客名」欄には顧客名のみを表示する。
+     * 本テストのリクエストパラメータには顧客名（form.clientName）を含めていないため、欄は空になる。
+     *
+     * @param context 実行コンテキスト
+     */
+    private void assertClientIdNotDisplayed(ExecutionContext context) {
+        String html = support.readHtmlDump(context);
+        Matcher matcher = CLIENT_NAME_CELL.matcher(html);
+        if (!matcher.find()) {
+            Assertion.fail("「顧客名」欄が見つかりません。");
+        }
+        String cellText = matcher.group(1).replaceAll("<[^>]*>", "").trim();
+        assertEquals("", cellText, "「顧客名」欄には顧客名のみを表示し、顧客IDを表示しないこと。");
     }
 
     /**

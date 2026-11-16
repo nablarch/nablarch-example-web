@@ -1,9 +1,15 @@
 package com.nablarch.example.app.test;
 
 import nablarch.fw.ExecutionContext;
+import nablarch.test.Assertion;
 import nablarch.test.core.http.BasicHttpRequestTestTemplate;
 import nablarch.test.core.http.TestCaseInfo;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.List;
 
 /**
@@ -23,6 +29,26 @@ public class ExampleHttpRequestTestSupport extends BasicHttpRequestTestTemplate 
     @Override
     protected String getBaseUri() {
         return baseUri;
+    }
+
+    /**
+     * リクエスト単体テストの実行で出力されたHTMLダンプファイルの内容を返す。
+     * <p>
+     * 画面の出力内容（表示されている項目や出力されていない項目）を検証する場合に使用する。
+     *
+     * @param context 実行コンテキスト
+     * @return HTMLダンプファイルの内容
+     */
+    public String readHtmlDump(ExecutionContext context) {
+        File dumpFile = getDumpFile(context);
+        if (dumpFile == null) {
+            Assertion.fail("dump file was not found.");
+        }
+        try {
+            return Files.readString(dumpFile.toPath(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
     }
 
     /**
