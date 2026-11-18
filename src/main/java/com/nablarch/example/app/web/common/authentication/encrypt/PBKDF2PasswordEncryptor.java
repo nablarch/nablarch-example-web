@@ -87,11 +87,7 @@ public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
         KeySpec spec = new PBEKeySpec(password.toCharArray(), getSalt(saltSeed), getIterationCount(), getKeyLength());
         byte[] encryptPassword;
         try {
-            do {
-                encryptPassword = FACTORY.get()
-                                         .generateSecret(spec)
-                                         .getEncoded();
-            } while (!isSuccessEncryption(encryptPassword));
+            encryptPassword = FACTORY.get().generateSecret(spec).getEncoded();
         } catch (InvalidKeySpecException e) {
             // パスワードが空の場合に発生するが、事前にチェックしているためこの例外は発生しない。
             throw new IllegalStateException(e);
@@ -111,23 +107,6 @@ public class PBKDF2PasswordEncryptor implements PasswordEncryptor {
         if (saltSeed == null || password == null) {
             throw new IllegalArgumentException("saltSeed and password must not be null.");
         }
-    }
-
-    /**
-     * 暗号化処理に成功したか否かを返す。
-     * <p/>
-     * 暗号化されたパスワードの全ての桁が"0"であれば失敗と判定する。
-     *
-     * @param bytes 暗号化されたパスワード
-     * @return 暗号化に成功していれば{@code true}
-     */
-    private static boolean isSuccessEncryption(byte[] bytes) {
-        for (byte b : bytes) {
-            if (b != 0) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
